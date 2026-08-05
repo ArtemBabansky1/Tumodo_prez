@@ -1,0 +1,21 @@
+<section class="slide theme-light" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title accent">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="content">
+    <div class="cols cols-2" style="height:100%;">
+      <div class="card" style="position:relative;overflow:hidden;">
+        <div class="card-title">{{leadsTitle}}</div>
+        <ul class="dots">{{#each leads}}<li>{{.}}</li>{{/each}}</ul>
+        <img class="deco-curve" src="assets/patterns/curve-gray.svg" alt="" style="left:0;bottom:-30px;width:110%;">
+      </div>
+      <div class="card card-blue" style="position:relative;overflow:hidden;">
+        <div class="card-title">{{solvesTitle}}</div>
+        <ul class="checks"{{#if accentImage}} style="max-width:470px;"{{/if}}>{{#each solves}}<li>{{.}}</li>{{/each}}</ul>
+        {{#if accentImage}}<img src="{{accentImage}}" alt="" style="position:absolute;right:10px;bottom:-60px;height:500px;">{{/if}}
+      </div>
+    </div>
+  </div>
+</section>

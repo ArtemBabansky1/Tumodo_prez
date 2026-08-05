@@ -1,0 +1,45 @@
+{
+  "$description": "Эффекты Tumodo. Источник: Figma «Библиотека» (SZpOoVhI07GPa3Vf7BRc10), страница «Цвета / Эффекты» (0:1): именованные стили эффектов Shaddow-Light, Shaddow-Dark и именованные градиенты Gradient-Peach, Gradient-Green, Gradient-Dark-Blue. Импорт 2026-08-04. Скругления как отдельные стили в Figma не заданы; наблюдения: карточки-свотчи 8px и 20px, карточки с тенями 30px (см. отчёт импорта).",
+  "effects": {
+    "shadow-light": {
+      "$value": "46px 64px 31px 0px rgba(80, 94, 134, 0.01), 26px 36px 27px 0px rgba(80, 94, 134, 0.02), 11px 16px 20px 0px rgba(80, 94, 134, 0.03), 3px 4px 11px 0px rgba(80, 94, 134, 0.04)",
+      "$type": "effect",
+      "$description": "Стиль Figma «Shaddow-Light»: четырёхслойная мягкая тень (#505E86, альфы 1–4%) для светлых карточек. Источник: node 130:79 «Shaddow_White on gray» (белая карточка, скругление 30px)."
+    },
+    "shadow-dark": {
+      "$value": "8px 8px 7px 0px rgba(0, 0, 0, 0.05), 3px 4px 5px 0px rgba(0, 0, 0, 0.09), 1px 1px 3px 0px rgba(0, 0, 0, 0.1)",
+      "$type": "effect",
+      "$description": "Стиль Figma «Shaddow-Dark»: трёхслойная чёрная тень для тёмных карточек. Источник: node 133:5 «Shaddow_Dark» (карточка #202020, скругление 30px)."
+    },
+    "gradient-peach": {
+      "$value": "linear-gradient(137.42deg, #9D51FF 17.56%, #FF6E5A 44.99%, #FFF496 109.98%)",
+      "$type": "effect",
+      "$description": "Стиль Figma «Gradient-Peach»: Purple-Base → Peach-Base → светло-жёлтый #FFF496 (цвет вне палитры свотчей — есть только в градиентах). Источник: node 127:99, секция Gradients."
+    },
+    "gradient-green": {
+      "$value": "linear-gradient(137.49deg, #30DF96 17.8%, #FFF496 67.29%, #FF6E5A 141.66%)",
+      "$type": "effect",
+      "$description": "Стиль Figma «Gradient-Green»: Green-Base → #FFF496 → Peach-Base. Источник: node 130:5, секция Gradients."
+    },
+    "gradient-dark-blue": {
+      "$value": "linear-gradient(-1.64deg, #005AFF 1.31%, #0040B3 17.06%, #032563 42.56%, #111824 69.05%, #121212 94.3%)",
+      "$type": "effect",
+      "$description": "Стиль Figma «Gradient-Dark-Blue»: Blue-Base → Blue-Deep → #032563 → #111824 → Black (промежуточные #032563 и #111824 есть только в этом градиенте). Источник: node 130:2, секция Gradients."
+    },
+    "glass-frost-light": {
+      "$value": "backdrop-filter: blur(8px)",
+      "$type": "effect",
+      "$description": "Стиль Figma «Shaddow-Light-Frost» (тип GLASS, не тень): лёгкое матовое стекло. Параметры Figma: radius 8, refraction 0.7, depth 20, lightAngle 315°, lightIntensity 0.5, dispersion 0, splay 0.76. Точного аналога в CSS нет — приближение backdrop-filter: blur(8px) на полупрозрачной подложке."
+    },
+    "glass-frost-deep": {
+      "$value": "backdrop-filter: blur(49px)",
+      "$type": "effect",
+      "$description": "Стиль Figma «Glass-Depp-Frost» (тип GLASS): сильное матовое стекло для плашек поверх фото и градиентов. Параметры Figma: radius 49, refraction 0.7, depth 20, lightAngle 315°, lightIntensity 0.5, dispersion 0, splay 0.76."
+    },
+    "glass-frost-extra": {
+      "$value": "backdrop-filter: blur(88px)",
+      "$type": "effect",
+      "$description": "Стиль Figma «Glass-Extra-Frost» (тип GLASS): максимальное матовое стекло — крупные перекрытия и затемняющие подложки. Параметры Figma: radius 88, refraction 0.7, depth 20, lightAngle 315°, lightIntensity 0.5, dispersion 0, splay 0.76."
+    }
+  }
+}

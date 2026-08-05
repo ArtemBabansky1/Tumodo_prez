@@ -1,0 +1,104 @@
+{
+  "$description": "Типографика Tumodo. Источник: локальные текстовые стили файла «Библиотека» (SZpOoVhI07GPa3Vf7BRc10), страница «Текст» (1:46) — 12 стилей: 7 в группе Presentation/* (для презентаций) и 5 в группе SMM/* (для соцсетей, в слайдах не использовать). Прочитаны через Plugin API 2026-08-04. Основной шрифт — Nunito Sans (решение пользователя). Интерлиньяж переведён из % в множитель, трекинг (letterSpacing) указан в % от размера, как в Figma.",
+  "font": {
+    "nunito-sans": {
+      "$value": "'Nunito Sans', sans-serif",
+      "$type": "fontFamily",
+      "$description": "Единственный шрифт дизайн-системы: используется во всех 12 текстовых стилях Figma. Начертания: ExtraBold (800), Bold (700), SemiBold (600), Regular (400). Файлы шрифта кладёт пользователь в fonts/files/."
+    }
+  },
+  "typography": {
+    "cover-title-1": {
+      "$value": {
+        "fontFamily": "Nunito Sans",
+        "fontSize": "80px",
+        "fontWeight": 800,
+        "lineHeight": 1.1
+      },
+      "$type": "typography",
+      "$description": "Стиль Figma «Presentation/Заголовок Обложка (1)». Главный заголовок титульного слайда (основной вариант). Nunito Sans ExtraBold 80/110%, трекинг +1%."
+    },
+    "cover-title-2": {
+      "$value": {
+        "fontFamily": "Nunito Sans",
+        "fontSize": "60px",
+        "fontWeight": 800,
+        "lineHeight": 1.1
+      },
+      "$type": "typography",
+      "$description": "Стиль Figma «Presentation/Заголовок Обложка (2)». Заголовок обложки для длинных названий — когда текст не влезает в 80px. Nunito Sans ExtraBold 60/110%, трекинг +1%."
+    },
+    "page-title": {
+      "$value": {
+        "fontFamily": "Nunito Sans",
+        "fontSize": "50px",
+        "fontWeight": 700,
+        "lineHeight": 1.1
+      },
+      "$type": "typography",
+      "$description": "Стиль Figma «Presentation/Заголовок Страница». Заголовок любого внутреннего слайда (h1 слайда). Nunito Sans Bold 50/110%."
+    },
+    "body-big": {
+      "$value": {
+        "fontFamily": "Nunito Sans",
+        "fontSize": "30px",
+        "fontWeight": 600,
+        "lineHeight": 1.25
+      },
+      "$type": "typography",
+      "$description": "Стиль Figma «Presentation/Основной текст (big)». Крупный основной текст: подзаголовки, ключевые тезисы, лид-абзац. Nunito Sans SemiBold 30/125%."
+    },
+    "body-middle": {
+      "$value": {
+        "fontFamily": "Nunito Sans",
+        "fontSize": "25px",
+        "fontWeight": 400,
+        "lineHeight": 1.25
+      },
+      "$type": "typography",
+      "$description": "Стиль Figma «Presentation/Основной текст (middle)». Базовый текст слайда и буллеты. Nunito Sans Regular 25/125%. Примечание: в библиотеке «Презентации» одноимённый стиль «Main text» задан начертанием Medium — расхождение по насыщенности, приоритет у стиля «Библиотеки» (Regular)."
+    },
+    "body-small": {
+      "$value": {
+        "fontFamily": "Nunito Sans",
+        "fontSize": "20px",
+        "fontWeight": 400,
+        "lineHeight": 1.25
+      },
+      "$type": "typography",
+      "$description": "Стиль Figma «Presentation/Основной текст (small)». Мелкий текст: плотные списки, вторичная информация, подписи к элементам. Nunito Sans Regular 20/125%."
+    },
+    "caption": {
+      "$value": {
+        "fontFamily": "Nunito Sans",
+        "fontSize": "16px",
+        "fontWeight": 400,
+        "lineHeight": 1.15
+      },
+      "$type": "typography",
+      "$description": "Стиль Figma «Presentation/Сноски, баблы, графики». Сноски, подписи к диаграммам, тексты внутри баблов и графиков. Nunito Sans Regular 16/115%. Самый мелкий допустимый размер на слайде."
+    },
+    "library-cover-display": {
+      "$value": {
+        "fontFamily": "Nunito Sans",
+        "fontSize": "144px",
+        "fontWeight": 500,
+        "lineHeight": 1.01
+      },
+      "$type": "typography",
+      "$description": "Наблюдение (стилем не оформлено): заголовок обложки самого файла «Библиотека» (node 74:9), Nunito Sans Medium 144px. Для слайдов НЕ использовать — есть cover-title-1/2."
+    }
+  },
+  "color-styles": {
+    "text": {
+      "$value": "#2E2E2E",
+      "$type": "color",
+      "$description": "Стиль заливки Figma «Text» (библиотека «Презентации»): цвет основного текста. Совпадает с токеном neutral.dark-gray-text палитры."
+    },
+    "text-web": {
+      "$value": "#3A3A3A",
+      "$type": "color",
+      "$description": "Стиль заливки Figma «Text_web» (библиотека «Презентации»): цвет текста для веба. ВНИМАНИЕ: #3A3A3A отсутствует в палитре «Библиотеки» — расхождение, уточнить у пользователя."
+    }
+  }
+}

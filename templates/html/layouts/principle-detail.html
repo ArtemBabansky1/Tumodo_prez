@@ -1,0 +1,17 @@
+<section class="slide theme-light" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title accent">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="content" style="display:flex;flex-direction:column;">
+    <div class="cols cols-3" style="flex:1;">
+      {{#each cards}}
+      <div class="card pad-m">
+        <div class="card-title">{{title}}</div>
+        <ul class="dots">{{#each items}}<li>{{.}}</li>{{/each}}</ul>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

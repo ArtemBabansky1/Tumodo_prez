@@ -1,0 +1,1390 @@
+{
+  "svg/lucide-backpack.svg": {
+    "description": "Рюкзак (Lucide, штрих 1.5px)",
+    "usage": "Ручная кладь, короткие поездки"
+  },
+  "svg/lucide-sailboat.svg": {
+    "description": "Парусник (Lucide, штрих 1.5px)",
+    "usage": "Круизы, отдых после дел"
+  },
+  "svg/lucide-anchor.svg": {
+    "description": "Якорь (Lucide, штрих 1.5px)",
+    "usage": "Порты, морские направления"
+  },
+  "svg/lucide-circle-parking.svg": {
+    "description": "Парковка (Lucide, штрих 1.5px)",
+    "usage": "Паркинг у аэропорта или отеля"
+  },
+  "svg/lucide-rocket.svg": {
+    "description": "Ракета (Lucide, штрих 1.5px)",
+    "usage": "Быстрый старт, запуск продукта"
+  },
+  "svg/lucide-bed-single.svg": {
+    "description": "Односпальная кровать (Lucide, штрих 1.5px)",
+    "usage": "Одноместный номер"
+  },
+  "svg/lucide-lamp.svg": {
+    "description": "Лампа (Lucide, штрих 1.5px)",
+    "usage": "Комфорт номера"
+  },
+  "svg/lucide-tent.svg": {
+    "description": "Палатка (Lucide, штрих 1.5px)",
+    "usage": "Выездные мероприятия"
+  },
+  "svg/lucide-utensils.svg": {
+    "description": "Столовые приборы (Lucide, штрих 1.5px)",
+    "usage": "Питание в поездке"
+  },
+  "svg/lucide-utensils-crossed.svg": {
+    "description": "Скрещённые приборы (Lucide, штрих 1.5px)",
+    "usage": "Рестораны, обеды"
+  },
+  "svg/lucide-coffee.svg": {
+    "description": "Кофе (Lucide, штрих 1.5px)",
+    "usage": "Завтраки, кофе-брейки"
+  },
+  "svg/lucide-cup-soda.svg": {
+    "description": "Напиток (Lucide, штрих 1.5px)",
+    "usage": "Питание на борту"
+  },
+  "svg/lucide-wine.svg": {
+    "description": "Бокал вина (Lucide, штрих 1.5px)",
+    "usage": "Деловые ужины"
+  },
+  "svg/lucide-croissant.svg": {
+    "description": "Круассан (Lucide, штрих 1.5px)",
+    "usage": "Завтрак в отеле"
+  },
+  "svg/lucide-salad.svg": {
+    "description": "Салат (Lucide, штрих 1.5px)",
+    "usage": "Здоровое питание"
+  },
+  "svg/lucide-chef-hat.svg": {
+    "description": "Колпак шефа (Lucide, штрих 1.5px)",
+    "usage": "Ресторанный сервис"
+  },
+  "svg/lucide-zoom-in.svg": {
+    "description": "Приблизить (Lucide, штрих 1.5px)",
+    "usage": "Детализация данных"
+  },
+  "svg/lucide-zoom-out.svg": {
+    "description": "Отдалить (Lucide, штрих 1.5px)",
+    "usage": "Общая картина"
+  },
+  "svg/lucide-user-minus.svg": {
+    "description": "Убрать пользователя (Lucide, штрих 1.5px)",
+    "usage": "Деактивация доступа"
+  },
+  "svg/lucide-user-x.svg": {
+    "description": "Пользователь с крестом (Lucide, штрих 1.5px)",
+    "usage": "Блокировка доступа"
+  },
+  "svg/lucide-heart-handshake.svg": {
+    "description": "Рукопожатие с сердцем (Lucide, штрих 1.5px)",
+    "usage": "Клиентская забота"
+  },
+  "svg/lucide-graduation-cap.svg": {
+    "description": "Академическая шапочка (Lucide, штрих 1.5px)",
+    "usage": "Обучение, инструкции"
+  },
+  "svg/lucide-smile.svg": {
+    "description": "Улыбка (Lucide, штрих 1.5px)",
+    "usage": "Отзывы, удовлетворённость"
+  },
+  "svg/lucide-video.svg": {
+    "description": "Видеокамера (Lucide, штрих 1.5px)",
+    "usage": "Видеовстречи"
+  },
+  "svg/lucide-mic.svg": {
+    "description": "Микрофон (Lucide, штрих 1.5px)",
+    "usage": "Голосовые функции"
+  },
+  "svg/lucide-at-sign.svg": {
+    "description": "Символ @ (Lucide, штрих 1.5px)",
+    "usage": "Email, упоминания"
+  },
+  "svg/lucide-file-plus.svg": {
+    "description": "Файл с плюсом (Lucide, штрих 1.5px)",
+    "usage": "Создать документ"
+  },
+  "svg/lucide-clipboard.svg": {
+    "description": "Планшет (Lucide, штрих 1.5px)",
+    "usage": "Формы, заявки"
+  },
+  "svg/lucide-notebook.svg": {
+    "description": "Блокнот (Lucide, штрих 1.5px)",
+    "usage": "Заметки о поездке"
+  },
+  "svg/lucide-newspaper.svg": {
+    "description": "Газета (Lucide, штрих 1.5px)",
+    "usage": "Новости, дайджесты"
+  },
+  "svg/lucide-sticky-note.svg": {
+    "description": "Стикер (Lucide, штрих 1.5px)",
+    "usage": "Быстрые заметки"
+  },
+  "svg/lucide-paperclip.svg": {
+    "description": "Скрепка (Lucide, штрих 1.5px)",
+    "usage": "Вложения"
+  },
+  "svg/lucide-archive.svg": {
+    "description": "Архив (Lucide, штрих 1.5px)",
+    "usage": "Архив поездок"
+  },
+  "svg/lucide-check-check.svg": {
+    "description": "Двойная галочка (Lucide, штрих 1.5px)",
+    "usage": "Полностью выполнено"
+  },
+  "svg/lucide-arrow-up-right.svg": {
+    "description": "Стрелка вверх-вправо (Lucide, штрих 1.5px)",
+    "usage": "Внешние ссылки, рост"
+  },
+  "svg/lucide-rotate-cw.svg": {
+    "description": "Повтор (Lucide, штрих 1.5px)",
+    "usage": "Повторить операцию"
+  },
+  "svg/lucide-list-checks.svg": {
+    "description": "Список с галочками (Lucide, штрих 1.5px)",
+    "usage": "Массовые согласования"
+  },
+  "svg/lucide-eye-off.svg": {
+    "description": "Перечёркнутый глаз (Lucide, штрих 1.5px)",
+    "usage": "Скрыть данные"
+  },
+  "svg/lucide-flag.svg": {
+    "description": "Флаг (Lucide, штрих 1.5px)",
+    "usage": "Пометить, приоритет"
+  },
+  "svg/lucide-pin.svg": {
+    "description": "Канцелярская кнопка (Lucide, штрих 1.5px)",
+    "usage": "Закрепить"
+  },
+  "svg/lucide-thumbs-up.svg": {
+    "description": "Палец вверх (Lucide, штрих 1.5px)",
+    "usage": "Одобрение"
+  },
+  "svg/lucide-thumbs-down.svg": {
+    "description": "Палец вниз (Lucide, штрих 1.5px)",
+    "usage": "Отклонение"
+  },
+  "svg/lucide-ban.svg": {
+    "description": "Запрет (Lucide, штрих 1.5px)",
+    "usage": "Ограничения тревел-политики"
+  },
+  "svg/lucide-scan-line.svg": {
+    "description": "Сканер (Lucide, штрих 1.5px)",
+    "usage": "Сканирование документов"
+  },
+  "svg/lucide-puzzle.svg": {
+    "description": "Пазл (Lucide, штрих 1.5px)",
+    "usage": "Интеграции"
+  },
+  "svg/lucide-shuffle.svg": {
+    "description": "Перемешивание (Lucide, штрих 1.5px)",
+    "usage": "Альтернативные варианты"
+  },
+  "svg/lucide-repeat.svg": {
+    "description": "Повтор (Lucide, штрих 1.5px)",
+    "usage": "Регулярные поездки"
+  },
+  "svg/icon-plane.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: plane",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «plane»"
+  },
+  "svg/icon-plane-takeoff.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: plane-takeoff",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «plane-takeoff»"
+  },
+  "svg/icon-plane-landing.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: plane-landing",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «plane-landing»"
+  },
+  "svg/icon-tickets-plane.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: tickets-plane",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «tickets-plane»"
+  },
+  "svg/icon-ticket.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: ticket",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «ticket»"
+  },
+  "svg/icon-luggage.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: luggage",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «luggage»"
+  },
+  "svg/icon-baggage-claim.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: baggage-claim",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «baggage-claim»"
+  },
+  "svg/icon-tickets.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: tickets",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «tickets»"
+  },
+  "svg/icon-ticket-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: ticket-check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «ticket-check»"
+  },
+  "svg/icon-ticket-percent.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: ticket-percent",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «ticket-percent»"
+  },
+  "svg/icon-ticket-plus.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: ticket-plus",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «ticket-plus»"
+  },
+  "svg/icon-ticket-x.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: ticket-x",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «ticket-x»"
+  },
+  "svg/icon-ticket-minus.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: ticket-minus",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «ticket-minus»"
+  },
+  "svg/icon-tower-control.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: tower-control",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «tower-control»"
+  },
+  "svg/icon-qr-code.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: qr-code",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «qr-code»"
+  },
+  "svg/icon-scan-barcode.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: scan-barcode",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «scan-barcode»"
+  },
+  "svg/icon-armchair.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: armchair",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «armchair»"
+  },
+  "svg/icon-land-plot.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: land-plot",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «land-plot»"
+  },
+  "svg/icon-radar.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: radar",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «radar»"
+  },
+  "svg/icon-briefcase.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: briefcase",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «briefcase»"
+  },
+  "svg/icon-car.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: car",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «car»"
+  },
+  "svg/icon-car-taxi-front.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: car-taxi-front",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «car-taxi-front»"
+  },
+  "svg/icon-car-front.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: car-front",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «car-front»"
+  },
+  "svg/icon-train-front.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: train-front",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «train-front»"
+  },
+  "svg/icon-train.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: train",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «train»"
+  },
+  "svg/icon-bus.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bus",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bus»"
+  },
+  "svg/icon-bus-front.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bus-front",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bus-front»"
+  },
+  "svg/icon-tram-front.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: tram-front",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «tram-front»"
+  },
+  "svg/icon-truck.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: truck",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «truck»"
+  },
+  "svg/icon-square-parking.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: square-parking",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «square-parking»"
+  },
+  "svg/icon-fuel.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: fuel",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «fuel»"
+  },
+  "svg/icon-parking-meter.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: parking-meter",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «parking-meter»"
+  },
+  "svg/icon-road.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: road",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «road»"
+  },
+  "svg/icon-ship.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: ship",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «ship»"
+  },
+  "svg/icon-van.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: van",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «van»"
+  },
+  "svg/icon-bike.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bike",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bike»"
+  },
+  "svg/icon-scooter.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: scooter",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «scooter»"
+  },
+  "svg/icon-cable-car.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: cable-car",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «cable-car»"
+  },
+  "svg/icon-locate-fixed.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: locate-fixed",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «locate-fixed»"
+  },
+  "svg/icon-hotel.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: hotel",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «hotel»"
+  },
+  "svg/icon-bed-double.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bed-double",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bed-double»"
+  },
+  "svg/icon-concierge-bell.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: concierge-bell",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «concierge-bell»"
+  },
+  "svg/icon-bed.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bed",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bed»"
+  },
+  "svg/icon-building-2.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: building-2",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «building-2»"
+  },
+  "svg/icon-key-round.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: key-round",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «key-round»"
+  },
+  "svg/icon-door-open.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: door-open",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «door-open»"
+  },
+  "svg/icon-building.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: building",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «building»"
+  },
+  "svg/icon-door-closed.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: door-closed",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «door-closed»"
+  },
+  "svg/icon-bath.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bath",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bath»"
+  },
+  "svg/icon-shower-head.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: shower-head",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «shower-head»"
+  },
+  "svg/icon-sofa.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: sofa",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «sofa»"
+  },
+  "svg/icon-hand-platter.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: hand-platter",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «hand-platter»"
+  },
+  "svg/icon-map-pin.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: map-pin",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «map-pin»"
+  },
+  "svg/icon-map.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: map",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «map»"
+  },
+  "svg/icon-navigation.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: navigation",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «navigation»"
+  },
+  "svg/icon-globe.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: globe",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «globe»"
+  },
+  "svg/icon-compass.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: compass",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «compass»"
+  },
+  "svg/icon-route.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: route",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «route»"
+  },
+  "svg/icon-map-pinned.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: map-pinned",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «map-pinned»"
+  },
+  "svg/icon-locate.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: locate",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «locate»"
+  },
+  "svg/icon-earth.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: earth",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «earth»"
+  },
+  "svg/icon-waypoints.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: waypoints",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «waypoints»"
+  },
+  "svg/icon-map-pin-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: map-pin-check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «map-pin-check»"
+  },
+  "svg/icon-map-pin-house.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: map-pin-house",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «map-pin-house»"
+  },
+  "svg/icon-signpost.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: signpost",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «signpost»"
+  },
+  "svg/icon-map-pin-plus.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: map-pin-plus",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «map-pin-plus»"
+  },
+  "svg/icon-map-pin-search.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: map-pin-search",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «map-pin-search»"
+  },
+  "svg/icon-satellite.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: satellite",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «satellite»"
+  },
+  "svg/icon-crosshair.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: crosshair",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «crosshair»"
+  },
+  "svg/icon-milestone.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: milestone",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «milestone»"
+  },
+  "svg/icon-credit-card.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: credit-card",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «credit-card»"
+  },
+  "svg/icon-wallet.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: wallet",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «wallet»"
+  },
+  "svg/icon-banknote.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: banknote",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «banknote»"
+  },
+  "svg/icon-coins.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: coins",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «coins»"
+  },
+  "svg/icon-piggy-bank.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: piggy-bank",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «piggy-bank»"
+  },
+  "svg/icon-dollar-sign.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: dollar-sign",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «dollar-sign»"
+  },
+  "svg/icon-wallet-minimal.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: wallet-minimal",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «wallet-minimal»"
+  },
+  "svg/icon-vault.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: vault",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «vault»"
+  },
+  "svg/icon-hand-coins.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: hand-coins",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «hand-coins»"
+  },
+  "svg/icon-scale.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: scale",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «scale»"
+  },
+  "svg/icon-euro.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: euro",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «euro»"
+  },
+  "svg/icon-currency.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: currency",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «currency»"
+  },
+  "svg/icon-badge-dollar-sign.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: badge-dollar-sign",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «badge-dollar-sign»"
+  },
+  "svg/icon-wallet-cards.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: wallet-cards",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «wallet-cards»"
+  },
+  "svg/icon-badge-percent.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: badge-percent",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «badge-percent»"
+  },
+  "svg/icon-percent.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: percent",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «percent»"
+  },
+  "svg/icon-circle-dollar-sign.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: circle-dollar-sign",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «circle-dollar-sign»"
+  },
+  "svg/icon-banknote-arrow-up.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: banknote-arrow-up",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «banknote-arrow-up»"
+  },
+  "svg/icon-banknote-arrow-down.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: banknote-arrow-down",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «banknote-arrow-down»"
+  },
+  "svg/icon-badge-euro.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: badge-euro",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «badge-euro»"
+  },
+  "svg/icon-arrow-left-right.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: arrow-left-right",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «arrow-left-right»"
+  },
+  "svg/icon-banknote-x.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: banknote-x",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «banknote-x»"
+  },
+  "svg/icon-saudi-riyal.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: saudi-riyal",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «saudi-riyal»"
+  },
+  "svg/icon-bitcoin.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bitcoin",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bitcoin»"
+  },
+  "svg/icon-receipt.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: receipt",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «receipt»"
+  },
+  "svg/icon-receipt-text.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: receipt-text",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «receipt-text»"
+  },
+  "svg/icon-calculator.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calculator",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calculator»"
+  },
+  "svg/icon-landmark.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: landmark",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «landmark»"
+  },
+  "svg/icon-receipt-euro.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: receipt-euro",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «receipt-euro»"
+  },
+  "svg/icon-file-spreadsheet.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-spreadsheet",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-spreadsheet»"
+  },
+  "svg/icon-sigma.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: sigma",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «sigma»"
+  },
+  "svg/icon-file-text.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-text",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-text»"
+  },
+  "svg/icon-file-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-check»"
+  },
+  "svg/icon-file-chart-column.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-chart-column",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-chart-column»"
+  },
+  "svg/icon-chart-pie.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chart-pie",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chart-pie»"
+  },
+  "svg/icon-badge-cent.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: badge-cent",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «badge-cent»"
+  },
+  "svg/icon-receipt-pound-sterling.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: receipt-pound-sterling",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «receipt-pound-sterling»"
+  },
+  "svg/icon-file-signature.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-signature",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-signature»"
+  },
+  "svg/icon-clipboard-list.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: clipboard-list",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «clipboard-list»"
+  },
+  "svg/icon-signature.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: signature",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «signature»"
+  },
+  "svg/icon-files.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: files",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «files»"
+  },
+  "svg/icon-folder.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: folder",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «folder»"
+  },
+  "svg/icon-file.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file»"
+  },
+  "svg/icon-stamp.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: stamp",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «stamp»"
+  },
+  "svg/icon-clipboard-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: clipboard-check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «clipboard-check»"
+  },
+  "svg/icon-book-open.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: book-open",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «book-open»"
+  },
+  "svg/icon-folder-open.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: folder-open",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «folder-open»"
+  },
+  "svg/icon-file-pen.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-pen",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-pen»"
+  },
+  "svg/icon-scroll-text.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: scroll-text",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «scroll-text»"
+  },
+  "svg/icon-printer.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: printer",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «printer»"
+  },
+  "svg/icon-id-card.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: id-card",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «id-card»"
+  },
+  "svg/icon-folders.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: folders",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «folders»"
+  },
+  "svg/icon-file-search.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-search",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-search»"
+  },
+  "svg/icon-file-lock.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-lock",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-lock»"
+  },
+  "svg/icon-file-down.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-down",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-down»"
+  },
+  "svg/icon-file-up.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-up",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-up»"
+  },
+  "svg/icon-headset.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: headset",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «headset»"
+  },
+  "svg/icon-life-buoy.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: life-buoy",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «life-buoy»"
+  },
+  "svg/icon-message-circle.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: message-circle",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «message-circle»"
+  },
+  "svg/icon-bell.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bell",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bell»"
+  },
+  "svg/icon-phone.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: phone",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «phone»"
+  },
+  "svg/icon-mail.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: mail",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «mail»"
+  },
+  "svg/icon-phone-call.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: phone-call",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «phone-call»"
+  },
+  "svg/icon-message-square.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: message-square",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «message-square»"
+  },
+  "svg/icon-headphones.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: headphones",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «headphones»"
+  },
+  "svg/icon-send.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: send",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «send»"
+  },
+  "svg/icon-bell-ring.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bell-ring",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bell-ring»"
+  },
+  "svg/icon-messages-square.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: messages-square",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «messages-square»"
+  },
+  "svg/icon-inbox.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: inbox",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «inbox»"
+  },
+  "svg/icon-mail-open.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: mail-open",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «mail-open»"
+  },
+  "svg/icon-message-circle-question.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: message-circle-question",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «message-circle-question»"
+  },
+  "svg/icon-circle-help.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: circle-help",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «circle-help»"
+  },
+  "svg/icon-megaphone.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: megaphone",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «megaphone»"
+  },
+  "svg/icon-phone-incoming.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: phone-incoming",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «phone-incoming»"
+  },
+  "svg/icon-phone-outgoing.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: phone-outgoing",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «phone-outgoing»"
+  },
+  "svg/icon-bell-dot.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bell-dot",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bell-dot»"
+  },
+  "svg/icon-message-circle-reply.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: message-circle-reply",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «message-circle-reply»"
+  },
+  "svg/icon-mails.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: mails",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «mails»"
+  },
+  "svg/icon-contact.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: contact",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «contact»"
+  },
+  "svg/icon-bell-off.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bell-off",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bell-off»"
+  },
+  "svg/icon-users.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: users",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «users»"
+  },
+  "svg/icon-user.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: user",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «user»"
+  },
+  "svg/icon-shield-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: shield-check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «shield-check»"
+  },
+  "svg/icon-lock.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: lock",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «lock»"
+  },
+  "svg/icon-key.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: key",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «key»"
+  },
+  "svg/icon-fingerprint.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: fingerprint",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «fingerprint»"
+  },
+  "svg/icon-user-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: user-check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «user-check»"
+  },
+  "svg/icon-shield.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: shield",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «shield»"
+  },
+  "svg/icon-user-cog.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: user-cog",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «user-cog»"
+  },
+  "svg/icon-scan-face.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: scan-face",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «scan-face»"
+  },
+  "svg/icon-verified.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: verified",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «verified»"
+  },
+  "svg/icon-user-lock.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: user-lock",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «user-lock»"
+  },
+  "svg/icon-shield-user.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: shield-user",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «shield-user»"
+  },
+  "svg/icon-user-plus.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: user-plus",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «user-plus»"
+  },
+  "svg/icon-user-key.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: user-key",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «user-key»"
+  },
+  "svg/icon-users-round.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: users-round",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «users-round»"
+  },
+  "svg/icon-badge-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: badge-check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «badge-check»"
+  },
+  "svg/icon-lock-keyhole.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: lock-keyhole",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «lock-keyhole»"
+  },
+  "svg/icon-shield-alert.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: shield-alert",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «shield-alert»"
+  },
+  "svg/icon-user-star.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: user-star",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «user-star»"
+  },
+  "svg/icon-circle-user.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: circle-user",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «circle-user»"
+  },
+  "svg/icon-user-pen.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: user-pen",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «user-pen»"
+  },
+  "svg/icon-log-in.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: log-in",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «log-in»"
+  },
+  "svg/icon-log-out.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: log-out",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «log-out»"
+  },
+  "svg/icon-calendar.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calendar",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calendar»"
+  },
+  "svg/icon-calendar-clock.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calendar-clock",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calendar-clock»"
+  },
+  "svg/icon-clock.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: clock",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «clock»"
+  },
+  "svg/icon-calendar-days.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calendar-days",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calendar-days»"
+  },
+  "svg/icon-calendar-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calendar-check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calendar-check»"
+  },
+  "svg/icon-calendar-range.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calendar-range",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calendar-range»"
+  },
+  "svg/icon-alarm-clock.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: alarm-clock",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «alarm-clock»"
+  },
+  "svg/icon-timer.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: timer",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «timer»"
+  },
+  "svg/icon-hourglass.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: hourglass",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «hourglass»"
+  },
+  "svg/icon-history.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: history",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «history»"
+  },
+  "svg/icon-calendar-plus.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calendar-plus",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calendar-plus»"
+  },
+  "svg/icon-calendar-x.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calendar-x",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calendar-x»"
+  },
+  "svg/icon-calendar-sync.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calendar-sync",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calendar-sync»"
+  },
+  "svg/icon-calendar-search.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: calendar-search",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «calendar-search»"
+  },
+  "svg/icon-layout-dashboard.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: layout-dashboard",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «layout-dashboard»"
+  },
+  "svg/icon-chart-bar.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chart-bar",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chart-bar»"
+  },
+  "svg/icon-chart-line.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chart-line",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chart-line»"
+  },
+  "svg/icon-trending-up.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: trending-up",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «trending-up»"
+  },
+  "svg/icon-trending-down.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: trending-down",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «trending-down»"
+  },
+  "svg/icon-gauge.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: gauge",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «gauge»"
+  },
+  "svg/icon-chart-column.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chart-column",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chart-column»"
+  },
+  "svg/icon-target.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: target",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «target»"
+  },
+  "svg/icon-activity.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: activity",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «activity»"
+  },
+  "svg/icon-chart-area.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chart-area",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chart-area»"
+  },
+  "svg/icon-chart-spline.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chart-spline",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chart-spline»"
+  },
+  "svg/icon-chart-scatter.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chart-scatter",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chart-scatter»"
+  },
+  "svg/icon-chart-gantt.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chart-gantt",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chart-gantt»"
+  },
+  "svg/icon-table.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: table",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «table»"
+  },
+  "svg/icon-database.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: database",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «database»"
+  },
+  "svg/icon-presentation.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: presentation",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «presentation»"
+  },
+  "svg/icon-chart-bar-stacked.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chart-bar-stacked",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chart-bar-stacked»"
+  },
+  "svg/icon-goal.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: goal",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «goal»"
+  },
+  "svg/icon-file-chart-pie.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: file-chart-pie",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «file-chart-pie»"
+  },
+  "svg/icon-circle-gauge.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: circle-gauge",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «circle-gauge»"
+  },
+  "svg/icon-settings.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: settings",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «settings»"
+  },
+  "svg/icon-sliders-horizontal.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: sliders-horizontal",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «sliders-horizontal»"
+  },
+  "svg/icon-cog.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: cog",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «cog»"
+  },
+  "svg/icon-wrench.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: wrench",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «wrench»"
+  },
+  "svg/icon-refresh-cw.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: refresh-cw",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «refresh-cw»"
+  },
+  "svg/icon-cloud.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: cloud",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «cloud»"
+  },
+  "svg/icon-server.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: server",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «server»"
+  },
+  "svg/icon-plug.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: plug",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «plug»"
+  },
+  "svg/icon-workflow.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: workflow",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «workflow»"
+  },
+  "svg/icon-code.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: code",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «code»"
+  },
+  "svg/icon-network.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: network",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «network»"
+  },
+  "svg/icon-link.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: link",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «link»"
+  },
+  "svg/icon-webhook.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: webhook",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «webhook»"
+  },
+  "svg/icon-sliders.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: sliders",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «sliders»"
+  },
+  "svg/icon-cloud-sync.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: cloud-sync",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «cloud-sync»"
+  },
+  "svg/icon-database-backup.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: database-backup",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «database-backup»"
+  },
+  "svg/icon-server-cog.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: server-cog",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «server-cog»"
+  },
+  "svg/icon-cpu.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: cpu",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «cpu»"
+  },
+  "svg/icon-terminal.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: terminal",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «terminal»"
+  },
+  "svg/icon-plug-zap.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: plug-zap",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «plug-zap»"
+  },
+  "svg/icon-unplug.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: unplug",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «unplug»"
+  },
+  "svg/icon-wifi.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: wifi",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «wifi»"
+  },
+  "svg/icon-toggle-right.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: toggle-right",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «toggle-right»"
+  },
+  "svg/icon-leaf.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: leaf",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «leaf»"
+  },
+  "svg/icon-recycle.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: recycle",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «recycle»"
+  },
+  "svg/icon-sprout.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: sprout",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «sprout»"
+  },
+  "svg/icon-trees.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: trees",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «trees»"
+  },
+  "svg/icon-tree-deciduous.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: tree-deciduous",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «tree-deciduous»"
+  },
+  "svg/icon-leafy-green.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: leafy-green",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «leafy-green»"
+  },
+  "svg/icon-heart-pulse.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: heart-pulse",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «heart-pulse»"
+  },
+  "svg/icon-droplet.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: droplet",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «droplet»"
+  },
+  "svg/icon-sun.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: sun",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «sun»"
+  },
+  "svg/icon-wind.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: wind",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «wind»"
+  },
+  "svg/icon-umbrella.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: umbrella",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «umbrella»"
+  },
+  "svg/icon-cloud-sun.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: cloud-sun",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «cloud-sun»"
+  },
+  "svg/icon-chevron-down.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chevron-down",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chevron-down»"
+  },
+  "svg/icon-chevron-right.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chevron-right",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chevron-right»"
+  },
+  "svg/icon-chevron-left.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chevron-left",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chevron-left»"
+  },
+  "svg/icon-chevron-up.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chevron-up",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chevron-up»"
+  },
+  "svg/icon-arrow-left.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: arrow-left",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «arrow-left»"
+  },
+  "svg/icon-arrow-right.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: arrow-right",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «arrow-right»"
+  },
+  "svg/icon-arrow-up.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: arrow-up",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «arrow-up»"
+  },
+  "svg/icon-arrow-down.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: arrow-down",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «arrow-down»"
+  },
+  "svg/icon-plus.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: plus",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «plus»"
+  },
+  "svg/icon-minus.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: minus",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «minus»"
+  },
+  "svg/icon-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «check»"
+  },
+  "svg/icon-x.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: x",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «x»"
+  },
+  "svg/icon-menu.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: menu",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «menu»"
+  },
+  "svg/icon-list.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: list",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «list»"
+  },
+  "svg/icon-grid.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: grid",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «grid»"
+  },
+  "svg/icon-house.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: house",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «house»"
+  },
+  "svg/icon-star.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: star",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «star»"
+  },
+  "svg/icon-heart.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: heart",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «heart»"
+  },
+  "svg/icon-bookmark.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: bookmark",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «bookmark»"
+  },
+  "svg/icon-copy.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: copy",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «copy»"
+  },
+  "svg/icon-pencil.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: pencil",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «pencil»"
+  },
+  "svg/icon-trash-2.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: trash-2",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «trash-2»"
+  },
+  "svg/icon-save.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: save",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «save»"
+  },
+  "svg/icon-external-link.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: external-link",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «external-link»"
+  },
+  "svg/icon-info.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: info",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «info»"
+  },
+  "svg/icon-circle-alert.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: circle-alert",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «circle-alert»"
+  },
+  "svg/icon-triangle-alert.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: triangle-alert",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «triangle-alert»"
+  },
+  "svg/icon-circle-check.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: circle-check",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «circle-check»"
+  },
+  "svg/icon-circle-x.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: circle-x",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «circle-x»"
+  },
+  "svg/icon-share-2.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: share-2",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «share-2»"
+  },
+  "svg/icon-filter.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: filter",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «filter»"
+  },
+  "svg/icon-search.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: search",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «search»"
+  },
+  "svg/icon-download.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: download",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «download»"
+  },
+  "svg/icon-upload.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: upload",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «upload»"
+  },
+  "svg/icon-eye.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: eye",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «eye»"
+  },
+  "svg/icon-ellipsis.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: ellipsis",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «ellipsis»"
+  },
+  "svg/icon-chevrons-up-down.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: chevrons-up-down",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «chevrons-up-down»"
+  },
+  "svg/icon-arrow-up-down.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: arrow-up-down",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «arrow-up-down»"
+  },
+  "svg/icon-layout-grid.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: layout-grid",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «layout-grid»"
+  },
+  "svg/icon-layers.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: layers",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «layers»"
+  },
+  "svg/icon-maximize-2.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: maximize-2",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «maximize-2»"
+  },
+  "svg/icon-minimize-2.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: minimize-2",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «minimize-2»"
+  },
+  "svg/icon-more-vertical.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: more-vertical",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «more-vertical»"
+  },
+  "svg/icon-handshake.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: handshake",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «handshake»"
+  },
+  "svg/icon-trophy.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: trophy",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «trophy»"
+  },
+  "svg/icon-award.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: award",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «award»"
+  },
+  "svg/icon-gift.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: gift",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «gift»"
+  },
+  "svg/icon-medal.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: medal",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «medal»"
+  },
+  "svg/icon-package.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: package",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «package»"
+  },
+  "svg/icon-shopping-cart.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: shopping-cart",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «shopping-cart»"
+  },
+  "svg/icon-tag.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: tag",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «tag»"
+  },
+  "svg/icon-tags.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: tags",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «tags»"
+  },
+  "svg/icon-sparkles.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: sparkles",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «sparkles»"
+  },
+  "svg/icon-gem.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: gem",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «gem»"
+  },
+  "svg/icon-crown.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: crown",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «crown»"
+  },
+  "svg/icon-shopping-bag.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: shopping-bag",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «shopping-bag»"
+  },
+  "svg/icon-ribbon.svg": {
+    "description": "Фирменная иконка Tumodo из Figma-набора «Lucide icons / Tumodo (300)»: ribbon",
+    "usage": "Контурная иконка 24x24, штрих 1.5px, чёрный (перекрашивается через CSS/заливку по токенам); применять по смыслу английского названия «ribbon»"
+  }
+}

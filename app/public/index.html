@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Фабрика презентаций — Tumodo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar panel">
+    <div class="sidebar-header">
+      <img class="sidebar-logo" src="/files/design-system/logo/svg/logo-tumodo-dark-on-light.svg" alt="Tumodo">
+    </div>
+    <nav id="nav" class="nav"></nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-actions">
+        <button class="btn-circle flat" id="btn-profile" title="Профиль" type="button"></button>
+        <button class="btn-circle flat" id="btn-settings" title="Настройки: токены, ассеты, правила" type="button"></button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main panel" id="main"></main>
+
+  <aside class="preview-panel" id="preview-panel" hidden>
+    <div class="preview-header">
+      <div class="preview-title" id="preview-title"></div>
+      <div class="spacer"></div>
+      <a class="btn" id="preview-open-tab" href="#" target="_blank" rel="noopener">В новой вкладке</a>
+      <button class="btn-circle" id="preview-close" title="Закрыть" type="button"></button>
+    </div>
+    <iframe class="preview-frame" id="preview-frame" title="Предпросмотр презентации"></iframe>
+  </aside>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

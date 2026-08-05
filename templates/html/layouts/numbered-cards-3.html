@@ -1,0 +1,20 @@
+<section class="slide theme-light" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="content">
+    <div class="cols cols-3">
+      {{#each cards}}
+      <div class="card">
+        {{#if icon}}<div class="icon-badge"><img src="{{icon}}" alt=""></div>{{/if}}
+        {{#if showNum}}<div class="num-circle">{{cardNum}}</div>{{/if}}
+        <div class="card-title">{{title}}</div>
+        {{#if text}}<div class="t-body-middle">{{text}}</div>{{/if}}
+        {{#if items}}<ul class="dots small">{{#each items}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

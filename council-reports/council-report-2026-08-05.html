@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Совет: правила фабрики презентаций Tumodo — 2026-08-05</title>
+<style>
+  :root {
+    --ink: #2e2e2e; --sub: #6a6b6e; --line: #e3e4e8; --bg: #f7f7f8; --card: #ffffff;
+    --blue: #005aff; --peach: #ff6e5a; --green: #1fae74; --purple: #9d51ff; --amber: #c77d00;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; padding: 48px 20px; }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  h1 { font-size: 26px; margin-bottom: 6px; }
+  .meta { color: var(--sub); font-size: 14px; margin-bottom: 28px; }
+  .q { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--blue); border-radius: 12px; padding: 18px 22px; font-size: 15px; margin-bottom: 32px; }
+  h2 { font-size: 18px; margin: 34px 0 14px; }
+  .verdict { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px 28px; }
+  .verdict h3 { font-size: 15px; margin: 18px 0 6px; color: var(--blue); }
+  .verdict h3:first-child { margin-top: 0; }
+  .verdict p, .verdict li { font-size: 14.5px; }
+  .verdict ul { padding-left: 20px; margin: 6px 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 14px 0 6px; }
+  .adv { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 13px; }
+  .adv b { display: block; font-size: 13.5px; margin-bottom: 4px; }
+  .tag { display: inline-block; font-size: 11.5px; padding: 2px 10px; border-radius: 999px; color: #fff; margin-bottom: 6px; }
+  .t-block { background: var(--peach); } .t-core { background: var(--purple); } .t-up { background: var(--green); }
+  .t-clar { background: var(--amber); } .t-exec { background: var(--blue); }
+  .score { font-size: 12px; color: var(--sub); }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; font-size: 14.5px; }
+  details .body { margin-top: 10px; font-size: 14px; white-space: pre-line; color: #3a3a3a; }
+  .foot { color: var(--sub); font-size: 12.5px; margin-top: 36px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .pill-row { margin: 8px 0 0; font-size: 13px; }
+  .pill-row code { background: #eef1f6; border-radius: 6px; padding: 1px 7px; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Совет: правила фабрики презентаций Tumodo</h1>
+  <div class="meta">LLM Council · 5 советников → 5 анонимных рецензий → синтез председателя · 2026-08-05</div>
+
+  <div class="q"><b>Вопрос:</b> по анализу 62 эталонных слайдов Figma написаны три файла правил (структура, макеты, стиль) для автосборки фирменных HTML-презентаций. Правильны ли и полны ли они? Цена ошибки высокая — правила станут законом для всех сборок.</div>
+
+  <h2>Вердикт председателя</h2>
+  <div class="verdict">
+    <h3>Где совет согласен (единогласно)</h3>
+    <ul>
+      <li>Черновики верно схватили визуальную систему (ритм трёх тем, лимиты текста, Do/Don't) — это сохранено.</li>
+      <li>Фиксировать в исходном виде нельзя: 6 кеглей вне <code>typography.json</code>; сетка «3×584+60 = 1812 &gt; 1680»; самопротиворечие про манифест; бейдж боли против правила токенов; dark-тема без токенов несобираема.</li>
+      <li>Сильнейший анализ — Контрарианец (проверяемые, фальсифицируемые находки). Слепое пятно — у Экспансиониста (улучшения поверх невалидированного фундамента).</li>
+    </ul>
+    <h3>Где совет разошёлся</h3>
+    <p>Первопринципник: «нужны слот-контракты, универсальный макет и грамматика вместо заученной дуги». Исполнитель: «вырезать всё до 7 макетов и собрать первый слайд». Решение: сделано и то и другое — слот-контракты добавлены компактно в каждый макет, несобираемое помечено <code>[v2]</code> с причиной, дуга переквалифицирована из закона в референс.</p>
+    <h3>Слепые пятна, пойманные только рецензированием</h3>
+    <ul>
+      <li>Иерархия источников при конфликте (tokens → style-guide → layouts → Figma) — теперь §0 правил.</li>
+      <li>Политика переполнения текста (делить → cover-title-2 → спросить; никогда не ужимать кегль) — теперь §5.</li>
+      <li>Лимиты сняты с английских колод — калибровка под кириллицу внесена в правила и открытые вопросы.</li>
+      <li>Наличие файлов шрифтов Nunito Sans никто не проверял — внесено в чек-лист.</li>
+    </ul>
+    <h3>Рекомендация</h3>
+    <p>Правила переписаны и записаны в <code>rules/</code>: каждый кегль привязан к именованному токену, сетка нормирована (540/30 · 825/30 · 390/40 = ровно 1680), «мебель» задана таблицей, добавлен универсальный макет <code>title-bullets</code>, 8 макетов помечено <code>[v2]</code>. Идеи Экспансиониста (layout-specs.json, golden-тест, diff ревизий, md-скаффолды) — бэклог этапа 4.</p>
+    <h3>Один первый шаг</h3>
+    <p>Положить файлы Nunito Sans (800/700/600/400) в <code>design-system/fonts/files/</code> и решить открытый вопрос dark-токенов — после этого можно собирать первый слайд <code>cover</code> в браузере.</p>
+  </div>
+
+  <h2>Позиции советников</h2>
+  <div class="grid">
+    <div class="adv"><span class="tag t-block">блокеры</span><b>Контрарианец</b>6 фальсифицируемых дефектов: токены, сетка, манифест, бейдж, dark, лимиты.<div class="score">5/5 рецензентов: сильнейший</div></div>
+    <div class="adv"><span class="tag t-core">ядро задачи</span><b>Первопринципник</b>Нет слот-контрактов и универсала; дуга — прокрустово ложе для чужих жанров.<div class="score">2/5: второе место</div></div>
+    <div class="adv"><span class="tag t-up">потенциал</span><b>Экспансионист</b>layout-specs.json, golden-тест, diff ревизий, скаффолды, реестр node-id.<div class="score">5/5: слепое пятно — валидность не проверил</div></div>
+    <div class="adv"><span class="tag t-clar">ясность</span><b>Аутсайдер</b>Термины без определений, «тильды повсюду», ссылки на токены без проверки.</div>
+    <div class="adv"><span class="tag t-exec">выполнимость</span><b>Исполнитель</b>Движка нет; 5 блокеров-ассетов; план «7 макетов, cover к вечеру».<div class="score">3/5: сильный второй</div></div>
+  </div>
+
+  <h2>Полные ответы</h2>
+  <details><summary>Контрарианец — «фиксировать нельзя»</summary><div class="body">1. Типографика противоречит токенам: шкала 80/60/50/30/25/20/16, а style-guide требует 88/90/40/34/31/24 — шести размеров нет; slide-layouts (55px) спорит со style-guide (50px).
+2. Арифметика сетки: 584×3+60 = 1812 &gt; 1680 — карточки гарантированно за полями.
+3. Манифест: «мебель кроме манифестов» и тут же «манифест: ярлык и номер есть».
+4. Бейдж боли: colors.json — «Soft-заливка + Base-обводка, никогда наоборот», в правилах — наоборот.
+5. Dark-тема без токенов объявлена рабочей.
+6. Лимиты бракуют сам референс («H1 2–6 слов» против 7–8-словных эталонов).</div></details>
+  <details><summary>Первопринципник — «не тот вопрос»</summary><div class="body">Правила описывают «как выглядят 62 слайда», а задача — «как детерминированно превратить произвольный markdown в колоду». Ядро — контракт «тип контента → макет → слоты с лимитами», его нет. 20 бутиковых макетов и ни одного универсала: обычный слайд из чужого markdown бездомный. Прозаические «x≈612–735» — археология Figma, не спецификация. Лучшее в черновиках: лимиты, ритм тем, Do/Don't, «делить, а не ужимать».</div></details>
+  <details><summary>Экспансионист — «дожмите жилу»</summary><div class="body">1. Машиночитаемый layout-specs.json из уже собранных координат → /check-deck становится валидатором геометрии.
+2. Golden-тест: пересобрать «Brand platform» фабрикой и сравнить с Figma; побочный продукт — образцовый input/brand-platform.md.
+3. Diff двух ревизий — выстраданные «don't» дизайнеров.
+4. Md-скаффолды контентных формул («The challenge / What it leads to / How Tumodo solves it»).
+5. Реестр node-id по макетам в FIGMA-SOURCES.md; открытые вопросы снимать запросом из Figma.</div></details>
+  <details><summary>Аутсайдер — «я бы собрал не то»</summary><div class="body">Ссылки на токены по именам без HEX — проверить нельзя; dark-тема обязательна, но фон «отсутствует в токенах». Термины без определения: «дуги логотипа», «росчерки», «watermark-глифы», «стеклянный бейдж», «иконка-смайл». Тильды повсюду — два исполнителя дадут разные слайды. Противоречия: манифест, позиция H1 с бейджем, 50 vs 55px, «строки или знаки». Опечатка «стат主». «Скелет адаптируется» без правил — разрешает всё.</div></details>
+  <details><summary>Исполнитель — «движка нет»</summary><div class="body">templates/html/ пуст (один base.html). Блокеры: нет токена тёмного фона (3 макета); нет волнового паттерна (были несобираемы cover/final/statement — ассет добавлен в ходе сессии); кегли вне токенов; пустые mockups/ (6+ макетов); «обведение»/«стекло»/«коллажи» не делаются чистым CSS без ассетов. Для v1 — 7 макетов, остальное [v2]. Первый шаг: шрифты + dark-решение + cover в браузере.</div></details>
+  <details><summary>Рецензии (5 анонимных)</summary><div class="body">Единогласно: сильнейший — C (Контрарианец); самое большое слепое пятно — A (Экспансионист): «оптимизация до валидации», «golden-тест сам бы и провалился».
+Упущения всего совета, найденные рецензентами: иерархия источников при конфликте; политика переполнения/деградации; калибровка лимитов под кириллицу (референс английский); наличие и лицензии шрифтов; тест лимитов фактическим рендером.</div></details>
+
+  <h2>Итог применён</h2>
+  <div class="pill-row">Записаны: <code>rules/presentation-rules.md</code> · <code>rules/slide-layouts.md</code> · <code>rules/style-guide.md</code> · стенограмма: <code>council-reports/council-transcript-2026-08-05.md</code></div>
+
+  <div class="foot">Counciled: правила фабрики презентаций Tumodo (3 файла) по анализу 62 слайдов Figma «Презентации» · 10 субагентов (5 советников + 5 рецензентов) · 2026-08-05</div>
+</div>
+</body>
+</html>

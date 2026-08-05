@@ -1,0 +1,34 @@
+<section class="slide theme-light" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="content">
+    {{#if image}}
+    <div class="cols cols-3">
+      <div class="card" style="grid-column: span 2; justify-content: center;">
+        {{#if paragraphs}}<div class="t-body-middle" style="display:flex;flex-direction:column;gap:20px;">{{#each paragraphs}}<p>{{.}}</p>{{/each}}</div>{{/if}}
+        {{#if bullets1}}
+        <div class="cols cols-2" style="height:auto;">
+          <ul class="dots">{{#each bullets1}}<li>{{.}}</li>{{/each}}</ul>
+          {{#if bullets2}}<ul class="dots">{{#each bullets2}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
+        </div>
+        {{/if}}
+      </div>
+      <div class="photo-card"><img src="{{image}}" alt=""></div>
+    </div>
+    {{/if}}
+    {{#if noImage}}
+    <div class="card" style="height:100%;">
+      {{#if paragraphs}}<div class="t-body-middle" style="display:flex;flex-direction:column;gap:20px;">{{#each paragraphs}}<p>{{.}}</p>{{/each}}</div>{{/if}}
+      {{#if bullets1}}
+      <div class="cols cols-2" style="height:auto;">
+        <ul class="dots">{{#each bullets1}}<li>{{.}}</li>{{/each}}</ul>
+        {{#if bullets2}}<ul class="dots">{{#each bullets2}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
+      </div>
+      {{/if}}
+    </div>
+    {{/if}}
+  </div>
+</section>

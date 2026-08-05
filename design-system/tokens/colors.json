@@ -1,0 +1,191 @@
+{
+  "$description": "Палитра Tumodo. Источник: Figma «Библиотека» (SZpOoVhI07GPa3Vf7BRc10), страница/секция Color Palette (node 566:2) + Color Usage Scheme (node 574:22). Импорт 2026-08-04. Пропорции по схеме: 55% нейтральные фоны, 25% бренд/синий, 12% типографика, 8% акценты. Решения пользователя от 2026-08-04: варианты «-20» — дубли, удалены; канонический синий — Blue-Base #005AFF (фон обложки #0055FF не является токеном).",
+  "brand": {
+    "blue-deep": {
+      "$type": "color",
+      "$value": "#0040B3",
+      "$description": "Blue-Deep. Группа Brand (25% — бренд/синий). Тёмный оттенок фирменного синего."
+    },
+    "blue-base": {
+      "$type": "color",
+      "$value": "#005AFF",
+      "$description": "Blue-Base. Основной фирменный синий: акцент на светлом фоне, фон инверсных блоков (hero/баннеры), акцент на чёрном (dark mode). Только на светлом фоне как акцент; не сочетать с Peach/Green/Purple (исключение: Peach-spotlight на синем фоне)."
+    },
+    "blue-light": {
+      "$type": "color",
+      "$value": "#6FA8FF",
+      "$description": "Blue-Light. Группа Brand. Светлый оттенок синего."
+    },
+    "blue-pale": {
+      "$type": "color",
+      "$value": "#E6F0FF",
+      "$description": "Blue-Pale. Группа Brand. Бледный синий: подложки (в т.ч. на Blue-Base фоне в инверсной схеме), фоны. -Pale — только для фонов и подложек."
+    }
+  },
+  "neutral": {
+    "white": {
+      "$type": "color",
+      "$value": "#FFFFFF",
+      "$description": "White. Нейтральный фон (группа 55%); текст и иконки на Blue-Base и Black фонах."
+    },
+    "surface-gray": {
+      "$type": "color",
+      "$value": "#EEEFF2",
+      "$description": "Surface-Gray. Нейтральный фон (группа 55%); фон основной бренд-схемы."
+    },
+    "light-gray": {
+      "$type": "color",
+      "$value": "#CDD0D6",
+      "$description": "Light Gray. Нейтральный фон (группа 55%)."
+    },
+    "gray-1": {
+      "$type": "color",
+      "$value": "#A8A9AC",
+      "$description": "Gray-1. Нейтральная серая шкала; роль на схеме использования отдельно не указана."
+    },
+    "gray-2": {
+      "$type": "color",
+      "$value": "#8A8B8E",
+      "$description": "Gray-2. Нейтральная серая шкала; роль на схеме использования отдельно не указана."
+    },
+    "gray-3": {
+      "$type": "color",
+      "$value": "#6A6B6E",
+      "$description": "Gray-3. Нейтральная серая шкала; роль на схеме использования отдельно не указана."
+    },
+    "dark-gray-text": {
+      "$type": "color",
+      "$value": "#2E2E2E",
+      "$description": "Dark Gray-Text. Типографика (группа 12%): основной текст на светлых фонах."
+    },
+    "black": {
+      "$type": "color",
+      "$value": "#121212",
+      "$description": "Black. Типографика (группа 12%) и фон тёмной версии (dark mode, футеры). Универсален: работает с любым фоном и акцентом, основа типографики."
+    }
+  },
+  "accent": {
+    "peach-base": {
+      "$type": "color",
+      "$value": "#FF6E5A",
+      "$description": "Peach-Base. Акцент (группа 8%): предупреждения, ошибки, алерты, CTA-энергия — на White фоне с Dark Gray текстом. Один акцент на контекст. Исключение: как spotlight-форма вокруг ключевого слова на синем фоне (не заливка блока). Есть Figma-переменная «Peach» = #FF6E5A."
+    },
+    "peach-soft": {
+      "$type": "color",
+      "$value": "#FFE2DC",
+      "$description": "Peach-Soft. Пастельный персиковый: только фоны и подложки (теги/бейджи: Soft-заливка + Base-обводка, никогда наоборот). Исключение (решение пользователя 2026-08-05): бейдж «Pain N» в презентациях — заливка Peach-Base + белый текст."
+    },
+    "green-base": {
+      "$type": "color",
+      "$value": "#30DF96",
+      "$description": "Green-Base. Акцент (группа 8%): успех/статус, подтверждения, онбординг — на White фоне с Dark Gray текстом. Один акцент на контекст; не сочетать с Blue-Base и Peach-Base."
+    },
+    "green-soft": {
+      "$type": "color",
+      "$value": "#C7F5E1",
+      "$description": "Green-Soft. Пастельный зелёный: только фоны и подложки (теги/бейджи: Soft-заливка + Base-обводка)."
+    },
+    "purple-base": {
+      "$type": "color",
+      "$value": "#9D51FF",
+      "$description": "Purple-Base. Акцент (группа 8%): премиум, платные фичи, спецпредложения — на White фоне с Dark Gray текстом. Один акцент на контекст; не сочетать с Blue-Base."
+    },
+    "purple-soft": {
+      "$type": "color",
+      "$value": "#E8D6FF",
+      "$description": "Purple-Soft. Пастельный фиолетовый: только фоны и подложки (теги/бейджи: Soft-заливка + Base-обводка)."
+    }
+  },
+  "color": {
+    "blue-deep": {
+      "$value": "#0040B3",
+      "$type": "color",
+      "$description": "Brand. Тёмный оттенок фирменного синего"
+    },
+    "blue-base": {
+      "$value": "#005AFF",
+      "$type": "color",
+      "$description": "Brand. Основной фирменный синий: акценты, инверсные блоки"
+    },
+    "blue-light": {
+      "$value": "#6FA8FF",
+      "$type": "color",
+      "$description": "Brand. Светлый оттенок синего"
+    },
+    "blue-pale": {
+      "$value": "#E6F0FF",
+      "$type": "color",
+      "$description": "Brand. Бледный синий — только фоны и подложки"
+    },
+    "white": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "Neutral. Фон; текст и иконки на синем/чёрном"
+    },
+    "surface-gray": {
+      "$value": "#EEEFF2",
+      "$type": "color",
+      "$description": "Neutral. Фон основной бренд-схемы"
+    },
+    "light-gray": {
+      "$value": "#CDD0D6",
+      "$type": "color",
+      "$description": "Neutral. Светло-серый фон"
+    },
+    "gray-1": {
+      "$value": "#A8A9AC",
+      "$type": "color",
+      "$description": "Neutral. Серая шкала"
+    },
+    "gray-2": {
+      "$value": "#8A8B8E",
+      "$type": "color",
+      "$description": "Neutral. Серая шкала"
+    },
+    "gray-3": {
+      "$value": "#6A6B6E",
+      "$type": "color",
+      "$description": "Neutral. Серая шкала"
+    },
+    "dark-gray-text": {
+      "$value": "#2E2E2E",
+      "$type": "color",
+      "$description": "Neutral. Основной текст на светлых фонах"
+    },
+    "black": {
+      "$value": "#121212",
+      "$type": "color",
+      "$description": "Neutral. Типографика и тёмные фоны (dark mode)"
+    },
+    "peach-base": {
+      "$value": "#FF6E5A",
+      "$type": "color",
+      "$description": "Accent. Предупреждения, алерты, CTA-энергия"
+    },
+    "peach-soft": {
+      "$value": "#FFE2DC",
+      "$type": "color",
+      "$description": "Accent. Пастельный персиковый — только фоны/подложки"
+    },
+    "green-base": {
+      "$value": "#30DF96",
+      "$type": "color",
+      "$description": "Accent. Успех, подтверждения, онбординг"
+    },
+    "green-soft": {
+      "$value": "#C7F5E1",
+      "$type": "color",
+      "$description": "Accent. Пастельный зелёный — только фоны/подложки"
+    },
+    "purple-base": {
+      "$value": "#9D51FF",
+      "$type": "color",
+      "$description": "Accent. Премиум, платные фичи, спецпредложения"
+    },
+    "purple-soft": {
+      "$value": "#E8D6FF",
+      "$type": "color",
+      "$description": "Accent. Пастельный фиолетовый — только фоны/подложки"
+    }
+  }
+}

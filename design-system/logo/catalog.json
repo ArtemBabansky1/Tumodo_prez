@@ -1,0 +1,90 @@
+{
+  "svg/Logo_Tumodo=Logo_Tumodo_Dark.svg": {
+    "description": "Полный логотип «tumodo» 254x40, вариант Dark: леттеринг #121212, точки Blue-Base #005AFF (компонент Figma Logo_Tumodo).",
+    "usage": "Основной вариант на белом/светлом фоне (используется в брендбуке на белом). Охранное поле — см. LOGO-RULES.md."
+  },
+  "svg/Logo_Tumodo=Logo_Tumodo_Black.svg": {
+    "description": "Полный логотип, вариант Black: леттеринг и точки #121212 (монохром тёмный).",
+    "usage": "Фон применения в Figma не указан — уточнить у пользователя (вероятно, монохромная печать/светлый фон)."
+  },
+  "svg/Logo_Tumodo=Logo_Tumodo_Blue.svg": {
+    "description": "Полный логотип, вариант Blue: леттеринг и точки Blue-Base #005AFF.",
+    "usage": "Фон применения в Figma не указан — уточнить у пользователя."
+  },
+  "svg/Logo_Tumodo=Logo_Tumodo_Light.svg": {
+    "description": "Полный логотип, вариант Light: леттеринг #FFFFFF, точки Blue-Base #005AFF.",
+    "usage": "Для тёмных фонов, где точки должны остаться синими; конкретный фон в Figma не указан — уточнить."
+  },
+  "svg/Logo_Tumodo=Logo_Tumodo_White.svg": {
+    "description": "Полный логотип, вариант White: леттеринг и точки #FFFFFF (полная инверсия).",
+    "usage": "На чёрном фоне #121212 (node 768:177) и на Blue-Base фоне по схеме «Инверсия»."
+  },
+  "svg/Symbol_Tumodo=Symbol_Tumodo_Dark.svg": {
+    "description": "Знак (символ) логотипа 84x60, вариант Dark: #121212 + точка #005AFF.",
+    "usage": "Знак без леттеринга для малых носителей; светлый фон. Высота знака задаёт охранное поле X."
+  },
+  "svg/Symbol_Tumodo=Symbol_Tumodo_Black.svg": {
+    "description": "Знак логотипа, вариант Black: полностью #121212.",
+    "usage": "Фон применения в Figma не указан — уточнить."
+  },
+  "svg/Symbol_Tumodo=Symbol_Tumodo_Blue.svg": {
+    "description": "Знак логотипа, вариант Blue: полностью Blue-Base #005AFF.",
+    "usage": "Фон применения в Figma не указан — уточнить."
+  },
+  "svg/Symbol_Tumodo=Symbol_Tumodo_Light.svg": {
+    "description": "Знак логотипа, вариант Light: белый с точкой Blue-Base.",
+    "usage": "Тёмные фоны; конкретика в Figma не указана — уточнить."
+  },
+  "svg/Symbol_Tumodo=Symbol_Tumodo_White.svg": {
+    "description": "Знак логотипа, вариант White: полностью #FFFFFF.",
+    "usage": "Чёрный #121212 или Blue-Base фон (по аналогии с Logo_Tumodo_White)."
+  },
+  "svg/logo-tumodo-dark-on-light.svg": {
+    "description": "Дубль варианта Dark с kebab-case именем по ТЗ (леттеринг #121212, точки #005AFF; вычищенный экспорт компонента 125:49).",
+    "usage": "То же, что Logo_Tumodo=Logo_Tumodo_Dark.svg — для светлых фонов."
+  },
+  "svg/logo-tumodo-white-on-dark.svg": {
+    "description": "Дубль варианта White с kebab-case именем по ТЗ (весь белый; вычищенный экспорт компонента 682:122).",
+    "usage": "То же, что Logo_Tumodo=Logo_Tumodo_White.svg — для тёмного #121212 и Blue-Base фонов."
+  },
+  "png/Symbol_Tumodo=Symbol_Tumodo_Dark.png": {
+    "description": "PNG-версия варианта Dark знака.",
+    "usage": "См. svg/Symbol_Tumodo=Symbol_Tumodo_Dark.svg."
+  },
+  "png/Symbol_Tumodo=Symbol_Tumodo_Black.png": {
+    "description": "PNG-версия варианта Black знака.",
+    "usage": "См. svg/Symbol_Tumodo=Symbol_Tumodo_Black.svg."
+  },
+  "png/Symbol_Tumodo=Symbol_Tumodo_Blue.png": {
+    "description": "PNG-версия варианта Blue знака.",
+    "usage": "См. svg/Symbol_Tumodo=Symbol_Tumodo_Blue.svg."
+  },
+  "png/Symbol_Tumodo=Symbol_Tumodo_Light.png": {
+    "description": "PNG-версия варианта Light знака.",
+    "usage": "См. svg/Symbol_Tumodo=Symbol_Tumodo_Light.svg."
+  },
+  "png/Symbol_Tumodo=Symbol_Tumodo_White.png": {
+    "description": "PNG-версия варианта White знака.",
+    "usage": "См. svg/Symbol_Tumodo=Symbol_Tumodo_White.svg."
+  },
+  "png/Logo_Tumodo=Logo_Tumodo_Black.webp": {
+    "description": "PNG-версия варианта Black полного логотипа.",
+    "usage": "См. svg/Logo_Tumodo=Logo_Tumodo_Black.svg."
+  },
+  "png/Logo_Tumodo=Logo_Tumodo_Blue.webp": {
+    "description": "PNG-версия варианта Blue полного логотипа.",
+    "usage": "См. svg/Logo_Tumodo=Logo_Tumodo_Blue.svg."
+  },
+  "png/Logo_Tumodo=Logo_Tumodo_Dark.webp": {
+    "description": "PNG-версия варианта Dark полного логотипа.",
+    "usage": "См. svg/Logo_Tumodo=Logo_Tumodo_Dark.svg; для носителей без поддержки SVG."
+  },
+  "png/Logo_Tumodo=Logo_Tumodo_Light.webp": {
+    "description": "PNG-версия варианта Light полного логотипа.",
+    "usage": "См. svg/Logo_Tumodo=Logo_Tumodo_Light.svg."
+  },
+  "png/Logo_Tumodo=Logo_Tumodo_White.webp": {
+    "description": "PNG-версия варианта White полного логотипа.",
+    "usage": "См. svg/Logo_Tumodo=Logo_Tumodo_White.svg."
+  }
+}

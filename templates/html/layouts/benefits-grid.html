@@ -1,0 +1,14 @@
+<section class="slide theme-light" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title accent">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="content">
+    <div class="card" style="height:100%;padding:20px;">
+      <div class="benefit-grid {{gridClass}}">
+        {{#each cells}}<div class="benefit-cell" style="{{style}}"><span class="lead-phrase">{{lead}}</span>{{#if rest}} — {{rest}}{{/if}}</div>{{/each}}
+      </div>
+    </div>
+  </div>
+</section>
