@@ -1,12 +1,12 @@
 <section class="slide theme-blue" id="s{{num}}">
   <div class="bg"><div class="bg-pattern"></div></div>
   <img class="cover-logo" src="assets/logo/logo-white.svg" alt="Tumodo">
-  <div style="position:absolute;left:120px;right:120px;bottom:140px;display:flex;flex-direction:column;gap:28px;">
-    <div class="{{titleClass}}" style="max-width:1400px;">{{title}}</div>
-    <div style="display:flex;align-items:center;gap:25px;">
+  <div style="position:absolute;left:120px;right:120px;bottom:95px;display:flex;align-items:flex-end;gap:40px;">
+    <div style="display:flex;flex-direction:column;gap:28px;min-width:0;">
+      <div class="{{titleClass}}" style="max-width:1300px;">{{title}}</div>
       {{#if subtitle}}<div class="t-body-big" style="max-width:1100px;font-weight:400;">{{subtitle}}</div>{{/if}}
-      <div style="flex:1;"></div>
-      {{#if cta}}<div class="btn-pill">{{cta}}</div>{{/if}}
     </div>
+    <div style="flex:1;"></div>
+    {{#if cta}}<div class="btn-pill" style="margin-bottom:8px;">{{cta}}</div>{{/if}}
   </div>
 </section>

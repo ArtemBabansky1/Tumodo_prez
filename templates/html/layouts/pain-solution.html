@@ -1,21 +1,25 @@
 <section class="slide theme-light" id="s{{num}}">
   {{{furniture}}}
-  <div class="h1-row">
+  <div class="badge-h1-row">
+    {{#if painNum}}<div class="badge-pain">Pain {{painNum}}</div>{{/if}}
     <h1 class="t-page-title accent">{{title}}</h1>
-    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
   </div>
-  <div class="content">
-    <div class="cols cols-2" style="height:100%;">
-      <div class="card" style="position:relative;overflow:hidden;">
-        <div class="card-title">{{leadsTitle}}</div>
-        <ul class="dots">{{#each leads}}<li>{{.}}</li>{{/each}}</ul>
-        <img class="deco-curve" src="assets/patterns/curve-gray.svg" alt="" style="left:0;bottom:-30px;width:110%;">
-      </div>
-      <div class="card card-blue" style="position:relative;overflow:hidden;">
-        <div class="card-title">{{solvesTitle}}</div>
-        <ul class="checks"{{#if accentImage}} style="max-width:470px;"{{/if}}>{{#each solves}}<li>{{.}}</li>{{/each}}</ul>
-        {{#if accentImage}}<img src="{{accentImage}}" alt="" style="position:absolute;right:10px;bottom:-60px;height:500px;">{{/if}}
-      </div>
+  {{#if lead}}
+  <div class="challenge-row">
+    <div class="label">{{challengeLabel}}</div>
+    <div class="t-body-middle" style="max-width:1100px;">{{lead}}</div>
+  </div>
+  {{/if}}
+  <div class="cols cols-2" style="position:absolute;left:120px;right:120px;top:430px;bottom:115px;height:auto;">
+    <div class="card" style="position:relative;overflow:hidden;">
+      <div class="card-title">{{leadsTitle}}</div>
+      <ul class="dots">{{#each leads}}<li>{{.}}</li>{{/each}}</ul>
+      <img class="deco-curve" src="assets/patterns/curve-gray.svg" alt="" style="left:0;bottom:-30px;width:110%;">
+    </div>
+    <div class="card card-blue" style="position:relative;overflow:hidden;">
+      <div class="card-title">{{solvesTitle}}</div>
+      <ul class="checks"{{#if accentImage}} style="max-width:470px;"{{/if}}>{{#each solves}}<li>{{.}}</li>{{/each}}</ul>
+      {{#if accentImage}}<img src="{{accentImage}}" alt="" style="position:absolute;right:10px;bottom:-60px;height:500px;">{{/if}}
     </div>
   </div>
 </section>

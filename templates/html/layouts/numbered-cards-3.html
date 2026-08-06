@@ -1,20 +1,17 @@
-<section class="slide theme-light" id="s{{num}}">
+<section class="slide theme-dark" id="s{{num}}">
   {{{furniture}}}
   <div class="h1-row">
     <h1 class="t-page-title">{{title}}</h1>
-    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+    {{#if lead}}<div class="lead t-body-middle muted">{{lead}}</div>{{/if}}
   </div>
-  <div class="content">
-    <div class="cols cols-3">
-      {{#each cards}}
-      <div class="card">
-        {{#if icon}}<div class="icon-badge"><img src="{{icon}}" alt=""></div>{{/if}}
-        {{#if showNum}}<div class="num-circle">{{cardNum}}</div>{{/if}}
-        <div class="card-title">{{title}}</div>
-        {{#if text}}<div class="t-body-middle">{{text}}</div>{{/if}}
-        {{#if items}}<ul class="dots small">{{#each items}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
-      </div>
-      {{/each}}
+  <div class="cols cols-3" style="position:absolute;left:120px;right:120px;top:405px;bottom:120px;height:auto;">
+    {{#each cards}}
+    <div class="card pad-m acc-{{cardNum}}">
+      <div class="num-badge">{{cardNum}}</div>
+      <div style="flex:1;"></div>
+      {{#if isTitle}}<div class="card-title">{{title}}</div>{{/if}}
+      {{#if text}}<div class="t-body-small">{{text}}</div>{{/if}}
     </div>
+    {{/each}}
   </div>
 </section>

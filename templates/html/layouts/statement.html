@@ -1,6 +1,7 @@
 <section class="slide theme-blue" id="s{{num}}">
-  <div class="bg"><div class="bg-pattern"></div></div>
   {{{furniture}}}
-  <div class="h1-row"><h1 class="t-page-title">{{title}}</h1></div>
-  <div class="t-page-title" style="position:absolute;left:120px;bottom:160px;max-width:1270px;">{{statement}}</div>
+  <div class="stmt">
+    <div class="stmt-big">{{statement}}</div>
+    {{#if sub}}<div class="stmt-sub">{{sub}}</div>{{/if}}
+  </div>
 </section>

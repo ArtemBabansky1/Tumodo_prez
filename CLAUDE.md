@@ -23,7 +23,8 @@
 | `design-system/MANIFEST.md` | Индекс дизайн-системы, статус заполнения категорий |
 | `design-system/tokens/` | Токены: `colors.json`, `typography.json`, `grid.md`, `spacing.json`, `effects.json` |
 | `design-system/logo/`, `icons/`, `fonts/`, `photos/`, `patterns/`, `mockups/` | Ассеты + `*-RULES.md` с правилами использования каждой категории |
-| `rules/` | Правила презентаций: `presentation-rules.md`, `slide-layouts.md`, `style-guide.md`, `content-rules.md` |
+| `rules/` | Правила презентаций: `presentation-rules.md`, `slide-layouts.md`, `style-guide.md`, `content-rules.md`, `mistakes.md` (журнал антипаттернов) |
+| `design-system/canon/` | Эталонные PNG слайдов: `layouts/` (по макетам), `decks/` (полные колоды 5/5), `bad/` (антипримеры) |
 | `templates/html/` | Каркас `base.html`, CSS (`tokens.css`, `layout.css`, `components.css`), шаблоны макетов в `layouts/` |
 | `templates/figma/FIGMA-TEMPLATES.md` | Как те же макеты строятся в Figma |
 | `figma/FIGMA-SOURCES.md` | Реестр ссылок на Figma: file key, node-id, содержимое |
@@ -34,12 +35,23 @@
 
 ## Порядок работы над презентацией
 
-1. Прочитать `rules/*` и `design-system/MANIFEST.md`.
+1. Прочитать `rules/*` (включая `rules/mistakes.md`) и `design-system/MANIFEST.md`.
 2. Прочитать входной `input/<имя>.md`.
 3. Для каждого слайда выбрать макет из `rules/slide-layouts.md` (пометки `[layout: ...]` пользователя имеют приоритет).
-4. Собрать HTML в `output/<имя>/` через `scripts/build`.
-5. Самопроверка: скриншоты всех слайдов, чек-лист `/check-deck`.
-6. Показать пользователю скриншоты. Правки → фиксировать также в правилах.
+4. Собрать HTML в `output/<имя>/` через `scripts/build.js`.
+5. **Визуальный цикл (обязателен, сборка вслепую запрещена):**
+   а. `node scripts/screenshot.js <имя>` — скриншоты всех слайдов.
+   б. Для каждого слайда открыть скриншот И эталон его макета из `design-system/canon/layouts/<layout>.png`; сверить композицию, отступы, размеры, визуальный вес.
+   в. Расхождения исправить, переснять слайд (`node scripts/screenshot.js <имя> <номер>`), сверить снова. До 3 итераций на слайд.
+   г. Если эталона для макета нет — сверить с ближайшей колодой из `canon/decks/` и сообщить пользователю, что эталон отсутствует.
+6. Прогнать чек-лист `/check-deck` (включая проверку по `rules/mistakes.md`).
+7. Показать пользователю финальные скриншоты.
+
+## Кодификация правок (обязательна)
+
+Каждая правка пользователя по качеству: сначала исправить причину в движке —
+шаблон `templates/html/`, CSS или правило в `rules/` — затем добавить строку в
+`rules/mistakes.md` (плохо → как надо → где закодировано). Правка только в чате = потерянная правка.
 
 ## Железные правила (нарушать нельзя)
 

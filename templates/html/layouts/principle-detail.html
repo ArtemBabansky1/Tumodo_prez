@@ -1,17 +1,19 @@
 <section class="slide theme-light" id="s{{num}}">
   {{{furniture}}}
-  <div class="h1-row">
+  <div class="split-left">
     <h1 class="t-page-title accent">{{title}}</h1>
-    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+    {{#if lead}}<div class="t-body-middle">{{lead}}</div>{{/if}}
+    <div class="spacer"></div>
+    {{#if conclusion}}<div class="conclusion">{{conclusion}}</div>{{/if}}
   </div>
-  <div class="content" style="display:flex;flex-direction:column;">
-    <div class="cols cols-3" style="flex:1;">
-      {{#each cards}}
-      <div class="card pad-m">
-        <div class="card-title">{{title}}</div>
-        <ul class="dots">{{#each items}}<li>{{.}}</li>{{/each}}</ul>
-      </div>
-      {{/each}}
+  <div class="split-right">
+    {{#each cards}}
+    <div class="card pad-m{{#if blue}} card-blue{{/if}}" style="position:relative;overflow:hidden;">
+      {{#if curve}}<img class="deco-curve" src="assets/patterns/curve-gray.svg" alt="" style="left:-10%;top:-30px;width:130%;">{{/if}}
+      {{#if spacerTop}}<div style="flex:1;"></div>{{/if}}
+      <div class="card-title">{{title}}</div>
+      {{#if items}}<ul class="dots small">{{#each items}}<li class="t-body-small">{{.}}</li>{{/each}}</ul>{{/if}}
     </div>
+    {{/each}}
   </div>
 </section>

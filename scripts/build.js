@@ -141,7 +141,7 @@ function checkLimits(slide, layout, warn) {
 // ---------------------------------------------------------------- выбор макета (slide-layouts.md «Правила выбора»)
 
 const LAYOUT_ALIASES = { title: 'cover', 'text-1col': 'title-bullets', 'text-2col': 'title-bullets' };
-const KNOWN = ['cover', 'final', 'statement', 'title-bullets', 'intro', 'numbered-cards-3', 'pain-solution', 'benefits-grid', 'principle-detail'];
+const KNOWN = ['cover', 'final', 'statement', 'section-divider', 'title-bullets', 'intro', 'numbered-cards-3', 'pain-solution', 'benefits-grid', 'principle-detail'];
 
 function pickLayout(slide, index, report) {
   let l = slide.layout ? (LAYOUT_ALIASES[slide.layout] || slide.layout) : null;
@@ -169,10 +169,13 @@ function furniture(deckLabel, num, theme) {
     `<div class="slide-num">${num}</div>`;
 }
 
+// темы по умолчанию — из canon/AUDIT.md (эталоны макетов)
+const DEFAULT_THEME = { cover: 'blue', final: 'blue', statement: 'blue', 'numbered-cards-3': 'dark', 'section-divider': 'dark' };
+
 function buildSlide(slide, layout, num, fm, usedAssets, report) {
   const lang = fm.lang || 'ru';
   const S = L(lang);
-  const theme = ['cover', 'final', 'statement'].includes(layout) ? 'blue' : 'light';
+  const theme = slide.meta.theme || DEFAULT_THEME[layout] || 'light';
   const ctx = {
     num,
     title: slide.title || fm.title || '',
@@ -190,40 +193,62 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
     ctx.tagline = slide.meta.tagline || slide.title || S.tagline;
   }
   if (layout === 'statement') {
-    ctx.statement = slide.lead || slide.paragraphs.join(' ');
+    ctx.statement = slide.lead || '';
+    ctx.sub = slide.paragraphs.join(' ');
+    if (!ctx.statement) { ctx.statement = ctx.sub; ctx.sub = ''; }
+  }
+  if (layout === 'section-divider') {
+    ctx.theme = theme;
+    ctx.isBlue = theme === 'blue';
   }
   if (layout === 'title-bullets') {
-    ctx.paragraphs = slide.paragraphs;
-    if (slide.meta.image) ctx.image = useAsset(slide.meta.image, usedAssets, report);
-    ctx.noImage = !ctx.image;
-    const b = slide.bullets.length ? slide.bullets : slide.sections.flatMap((x) => x.bullets);
-    if (b.length > 4) {
-      const half = Math.ceil(b.length / 2);
-      ctx.bullets1 = b.slice(0, half);
-      ctx.bullets2 = b.slice(half);
-      ctx.colsClass = 'cols-2';
-    } else if (b.length) {
-      ctx.bullets1 = b;
-      ctx.colsClass = 'cols-2';
+    // canon-режим: 2+ секций → шапка + label-строка + карточки-колонки
+    if (slide.sections.length >= 2) {
+      ctx.cards = slide.sections.map((sec) => ({
+        title: sec.title,
+        text: sec.paragraphs.join(' '),
+        items: sec.bullets.length ? sec.bullets : null,
+      }));
+      ctx.colCount = Math.min(ctx.cards.length, 4);
+      ctx.label = slide.meta.label || '';
+    } else {
+      // плоский режим: одна карточка с абзацами/буллетами (+фото)
+      ctx.flat = true;
+      ctx.paragraphs = slide.paragraphs;
+      if (slide.meta.image) ctx.image = useAsset(slide.meta.image, usedAssets, report);
+      ctx.noImage = !ctx.image;
+      const b = slide.bullets.length ? slide.bullets : slide.sections.flatMap((x) => x.bullets);
+      if (b.length > 4) {
+        const half = Math.ceil(b.length / 2);
+        ctx.bullets1 = b.slice(0, half);
+        ctx.bullets2 = b.slice(half);
+      } else if (b.length) {
+        ctx.bullets1 = b;
+      }
     }
   }
   if (layout === 'intro') {
-    ctx.paragraphs = slide.paragraphs;
-    if (slide.meta['image-bg']) ctx.imageBg = useAsset(slide.meta['image-bg'], usedAssets, report);
-    if (slide.meta.image) ctx.image = useAsset(slide.meta.image, usedAssets, report);
-  }
-  if (layout === 'numbered-cards-3') {
-    ctx.cards = slide.sections.slice(0, 3).map((sec, i) => ({
+    ctx.conclusion = slide.meta.conclusion || '';
+    ctx.more = slide.meta.more || '';
+    ctx.cards = slide.sections.slice(0, 2).map((sec, i) => ({
       cardNum: i + 1,
-      showNum: !sec.icon,
-      icon: sec.icon ? useAsset(sec.icon, usedAssets, report) : null,
       title: sec.title,
       text: sec.paragraphs.join(' '),
       items: sec.bullets.length ? sec.bullets : null,
     }));
   }
+  if (layout === 'numbered-cards-3') {
+    ctx.cards = slide.sections.slice(0, 3).map((sec, i) => ({
+      cardNum: i + 1,
+      isTitle: !/^\d+$/.test(sec.title),
+      title: sec.title,
+      text: sec.paragraphs.join(' ').replace(/\*\*/g, ''),
+    }));
+  }
   if (layout === 'pain-solution') {
     ctx.lead = slide.lead || slide.paragraphs.join(' ');
+    ctx.painNum = slide.meta.pain || '';
+    ctx.challengeLabel = S.challenge;
     const secs = slide.sections;
     ctx.leadsTitle = secs[0] ? secs[0].title : '';
     ctx.leads = secs[0] ? secs[0].bullets : [];
@@ -232,22 +257,37 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
     if (slide.meta.image) ctx.accentImage = useAsset(slide.meta.image, usedAssets, report);
   }
   if (layout === 'benefits-grid') {
-    const b = slide.bullets.length ? slide.bullets : slide.sections.flatMap((x) => x.bullets);
-    const cols = b.length > 6 ? 4 : 2;
-    ctx.gridClass = cols === 4 ? 'g4' : 'g2';
-    const rows = Math.ceil(b.length / cols);
-    ctx.cells = b.map((item, i) => {
-      const [lead, ...rest] = item.split(' — ');
-      const col = i % cols, row = Math.floor(i / cols);
-      let style = '';
-      if (col === cols - 1) style += 'border-right:none;';
-      if (row === rows - 1) style += 'border-bottom:none;';
-      return { lead, rest: rest.join(' — '), style };
-    });
+    // canon-режим: секции → синие карточки с иконками (+боковая белая [side: true])
+    const boldify = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    const secs = slide.sections;
+    if (secs.length) {
+      const side = secs.find((x) => x.side);
+      ctx.cards = secs.filter((x) => !x.side).map((sec) => ({
+        title: sec.title,
+        icon: sec.icon ? useAsset(sec.icon, usedAssets, report) : null,
+        items: sec.bullets.length ? sec.bullets : null,
+      }));
+      ctx.sideTitle = side ? side.title : '';
+      ctx.sideItems = side ? side.bullets.map(boldify) : [];
+      ctx.noSide = !side;
+    } else {
+      // плоский режим: буллеты «лид — текст» → карточки без иконок
+      ctx.cards = slide.bullets.map((item) => {
+        const [lead, ...rest] = item.split(' — ');
+        return { title: lead, items: rest.length ? [rest.join(' — ')] : null };
+      });
+      ctx.noSide = true;
+    }
   }
   if (layout === 'principle-detail') {
-    ctx.lead = slide.lead || slide.paragraphs.join(' ');
-    ctx.cards = slide.sections.slice(0, 3).map((sec) => ({ title: sec.title, items: sec.bullets }));
+    ctx.conclusion = slide.meta.conclusion || '';
+    ctx.cards = slide.sections.slice(0, 2).map((sec, i) => ({
+      title: sec.title,
+      items: sec.bullets.length ? sec.bullets : null,
+      blue: i === 1,
+      curve: i === 0,
+      spacerTop: i === 0,
+    }));
   }
 
   let html = render(readTpl(layout), ctx);

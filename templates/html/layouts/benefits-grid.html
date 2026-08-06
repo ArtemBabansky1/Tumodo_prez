@@ -1,14 +1,19 @@
 <section class="slide theme-light" id="s{{num}}">
   {{{furniture}}}
-  <div class="h1-row">
-    <h1 class="t-page-title accent">{{title}}</h1>
-    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
-  </div>
-  <div class="content">
-    <div class="card" style="height:100%;padding:20px;">
-      <div class="benefit-grid {{gridClass}}">
-        {{#each cells}}<div class="benefit-cell" style="{{style}}"><span class="lead-phrase">{{lead}}</span>{{#if rest}} — {{rest}}{{/if}}</div>{{/each}}
-      </div>
+  <h1 class="t-page-title accent" style="position:absolute;left:120px;top:200px;max-width:1200px;">{{title}}</h1>
+  <div class="service-grid"{{#if noSide}} style="grid-template-columns:1fr 1fr;"{{/if}}>
+    {{#each cards}}
+    <div class="service-card">
+      {{#if icon}}<div class="service-icon"><img src="{{icon}}" alt=""></div>{{/if}}
+      <div class="card-title">{{title}}</div>
+      {{#if items}}<ul class="dots">{{#each items}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
     </div>
+    {{/each}}
+    {{#if sideTitle}}
+    <div class="card side-card pad-m">
+      <div class="card-title">{{sideTitle}}</div>
+      <ul class="dots">{{#each sideItems}}<li>{{{.}}}</li>{{/each}}</ul>
+    </div>
+    {{/if}}
   </div>
 </section>
