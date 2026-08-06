@@ -79,9 +79,8 @@ try {
   }
 } finally {
   // Фаза 3: зачистка с паузой — даём возможным отложенным процессам дочитать файлы
-  setTimeout(() => {
-    for (const p of tmpPaths) { try { fs.rmSync(p, { force: true }); } catch {} }
-    try { fs.rmSync(tmpDir, { recursive: true, force: true, maxRetries: 3, retryDelay: 500 }); } catch {}
-  }, 1500).unref();
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1500); // синхронная пауза
+  for (const p of tmpPaths) { try { fs.rmSync(p, { force: true }); } catch {} }
+  try { fs.rmSync(tmpDir, { recursive: true, force: true, maxRetries: 3, retryDelay: 500 }); } catch {}
 }
 console.log('Готово: ' + nums.length + ' скриншот(ов).');
