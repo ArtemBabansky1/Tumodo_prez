@@ -26,7 +26,15 @@ function resolveClaudeBin() {
 const CLAUDE_BIN = resolveClaudeBin();
 
 /** Разрешённые инструменты: файловые операции + Bash (сборка, скриншоты) + скиллы. */
-const ALLOWED_TOOLS = 'Read,Glob,Grep,Write,Edit,MultiEdit,TodoWrite,Skill,Bash,WebFetch';
+// Bash разрешён точечно — только скрипты фабрики: в headless-режиме (-p) окно
+// подтверждения показать некому, поэтому команда без явного разрешения = отказ.
+// Любая другая команда по-прежнему не выполнится.
+const ALLOWED_TOOLS = [
+  'Read', 'Glob', 'Grep', 'Write', 'Edit', 'MultiEdit', 'TodoWrite', 'Skill', 'WebFetch',
+  'Bash(node scripts/build.js:*)',
+  'Bash(node scripts/screenshot.js:*)',
+  'Bash(node scripts/export-pdf.js:*)',
+].join(',');
 
 const SYSTEM_APPEND = [
   'Ты работаешь внутри локального веб-приложения «Фабрика презентаций Tumodo»; рабочая директория — корень проекта.',
