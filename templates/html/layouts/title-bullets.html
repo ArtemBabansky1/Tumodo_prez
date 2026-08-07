@@ -18,6 +18,20 @@
     {{/each}}
   </div>
   {{/if}}
+  {{#if aside}}
+  <!-- мало текста и нет фото: H1 + лид слева, контейнер справа на половине слайда -->
+  <div class="aside-head">
+    <h1 class="t-page-title">{{title}}</h1>
+    {{#if lead}}<div class="t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="aside-body">
+    <div class="card hug">
+      {{#if paragraphs}}<div class="t-body-middle" style="display:flex;flex-direction:column;gap:20px;">{{#each paragraphs}}<p>{{.}}</p>{{/each}}</div>{{/if}}
+      {{#if bullets1}}<ul class="dots">{{#each bullets1}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
+      {{#if bullets2}}<ul class="dots">{{#each bullets2}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
+    </div>
+  </div>
+  {{/if}}
   {{#if flat}}
   <div class="h1-row">
     <h1 class="t-page-title">{{title}}</h1>
@@ -26,16 +40,18 @@
   <div class="content">
     {{#if image}}
     <div class="cols cols-3">
-      <div class="card" style="grid-column: span 2; justify-content: center;">
+      <div class="card {{cardFit}}" style="grid-column: span 2;">
         {{#if paragraphs}}<div class="t-body-middle" style="display:flex;flex-direction:column;gap:20px;">{{#each paragraphs}}<p>{{.}}</p>{{/each}}</div>{{/if}}
-        {{#if bullets1}}
+        {{#if oneCol}}<ul class="dots">{{#each bullets1}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
+        {{#if bullets2}}
         <div class="cols cols-2" style="height:auto;">
           <ul class="dots">{{#each bullets1}}<li>{{.}}</li>{{/each}}</ul>
-          {{#if bullets2}}<ul class="dots">{{#each bullets2}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
+          <ul class="dots">{{#each bullets2}}<li>{{.}}</li>{{/each}}</ul>
         </div>
         {{/if}}
       </div>
-      <div class="photo-card"><img src="{{image}}" alt=""></div>
+      {{#if mediaContain}}<div class="media-col"><img src="{{image}}" alt=""></div>{{/if}}
+      {{#if mediaCover}}<div class="photo-card"><img src="{{image}}" alt=""></div>{{/if}}
     </div>
     {{/if}}
     {{#if noImage}}

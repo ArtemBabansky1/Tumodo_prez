@@ -40,7 +40,7 @@ body {
 .slide.theme-blue .bg-pattern {
   position: absolute;
   inset: 0;
-  background-image: url('../../../design-system/patterns/svg/main-pattern.svg');
+  background-image: url('../assets/patterns/main-pattern.svg');
   background-size: cover;
   background-position: top center;
 }
@@ -89,11 +89,11 @@ body {
   color: var(--gray-1);
 }
 
-/* крупный логотип обложки/финала */
+/* крупный логотип обложки/финала; поля слайда одинаковые со всех сторон — 120px */
 .cover-logo {
   position: absolute;
-  left: 120px;
-  top: 100px;
+  left: var(--slide-margin);
+  top: var(--slide-margin);
   width: 396px;
   height: auto;
 }
@@ -117,10 +117,12 @@ body {
   gap: 24px;
 }
 
+/* лид прижат вплотную к правой границе сетки (x=1800): строки заполняют блок целиком.
+   `pretty` вместо `balance` — balance укорачивает все строки, и блок «висит» в воздухе,
+   не доходя до правого поля; `pretty` держит ширину и запрещает одинокое слово в конце. */
 .h1-row .lead {
-  text-wrap: balance;
-  width: auto;
-  max-width: 733px;
+  text-wrap: pretty;
+  width: 733px;
   flex: none;
 }
 
@@ -129,6 +131,67 @@ body {
   left: 120px;
   right: 120px;
   top: 342px;
+  bottom: 120px;
+}
+
+/* ---------- семейство C: левая колонка + зона карточек справа (canon: intro, principle-detail) ---------- */
+
+.split-left {
+  position: absolute;
+  left: 120px;
+  top: 225px;
+  bottom: 120px;
+  width: 645px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.split-left h1 { text-wrap: balance; }
+.split-left .spacer { flex: 1; }
+.split-left .conclusion { font-size: 30px; font-weight: 600; line-height: 1.25; max-width: 560px; }
+
+.split-right {
+  position: absolute;
+  left: 855px;
+  right: 120px;
+  top: 240px;
+  bottom: 115px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr auto;
+  gap: var(--grid-gutter);
+}
+.split-right > .card { grid-row: 1; }
+
+/* ---------- работа с пустотой (presentation-rules.md §5) ---------- */
+
+/* контейнер по высоте контента, а не на всю рабочую область:
+   короткий список не должен «плавать» в пустом белом прямоугольнике */
+.card.hug { align-self: center; height: auto; }
+
+/* колонка под фото/мокап рядом с текстом: 30–40% рабочей ширины */
+.media-col { display: flex; align-items: center; justify-content: center; min-height: 0; }
+.media-col img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/* мало текста: H1 + лид уходят в левую колонку, контейнер с контентом — справа, ≤50% слайда */
+.aside-head {
+  position: absolute;
+  left: 120px;
+  top: 220px;
+  bottom: 120px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+.aside-head h1 { text-wrap: balance; }
+
+.aside-body {
+  position: absolute;
+  left: 960px; /* ровно половина слайда */
+  right: 120px;
+  top: 220px;
   bottom: 120px;
 }
 

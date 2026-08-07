@@ -273,6 +273,12 @@ ul.rail li::before {
   grid-template-rows: 1fr 1fr;
   gap: 42px var(--grid-gutter);
 }
+/* мало текста: карточки по высоте контента и по центру области, а не растянуты
+   на всю сетку (работа с пустотой, presentation-rules.md §5) */
+.service-grid.hug {
+  grid-template-rows: auto auto;
+  align-content: center;
+}
 .service-card {
   position: relative;
   background: var(--blue-base);

@@ -15,7 +15,7 @@ lang: ru
 
 # Зачем этот документ
 [layout: intro]
-[image-bg: mockups/files/macbook-на-столе.png]
+[image-bg: mockups/files/macbook-on-desk.png]
 > Это тестовая сборка фабрики презентаций Tumodo.
 
 Она показывает, как движок собирает слайды по правилам дизайн-системы: темы, сетку, компоненты и типографику.
@@ -58,7 +58,7 @@ lang: ru
 # Разрозненные брони и куча инструментов
 [layout: pain-solution]
 [pain: 1]
-[image: photos/3d/theo-аналитик-1.png]
+[image: photos/3d/theo-mascot-analyst-1.png]
 > Поездки собираются по кусочкам: билеты в одном сервисе, отель в другом, документы в почте.
 
 ## К чему приводит

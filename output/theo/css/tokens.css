@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: 'Nunito Sans';
-  src: url('../../../design-system/fonts/files/NunitoSans-Variable.woff2') format('woff2-variations');
+  src: url('../assets/fonts/NunitoSans-Variable.woff2') format('woff2-variations');
   font-weight: 200 1000;
   font-style: normal;
   font-display: block;

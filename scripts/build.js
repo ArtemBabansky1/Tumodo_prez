@@ -124,6 +124,17 @@ function parseSlide(block) {
 
 // ---------------------------------------------------------------- лимиты (presentation-rules.md §5)
 
+// Оценка заполнения белого контейнера текстом — «работа с пустотой»
+// (presentation-rules.md §5). Считаем в строках: средняя ширина знака Nunito Sans
+// ≈ 0.5 кегля; рабочая высота контейнера = область контента 618px − паддинги 2×40.
+function fillRatio(items, colWidth, { font = 25, lineH = 1.25, gap = 18, boxHeight = 538 } = {}) {
+  const perLine = Math.max(10, Math.floor(colWidth / (font * 0.5)));
+  const texts = items.filter(Boolean);
+  if (!texts.length) return 0;
+  const lines = texts.reduce((n, t) => n + Math.max(1, Math.ceil(String(t).length / perLine)), 0);
+  return (lines * font * lineH + (texts.length - 1) * gap) / boxHeight;
+}
+
 function checkLimits(slide, layout, warn) {
   const t = slide.title || '';
   if (t.length > 90) warn(`H1 длиннее 2×45 знаков (${t.length}): «${t.slice(0, 40)}…»`);
@@ -213,17 +224,39 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
       ctx.label = slide.meta.label || '';
     } else {
       // плоский режим: одна карточка с абзацами/буллетами (+фото)
-      ctx.flat = true;
       ctx.paragraphs = slide.paragraphs;
-      if (slide.meta.image) ctx.image = useAsset(slide.meta.image, usedAssets, report);
-      ctx.noImage = !ctx.image;
+      // 3D-объект не «затычка пустоты» поверх макета, а полноценная медиа-колонка 30–40%
+      const media = slide.meta.image || slide.meta['3d'];
+      if (media) {
+        ctx.image = useAsset(media, usedAssets, report);
+        if (ctx.image && !slide.meta.image) ctx.media3dConsumed = true;
+      }
       const b = slide.bullets.length ? slide.bullets : slide.sections.flatMap((x) => x.bullets);
-      if (b.length > 4) {
-        const half = Math.ceil(b.length / 2);
-        ctx.bullets1 = b.slice(0, half);
-        ctx.bullets2 = b.slice(half);
-      } else if (b.length) {
-        ctx.bullets1 = b;
+
+      // работа с пустотой (presentation-rules.md §5): считаем, сколько места займёт текст
+      const sparse = fillRatio([...slide.paragraphs, ...b], 1600) < 0.6;
+      if (sparse && !ctx.image) {
+        // нет фото — уводим заголовок с лидом влево, контейнер ставим справа на 50%
+        ctx.aside = true;
+        ctx.bullets1 = b.length ? b : null;
+      } else {
+        ctx.flat = true;
+        ctx.noImage = !ctx.image;
+        ctx.cardFit = sparse ? 'hug' : ''; // контейнер по высоте контента, а не на всю область
+        if (ctx.image) {
+          const contain = /\/(mockups|3d)\/|\.svg$|\.png$/i.test(ctx.image);
+          ctx.mediaContain = contain;
+          ctx.mediaCover = !contain;
+        }
+        // вторая колонка — только когда пунктов реально много; иначе список во всю карточку
+        if (b.length > 6) {
+          const half = Math.ceil(b.length / 2);
+          ctx.bullets1 = b.slice(0, half);
+          ctx.bullets2 = b.slice(half);
+        } else if (b.length) {
+          ctx.bullets1 = b;
+          ctx.oneCol = true;
+        }
       }
     }
   }
@@ -278,6 +311,11 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
       });
       ctx.noSide = true;
     }
+    // работа с пустотой (presentation-rules.md §5): если в каждой карточке ≤3 строк,
+    // карточки идут по высоте контента и центрируются, а не растягиваются на всю сетку
+    const cardLines = (c) => (c.items || [])
+      .reduce((n, t) => n + Math.max(1, Math.ceil(String(t).length / 62)), 1);
+    ctx.gridFit = ctx.cards.length && ctx.cards.every((c) => cardLines(c) <= 3) ? 'hug' : '';
   }
   if (layout === 'principle-detail') {
     ctx.conclusion = slide.meta.conclusion || '';
@@ -292,7 +330,7 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
 
   let html = render(readTpl(layout), ctx);
   // [3d: photos/3d/...] — 3D-объект по нижней грани, скрыт за краем на 20% (style-guide §4)
-  if (slide.meta['3d'] && layout !== 'cover' && layout !== 'final') {
+  if (slide.meta['3d'] && !ctx.media3dConsumed && layout !== 'cover' && layout !== 'final') {
     const src = useAsset(slide.meta['3d'], usedAssets, report);
     if (src) {
       const pos = slide.meta['3d-pos'] || 'right';
@@ -307,7 +345,7 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
 // ---------------------------------------------------------------- ассеты
 
 function useAsset(rel, usedAssets, report) {
-  // rel — путь внутри design-system, например photos/3d/theo-аналитик-1.png
+  // rel — путь внутри design-system, например photos/3d/theo-mascot-analyst-1.png
   const src = path.join(DS, rel);
   if (!fs.existsSync(src)) {
     report(`ассет не найден в design-system: ${rel}`);
@@ -334,7 +372,7 @@ function copyStatic(outDir, usedAssets) {
     fs.copyFileSync(src, dst);
   }
   // серый росчерк для белых карточек: Curve 2 с перекраской штриха white → light-gray (#EEEFF2)
-  const curve = fs.readFileSync(path.join(DS, 'patterns', 'svg', 'патерн-1.1.svg'), 'utf8')
+  const curve = fs.readFileSync(path.join(DS, 'patterns', 'svg', 'pattern-1-1.svg'), 'utf8')
     .replace(/stroke="white"/g, 'stroke="#EEEFF2"');
   fs.mkdirSync(path.join(outDir, 'assets', 'patterns'), { recursive: true });
   fs.writeFileSync(path.join(outDir, 'assets', 'patterns', 'curve-gray.svg'), curve);
