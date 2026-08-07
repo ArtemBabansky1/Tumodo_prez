@@ -26,14 +26,15 @@ function resolveClaudeBin() {
 const CLAUDE_BIN = resolveClaudeBin();
 
 /** Разрешённые инструменты: файловые операции + Bash (сборка, скриншоты) + скиллы. */
-// Bash разрешён точечно — только скрипты фабрики: в headless-режиме (-p) окно
-// подтверждения показать некому, поэтому команда без явного разрешения = отказ.
-// Любая другая команда по-прежнему не выполнится.
-const ALLOWED_TOOLS = [
-  'Read', 'Glob', 'Grep', 'Write', 'Edit', 'MultiEdit', 'TodoWrite', 'Skill', 'WebFetch',
-  'Bash(node scripts/build.js:*)',
-  'Bash(node scripts/screenshot.js:*)',
-  'Bash(node scripts/export-pdf.js:*)',
+const ALLOWED_TOOLS = 'Read,Glob,Grep,Write,Edit,MultiEdit,TodoWrite,Skill,Bash,WebFetch';
+
+// Дизайн-система неприкосновенна: агент приложения собирает презентации, но не
+// правит токены и ассеты (железное правило CLAUDE.md). Инструменты записи в
+// design-system/ убраны из его набора — запрет не зависит от режима прав.
+const DISALLOWED_TOOLS = [
+  'Write(design-system/**)',
+  'Edit(design-system/**)',
+  'MultiEdit(design-system/**)',
 ].join(',');
 
 const SYSTEM_APPEND = [
@@ -124,8 +125,12 @@ module.exports = function mountClaude(app, ROOT, upload) {
       '-p',
       '--output-format', 'stream-json',
       '--verbose',
-      '--permission-mode', 'acceptEdits',
+      // headless (-p): окно подтверждения показать некому, поэтому любой запрос
+      // прав = отказ. Сборке нужен запуск node — даём полные права на выполнение,
+      // а дизайн-систему защищаем списком DISALLOWED_TOOLS.
+      '--permission-mode', 'bypassPermissions',
       '--allowedTools', ALLOWED_TOOLS,
+      '--disallowedTools', DISALLOWED_TOOLS,
       '--append-system-prompt', SYSTEM_APPEND,
     ];
     if (session) args.push('--resume', session);
