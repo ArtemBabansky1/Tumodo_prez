@@ -1,0 +1,412 @@
+/* components.css — компоненты из rules/style-guide.md §3–4. Все цвета — переменные tokens.css. */
+
+/* ---------- карточки ---------- */
+
+.card {
+  isolation: isolate;
+  background: var(--white);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-light);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--paragraph);
+  min-height: 0;
+}
+
+.card.pad-m { padding: var(--container-padding-m); }
+.card.pad-s { padding: var(--container-padding-s); }
+
+.card.card-blue {
+  background: var(--blue-base);
+  color: var(--white);
+  box-shadow: none;
+}
+
+/* стекло dark-темы (style-guide §1) */
+.theme-dark .card.card-glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+  backdrop-filter: blur(30px);
+}
+.theme-dark .muted, .theme-blue .muted { color: rgba(255, 255, 255, 0.72); }
+
+/* точки-буллеты на синей карточке — светлые */
+.card-blue ul.dots li::before { background: var(--blue-light); }
+
+.card-title { font-size: 30px; font-weight: 600; line-height: 1.25; text-wrap: balance; }
+
+/* ---------- списки ---------- */
+
+ul.dots { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+ul.dots li {
+  position: relative;
+  padding-left: 40px;
+  font-size: 25px;
+  line-height: 1.25;
+}
+ul.dots li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--blue-base);
+}
+ul.dots.small li { font-size: 25px; }
+ul.dots.small li::before { width: 10px; height: 10px; top: 8px; }
+
+/* галочки — только на синих карточках решений */
+.card-blue ul.checks { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.card-blue ul.checks li {
+  position: relative;
+  padding-left: 44px;
+  font-size: 25px;
+  line-height: 1.25;
+}
+.card-blue ul.checks li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 21px;
+  height: 18px;
+  background: no-repeat center / contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 18'%3E%3Cpath d='M1.5 9.5l6 6L19.5 2' fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* пунктирная рельса */
+ul.rail { list-style: none; position: relative; display: flex; flex-direction: column; gap: 28px; }
+ul.rail::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  background: var(--blue-base);
+}
+ul.rail li { position: relative; padding-left: 48px; font-size: 30px; font-weight: 600; line-height: 1.25; }
+ul.rail li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: var(--blue-base);
+}
+
+/* ---------- кружок-номер ---------- */
+
+.num-circle {
+  width: 43px;
+  height: 43px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid var(--blue-base);
+  color: var(--blue-base);
+  font-size: 25px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- чипы и бейджи ---------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 58px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-size: 25px;
+  font-weight: 600;
+  background: var(--white);
+  color: var(--dark-gray-text);
+  box-shadow: var(--shadow-light);
+}
+.chip.chip-blue { background: var(--blue-base); color: var(--white); }
+.chip.chip-gray { background: var(--light-gray); box-shadow: none; }
+.chip.chip-outline { background: transparent; border: 1px solid var(--white); color: var(--white); box-shadow: none; }
+.chip.big { height: 100px; padding: 0 40px; font-size: 30px; }
+
+/* бейдж боли: канон — заливка peach-base + белый текст (решение пользователя 2026-08-05) */
+.badge-pain {
+  display: inline-flex;
+  align-items: center;
+  height: 61px;
+  padding: 0 30px;
+  border-radius: var(--radius-m);
+  background: var(--peach-base);
+  color: var(--white);
+  font-size: 25px;
+  font-weight: 600;
+  flex: none;
+}
+
+/* кнопка-пилюля (обложка) */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  height: 78px;
+  padding: 0 44px;
+  border-radius: 999px;
+  border: 1.5px solid var(--white);
+  color: var(--white);
+  font-size: 25px;
+  font-weight: 600;
+}
+.btn-pill::after { content: '→'; }
+
+/* круглый бейдж-иконка */
+.icon-badge {
+  width: 58px;
+  height: 58px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--blue-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-badge img { width: 34px; height: 34px; filter: brightness(0) invert(1); }
+
+/* ---------- текстовая сетка выгод ---------- */
+
+.benefit-grid {
+  display: grid;
+  height: 100%;
+}
+.benefit-grid.g4 { grid-template-columns: repeat(4, 1fr); }
+.benefit-grid.g2 { grid-template-columns: repeat(2, 1fr); }
+.benefit-cell {
+  padding: 28px 32px;
+  font-size: 25px;
+  line-height: 1.25;
+  border-bottom: 1px solid var(--light-gray);
+  border-right: 1px solid var(--light-gray);
+}
+.benefit-cell .lead-phrase { color: var(--blue-base); font-weight: 600; }
+
+/* фото-контейнер: фото заполняет карточку целиком (fill) */
+.photo-card {
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  min-height: 0;
+}
+.photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---------- декоративные элементы ---------- */
+
+.deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--blue-pale);
+  pointer-events: none;
+}
+
+.deco-curve {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: -1; /* под текстом, над фоном карточки (isolation на .card) */
+}
+
+/* акцентная лид-фраза в тексте */
+.accent { color: var(--blue-base); }
+
+/* ---------- кружок-номер над карточкой (canon: intro) ---------- */
+
+.num-chip {
+  position: absolute;
+  top: -22px;
+  left: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--shadow-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  z-index: 2;
+}
+.card.numbered { overflow: visible; position: relative; }
+
+/* серая пилюля-ссылка под карточками (canon: intro «3rd, 4th issues →») */
+.more-pill {
+  grid-column: 2;
+  grid-row: 2;
+  height: 56px;
+  border-radius: 999px;
+  background: #E4E6EB;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 28px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.more-pill::after { content: ' →'; white-space: pre; }
+
+/* ---------- синие карточки услуг с иконкой-пилюлей (canon: benefits-grid) ---------- */
+
+.service-grid {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 300px;
+  bottom: 115px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 585px;
+  grid-template-rows: 1fr 1fr;
+  gap: 42px var(--grid-gutter);
+}
+/* мало текста: карточки по высоте контента и по центру области, а не растянуты
+   на всю сетку (работа с пустотой, presentation-rules.md §5) */
+.service-grid.hug {
+  grid-template-rows: auto auto;
+  align-content: center;
+}
+.service-card {
+  position: relative;
+  background: var(--blue-base);
+  color: var(--white);
+  border-radius: var(--radius-l);
+  padding: 45px 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  overflow: visible;
+}
+.service-card .card-title { font-size: 30px; font-weight: 700; }
+.service-card ul.dots li { font-size: 25px; padding-left: 34px; }
+.service-card ul.dots li::before { background: var(--white); width: 8px; height: 8px; top: 11px; }
+.service-icon {
+  position: absolute;
+  top: -32px;
+  right: 48px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(111,168,255,0.55));
+  backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-icon img { width: 38px; height: 38px; filter: brightness(0) invert(1); }
+.side-card {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+.side-card .card-title { color: var(--blue-base); font-size: 30px; font-weight: 700; }
+.side-card ul.dots { gap: 22px; }
+.side-card ul.dots li { font-size: 20px; line-height: 1.3; padding-left: 36px; }
+.side-card ul.dots li::before { width: 9px; height: 9px; top: 10px; }
+.side-card ul.dots li strong { color: var(--blue-base); font-weight: 700; }
+
+/* ---------- тёмные карточки с нарастанием акцента (canon: numbered-cards-3) ---------- */
+
+.theme-dark .card.acc-1 {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+  color: var(--white);
+}
+.theme-dark .card.acc-2 {
+  background: linear-gradient(140deg, rgba(18, 24, 40, 0.9) 0%, #0040B3 60%, #2F80FF 105%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+  color: var(--white);
+}
+.theme-dark .card.acc-3 {
+  background: var(--blue-base);
+  box-shadow: none;
+  color: var(--white);
+}
+.num-badge {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--blue-base);
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.card.acc-3 .num-badge { background: var(--white); color: var(--blue-base); }
+
+/* ---------- манифест и разделитель раздела ---------- */
+
+/* размеры/веса — только значения токен-шкалы (60px, вес 400) */
+.stmt {
+  position: absolute;
+  inset: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 44px;
+  text-align: center;
+}
+.stmt-big { font-size: 60px; font-weight: 400; line-height: 1.25; max-width: 1500px; text-wrap: balance; }
+.stmt-sub { font-size: 25px; font-weight: 400; line-height: 1.35; max-width: 900px; }
+
+.divider-title {
+  position: absolute;
+  left: 120px;
+  bottom: 110px;
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+/* ---------- бейдж + заголовок в одну строку (canon: pain-solution) ---------- */
+
+.badge-h1-row {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 200px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.badge-h1-row h1 { text-wrap: balance; }
+
+/* строка «label + текст» под шапкой */
+.challenge-row {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 318px;
+  display: grid;
+  grid-template-columns: 325px 1fr;
+  gap: var(--grid-gutter);
+  align-items: start;
+}
+.challenge-row .label { font-size: 30px; font-weight: 700; }
+
+/* подзаголовок-ряд («Смысл», «Вызов»): заголовок слева + текст справа */
+.label-row {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  gap: var(--grid-gutter);
+  align-items: start;
+}

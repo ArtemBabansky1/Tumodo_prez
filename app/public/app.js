@@ -1200,8 +1200,8 @@ function openProfileModal() {
   const $profile = document.getElementById('btn-profile');
   const $settings = document.getElementById('btn-settings');
   if (!$profile || !$settings) return;
-  $profile.append(uiIcon('user'));
-  $settings.append(uiIcon('settings'));
+  $profile.prepend(uiIcon('user'));
+  $settings.prepend(uiIcon('settings'));
   $profile.addEventListener('click', openProfileModal);
   $settings.addEventListener('click', () => {
     sidebarMode = sidebarMode === 'settings' ? 'chats' : 'settings';

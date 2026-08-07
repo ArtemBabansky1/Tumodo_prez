@@ -14,7 +14,7 @@ lang: en
 
 # A new feature for personal bookings
 [layout: title-bullets]
-[image: photos/dashboard-home.png]
+[image: ../input/ss-dashboard-home.png]
 > Employees can now switch to Vacation mode in their Tumodo account.
 
 We introduced this option so that not only businesses, but also the people behind them, can save on flights and accommodation when planning a vacation.
@@ -27,7 +27,7 @@ We introduced this option so that not only businesses, but also the people behin
 
 # Easy flight booking
 [layout: title-bullets]
-[image: photos/trips-search.png]
+[image: ../input/ss-trips-search.png]
 > Everything for a personal trip in one place — from search to booking.
 
 - Access to 500+ airlines
@@ -65,7 +65,7 @@ We introduced this option so that not only businesses, but also the people behin
 
 # How to switch to Vacation mode
 [layout: title-bullets]
-[image: photos/dashboard-home-2.png]
+[image: ../input/ss-dashboard-home-2.png]
 > Two steps to turn your work account into a personal travel account.
 
 - Log in to your Tumodo account
@@ -84,7 +84,7 @@ Go to this section and click Create to add family members or friends to your tri
 
 # Fill in the traveller details
 [layout: title-bullets]
-[image: photos/edit-panel.png]
+[image: ../input/ss-edit-panel.png]
 > In the pop-up window, fill in the fields marked with a red asterisk.
 
 Please make sure the traveller's name details match the travel document you will use for this trip.
@@ -155,7 +155,7 @@ A small symbolic amount may be temporarily charged to your card and refunded imm
 
 # How to search for flights
 [layout: title-bullets]
-[image: photos/reports-expense.png]
+[image: ../input/ss-reports-expense.png]
 > Find the right flight for your vacation in a few steps.
 
 - Click the Flights icon
@@ -250,7 +250,7 @@ Click Book to confirm your transfer.
 
 # How to complete your vacation booking
 [layout: title-bullets]
-[image: photos/trips-cards.png]
+[image: ../input/ss-trips-cards.png]
 > Once all services are booked, they move to the Reserved status — you can confirm or cancel each service before payment.
 
 To complete your booking, open your trip and click Reserve under each service. As soon as your trip is confirmed, a Travel Plan appears in your Tumodo account — a handy overview of all your bookings.
