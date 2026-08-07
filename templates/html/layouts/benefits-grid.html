@@ -6,6 +6,7 @@
     <div class="service-card">
       {{#if icon}}<div class="service-icon"><img src="{{icon}}" alt=""></div>{{/if}}
       <div class="card-title">{{title}}</div>
+      {{#if text}}<div class="card-text">{{text}}</div>{{/if}}
       {{#if items}}<ul class="dots">{{#each items}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
     </div>
     {{/each}}

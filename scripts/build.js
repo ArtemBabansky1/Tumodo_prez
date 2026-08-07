@@ -306,9 +306,11 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
       ctx.noSide = !side;
     } else {
       // плоский режим: буллеты «лид — текст» → карточки без иконок
+      // описание из одного пункта — это абзац, а не список: точку-буллет
+      // перед единственной строкой не ставим (правило пользователя 2026-08-07)
       ctx.cards = slide.bullets.map((item) => {
         const [lead, ...rest] = item.split(' — ');
-        return { title: lead, items: rest.length ? [rest.join(' — ')] : null };
+        return { title: lead, text: rest.length ? rest.join(' — ') : null, items: null };
       });
       ctx.noSide = true;
     }
@@ -335,7 +337,9 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
     if (src) {
       const pos = slide.meta['3d-pos'] || 'right';
       const leftPct = pos === 'left' ? '35%' : (pos === 'center' ? '50%' : '65%');
-      const img = '<img src="' + src + '" alt="" style="position:absolute;left:' + leftPct + ';bottom:0;height:460px;transform:translate(-50%,20%);z-index:5;">';
+      // 3D поверх контейнеров, уходит за нижнюю границу слайда на ~25%,
+      // смещён от центра по x, текст не перекрывает (presentation-rules.md §5.1)
+      const img = '<img src="' + src + '" alt="" style="position:absolute;left:' + leftPct + ';bottom:0;height:560px;transform:translate(-50%,25%);z-index:5;">';
       html = html.replace(new RegExp('</section>' + String.fromCharCode(92) + 's*$'), img + '</section>');
     }
   }

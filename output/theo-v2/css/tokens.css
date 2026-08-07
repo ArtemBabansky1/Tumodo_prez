@@ -1,0 +1,66 @@
+/* tokens.css — сгенерировано из design-system/tokens/ (colors.json, typography.json, effects.json, spacing.json).
+   Единственное место, где допустимы литеральные значения токенов. Не редактировать вручную вне синка с токенами. */
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('../assets/fonts/NunitoSans-Variable.woff2') format('woff2-variations');
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  /* colors.json — brand */
+  --blue-deep: #0040B3;
+  --blue-base: #005AFF;
+  --blue-light: #6FA8FF;
+  --blue-pale: #E6F0FF;
+  /* colors.json — neutral */
+  --white: #FFFFFF;
+  --surface-gray: #EEEFF2;
+  --light-gray: #CDD0D6;
+  --gray-1: #A8A9AC;
+  --gray-2: #8A8B8E;
+  --gray-3: #6A6B6E;
+  --dark-gray-text: #2E2E2E;
+  --black: #121212;
+  /* colors.json — accent */
+  --peach-base: #FF6E5A;
+  --peach-soft: #FFE2DC;
+  --green-base: #30DF96;
+  --green-soft: #C7F5E1;
+  --purple-base: #9D51FF;
+  --purple-soft: #E8D6FF;
+
+  /* typography.json */
+  --font-family: 'Nunito Sans', sans-serif;
+
+  /* effects.json */
+  --shadow-light: 46px 64px 31px 0px rgba(80, 94, 134, 0.01), 26px 36px 27px 0px rgba(80, 94, 134, 0.02), 11px 16px 20px 0px rgba(80, 94, 134, 0.03), 3px 4px 11px 0px rgba(80, 94, 134, 0.04);
+  --shadow-dark: 8px 8px 7px 0px rgba(0, 0, 0, 0.05), 3px 4px 5px 0px rgba(0, 0, 0, 0.09), 1px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  --gradient-dark-blue: linear-gradient(-1.64deg, #005AFF 1.31%, #0040B3 17.06%, #032563 42.56%, #111824 69.05%, #121212 94.3%);
+
+  /* скругления (effects.json: наблюдения 8/20/30) */
+  --radius-s: 8px;
+  --radius-m: 20px;
+  --radius-l: 30px;
+
+  /* spacing.json */
+  --slide-margin: 120px;
+  --card-padding: 40px;
+  --grid-gutter: 25px;
+  --paragraph: 20px;
+  --container-padding-l: 60px;
+  --container-padding-m: 45px;
+  --container-padding-s: 35px;
+}
+
+/* --- Текстовые стили (typography.json, шкала строго 80/60/50/30/25/20/16) --- */
+
+.t-cover-1 { font-family: var(--font-family); font-size: 80px; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.t-cover-2 { font-family: var(--font-family); font-size: 60px; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.t-page-title { font-family: var(--font-family); font-size: 50px; font-weight: 700; line-height: 1.1; }
+.t-body-big { font-family: var(--font-family); font-size: 30px; font-weight: 600; line-height: 1.25; }
+.t-body-middle { font-family: var(--font-family); font-size: 25px; font-weight: 400; line-height: 1.25; }
+.t-body-small { font-family: var(--font-family); font-size: 20px; font-weight: 400; line-height: 1.25; }
+.t-caption { font-family: var(--font-family); font-size: 16px; font-weight: 400; line-height: 1.15; }

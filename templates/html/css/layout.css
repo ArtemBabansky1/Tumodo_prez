@@ -201,7 +201,7 @@ body {
   width: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* заголовок и лид — вверху, а не по центру */
   gap: 30px;
 }
 .aside-head h1 { text-wrap: balance; }
@@ -213,6 +213,8 @@ body {
   top: 220px;
   bottom: 120px;
 }
+/* контейнер тянется на всю свободную высоту, а не жмётся по контенту */
+.aside-body > .card { height: 100%; align-self: stretch; }
 
 /* ---------- ряды равных колонок (gutter 25) ---------- */
 
