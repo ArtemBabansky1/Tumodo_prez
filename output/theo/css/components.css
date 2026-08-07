@@ -271,13 +271,11 @@ ul.rail li::before {
   display: grid;
   grid-template-columns: 1fr 1fr 585px;
   grid-template-rows: 1fr 1fr;
-  gap: 42px var(--grid-gutter);
-}
-/* мало текста: карточки по высоте контента и по центру области, а не растянуты
-   на всю сетку (работа с пустотой, presentation-rules.md §5) */
-.service-grid.hug {
-  grid-template-rows: auto auto;
-  align-content: center;
+  /* Зазоры в сетке карточек одинаковые со всех сторон — 20px, и ряд занимает всю
+     доступную область: 100% ширины сетки и 560–580px по высоте
+     (правило пользователя 2026-08-07). Карточки не сжимаются по контенту. */
+  gap: 20px;
+  min-height: 560px;
 }
 .service-card {
   position: relative;
@@ -320,15 +318,22 @@ ul.rail li::before {
 
 /* ---------- тёмные карточки с нарастанием акцента (canon: numbered-cards-3) ---------- */
 
+/* Нарастание акцента на тёмной теме: стекло → стекло с градиентом → сплошной синий.
+   Первая карточка — ПРОЗРАЧНОЕ стекло, не тёмно-серая плашка; во второй градиент
+   лежит внутри той же стеклянной карточки (правило пользователя 2026-08-07). */
 .theme-dark .card.acc-1 {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px);
   box-shadow: none;
   color: var(--white);
 }
 .theme-dark .card.acc-2 {
-  background: linear-gradient(140deg, rgba(18, 24, 40, 0.9) 0%, #0040B3 60%, #2F80FF 105%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(140deg, rgba(0, 64, 179, 0.55) 0%, rgba(47, 128, 255, 0.75) 105%),
+    rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px);
   box-shadow: none;
   color: var(--white);
 }

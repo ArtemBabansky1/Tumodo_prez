@@ -225,12 +225,9 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
     } else {
       // плоский режим: одна карточка с абзацами/буллетами (+фото)
       ctx.paragraphs = slide.paragraphs;
-      // 3D-объект не «затычка пустоты» поверх макета, а полноценная медиа-колонка 30–40%
-      const media = slide.meta.image || slide.meta['3d'];
-      if (media) {
-        ctx.image = useAsset(media, usedAssets, report);
-        if (ctx.image && !slide.meta.image) ctx.media3dConsumed = true;
-      }
+      // В контейнер-колонку идёт только фото/скриншот/мокап. 3D в контейнер не
+      // ставится никогда — он накладывается поверх карточек (см. блок [3d:] ниже).
+      if (slide.meta.image) ctx.image = useAsset(slide.meta.image, usedAssets, report);
       const b = slide.bullets.length ? slide.bullets : slide.sections.flatMap((x) => x.bullets);
 
       // работа с пустотой (presentation-rules.md §5): считаем, сколько места займёт текст
@@ -315,11 +312,10 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
       });
       ctx.noSide = true;
     }
-    // работа с пустотой (presentation-rules.md §5): если в каждой карточке ≤3 строк,
-    // карточки идут по высоте контента и центрируются, а не растягиваются на всю сетку
-    const cardLines = (c) => (c.items || [])
-      .reduce((n, t) => n + Math.max(1, Math.ceil(String(t).length / 62)), 1);
-    ctx.gridFit = ctx.cards.length && ctx.cards.every((c) => cardLines(c) <= 3) ? 'hug' : '';
+    // Сетка карточек всегда занимает всю доступную область: 100% ширины и
+    // 560–580px по высоте, зазоры 20px (правило пользователя 2026-08-07).
+    // Сжимать карточки по контенту нельзя — пустота вокруг ряда запрещена.
+    ctx.gridFit = '';
   }
   if (layout === 'principle-detail') {
     ctx.conclusion = slide.meta.conclusion || '';
@@ -334,7 +330,7 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
 
   let html = render(readTpl(layout), ctx);
   // [3d: photos/3d/...] — 3D-объект по нижней грани, скрыт за краем на 20% (style-guide §4)
-  if (slide.meta['3d'] && !ctx.media3dConsumed && layout !== 'cover' && layout !== 'final') {
+  if (slide.meta['3d'] && layout !== 'cover' && layout !== 'final') {
     const src = useAsset(slide.meta['3d'], usedAssets, report);
     if (src) {
       const pos = slide.meta['3d-pos'] || 'right';

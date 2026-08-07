@@ -271,13 +271,11 @@ ul.rail li::before {
   display: grid;
   grid-template-columns: 1fr 1fr 585px;
   grid-template-rows: 1fr 1fr;
-  gap: 42px var(--grid-gutter);
-}
-/* мало текста: карточки по высоте контента и по центру области, а не растянуты
-   на всю сетку (работа с пустотой, presentation-rules.md §5) */
-.service-grid.hug {
-  grid-template-rows: auto auto;
-  align-content: center;
+  /* Зазоры в сетке карточек одинаковые со всех сторон — 20px, и ряд занимает всю
+     доступную область: 100% ширины сетки и 560–580px по высоте
+     (правило пользователя 2026-08-07). Карточки не сжимаются по контенту. */
+  gap: 20px;
+  min-height: 560px;
 }
 .service-card {
   position: relative;

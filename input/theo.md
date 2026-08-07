@@ -48,7 +48,8 @@ lang: ru
 ---
 
 # Кому помогает Тео
-[layout: benefits-grid]
+[layout: title-bullets]
+[image: photos/people/team-five-meeting-laptop-smiling.webp]
 > Разные роли получают ответы в рамках своего доступа.
 
 - Тревел-менеджеры и координаторы — расходы, нарушения тревел-политики и общая картина по поездкам
