@@ -177,6 +177,13 @@ body {
    короткий список не должен «плавать» в пустом белом прямоугольнике */
 .card.hug { align-self: center; height: auto; }
 
+/* Пара «текст + фото» занимает почти всю рабочую область по высоте: не меньше
+   560px (правило пользователя 2026-08-07). Короткий контейнер рядом с фото —
+   ошибка: слайд выглядит провисшим. */
+.content .cols > .card,
+.content .cols > .photo-card,
+.content .cols > .media-col { min-height: 560px; }
+
 /* колонка под фото/мокап рядом с текстом: 30–40% рабочей ширины */
 .media-col { display: flex; align-items: center; justify-content: center; min-height: 0; }
 .media-col img { max-width: 100%; max-height: 100%; object-fit: contain; }

@@ -242,9 +242,13 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
       } else {
         ctx.flat = true;
         ctx.noImage = !ctx.image;
-        ctx.cardFit = sparse ? 'hug' : ''; // контейнер по высоте контента, а не на всю область
+        // контейнер по высоте контента — только когда рядом НЕТ изображения:
+        // в паре «текст + фото» оба блока тянутся почти на всю высоту (≥560px)
+        ctx.cardFit = sparse && !ctx.image ? 'hug' : '';
         if (ctx.image) {
-          const contain = /\/(mockups|3d)\/|\.svg$|\.png$/i.test(ctx.image);
+          // фото, скриншоты и мокапы — всегда в скруглённый контейнер, fill внутри;
+          // без карточки идут только 3D-объекты на прозрачном фоне
+          const contain = /\/3d\//i.test(ctx.image);
           ctx.mediaContain = contain;
           ctx.mediaCover = !contain;
         }
