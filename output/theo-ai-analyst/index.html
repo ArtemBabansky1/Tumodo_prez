@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тео — AI‑аналитик корпоративных поездок</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<style id="deck-overrides">
+#s3 > img:last-child {
+  height: 250px !important;
+  left: 50% !important;
+  bottom: 10px !important;
+  transform: translate(-50%, 25%) !important;
+}
+
+#s4 .query-head { position:absolute; left:var(--slide-margin); right:var(--slide-margin); top:188px; height:118px; display:grid; grid-template-columns:520px 1fr; gap:62px; align-items:end; }
+#s4 .query-head h1 { color:var(--blue-base); }
+#s4 .query-head p { max-width:760px; padding-bottom:4px; font-weight:500; line-height:1.25; text-wrap:pretty; }
+#s4 .query-grid { position:absolute; left:var(--slide-margin); right:var(--slide-margin); top:342px; bottom:120px; display:grid; grid-template-columns:repeat(3, 1fr); grid-template-rows:repeat(2, 1fr); padding:42px 60px; border-radius:var(--radius-l); background:var(--white); box-shadow:var(--shadow-light); }
+#s4 .query-grid article { display:flex; align-items:flex-start; padding:13px 30px 24px; border-right:2px solid var(--surface-gray); }
+#s4 .query-grid article:nth-child(3n) { border-right:0; }
+#s4 .query-grid article:nth-child(-n+3) { border-bottom:2px solid var(--surface-gray); }
+#s4 .query-grid article:nth-child(n+4) { padding-top:36px; }
+#s4 .query-grid p { font-family:var(--font-family); font-size:25px; font-weight:400; line-height:1.23; text-wrap:pretty; }
+#s4 .query-grid strong { color:var(--blue-base); font-weight:700; }
+
+#s5 > img:last-child {
+  height: 230px !important;
+  left: 50% !important;
+  bottom: 5px !important;
+  transform: translate(-50%, 20%) !important;
+}
+
+#s6 > img:last-child {
+  height: 470px !important;
+  left: 29% !important;
+  bottom: 0 !important;
+  transform: translate(-50%, 22%) !important;
+}
+
+</style>
+</head>
+<body>
+<!-- Лента слайдов (масштаб 0.5 на экране; печать — 1 слайд = 1 страница 1920×1080) -->
+<div class="deck">
+<div class="slide-wrap">
+<section class="slide theme-blue" id="s1">
+  <div class="bg"><div class="bg-pattern"></div></div>
+  <img class="cover-logo" src="assets/logo/logo-white.svg" alt="Tumodo">
+  <div style="position:absolute;left:120px;right:120px;bottom:120px;display:flex;align-items:flex-end;gap:40px;">
+    <div style="display:flex;flex-direction:column;gap:28px;min-width:0;">
+      <div class="t-cover-2" style="max-width:1300px;">Сократите время на подготовку отчётов по командировкам</div>
+      <div class="t-body-big" style="max-width:1100px;font-weight:400;">Первый на рынке AI‑аналитик корпоративных поездок — внутри онлайн‑сервиса Tumodo</div>
+    </div>
+    <div style="flex:1;"></div>
+    <div class="btn-pill" style="margin-bottom:8px;">Подробнее →</div>
+  </div>
+</section>
+</div>
+<div class="slide-wrap">
+<section class="slide theme-light" id="s2">
+  <div class="deck-label">Тео — AI‑аналитик корпоративных поездок</div><img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo"><div class="slide-num">2</div>
+  
+  
+  <!-- мало текста и нет фото: H1 + лид слева, контейнер справа на половине слайда -->
+  <div class="aside-head">
+    <h1 class="t-page-title">Один вопрос о командировках — готовый анализ в диалоге</h1>
+    <div class="t-body-middle">Привет, я Тео — AI‑аналитик Tumodo</div>
+  </div>
+  <div class="aside-body">
+    <div class="card hug">
+      
+      <ul class="dots"><li>Нахожу главное в цифрах и визуализирую результаты</li><li>Анализирую расходы, маршруты, поставщиков и нарушения тревел‑политики</li><li>Превращаю доступные данные в выводы для отчётов и презентаций</li></ul>
+      
+    </div>
+  </div>
+  
+  
+<img src="assets/img/theo-mascot-analyst-1.png" alt="" style="position:absolute;left:65%;bottom:0;height:560px;transform:translate(-50%,25%);z-index:5;"></section></div>
+<div class="slide-wrap">
+<section class="slide theme-light" id="s3">
+  <div class="deck-label">Тео — AI‑аналитик корпоративных поездок</div><img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo"><div class="slide-num">3</div>
+  <h1 class="t-page-title accent" style="position:absolute;left:120px;top:200px;max-width:1200px;">Больше, чем стандартный чат‑бот</h1>
+  <div class="service-grid grid-2x2">
+    
+    <div class="service-card">
+      
+      <div class="card-title">Понимает без сложных команд</div>
+      <div class="card-text">сформулируйте запрос простыми словами, без специальных промптов</div>
+      
+    </div>
+    
+    <div class="service-card">
+      
+      <div class="card-title">Работает с актуальными данными</div>
+      <div class="card-text">сам выбирает срез, считает показатели и подбирает формат ответа</div>
+      
+    </div>
+    
+    <div class="service-card">
+      
+      <div class="card-title">Помнит контекст беседы</div>
+      <div class="card-text">продолжайте анализ короткими уточнениями: «Покажи по отделам» или «Сравни с прошлым годом»</div>
+      
+    </div>
+    
+    <div class="service-card">
+      
+      <div class="card-title">Разбирается в бизнес‑тревел</div>
+      <div class="card-text">понимает возвраты, отмены и особенности расчёта расходов по услугам</div>
+      
+    </div>
+    
+    
+  </div>
+<img src="assets/img/3d-folder-documents-blue.webp" alt="" style="position:absolute;left:50%;bottom:0;height:560px;transform:translate(-50%,25%);z-index:5;"></section></div>
+<div class="slide-wrap" data-canon-reference="decks/library/73__855-2613.png" data-semantic-role="use-cases">
+<section class="slide theme-light" id="s4">
+  <div class="deck-label">Тео — AI-аналитик корпоративных поездок</div>
+  <img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo">
+  <div class="slide-num">4</div>
+
+  <div class="query-head">
+    <h1 class="t-page-title">С какими запросами<br>работает Тео</h1>
+    <p class="t-body-middle">От расходов и маршрутов до соблюдения тревел-политики — задайте вопрос обычными словами.</p>
+  </div>
+
+  <div class="query-grid">
+    <article><p><strong>Динамика и структура затрат</strong> — расходы по периодам, видам и количеству услуг</p></article>
+    <article><p><strong>Маршруты и направления</strong> — популярные города, билеты туда-обратно и рейсы с пересадками</p></article>
+    <article><p><strong>Соблюдение тревел-политики</strong> — нарушения по сотрудникам, категориям и суммам</p></article>
+    <article><p><strong>Поставщики и классы обслуживания</strong> — авиакомпании, средняя стоимость билета и ночи, распределение тарифов</p></article>
+    <article><p><strong>Статусы бронирований</strong> — возвраты, обмены, штрафы и сборы по операциям</p></article>
+    <article><p><strong>Свободный вопрос</strong> — «Сколько потратили за квартал?» или «В каких отелях останавливаются чаще?»</p></article>
+  </div>
+</section></div>
+<div class="slide-wrap">
+<section class="slide theme-light" id="s5">
+  <div class="deck-label">Тео — AI‑аналитик корпоративных поездок</div><img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo"><div class="slide-num">5</div>
+  <div class="badge-h1-row">
+    
+    <h1 class="t-page-title accent">Простая аналитика вместо сложных расчётов</h1>
+  </div>
+  
+  <div class="challenge-row">
+    <div class="label">Вызов</div>
+    <div class="t-body-middle" style="max-width:1100px;">Тео заменяет ручную сборку отчёта непрерывным диалогом с данными</div>
+  </div>
+  
+  <div class="cols cols-2" style="position:absolute;left:120px;right:120px;top:430px;bottom:115px;height:auto;">
+    <div class="card" style="position:relative;overflow:hidden;">
+      <div class="card-title">Раньше</div>
+      <ul class="dots"><li>Сопоставление нескольких файлов и часы работы со сводными таблицами</li><li>Перенастройка фильтров и пересборка отчёта после каждого уточнения</li><li>Самостоятельный поиск закономерностей и аномалий в массиве данных</li></ul>
+      <img class="deco-curve" src="assets/patterns/curve-gray.svg" alt="" style="left:0;bottom:-30px;width:110%;">
+    </div>
+    <div class="card card-blue" style="position:relative;overflow:hidden;">
+      <div class="card-title">С Тео</div>
+      <ul class="checks"><li>Постепенное погружение в детали без повторного запроса</li><li>Наглядное сравнение нужных показателей в одном окне</li><li>Готовые гипотезы и найденные AI‑аналитиком паттерны</li></ul>
+      
+    </div>
+  </div>
+<img src="assets/img/3d-chat-bubbles-blue-silver.webp" alt="" style="position:absolute;left:50%;bottom:0;height:560px;transform:translate(-50%,25%);z-index:5;"></section></div>
+<div class="slide-wrap">
+<section class="slide theme-light" id="s6">
+  <div class="deck-label">Тео — AI‑аналитик корпоративных поездок</div><img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo"><div class="slide-num">6</div>
+  <div class="split-left">
+    <h1 class="t-page-title accent">Как начать работу</h1>
+    <div class="t-body-middle">Возможности Тео зависят от роли пользователя и действующих прав доступа</div>
+    <div class="spacer"></div>
+    
+  </div>
+  <div class="split-right">
+    
+    <div class="card pad-m" style="position:relative;overflow:hidden;">
+      <img class="deco-curve" src="assets/patterns/curve-gray.svg" alt="" style="left:-10%;top:-30px;width:130%;">
+      <div style="flex:1;"></div>
+      <div class="card-title">Доступ по ролям</div>
+      <ul class="dots small"><li class="t-body-small">Главный координатор — аналитика по доступному портфелю компаний и поездок</li><li class="t-body-small">Координатор — статистика по своим отделам и доступным заказам</li><li class="t-body-small">Сотрудник — аналитика по собственным поездкам</li></ul>
+    </div>
+    
+    <div class="card pad-m card-blue" style="position:relative;overflow:hidden;">
+      
+      
+      <div class="card-title">Пять шагов</div>
+      <ul class="dots small"><li class="t-body-small">Откройте раздел «Отчёты» и нажмите на виджет Тео</li><li class="t-body-small">Задайте вопрос и подтвердите предложенный план анализа</li><li class="t-body-small">Изучите ответ и при необходимости отфильтруйте таблицу</li><li class="t-body-small">Уточните вопрос или выберите одну из подсказок</li><li class="t-body-small">Выгрузите готовые результаты в Excel</li></ul>
+    </div>
+    
+  </div>
+<img src="assets/img/theo-mascot-analyst-2.png" alt="" style="position:absolute;left:35%;bottom:0;height:560px;transform:translate(-50%,25%);z-index:5;"></section></div>
+<div class="slide-wrap">
+<section class="slide theme-blue" id="s7">
+  <div class="bg"><div class="bg-pattern"></div></div>
+  <img class="cover-logo" src="assets/logo/logo-white.svg" alt="Tumodo">
+  <div class="t-cover-1" style="position:absolute;left:120px;right:120px;bottom:120px;">Задайте свой первый вопрос Тео прямо сейчас</div>
+</section>
+</div>
+</div>
+</body>
+</html>

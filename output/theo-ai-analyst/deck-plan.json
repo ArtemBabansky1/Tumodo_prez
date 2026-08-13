@@ -1,0 +1,134 @@
+﻿{
+    "name":  "theo-ai-analyst",
+    "audience":  "Корпоративные клиенты Tumodo: тревел-менеджеры, координаторы и руководители",
+    "communicationJob":  "Показать, что Тео быстро превращает доступные данные о командировках в понятный анализ, и побудить аудиторию попробовать его в работе",
+    "narrativeArc":  "Обещание экономии времени → знакомство с Тео → преимущества → сценарии запросов → эффект до/после → запуск → призыв к действию",
+    "slides":  [
+                   {
+                       "number":  1,
+                       "title":  "Сократите время на подготовку отчётов по командировкам",
+                       "purpose":  "Сформулировать ключевое обещание",
+                       "claim":  "Тео ускоряет подготовку аналитики по командировкам",
+                       "semanticRole":  "cover",
+                       "compositionFamily":  "hero",
+                       "layout":  "cover",
+                       "canonReference":  "decks/library/01__855-4071.png",
+                       "figmaNodeId":  "855:4071",
+                       "theme":  "brand-blue",
+                       "density":  "low",
+                       "mediaStrategy":  "Фирменный паттерн",
+                       "assets":  [
+
+                                  ],
+                       "rationale":  "Воздушная синяя обложка удерживает фокус на одном обещании"
+                   },
+                   {
+                       "number":  2,
+                       "title":  "Один вопрос о командировках — готовый анализ в диалоге",
+                       "purpose":  "Познакомить с продуктом и объяснить механику",
+                       "claim":  "Тео превращает обычный вопрос в готовый анализ",
+                       "semanticRole":  "people",
+                       "compositionFamily":  "two-panel",
+                       "layout":  "intro",
+                       "canonReference":  "decks/library/923__855-3426.png",
+                       "figmaNodeId":  "855:3426",
+                       "theme":  "light",
+                       "density":  "medium",
+                       "mediaStrategy":  "Маскот Тео как смысловой герой",
+                       "assets":  [
+                                      "photos/3d/theo-mascot-analyst-1.png"
+                                  ],
+                       "rationale":  "Крупный тезис и персонаж создают ясный вход в продукт"
+                   },
+                   {
+                       "number":  3,
+                       "title":  "Больше, чем стандартный чат-бот",
+                       "purpose":  "Доказать продуктовую ценность",
+                       "claim":  "Тео понимает контекст, данные и специфику бизнес-тревел",
+                       "semanticRole":  "problem-solution",
+                       "compositionFamily":  "benefits-grid-2x2",
+                       "layout":  "benefits-grid",
+                       "canonReference":  "decks/library/36__855-1454.png",
+                       "figmaNodeId":  "855:1454",
+                       "theme":  "light",
+                       "density":  "medium",
+                       "mediaStrategy":  "3D-папка встроена в нижний межкарточный ритм и поддерживает идею работы с данными",
+                       "assets":  [
+                                      "photos/3d/3d-folder-documents-blue.webp"
+                                  ],
+                       "rationale":  "Карточная композиция разделяет четыре независимых преимущества"
+                   },
+                   {
+                       "number":  4,
+                       "title":  "С какими запросами работает Тео",
+                       "purpose":  "Раскрыть широту сценариев",
+                       "claim":  "Тео покрывает основные задачи аналитики корпоративных поездок",
+                       "semanticRole":  "use-cases",
+                       "compositionFamily":  "structured-table",
+                       "layout":  "table",
+                       "canonReference":  "decks/library/73__855-2613.png",
+                       "figmaNodeId":  "855:2613",
+                       "theme":  "light",
+                       "density":  "high",
+                       "mediaStrategy":  "Единый белый контейнер с матрицей запросов 3×2",
+                       "assets":  [
+
+                                  ],
+                       "rationale":  "Композиция канона переносит шесть сценариев из разрозненных карточек в единую строгую матрицу: синий заголовок, пояснение справа, тонкие разделители и равномерный визуальный ритм."
+                   },
+                   {
+                       "number":  5,
+                       "title":  "Простая аналитика вместо сложных расчётов",
+                       "purpose":  "Показать изменение процесса",
+                       "claim":  "Тео заменяет ручную сборку отчёта диалогом с данными",
+                       "semanticRole":  "problem-solution",
+                       "compositionFamily":  "two-panel",
+                       "layout":  "pain-solution",
+                       "canonReference":  "decks/library/13__855-753.png",
+                       "figmaNodeId":  "855:753",
+                       "theme":  "light",
+                       "density":  "medium",
+                       "mediaStrategy":  "3D-диалог встроен между панелями в свободной нижней зоне и подчёркивает переход к разговорной аналитике",
+                       "assets":  [
+                                      "photos/3d/3d-chat-bubbles-blue-silver.webp"
+                                  ],
+                       "rationale":  "Двухпанельный канон делает разницу мгновенно понятной"
+                   },
+                   {
+                       "number":  6,
+                       "title":  "Как начать работу",
+                       "purpose":  "Снять барьер первого запуска",
+                       "claim":  "Начать анализ можно за пять понятных шагов в рамках своей роли",
+                       "semanticRole":  "process",
+                       "compositionFamily":  "intro-two-cards",
+                       "layout":  "principle-detail",
+                       "canonReference":  "decks/library/50__855-615.png",
+                       "figmaNodeId":  "855:615",
+                       "theme":  "light",
+                       "density":  "high",
+                       "mediaStrategy":  "Маскот Тео занимает свободную левую зону и визуально сопровождает первый запуск",
+                       "assets":  [
+                                      "photos/3d/theo-mascot-analyst-2.png"
+                                  ],
+                       "rationale":  "Разделение ролей и шагов помогает быстро найти нужную информацию"
+                   },
+                   {
+                       "number":  7,
+                       "title":  "Задайте свой первый вопрос Тео прямо сейчас",
+                       "purpose":  "Завершить конкретным действием",
+                       "claim":  "Тео уже готов работать с данными клиента",
+                       "semanticRole":  "closing",
+                       "compositionFamily":  "hero",
+                       "layout":  "final",
+                       "canonReference":  "decks/library/01__855-4071.png",
+                       "figmaNodeId":  "855:4071",
+                       "theme":  "brand-blue",
+                       "density":  "low",
+                       "mediaStrategy":  "Крупный призыв на фирменном фоне",
+                       "assets":  [
+
+                                  ],
+                       "rationale":  "Финальный hero возвращает к обещанию обложки и завершает действием"
+                   }
+               ]
+}

@@ -1,0 +1,6 @@
+#s3 > img:last-child {
+  height: 250px !important;
+  left: 50% !important;
+  bottom: 10px !important;
+  transform: translate(-50%, 25%) !important;
+}

@@ -8,6 +8,14 @@ const fs = require('fs');
 const fsp = fs.promises;
 const express = require('express');
 const multer = require('multer');
+const { execFile } = require('child_process');
+const {
+  ROLE_LABELS: ENGINE_ROLE_LABELS,
+  parseLibraryCatalog,
+  parseVisualAssets,
+  recommendReferences,
+  recommendVisualAssets,
+} = require('../scripts/lib/design-intelligence');
 
 const ROOT = path.resolve(__dirname, '..');
 const DS_DIR = path.join(ROOT, 'design-system');
@@ -137,9 +145,16 @@ async function writeCatalog(conf, data) {
   await writeJson(path.join(catDir(conf), 'catalog.json'), data);
 }
 
-app.get('/api/assets/:cat', async (req, res) => {
-  const conf = catConf(req, res);
-  if (!conf) return;
+/** Восстанавливает исходное имя загрузки из latin1 и URL-кодирования браузера. */
+function decodeUploadName(value) {
+  let name = Buffer.from(String(value || ''), 'latin1').toString('utf8');
+  if (/%[0-9a-f]{2}/i.test(name)) {
+    try { name = decodeURIComponent(name); } catch {}
+  }
+  return name;
+}
+
+async function listAssetItems(conf) {
   const base = catDir(conf);
   const catalog = await readCatalog(conf);
   const items = [];
@@ -174,6 +189,13 @@ app.get('/api/assets/:cat', async (req, res) => {
     }
   }
   items.sort((a, b) => a.file.localeCompare(b.file));
+  return items;
+}
+
+app.get('/api/assets/:cat', async (req, res) => {
+  const conf = catConf(req, res);
+  if (!conf) return;
+  const items = await listAssetItems(conf);
   res.json({ items, subdirs: catSubdirs(conf) });
 });
 
@@ -184,7 +206,7 @@ app.post('/api/assets/:cat/upload', upload.array('files'), async (req, res) => {
   const errors = [];
   for (const f of req.files || []) {
     // multer отдаёт originalname в latin1 — чиним кириллицу
-    const original = Buffer.from(f.originalname, 'latin1').toString('utf8');
+    const original = decodeUploadName(f.originalname);
     const name = safeName(original);
     const ext = path.extname(name).toLowerCase();
     let sub;
@@ -352,10 +374,411 @@ app.put('/api/presentations/:name', async (req, res) => {
   res.json({ ok: true });
 });
 
-app.post('/api/presentations/:name/build', (req, res) => {
-  res.status(501).json({
-    error: 'Движок сборки будет подключён на этапе 4 (scripts/build). Пока запускай сборку через Claude Code: /build ' + req.params.name,
+// ---------------------------------------------------------------- engine workspace
+
+const ENGINE_LAYOUTS_DIR = path.join(DS_DIR, 'canon', 'layouts');
+const ENGINE_LAYOUT_NAMES = {
+  cover: 'Обложка',
+  final: 'Финал',
+  statement: 'Ключевая мысль',
+  'section-divider': 'Раздел',
+  'title-bullets': 'Текст и тезисы',
+  intro: 'Введение',
+  'numbered-cards-3': 'Три шага',
+  'pain-solution': 'Проблема и решение',
+  'benefits-grid': 'Сетка преимуществ',
+  'principle-detail': 'Детали принципа',
+};
+
+async function engineLayoutCatalog() {
+  let files = [];
+  try {
+    files = await fsp.readdir(ENGINE_LAYOUTS_DIR);
+  } catch {}
+  const groups = new Map();
+  for (const file of files.sort()) {
+    if (!/\.(?:png|jpe?g|webp)$/i.test(file)) continue;
+    const stem = file.replace(/\.[^.]+$/, '');
+    const id = stem.replace(/\.var-\d+$/, '');
+    const variantMatch = stem.match(/\.var-(\d+)$/);
+    if (!groups.has(id)) groups.set(id, {
+      id,
+      label: ENGINE_LAYOUT_NAMES[id] || id,
+      variants: [],
+    });
+    groups.get(id).variants.push({
+      id: file,
+      label: variantMatch ? 'Вариант ' + variantMatch[1] : 'Основной',
+      url: '/files/design-system/canon/layouts/' + encodeURIComponent(file),
+    });
+  }
+  return [...groups.values()];
+}
+
+function engineReferenceCatalog() {
+  return parseLibraryCatalog();
+}
+
+function normalizeCanonReference(value) {
+  const reference = String(value || '').replace(/\\/g, '/').trim();
+  if (/^[a-zA-Z0-9._-]+\.(?:png|jpe?g|webp)$/i.test(reference)) return 'layouts/' + reference;
+  if (/^(?:layouts|decks\/library)\/[a-zA-Z0-9._-]+\.(?:png|jpe?g|webp)$/i.test(reference)) return reference;
+  return '';
+}
+
+async function canonReferenceExists(value) {
+  const reference = normalizeCanonReference(value);
+  if (!reference) return '';
+  try {
+    await fsp.access(path.join(DS_DIR, 'canon', ...reference.split('/')));
+    return reference;
+  } catch {
+    return '';
+  }
+}
+
+function splitDeckSource(source) {
+  const clean = String(source || '').replace(/^\uFEFF/, '');
+  const fm = {};
+  let frontmatter = '';
+  let body = clean;
+  const match = clean.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+  if (match) {
+    frontmatter = match[0].trimEnd();
+    for (const line of match[1].split(/\r?\n/)) {
+      const part = line.match(/^([\w-]+):\s*(.*)$/);
+      if (part) fm[part[1]] = part[2].trim();
+    }
+    body = clean.slice(match[0].length);
+  }
+  const blocks = body
+    .split(/\r?\n---\r?\n/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+  return { fm, frontmatter, blocks };
+}
+
+function parseEngineSlide(block, index) {
+  const slide = {
+    index,
+    title: '',
+    layout: '',
+    layoutExplicit: false,
+    variant: '',
+    reference: '',
+    semanticRole: '',
+    lead: '',
+    summary: '',
+    image: '',
+    threeD: '',
+    threeDPosition: 'right',
+    bullets: 0,
+    sections: 0,
+  };
+  const lead = [];
+  const content = [];
+  for (const raw of block.split(/\r?\n/)) {
+    const line = raw.trim();
+    let m;
+    if ((m = line.match(/^#\s+(.*)$/))) slide.title = m[1].trim();
+    else if (/^##\s+/.test(line)) slide.sections += 1;
+    else if ((m = line.match(/^\[([\w-]+):\s*([^\]]*)\]$/))) {
+      const key = m[1];
+      const value = m[2].trim();
+      if (key === 'layout') { slide.layout = value; slide.layoutExplicit = true; }
+      else if (key === 'variant') slide.variant = value;
+      else if (key === 'reference') slide.reference = value;
+      else if (key === 'semantic-role') slide.semanticRole = value;
+      else if (key === 'image') slide.image = value;
+      else if (key === '3d') slide.threeD = value;
+      else if (key === '3d-pos') slide.threeDPosition = value || 'right';
+    } else if ((m = line.match(/^>\s?(.*)$/))) lead.push(m[1].trim());
+    else if (/^[-*]\s+/.test(line)) {
+      slide.bullets += 1;
+      content.push(line.replace(/^[-*]\s+/, ''));
+    } else if (line && !/^---$/.test(line)) content.push(line);
+  }
+  slide.lead = lead.join(' ');
+  slide.summary = slide.lead || content[0] || '';
+  slide.searchText = [slide.title, slide.lead, ...content].filter(Boolean).join(' ');
+  if (!slide.layout) {
+    if (index === 0) slide.layout = 'cover';
+    else if (slide.sections === 3) slide.layout = 'numbered-cards-3';
+    else slide.layout = 'title-bullets';
+  }
+  return slide;
+}
+
+function enginePlan(name, source) {
+  const parsed = splitDeckSource(source);
+  return {
+    name,
+    title: parsed.fm.title || name,
+    subtitle: parsed.fm.subtitle || '',
+    slides: parsed.blocks.map(parseEngineSlide),
+  };
+}
+
+function updateSlideMetadata(block, changes) {
+  const lines = block.split(/\r?\n/);
+  const sectionAt = lines.findIndex((line) => /^##\s+/.test(line.trim()));
+  const topEnd = sectionAt < 0 ? lines.length : sectionAt;
+  const existing = {};
+  const kept = [];
+  for (let i = 0; i < lines.length; i += 1) {
+    const m = i < topEnd && lines[i].trim().match(/^\[([\w-]+):\s*([^\]]*)\]$/);
+    if (m && Object.prototype.hasOwnProperty.call(changes, m[1])) {
+      existing[m[1]] = m[2].trim();
+      continue;
+    }
+    kept.push(lines[i]);
+  }
+  const values = { ...existing, ...changes };
+  const order = ['layout', 'reference', 'variant', 'semantic-role', 'image', '3d', '3d-pos'];
+  const meta = order
+    .filter((key) => Object.prototype.hasOwnProperty.call(values, key) && values[key])
+    .map((key) => '[' + key + ': ' + values[key] + ']');
+  const titleAt = kept.findIndex((line) => /^#\s+/.test(line.trim()));
+  kept.splice(titleAt < 0 ? 0 : titleAt + 1, 0, ...meta);
+  return kept.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+function runNodeScript(script, args, timeout = 120000) {
+  return new Promise((resolve, reject) => {
+    execFile(process.execPath, [path.join(ROOT, script), ...args], {
+      cwd: ROOT,
+      timeout,
+      windowsHide: true,
+      maxBuffer: 4 * 1024 * 1024,
+    }, (error, stdout, stderr) => {
+      if (error) {
+        error.stdout = stdout;
+        error.stderr = stderr;
+        reject(error);
+      } else resolve({ stdout, stderr });
+    });
   });
+}
+
+app.get('/api/engine/catalog', async (req, res) => {
+  try {
+    const [layouts, photos, mockups] = await Promise.all([
+      engineLayoutCatalog(),
+      listAssetItems(ASSET_CATEGORIES.photos),
+      listAssetItems(ASSET_CATEGORIES.mockups),
+    ]);
+    const references = engineReferenceCatalog();
+    const asset = (item, category, kind, prefix) => ({
+      ...item,
+      category,
+      kind,
+      source: prefix + '/' + item.file,
+    });
+    res.json({
+      layouts,
+      references,
+      referenceRoles: Object.entries(ENGINE_ROLE_LABELS).map(([id, label]) => ({
+        id,
+        label,
+        count: references.filter((item) => item.role === id).length,
+      })).filter((item) => item.count),
+      assets: {
+        photos: photos.filter((item) => item.sub === 'people').map((item) => asset(item, 'photos', 'image', 'photos')),
+        threeD: photos.filter((item) => item.sub === '3d').map((item) => asset(item, 'threeD', '3d', 'photos')),
+        mockups: mockups.map((item) => asset(item, 'mockups', 'image', 'mockups')),
+      },
+    });
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+app.get('/api/engine/plan/:name', async (req, res) => {
+  if (!NAME_RE.test(req.params.name)) return res.status(400).json({ error: 'Некорректное имя' });
+  try {
+    const source = await fsp.readFile(path.join(ROOT, 'input', req.params.name + '.md'), 'utf8');
+    res.json(enginePlan(req.params.name, source));
+  } catch {
+    res.status(404).json({ error: 'Файл не найден' });
+  }
+});
+
+app.get('/api/review/:name', async (req, res) => {
+  const name = req.params.name;
+  if (!NAME_RE.test(name)) return res.status(400).json({ error: 'Некорректное имя' });
+  try {
+    const source = await fsp.readFile(path.join(ROOT, 'input', name + '.md'), 'utf8');
+    const sourcePlan = enginePlan(name, source);
+    const outputDir = path.join(ROOT, 'output', name);
+    let deckPlan = null;
+    try { deckPlan = await readJsonSafe(path.join(outputDir, 'deck-plan.json')); } catch {}
+
+    const shots = new Map();
+    try {
+      for (const file of await fsp.readdir(path.join(outputDir, 'screenshots'))) {
+        const m = file.match(/^slide-(\d+)\.(?:png|jpe?g|webp)$/i);
+        if (!m) continue;
+        const st = await fsp.stat(path.join(outputDir, 'screenshots', file));
+        shots.set(Number(m[1]), {
+          file,
+          mtime: st.mtimeMs,
+          url: '/files/output/' + name + '/screenshots/' + file + '?v=' + Math.round(st.mtimeMs),
+        });
+      }
+    } catch {}
+
+    let hasOutput = false;
+    try { await fsp.access(path.join(outputDir, 'index.html')); hasOutput = true; } catch {}
+    const plannedSlides = deckPlan && Array.isArray(deckPlan.slides) ? deckPlan.slides : [];
+    const referenceLibrary = engineReferenceCatalog();
+    const visualAssetLibrary = parseVisualAssets();
+    const total = Math.max(sourcePlan.slides.length, plannedSlides.length, ...shots.keys(), 0);
+    const slides = [];
+    let previousComposition = '';
+    for (let i = 0; i < total; i += 1) {
+      const sourceSlide = sourcePlan.slides[i] || {};
+      const planned = plannedSlides[i] || {};
+      const shot = shots.get(i + 1) || null;
+      const isSyntheticFinal = i >= sourcePlan.slides.length && i === total - 1;
+      const semantic = recommendReferences(
+        isSyntheticFinal ? { ...sourceSlide, layout: 'final', title: 'Финальный слайд' } : sourceSlide,
+        i,
+        total,
+        { library: referenceLibrary, limit: 12, previousComposition }
+      );
+      const plannedReference = planned.canonReference || sourceSlide.reference || '';
+      const bestReference = semantic.references[0] || null;
+      const visual = recommendVisualAssets(sourceSlide, i, total, {
+        analysis: semantic.analysis,
+        assets: visualAssetLibrary,
+        limit: 6,
+      });
+      previousComposition = planned.compositionFamily || (bestReference && bestReference.composition) || previousComposition;
+      slides.push({
+        index: i,
+        number: i + 1,
+        title: planned.title || sourceSlide.title || (isSyntheticFinal ? 'Финальный слайд' : 'Слайд ' + (i + 1)),
+        purpose: planned.purpose || '',
+        claim: planned.claim || sourceSlide.summary || '',
+        rationale: planned.rationale || '',
+        semanticRole: planned.semanticRole || sourceSlide.semanticRole || semantic.analysis.role,
+        semanticRoleLabel: ENGINE_ROLE_LABELS[planned.semanticRole || sourceSlide.semanticRole || semantic.analysis.role] || semantic.analysis.roleLabel,
+        compositionFamily: planned.compositionFamily || '',
+        layout: planned.layout || sourceSlide.layout || semantic.analysis.renderLayout || (isSyntheticFinal ? 'final' : 'title-bullets'),
+        variant: planned.canonVariant || sourceSlide.variant || '',
+        reference: plannedReference,
+        referenceNodeId: planned.figmaNodeId || '',
+        recommendations: semantic.references,
+        visualRequirement: visual.required ? 'required' : 'intentional-exception',
+        visualSuggestions: visual.suggestions,
+        image: sourceSlide.image || '',
+        threeD: sourceSlide.threeD || '',
+        threeDPosition: sourceSlide.threeDPosition || 'right',
+        assets: Array.isArray(planned.assets) ? planned.assets : [],
+        screenshotUrl: shot ? shot.url : '',
+        screenshotMtime: shot ? shot.mtime : 0,
+      });
+    }
+    res.json({
+      name,
+      title: sourcePlan.title,
+      subtitle: sourcePlan.subtitle,
+      audience: deckPlan && deckPlan.audience ? deckPlan.audience : '',
+      communicationJob: deckPlan && deckPlan.communicationJob ? deckPlan.communicationJob : '',
+      narrativeArc: deckPlan && deckPlan.narrativeArc ? deckPlan.narrativeArc : '',
+      hasOutput,
+      outputUrl: hasOutput ? '/files/output/' + name + '/index.html' : '',
+      slides,
+    });
+  } catch (e) {
+    res.status(404).json({ error: 'Презентация не найдена: ' + String(e.message || e) });
+  }
+});
+
+app.patch('/api/engine/plan/:name/slides/:index', async (req, res) => {
+  const { name, index } = req.params;
+  if (!NAME_RE.test(name)) return res.status(400).json({ error: 'Некорректное имя' });
+  const slideIndex = Number(index);
+  if (!Number.isInteger(slideIndex) || slideIndex < 0) return res.status(400).json({ error: 'Некорректный номер слайда' });
+  try {
+    const file = path.join(ROOT, 'input', name + '.md');
+    const source = await fsp.readFile(file, 'utf8');
+    const parsed = splitDeckSource(source);
+    if (!parsed.blocks[slideIndex]) return res.status(404).json({ error: 'Слайд не найден' });
+
+    const changes = {};
+    if (typeof req.body.layout === 'string') {
+      const allowed = new Set((await engineLayoutCatalog()).map((item) => item.id));
+      if (!allowed.has(req.body.layout)) return res.status(400).json({ error: 'Неизвестный макет' });
+      changes.layout = req.body.layout;
+    }
+    if (typeof req.body.variant === 'string') {
+      if (!/^[a-zA-Z0-9._-]+\.(?:png|jpe?g|webp)$/i.test(req.body.variant)) {
+        return res.status(400).json({ error: 'Некорректный вариант макета' });
+      }
+      try { await fsp.access(path.join(ENGINE_LAYOUTS_DIR, req.body.variant)); }
+      catch { return res.status(404).json({ error: 'Вариант макета не найден' }); }
+      changes.variant = req.body.variant;
+    }
+    if (typeof req.body.reference === 'string') {
+      const reference = await canonReferenceExists(req.body.reference);
+      if (!reference) return res.status(404).json({ error: 'Канонический референс не найден' });
+      changes.reference = reference;
+    }
+    if (Object.prototype.hasOwnProperty.call(req.body, 'asset')) {
+      changes.image = '';
+      changes['3d'] = '';
+      changes['3d-pos'] = '';
+      if (req.body.asset) {
+        const { kind, source: assetSource, position } = req.body.asset;
+        if (
+          !['image', '3d'].includes(kind) ||
+          typeof assetSource !== 'string' ||
+          !/^(?:photos|mockups)\/[a-zA-Z0-9._/-]+$/.test(assetSource) ||
+          assetSource.includes('..')
+        ) {
+          return res.status(400).json({ error: 'Некорректный ассет' });
+        }
+        try { await fsp.access(path.join(DS_DIR, assetSource)); }
+        catch { return res.status(404).json({ error: 'Ассет не найден' }); }
+        changes[kind] = assetSource;
+        if (kind === '3d') changes['3d-pos'] = ['left', 'center', 'right'].includes(position) ? position : 'right';
+      }
+    }
+    if (typeof req.body.threeDPosition === 'string') {
+      if (!['left', 'center', 'right'].includes(req.body.threeDPosition)) {
+        return res.status(400).json({ error: 'Некорректная позиция 3D' });
+      }
+      changes['3d-pos'] = req.body.threeDPosition;
+    }
+
+    parsed.blocks[slideIndex] = updateSlideMetadata(parsed.blocks[slideIndex], changes);
+    const nextSource = (parsed.frontmatter ? parsed.frontmatter + '\n\n' : '') + parsed.blocks.join('\n\n---\n\n') + '\n';
+    await fsp.writeFile(file, nextSource, 'utf8');
+    res.json(enginePlan(name, nextSource));
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+app.post('/api/presentations/:name/build', async (req, res) => {
+  if (!NAME_RE.test(req.params.name)) return res.status(400).json({ error: 'Некорректное имя' });
+  try {
+    const args = [req.params.name];
+    if (req.body && req.body.strict) args.push('--strict');
+    const result = await runNodeScript(path.join('scripts', 'build.js'), args);
+    const output = [result.stdout, result.stderr].filter(Boolean).join('\n').trim();
+    res.json({
+      ok: true,
+      dir: 'output/' + req.params.name,
+      url: '/files/output/' + req.params.name + '/index.html',
+      warnings: /Предупреждения/.test(output),
+      output,
+    });
+  } catch (e) {
+    const detail = [e.stdout, e.stderr].filter(Boolean).join('\n').trim();
+    res.status(500).json({ error: detail || String(e.message || e) });
+  }
 });
 
 // ---------------------------------------------------------------- prompt (заявки на презентацию)
@@ -376,7 +799,7 @@ app.post('/api/prompt', upload.array('files'), async (req, res) => {
       files.push('prompt.md');
     }
     for (const f of uploaded) {
-      const original = Buffer.from(f.originalname, 'latin1').toString('utf8');
+      const original = decodeUploadName(f.originalname);
       const name = safeName(original) || 'attachment';
       await fsp.writeFile(path.join(dir, name), f.buffer);
       files.push(name);
@@ -466,9 +889,9 @@ app.delete('/api/chats/:id', async (req, res) => {
   }
 });
 
-// ---------------------------------------------------------------- Claude Code (чат фабрики)
+// ---------------------------------------------------------------- GPT / Codex (чат фабрики)
 
-require('./claude')(app, ROOT, upload);
+require('./agent')(app, ROOT, upload);
 
 // ---------------------------------------------------------------- overview
 

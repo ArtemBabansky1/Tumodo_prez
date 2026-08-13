@@ -25,10 +25,10 @@ if (!total) { console.error('В output/' + name + '/index.html не найден
 if (only && (only < 1 || only > total)) { console.error('Слайд ' + only + ' вне диапазона 1..' + total); process.exit(1); }
 
 const candidates = [
-  [process.env['ProgramFiles(x86)'], 'Microsoft', 'Edge', 'Application', 'msedge.exe'],
-  [process.env.ProgramFiles, 'Microsoft', 'Edge', 'Application', 'msedge.exe'],
   [process.env.ProgramFiles, 'Google', 'Chrome', 'Application', 'chrome.exe'],
   [process.env['ProgramFiles(x86)'], 'Google', 'Chrome', 'Application', 'chrome.exe'],
+  [process.env['ProgramFiles(x86)'], 'Microsoft', 'Edge', 'Application', 'msedge.exe'],
+  [process.env.ProgramFiles, 'Microsoft', 'Edge', 'Application', 'msedge.exe'],
 ].filter((p) => p[0]).map((p) => path.join(...p));
 const browser = candidates.find((p) => fs.existsSync(p));
 if (!browser) { console.error('Не найден Edge/Chrome для headless-скриншотов'); process.exit(1); }
@@ -69,7 +69,7 @@ try {
     const n = nums[i];
     const png = path.join(shotsDir, 'slide-' + String(n).padStart(2, '0') + '.png');
     execFileSync(browser, [
-      '--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run',
+      '--headless=new', '--no-sandbox', '--disable-gpu', '--disable-software-rasterizer', '--hide-scrollbars', '--no-first-run',
       '--user-data-dir=' + path.join(tmpDir, 'profile-' + n),
       '--force-device-scale-factor=1', '--window-size=1920,1080',
       '--screenshot=' + png,

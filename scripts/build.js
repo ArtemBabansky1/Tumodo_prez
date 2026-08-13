@@ -9,6 +9,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { analyzeSlide } = require('./lib/design-intelligence');
 
 const ROOT = path.join(__dirname, '..');
 const DS = path.join(ROOT, 'design-system');
@@ -154,17 +155,18 @@ function checkLimits(slide, layout, warn) {
 const LAYOUT_ALIASES = { title: 'cover', 'text-1col': 'title-bullets', 'text-2col': 'title-bullets' };
 const KNOWN = ['cover', 'final', 'statement', 'section-divider', 'title-bullets', 'intro', 'numbered-cards-3', 'pain-solution', 'benefits-grid', 'principle-detail'];
 
-function pickLayout(slide, index, report) {
+function pickLayout(slide, index, report, total) {
   let l = slide.layout ? (LAYOUT_ALIASES[slide.layout] || slide.layout) : null;
   if (l && !KNOWN.includes(l)) {
-    report(`слайд ${index + 1}: макет «${l}» не реализован в v1 — заменён на title-bullets`);
+    const semantic = analyzeSlide(slide, index, total);
+    report(`слайд ${index + 1}: семейство «${l}» пока не имеет общего HTML-шаблона — выбран ближайший рендер «${semantic.renderLayout}»; для точного Figma-канона агент должен создать override`);
+    l = semantic.renderLayout;
+  }
+  if (l && !KNOWN.includes(l)) {
     l = null;
   }
   if (l) return l;
-  if (index === 0) return 'cover';
-  if (slide.meta.pain) return 'pain-solution';
-  if (slide.sections.length === 3 && slide.sections.every((x) => x.bullets.length || x.paragraphs.length)) return 'numbered-cards-3';
-  return 'title-bullets';
+  return analyzeSlide(slide, index, total).renderLayout;
 }
 
 // ---------------------------------------------------------------- рендер слайдов
@@ -314,10 +316,16 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
       });
       ctx.noSide = true;
     }
-    // Сетка карточек всегда занимает всю доступную область: 100% ширины и
-    // 560–580px по высоте, зазоры 20px (правило пользователя 2026-08-07).
-    // Сжимать карточки по контенту нельзя — пустота вокруг ряда запрещена.
-    ctx.gridFit = '';
+    // Явно задаём и колонки, и строки: неявная третья строка раньше выходила
+    // за контейнер и съедала нижнее поле 120px.
+    if (ctx.noSide) {
+      const count = ctx.cards.length;
+      ctx.gridFit = count <= 2 ? 'grid-2x1'
+        : count <= 4 ? 'grid-2x2'
+          : count <= 6 ? 'grid-2x3'
+            : count <= 9 ? 'grid-3x3'
+              : 'grid-4x3';
+    } else ctx.gridFit = '';
   }
   if (layout === 'principle-detail') {
     ctx.conclusion = slide.meta.conclusion || '';
@@ -407,24 +415,71 @@ function main() {
   const report = (msg) => warnings.push(msg);
 
   const { fm, slides } = parseInput(fs.readFileSync(inputPath, 'utf8'));
+  const overridesDir = path.join(ROOT, 'input', 'overrides', name);
 
   // финальный слайд обязателен (presentation-rules.md §1.1)
   const last = slides[slides.length - 1];
   if (!last || last.layout !== 'final') slides.push({ title: '', layout: 'final', meta: {}, lead: '', paragraphs: [], bullets: [], sections: [] });
 
+  // Визуальная политика: почти каждый содержательный слайд должен иметь фото
+  // и/или 3D. Исключения — разделитель, манифест и действительно плотная сетка.
+  const visualEligible = slides.filter((slide) => {
+    const layout = slide.layout || '';
+    const denseGrid = layout === 'table' || (layout === 'benefits-grid' && (slide.bullets.length + slide.sections.length) >= 6);
+    return !['cover', 'final', 'section-divider', 'statement'].includes(layout) && !denseGrid;
+  });
+  const withVisual = visualEligible.filter((slide) => slide.meta.image || slide.meta['3d']);
+  for (const slide of visualEligible) {
+    if (!slide.meta.image && !slide.meta['3d']) {
+      report(`слайд «${slide.title || 'без заголовка'}»: нет обязательного фото/3D — добавьте [image: ...] или [3d: ...]`);
+    }
+  }
+  if (visualEligible.length && withVisual.length / visualEligible.length < 0.8) {
+    report(`визуальное покрытие ${withVisual.length}/${visualEligible.length} содержательных слайдов; требуется минимум 80%`);
+  }
+
   const usedAssets = new Map();
   const rendered = slides.map((slide, i) => {
-    const layout = pickLayout(slide, i, report);
+    const layout = pickLayout(slide, i, report, slides.length);
     checkLimits(slide, layout, (msg) => report(`слайд ${i + 1} (${layout}): ${msg}`));
-    const html = buildSlide(slide, layout, i + 1, fm, usedAssets, report);
-    return `<div class="slide-wrap">\n${html}</div>`;
+    const overridePath = path.join(overridesDir, 'slide-' + String(i + 1).padStart(2, '0') + '.html');
+    let html;
+    if (fs.existsSync(overridePath)) {
+      // Переопределение создаёт агент при точечной доработке слайда. Оно хранится
+      // рядом с input, поэтому не теряется при следующей полной сборке и не влияет
+      // на общие шаблоны или другие презентации.
+      html = fs.readFileSync(overridePath, 'utf8').trim();
+      for (const key of ['image', '3d']) {
+        const rel = slide.meta[key];
+        if (!rel) continue;
+        const local = useAsset(rel, usedAssets, report);
+        if (local) html = html.split('design-system/' + rel).join(local);
+      }
+    } else {
+      html = buildSlide(slide, layout, i + 1, fm, usedAssets, report);
+    }
+    const canonVariant = slide.meta.variant ? ` data-canon-variant="${esc(slide.meta.variant)}"` : '';
+    const canonReference = slide.meta.reference ? ` data-canon-reference="${esc(slide.meta.reference)}"` : '';
+    const semanticRole = slide.meta['semantic-role'] ? ` data-semantic-role="${esc(slide.meta['semantic-role'])}"` : '';
+    return `<div class="slide-wrap"${canonVariant}${canonReference}${semanticRole}>\n${html}</div>`;
   });
 
-  const page = render(fs.readFileSync(path.join(TPL, 'base.html'), 'utf8'), {
+  let page = render(fs.readFileSync(path.join(TPL, 'base.html'), 'utf8'), {
     lang: fm.lang || 'ru',
     title: fm.title || name,
     slides: rendered.join('\n'),
   });
+
+  // CSS-переопределения также изолированы на уровне конкретной презентации.
+  // Агенту рекомендуется именовать их slide-XX.css и ограничивать селекторы #sN.
+  if (fs.existsSync(overridesDir)) {
+    const css = fs.readdirSync(overridesDir)
+      .filter((file) => file.endsWith('.css'))
+      .sort()
+      .map((file) => fs.readFileSync(path.join(overridesDir, file), 'utf8'))
+      .join('\n');
+    if (css.trim()) page = page.replace('</head>', '<style id="deck-overrides">\n' + css + '\n</style>\n</head>');
+  }
 
   const outDir = path.join(ROOT, 'output', name);
   fs.mkdirSync(outDir, { recursive: true });

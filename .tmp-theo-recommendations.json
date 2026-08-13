@@ -1,0 +1,380 @@
+﻿{
+  "figma": {
+    "fileKey": "SZpOoVhI07GPa3Vf7BRc10",
+    "sectionNodeId": "855:401",
+    "references": 126
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Сократите время на подготовку отчётов по командировкам",
+      "semanticRole": "cover",
+      "renderLayout": "cover",
+      "recommended": [
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:5632",
+          "source": "decks/library/1-cover__855-5632.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:1440",
+          "source": "decks/library/31__855-1440.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Один вопрос о командировках — готовый анализ в диалоге",
+      "semanticRole": "process",
+      "renderLayout": "intro",
+      "recommended": [
+        {
+          "nodeId": "855:402",
+          "source": "decks/library/46__855-402.png",
+          "role": "process",
+          "composition": "process-flow",
+          "theme": "dark",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · сценарий или таймлайн"
+        },
+        {
+          "nodeId": "855:1167",
+          "source": "decks/library/52__855-1167.png",
+          "role": "process",
+          "composition": "process-flow",
+          "theme": "dark",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · сценарий или таймлайн"
+        },
+        {
+          "nodeId": "855:2398",
+          "source": "decks/library/66__855-2398.png",
+          "role": "process",
+          "composition": "process-flow",
+          "theme": "dark",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · сценарий или таймлайн"
+        },
+        {
+          "nodeId": "855:2934",
+          "source": "decks/library/7__855-2934.png",
+          "role": "process",
+          "composition": "process-flow",
+          "theme": "dark",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · сценарий или таймлайн"
+        },
+        {
+          "nodeId": "855:5209",
+          "source": "decks/library/899__855-5209.png",
+          "role": "process",
+          "composition": "process-flow",
+          "theme": "dark",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · сценарий или таймлайн"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Больше, чем стандартный чат-бот",
+      "semanticRole": "problem-solution",
+      "renderLayout": "benefits-grid",
+      "recommended": [
+        {
+          "nodeId": "855:753",
+          "source": "decks/library/13__855-753.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:804",
+          "source": "decks/library/14__855-804.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:857",
+          "source": "decks/library/15__855-857.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:908",
+          "source": "decks/library/16__855-908.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:959",
+          "source": "decks/library/17__855-959.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "С какими запросами работает Тео",
+      "semanticRole": "metrics",
+      "renderLayout": "benefits-grid",
+      "recommended": [
+        {
+          "nodeId": "855:1975",
+          "source": "decks/library/41__855-1975.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:2860",
+          "source": "decks/library/910__855-2860.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "light",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4703",
+          "source": "decks/library/943__855-4703.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4867",
+          "source": "decks/library/946__855-4867.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "light",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4915",
+          "source": "decks/library/948__855-4915.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Простая аналитика вместо сложных расчётов",
+      "semanticRole": "problem-solution",
+      "renderLayout": "pain-solution",
+      "recommended": [
+        {
+          "nodeId": "855:753",
+          "source": "decks/library/13__855-753.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:804",
+          "source": "decks/library/14__855-804.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:857",
+          "source": "decks/library/15__855-857.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:908",
+          "source": "decks/library/16__855-908.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:959",
+          "source": "decks/library/17__855-959.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Как начать работу",
+      "semanticRole": "comparison",
+      "renderLayout": "principle-detail",
+      "recommended": [
+        {
+          "nodeId": "855:2494",
+          "source": "decks/library/70__855-2494.png",
+          "role": "comparison",
+          "composition": "data-table",
+          "theme": "dark",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · таблица"
+        },
+        {
+          "nodeId": "855:2613",
+          "source": "decks/library/73__855-2613.png",
+          "role": "comparison",
+          "composition": "data-table",
+          "theme": "light",
+          "score": 79,
+          "reason": "совпадает смысловая роль · совпадает плотность · таблица"
+        },
+        {
+          "nodeId": "855:3781",
+          "source": "decks/library/933__855-3781.png",
+          "role": "comparison",
+          "composition": "data-table",
+          "theme": "light",
+          "score": 67,
+          "reason": "совпадает смысловая роль · таблица"
+        },
+        {
+          "nodeId": "855:1975",
+          "source": "decks/library/41__855-1975.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 36,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:5100",
+          "source": "decks/library/897__855-5100.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 36,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · акцент на цифрах"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Задайте свой первый вопрос Тео прямо сейчас",
+      "semanticRole": "closing",
+      "renderLayout": "final",
+      "recommended": [
+        {
+          "nodeId": "855:5661",
+          "source": "decks/library/904__855-5661.png",
+          "role": "closing",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 80,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:3405",
+          "source": "decks/library/922__855-3405.png",
+          "role": "closing",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 80,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:4114",
+          "source": "decks/library/05__855-4114.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4217",
+          "source": "decks/library/08__855-4217.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        }
+      ]
+    }
+  ]
+}

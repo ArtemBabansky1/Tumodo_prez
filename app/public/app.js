@@ -59,6 +59,10 @@ const UI_ICONS = {
   plus: '<path d="M5 12h14"/><path d="M12 5v14"/>',
   'arrow-up': '<path d="m5 12 7-7 7 7"/><path d="M12 19V5"/>',
   'arrow-left': '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
+  sparkles: '<path d="m12 3-1.4 3.6L7 8l3.6 1.4L12 13l1.4-3.6L17 8l-3.6-1.4L12 3Z"/><path d="m5 14-.9 2.1L2 17l2.1.9L5 20l.9-2.1L8 17l-2.1-.9L5 14Z"/><path d="m19 13-1 2.5-2.5 1L18 17.5l1 2.5 1-2.5 2.5-1-2.5-1L19 13Z"/>',
+  play: '<path d="m6 3 14 9-14 9V3Z"/>',
+  check: '<path d="m20 6-11 11-5-5"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>',
   user: '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
   settings: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
 };
@@ -151,6 +155,10 @@ function renderNav(activeId) {
 
   // режим чатов
   $nav.append(el('button', { class: 'nav-item', onclick: newChat }, uiIcon('plus'), 'Новый чат'));
+  $nav.append(el('button', {
+    class: 'nav-item engine-nav' + (activeId === 'engine' ? ' active' : ''),
+    onclick: () => (location.hash = '#/engine'),
+  }, uiIcon('sparkles'), 'Готовые презентации'));
   $nav.append(el('div', { class: 'nav-group-title' }, 'Чаты'));
   const host = el('div');
   $nav.append(host);
@@ -184,7 +192,15 @@ function renderNav(activeId) {
   }).catch(() => {});
 }
 
-// ---------------------------------------------------------------- чат фабрики (Claude)
+// ---------------------------------------------------------------- чат фабрики (GPT / Codex)
+
+function displayFileName(name) {
+  try { return decodeURIComponent(name); } catch { return name; }
+}
+
+function displayChatText(text) {
+  return String(text).replace(/(?:%[0-9a-f]{2}){2,}/gi, (encoded) => displayFileName(encoded));
+}
 
 /** Состояние диалога живёт вне вида: при уходе со страницы стрим продолжается. */
 const chatState = { id: null, title: '', items: [], session: null, run: null, streaming: false, pending: null };
@@ -205,13 +221,13 @@ function goChat() {
 }
 
 function newChat() {
-  if (chatState.streaming) return toast('Claude ещё работает — дождись окончания', true);
+  if (chatState.streaming) return toast('Агент ещё работает — дождитесь окончания', true);
   resetChat();
   goChat();
 }
 
 async function loadChat(id) {
-  if (chatState.streaming) return toast('Claude ещё работает — дождись окончания', true);
+  if (chatState.streaming) return toast('Агент ещё работает — дождитесь окончания', true);
   try {
     const c = await api('/api/chats/' + id);
     resetChat();
@@ -268,7 +284,7 @@ function mdLite(src) {
 }
 
 function chatItemNode(item) {
-  if (item.kind === 'user') return el('div', { class: 'chat-msg user' }, item.text);
+  if (item.kind === 'user') return el('div', { class: 'chat-msg user' }, displayChatText(item.text));
   if (item.kind === 'text') {
     const d = el('div', { class: 'chat-msg assistant' });
     d.innerHTML = mdLite(item.text);
@@ -289,7 +305,7 @@ function chatItemNode(item) {
     return el('div', { class: 'chat-result' },
       el('div', { class: 'chat-result-title' }, 'Презентация готова: ' + item.name),
       el('div', { class: 'row wrap' },
-        el('button', { class: 'btn primary', onclick: () => openPreview(item.dir) }, 'Открыть предпросмотр'),
+        el('button', { class: 'btn primary', onclick: () => (location.hash = '#/engine:' + item.name) }, 'Открыть и доработать'),
         el('a', { class: 'btn', href: '/files/' + item.dir + '/index.html', target: '_blank', rel: 'noopener' }, 'В новой вкладке')
       )
     );
@@ -306,7 +322,7 @@ function rerenderChat() {
     const n = chatItemNode(item);
     if (n) feed.append(n);
   }
-  if (chatState.streaming) feed.append(el('div', { class: 'chat-working' }, 'Claude работает…'));
+  if (chatState.streaming) feed.append(el('div', { class: 'chat-working' }, 'Агент собирает презентацию…'));
   feed.scrollTop = feed.scrollHeight;
   sendBtn.classList.toggle('stop', chatState.streaming);
   sendBtn.title = chatState.streaming ? 'Остановить' : 'Отправить';
@@ -324,8 +340,9 @@ function handleChatEvent(ev) {
   else if (ev.type === 'result') {
     if (ev.session) chatState.session = ev.session;
     if (ev.dir) {
-      chatState.items.push({ kind: 'result', dir: ev.dir, name: ev.dir.replace(/^output\//, '') });
-      openPreview(ev.dir);
+      const name = ev.dir.replace(/^output\//, '');
+      chatState.items.push({ kind: 'result', dir: ev.dir, name });
+      location.hash = '#/engine:' + name;
     }
     if (!ev.ok && ev.error) chatState.items.push({ kind: 'error', text: ev.error });
   }
@@ -337,7 +354,7 @@ async function chatSend(text, files) {
   if (chatState.streaming) return;
   chatState.items.push({
     kind: 'user',
-    text: (text || '') + (files && files.length ? (text ? '\n' : '') + '📎 ' + files.map((f) => f.name).join(', ') : ''),
+    text: (text || '') + (files && files.length ? (text ? '\n' : '') + '📎 ' + files.map((f) => displayFileName(f.name)).join(', ') : ''),
   });
   chatState.streaming = true;
   rerenderChat();
@@ -345,7 +362,7 @@ async function chatSend(text, files) {
   // первый запрос в новом диалоге — заводим чат в истории
   if (!chatState.id) {
     try {
-      const title = (text || (files && files.length ? files.map((f) => f.name).join(', ') : 'Без названия')).slice(0, 60);
+      const title = (text || (files && files.length ? files.map((f) => displayFileName(f.name)).join(', ') : 'Без названия')).slice(0, 60);
       const r = await api('/api/chats', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title }),
@@ -388,7 +405,7 @@ async function chatSend(text, files) {
       }
     }
   } catch (e) {
-    chatState.items.push({ kind: 'error', text: 'Связь с Claude прервалась: ' + e.message });
+    chatState.items.push({ kind: 'error', text: 'Связь с агентом прервалась: ' + e.message });
   }
   chatState.streaming = false;
   chatState.run = null;
@@ -435,6 +452,20 @@ document.getElementById('preview-close').addEventListener('click', closePreview)
 
 async function viewOverview() {
   const files = [];
+  const agentStatus = el('div', { class: 'agent-status checking' },
+    el('span', { class: 'agent-status-dot' }),
+    el('span', { class: 'agent-status-text' }, 'GPT · проверяем подключение…')
+  );
+  api('/api/agent/status').then((status) => {
+    agentStatus.className = 'agent-status ' + (status.ready ? 'ready' : 'offline');
+    agentStatus.querySelector('.agent-status-text').textContent = status.ready
+      ? 'GPT · подключён'
+      : 'GPT · требуется вход в Codex';
+    agentStatus.title = status.message || '';
+  }).catch(() => {
+    agentStatus.className = 'agent-status offline';
+    agentStatus.querySelector('.agent-status-text').textContent = 'GPT · соединение недоступно';
+  });
   const fileInput = el('input', {
     type: 'file', multiple: true, style: 'display:none',
     accept: '.md,.markdown,.txt,.docx,.doc,.pptx,.ppt,.pdf,.png,.jpg,.jpeg,.webp',
@@ -447,7 +478,7 @@ async function viewOverview() {
       chips.append(el('span', {
         class: 'pill-badge chat-chip', title: 'Убрать',
         onclick: () => { files.splice(i, 1); renderChips(); },
-      }, f.name + '  ✕'))
+      }, displayFileName(f.name) + '  ✕'))
     );
   }
   const input = el('input', {
@@ -483,7 +514,8 @@ async function viewOverview() {
         input,
         sendBtn
       ),
-      el('div', { class: 'home-note chat-note' }, 'Claude соберёт её по правилам фабрики. Ход работы появится здесь, готовая презентация откроется в панели справа.'),
+      agentStatus,
+      el('div', { class: 'home-note chat-note' }, 'Приложите структуру и контент. Агент сам выберет каноны и ассеты, проверит каждый слайд и откроет готовый результат.'),
       fileInput
     )
   );
@@ -1021,10 +1053,412 @@ async function viewRule(id) {
         el('div', { class: 'spacer' }),
         el('button', { class: 'btn primary', onclick: () => save().catch((e) => toast(e.message, true)) }, 'Сохранить')
       ),
-      el('div', { class: 'page-sub' }, 'Markdown-файл: ' + rule.path + '. Пиши правила словами — Claude Code следует им при сборке презентаций.')
+      el('div', { class: 'page-sub' }, 'Markdown-файл: ' + rule.path + '. Эти инструкции определяют работу агента при сборке презентаций.')
     ),
     textarea
   );
+}
+
+// ---------------------------------------------------------------- визуальный движок
+
+const ENGINE_ASSET_GROUPS = {
+  photos: 'Фото',
+  threeD: '3D',
+  mockups: 'Мокапы',
+};
+
+function engineFileLabel(name) {
+  return String(name || '')
+    .replace(/\.[^.]+$/, '')
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+async function viewEngine(requestedName) {
+  const decks = await api('/api/presentations');
+  const readyDecks = decks.outputs.filter((item) => item.hasIndex);
+  if (!readyDecks.length) {
+    $main.append(
+      el('div', { class: 'engine-empty' },
+        el('div', { class: 'engine-empty-icon' }, uiIcon('sparkles')),
+        el('h1', null, 'Здесь появится готовая презентация'),
+        el('div', { class: 'page-sub' }, 'Загрузите в чат файл со структурой и контентом. Агент сам выберет дизайн, соберёт и проверит все слайды.'),
+        el('button', { class: 'btn primary', onclick: newChat }, 'Создать в чате')
+      )
+    );
+    return;
+  }
+
+  const knownNames = new Set(readyDecks.map((item) => item.name));
+  const name = knownNames.has(requestedName) ? requestedName : readyDecks[0].name;
+  if (requestedName !== name) history.replaceState(null, '', '#/engine:' + name);
+
+  const [catalog, initialReview] = await Promise.all([
+    api('/api/engine/catalog'),
+    api('/api/review/' + name),
+  ]);
+  const state = {
+    review: initialReview,
+    slideIndex: 0,
+    tab: 'layouts',
+    assetGroup: 'photos',
+    query: '',
+    referenceRole: 'recommended',
+    selectedVariant: null,
+    selectedAsset: null,
+    instruction: '',
+    status: '',
+    busy: false,
+  };
+
+  const shell = el('div', { class: 'engine-shell' });
+  const headerHost = el('div', { class: 'engine-header-host' });
+  const stageHost = el('section', { class: 'engine-stage-host' });
+  const inspectorHost = el('aside', { class: 'engine-inspector-host' });
+  const workspace = el('div', { class: 'engine-workspace' }, stageHost, inspectorHost);
+  shell.append(headerHost, workspace);
+  $main.append(shell);
+
+  const currentSlide = () => state.review.slides[state.slideIndex];
+  const layoutGroup = (id) => catalog.layouts.find((item) => item.id === id);
+  const selectedReference = (slide) => {
+    if (state.selectedVariant) return state.selectedVariant;
+    const current = (catalog.references || []).find((item) => item.source === slide.reference || item.file === slide.variant);
+    return current || (slide.recommendations || [])[0] || null;
+  };
+
+  async function regenerateSlide(button) {
+    if (state.busy) return;
+    const slide = currentSlide();
+    const reference = selectedReference(slide);
+    if (!reference) return toast('Выберите канонический вариант', true);
+    state.busy = true;
+    state.status = 'Агент изучает текущий слайд и выбранный канон…';
+    shell.classList.add('is-busy');
+    button.disabled = true;
+    renderInspector();
+    try {
+      const fd = new FormData();
+      fd.append('mode', 'slide-refinement');
+      fd.append('deck', name);
+      fd.append('slide', String(state.slideIndex + 1));
+      fd.append('reference', reference.source);
+      if (state.selectedAsset) fd.append('asset', state.selectedAsset.source);
+      if (state.instruction.trim()) fd.append('instruction', state.instruction.trim());
+      const res = await fetch('/api/chat', { method: 'POST', body: fd });
+      if (!res.ok) {
+        let message = res.status + ' ' + res.statusText;
+        try { message = (await res.json()).error || message; } catch {}
+        throw new Error(message);
+      }
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = '';
+      let complete = false;
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        let cut;
+        while ((cut = buf.indexOf('\n\n')) >= 0) {
+          const chunk = buf.slice(0, cut);
+          buf = buf.slice(cut + 2);
+          for (const line of chunk.split('\n')) {
+            if (!line.startsWith('data: ')) continue;
+            let event;
+            try { event = JSON.parse(line.slice(6)); } catch { continue; }
+            if (event.type === 'tool') state.status = event.label + (event.detail ? ' · ' + event.detail : '');
+            else if (event.type === 'thinking') state.status = 'Агент сравнивает композицию…';
+            else if (event.type === 'result') {
+              if (!event.ok) throw new Error(event.error || 'Перегенерация завершилась с ошибкой');
+              complete = true;
+            } else if (event.type === 'error') throw new Error(event.message || 'Ошибка агента');
+            renderInspector();
+          }
+        }
+      }
+      if (!complete) throw new Error('Агент завершился без обновлённого результата');
+      state.review = await api('/api/review/' + name + '?v=' + Date.now());
+      state.selectedVariant = null;
+      state.selectedAsset = null;
+      state.instruction = '';
+      state.status = '';
+      renderStage();
+      toast('Слайд ' + (state.slideIndex + 1) + ' обновлён');
+    } catch (e) {
+      state.status = '';
+      toast(e.message, true);
+    } finally {
+      state.busy = false;
+      shell.classList.remove('is-busy');
+      button.disabled = false;
+      renderInspector();
+    }
+  }
+
+  function renderHeader() {
+    headerHost.innerHTML = '';
+    const select = el('select', {
+      class: 'engine-deck-select',
+      'aria-label': 'Презентация',
+      onchange: (e) => (location.hash = '#/engine:' + e.target.value),
+    }, readyDecks.map((item) => el('option', { value: item.name }, item.name)));
+    select.value = name;
+    headerHost.append(
+      el('header', { class: 'engine-header' },
+        el('div', { class: 'engine-title-block' },
+          el('div', { class: 'engine-eyebrow' }, uiIcon('sparkles'), 'Результат агента'),
+          el('div', { class: 'engine-title-row' },
+            select,
+            el('span', { class: 'engine-save-state' }, uiIcon('check'), state.review.slides.length + ' слайдов проверено')
+          )
+        ),
+        el('div', { class: 'spacer' }),
+        el('button', {
+          class: 'btn ghost',
+          onclick: () => { sidebarMode = 'settings'; location.hash = '#/presentations:' + name; },
+        }, 'Исходник'),
+        el('button', { class: 'btn primary engine-build', onclick: () => openPreview('output/' + name) }, uiIcon('play'), 'Открыть презентацию')
+      )
+    );
+  }
+
+  function renderStage() {
+    stageHost.innerHTML = '';
+    const slide = currentSlide();
+    if (!slide) return;
+    const group = layoutGroup(slide.layout);
+
+    const resultFrame = el('div', { class: 'engine-canon-frame engine-result-frame' },
+      slide.screenshotUrl
+        ? el('img', { src: slide.screenshotUrl, alt: 'Готовый слайд ' + slide.number })
+        : el('div', { class: 'engine-canon-missing' }, 'Скриншот ещё не создан'),
+      el('div', { class: 'engine-frame-label' }, 'Готовый слайд · версия агента')
+    );
+
+    const contentCard = el('div', { class: 'engine-content-card' },
+      el('span', { class: 'engine-info-label' }, 'Главная мысль'),
+      el('h2', null, slide.title || 'Без заголовка'),
+      slide.claim ? el('p', null, slide.claim) : null
+    );
+
+    const decisionCard = el('div', { class: 'engine-content-card engine-decision-card' },
+      el('span', { class: 'engine-info-label' }, 'Решение агента'),
+      el('h2', null, slide.semanticRoleLabel || (group ? group.label : slide.layout)),
+      el('p', null, slide.rationale || slide.purpose || 'Композиция выбрана агентом по смыслу и плотности контента.'),
+      el('div', { class: 'engine-content-stats' },
+        (slide.reference || slide.variant) ? el('span', null, slide.reference || slide.variant) : null,
+        el('span', { class: 'engine-visual-policy' }, slide.visualRequirement === 'intentional-exception' ? 'Без визуала: исключение' : 'Фото / 3D обязательно')
+      )
+    );
+
+    const filmstrip = el('div', { class: 'engine-filmstrip' }, state.review.slides.map((item, index) => {
+      return el('button', {
+        class: 'engine-slide-thumb' + (index === state.slideIndex ? ' selected' : ''),
+        title: item.title,
+        onclick: () => {
+          state.slideIndex = index;
+          state.referenceRole = 'recommended';
+          state.selectedVariant = null;
+          state.selectedAsset = null;
+          state.instruction = '';
+          state.query = '';
+          if (state.tab === 'assets') {
+            state.assetGroup = item.threeD ? 'threeD' : (item.image && item.image.startsWith('mockups/') ? 'mockups' : 'photos');
+          }
+          renderStage();
+          renderInspector();
+        },
+      },
+      el('span', { class: 'engine-thumb-number' }, String(index + 1).padStart(2, '0')),
+      item.screenshotUrl ? el('img', { src: item.screenshotUrl, alt: '' }) : null,
+      el('span', { class: 'engine-thumb-title' }, item.title || 'Без заголовка'));
+    }));
+
+    stageHost.append(
+      el('div', { class: 'engine-stage' },
+        el('div', { class: 'engine-stage-topline' },
+          el('div', null,
+            el('span', { class: 'engine-slide-kicker' }, 'Слайд ' + (state.slideIndex + 1) + ' из ' + state.review.slides.length),
+            el('strong', null, group ? group.label : slide.layout)
+          ),
+          el('span', { class: 'pill-badge' }, 'Собран агентом')
+        ),
+        resultFrame,
+        el('div', { class: 'engine-stage-details' }, contentCard, decisionCard)
+      ),
+      filmstrip
+    );
+  }
+
+  function layoutInspector(slide) {
+    const roleId = state.referenceRole || 'recommended';
+    const query = state.query.trim().toLowerCase();
+    const sourceItems = roleId === 'recommended'
+      ? (slide.recommendations || [])
+      : (catalog.references || []).filter((item) => item.role === roleId);
+    const items = sourceItems
+      .filter((item) => !query || (item.searchText || [item.comment, item.roleLabel, item.compositionLabel].join(' ').toLowerCase()).includes(query))
+      .slice(0, query ? 60 : 30);
+    const search = el('input', {
+      type: 'text',
+      class: 'engine-search engine-reference-search',
+      placeholder: 'Найти по смыслу: метрики, команда, продукт…',
+      value: state.query,
+      oninput: (e) => {
+        state.query = e.target.value;
+        renderInspector();
+        const next = inspectorHost.querySelector('.engine-reference-search');
+        if (next) {
+          next.focus();
+          next.setSelectionRange(state.query.length, state.query.length);
+        }
+      },
+    });
+    return [
+      el('div', { class: 'engine-inspector-intro' },
+        el('strong', null, 'Figma знает смысл этого слайда'),
+        el('p', null, 'Агент уже отобрал подходящие композиции из 126 фирменных слайдов. Можно принять рекомендацию или выбрать другое смысловое семейство.')
+      ),
+      el('div', { class: 'engine-reference-summary' },
+        el('span', null, slide.semanticRoleLabel || 'Смысловой макет'),
+        el('span', null, (slide.recommendations || []).length + ' рекомендаций')
+      ),
+      el('div', { class: 'engine-family-list' }, [
+        { id: 'recommended', label: 'Подходит слайду', count: (slide.recommendations || []).length },
+        ...(catalog.referenceRoles || []),
+      ].map((item) =>
+        el('button', {
+          class: 'engine-family-chip' + (item.id === roleId ? ' selected' : ''),
+          onclick: () => { state.referenceRole = item.id; state.query = ''; renderInspector(); },
+        }, item.label, el('span', null, item.count))
+      )),
+      search,
+      el('div', { class: 'engine-section-label' }, (roleId === 'recommended' ? 'Лучшие совпадения' : 'Семейство') + ' · ' + items.length),
+      items.length ? el('div', { class: 'engine-choice-grid engine-reference-grid' }, items.map((reference) => {
+        const selected = state.selectedVariant ? state.selectedVariant.id === reference.id : slide.reference === reference.source;
+        return el('button', {
+          class: 'engine-choice-card' + (selected ? ' selected' : ''),
+          'aria-pressed': String(selected),
+          title: reference.comment,
+          onclick: () => { state.selectedVariant = reference; renderInspector(); },
+        },
+        el('span', { class: 'engine-choice-preview' }, el('img', { src: reference.url, alt: reference.comment, loading: 'lazy' })),
+        el('span', { class: 'engine-choice-caption engine-reference-caption' },
+          el('strong', null, reference.comment),
+          el('small', null, reference.compositionLabel + ' · ' + reference.theme),
+          selected ? uiIcon('check') : null
+        ));
+      })) : el('div', { class: 'engine-no-results' }, 'В этом семействе ничего не найдено'),
+      el('div', { class: 'engine-inspector-note' }, 'Референс задаёт геометрию и характер пустоты. Агент адаптирует его к вашему тексту, а не копирует содержимое исходного слайда.'),
+    ];
+  }
+
+  function assetInspector(slide) {
+    const selectedPath = state.selectedAsset ? state.selectedAsset.source : '';
+    const query = state.query.trim().toLowerCase();
+    const sourceItems = catalog.assets[state.assetGroup] || [];
+    const items = sourceItems.filter((item) => !query || [item.name, item.description, item.usage].join(' ').toLowerCase().includes(query));
+    const search = el('input', {
+      type: 'text',
+      class: 'engine-search',
+      placeholder: 'Найти по названию или смыслу',
+      value: state.query,
+      oninput: (e) => {
+        state.query = e.target.value;
+        renderInspector();
+        const nextSearch = inspectorHost.querySelector('.engine-search');
+        if (nextSearch) {
+          nextSearch.focus();
+          nextSearch.setSelectionRange(state.query.length, state.query.length);
+        }
+      },
+    });
+    const nodes = [
+      el('div', { class: 'engine-asset-toolbar' },
+        el('div', { class: 'engine-segments compact' }, Object.entries(ENGINE_ASSET_GROUPS).map(([id, label]) =>
+          el('button', {
+            class: id === state.assetGroup ? 'selected' : '',
+            onclick: () => { state.assetGroup = id; state.query = ''; renderInspector(); },
+          }, label, el('span', null, (catalog.assets[id] || []).length))
+        )),
+        search
+      ),
+    ];
+    if (selectedPath) nodes.push(el('button', { class: 'engine-remove-asset', onclick: () => { state.selectedAsset = null; renderInspector(); } }, 'Не использовать новый ассет'));
+    nodes.push(
+      el('div', { class: 'engine-section-label' }, ENGINE_ASSET_GROUPS[state.assetGroup] + ' · ' + items.length),
+      items.length
+        ? el('div', { class: 'engine-choice-grid asset-choices' }, items.map((item) => {
+            const selected = selectedPath === item.source;
+            return el('button', {
+              class: 'engine-choice-card asset-choice' + (selected ? ' selected' : ''),
+              title: item.description || item.usage || item.name,
+              'aria-pressed': String(selected),
+              onclick: () => { state.selectedAsset = selected ? null : item; renderInspector(); },
+            },
+            el('span', { class: 'engine-choice-preview' }, el('img', { src: item.url, alt: item.name, loading: 'lazy' })),
+            el('span', { class: 'engine-choice-caption' }, engineFileLabel(item.name), selected ? uiIcon('check') : null));
+          }))
+        : el('div', { class: 'engine-no-results' }, 'Ничего не найдено'),
+      el('div', { class: 'engine-inspector-note' },
+        state.assetGroup === 'threeD'
+          ? 'Выбранный 3D передаётся агенту как предпочтение. Финальную позицию он определит по канону и свободной зоне.'
+          : 'Ассет — пожелание для новой версии, а не механическая вставка в существующий шаблон.'
+      )
+    );
+    return nodes;
+  }
+
+  function renderInspector() {
+    inspectorHost.innerHTML = '';
+    const slide = currentSlide();
+    const tabs = el('div', { class: 'engine-tabs' },
+      el('button', {
+        class: state.tab === 'layouts' ? 'active' : '',
+        onclick: () => { state.tab = 'layouts'; state.query = ''; renderInspector(); },
+      }, 'Канон'),
+      el('button', {
+        class: state.tab === 'assets' ? 'active' : '',
+        onclick: () => {
+          state.tab = 'assets';
+          state.query = '';
+          state.assetGroup = slide.threeD ? 'threeD' : (slide.image && slide.image.startsWith('mockups/') ? 'mockups' : 'photos');
+          renderInspector();
+        },
+      }, 'Ассет')
+    );
+    const body = el('div', { class: 'engine-inspector-body' },
+      state.tab === 'layouts' ? layoutInspector(slide) : assetInspector(slide)
+    );
+    const instruction = el('textarea', {
+      class: 'engine-refine-input',
+      rows: 3,
+      placeholder: 'Опционально: что ещё изменить в этом слайде?',
+      oninput: (e) => (state.instruction = e.target.value),
+    }, state.instruction);
+    const applyButton = el('button', {
+      class: 'btn primary engine-refine-button',
+      disabled: state.busy,
+      onclick: () => regenerateSlide(applyButton),
+    }, uiIcon('sparkles'), state.busy ? 'Агент работает…' : 'Сделать новый вариант');
+    inspectorHost.append(
+      el('div', { class: 'engine-inspector-head' },
+        el('div', null, el('strong', null, 'Изменить готовый слайд'), el('span', null, String(state.slideIndex + 1).padStart(2, '0'))),
+        tabs
+      ),
+      body,
+      el('div', { class: 'engine-refine-panel' },
+        state.status ? el('div', { class: 'engine-refine-status' }, state.status) : null,
+        instruction,
+        applyButton
+      )
+    );
+  }
+
+  renderHeader();
+  renderStage();
+  renderInspector();
 }
 
 // ---------------------------------------------------------------- презентации
@@ -1070,7 +1504,7 @@ async function viewPresentations(name) {
   $main.append(
     el('div', { class: 'page-header' },
       el('h1', null, 'Презентации'),
-      el('div', { class: 'page-sub' }, 'Слева контент (input/*.md — «содержание, а не вёрстка»), справа готовые сборки (output/). Сборку запускает Claude — кнопкой «Собрать HTML» в редакторе или запросом в чате на главной.')
+      el('div', { class: 'page-sub' }, 'Input/*.md хранит содержание, output/ — готовые сборки. Первую версию агент оформляет сам; здесь доступны исходник и результат.')
     ),
     el('div', { class: 'row', style: 'margin-bottom:24px' },
       nameInput,
@@ -1094,7 +1528,7 @@ async function viewPresentations(name) {
             el('span', { class: 'spacer' }),
             el('span', { class: 'muted' }, o.hasIndex ? 'открыть index.html →' : 'нет index.html')
           )))
-      : el('div', { class: 'empty' }, 'Сборок ещё нет — собери первую презентацию через чат на главной.')
+      : el('div', { class: 'empty' }, 'Сборок ещё нет — открой презентацию в движке и нажми «Собрать».')
   );
 }
 
@@ -1111,12 +1545,12 @@ async function viewPresentationEditor(name) {
   async function build() {
     try {
       await save();
-    } catch (e) {
-      return toast(e.message, true);
-    }
-    if (chatState.streaming) return toast('Claude ещё работает — дождись окончания', true);
-    chatState.pending = { text: 'Собери презентацию «' + name + '» из input/' + name + '.md и покажи результат.' };
-    location.hash = '#/overview';
+      const result = await api('/api/presentations/' + name + '/build', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ strict: false }),
+      });
+      toast(result.warnings ? 'Собрано — есть замечания по объёму текста' : 'Презентация собрана');
+      openPreview(result.dir);
+    } catch (e) { toast(e.message, true); }
   }
 
   $main.append(
@@ -1125,7 +1559,11 @@ async function viewPresentationEditor(name) {
         el('button', { class: 'btn ghost', onclick: () => (location.hash = '#/presentations') }, '←'),
         el('h1', null, name),
         el('div', { class: 'spacer' }),
-        el('button', { class: 'btn', onclick: build }, 'Собрать HTML'),
+        el('button', {
+          class: 'btn',
+          onclick: () => { sidebarMode = 'chats'; location.hash = '#/engine:' + name; },
+        }, uiIcon('sparkles'), 'Открыть результат'),
+        el('button', { class: 'btn', onclick: build }, 'Локальная сборка'),
         el('button', { class: 'btn primary', onclick: () => save().catch((e) => toast(e.message, true)) }, 'Сохранить')
       ),
       el('div', { class: 'page-sub' },
@@ -1140,8 +1578,10 @@ async function viewPresentationEditor(name) {
 async function route() {
   const hash = location.hash.replace(/^#\//, '') || 'overview';
 
-  renderNav(hash.startsWith('presentations:') ? 'presentations' : hash);
+  const activeNav = hash.startsWith('presentations:') ? 'presentations' : (hash.startsWith('engine') ? 'engine' : hash);
+  renderNav(activeNav);
   $main.innerHTML = '';
+  $main.classList.toggle('engine-mode', hash.startsWith('engine'));
   try {
     if (hash === 'overview') await viewOverview();
     else if (hash === 'colors') await viewColors();
@@ -1149,6 +1589,7 @@ async function route() {
     else if (hash === 'spacing' || hash === 'effects') await viewSimpleTokens(hash);
     else if (hash.startsWith('assets:')) await viewAssets(hash.slice(7));
     else if (hash.startsWith('rule:')) await viewRule(hash.slice(5));
+    else if (hash.startsWith('engine')) await viewEngine(hash.startsWith('engine:') ? hash.slice(7) : null);
     else if (hash.startsWith('presentations')) await viewPresentations(hash.startsWith('presentations:') ? hash.slice(14) : null);
     else await viewOverview();
   } catch (e) {

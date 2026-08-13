@@ -1,0 +1,17 @@
+{
+  "id": "msqqjaowxgzk",
+  "title": "сделай презентацию. по этому файлу",
+  "session": "856223da-5e2b-4e71-b7ad-59ee891adce0",
+  "items": [
+    {
+      "kind": "user",
+      "text": "сделай презентацию. по этому файлу\n📎 %D0%92%D0%B5%D0%B1%D0%B8%D0%BD%D0%B0%D1%80_(1)._%D0%92%D0%B8%D0%B7%D1%8B_%D0%B2_2026.pptx"
+    },
+    {
+      "kind": "text",
+      "text": "API Error: Unable to connect to API (ConnectionRefused)"
+    }
+  ],
+  "created": 1786578206432,
+  "updated": 1786578405247
+}

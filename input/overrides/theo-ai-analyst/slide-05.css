@@ -1,0 +1,6 @@
+#s5 > img:last-child {
+  height: 230px !important;
+  left: 50% !important;
+  bottom: 5px !important;
+  transform: translate(-50%, 20%) !important;
+}

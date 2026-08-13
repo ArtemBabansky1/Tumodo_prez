@@ -13,6 +13,8 @@ lang: ru
 ---
 
 # Что можно спросить у Тео
+[layout: title-bullets]
+[variant: title-bullets.var-3.png]
 [3d: photos/3d/theo-mascot-analyst-1.png]
 [3d-pos: right]
 > Задайте вопрос — Тео проанализирует доступные вам данные Tumodo и покажет результат в понятном формате: текстом, графиком или таблицей.
@@ -26,6 +28,7 @@ lang: ru
 
 # Что умеет Тео
 [layout: benefits-grid]
+[variant: benefits-grid.jpg]
 > Тео запоминает контекст беседы — анализ можно продолжить коротким уточнением: «А за прошлый месяц?», «Теперь только авиа», «Сравни с прошлым кварталом».
 
 - Расходы и динамика — затраты по периодам, услугам, отделам и поставщикам
@@ -36,6 +39,8 @@ lang: ru
 ---
 
 # Как выглядит ответ Тео
+[layout: title-bullets]
+[variant: title-bullets.var-2.png]
 [3d: photos/3d/3d-chat-bubbles-blue-silver.webp]
 [3d-pos: right]
 > Тео выбирает формат под задачу. Ответ можно оценить — лайк, дизлайк или комментарий помогают улучшать качество его работы.
@@ -49,6 +54,7 @@ lang: ru
 
 # Кому помогает Тео
 [layout: title-bullets]
+[variant: title-bullets.var-2.png]
 [image: photos/people/team-five-meeting-laptop-smiling.webp]
 > Разные роли получают ответы в рамках своего доступа.
 
@@ -61,11 +67,14 @@ lang: ru
 
 # Ключевой принцип
 [layout: statement]
+[variant: statement.var-2.png]
 > Тео не расширяет права пользователя. Он работает только с теми данными, которые уже доступны вам в Tumodo.
 
 ---
 
 # Ограничения и безопасность данных
+[layout: title-bullets]
+[variant: title-bullets.var-4.png]
 [3d: photos/3d/3d-keys-blue.webp]
 [3d-pos: right]
 > Тео — аналитик, а не инструмент управления бронированиями.
