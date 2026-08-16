@@ -1,0 +1,172 @@
+{
+  "id": "msvbrux163pt",
+  "title": "сделай 12 слайдов из этой презентации. пропусти 2 слайд",
+  "session": "codex:01a008e6-e055-7c60-b23d-e800715240d7",
+  "items": [
+    {
+      "kind": "user",
+      "text": "сделай 12 слайдов из этой презентации. пропусти 2 слайд\n📎 Tumodo_KZ_general_(1).pptx"
+    },
+    {
+      "kind": "text",
+      "text": "Сначала прочитаю правила проекта и целиком разберу исходную презентацию. Затем сам выберу каноны, соберу 12 слайдов без исходного слайда 2 и проведу обязательную визуальную проверку. Использую навык работы с презентациями, потому что здесь важно сохранить структуру и корректно проверить итоговый файл."
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw CLAUDE.md; Get-Content -Raw rules/agent-workflow.md; Get-Content -Raw rules/designer-rea"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$OutputEncoding=[Console]::OutputEncoding=[Text.UTF8Encoding]::new(); Get-Content -Raw -Encoding UTF8 rul"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$OutputEncoding=[Console]::OutputEncoding=[Text.UTF8Encoding]::new(); Get-Content -Raw -Encoding UTF8 rul"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$OutputEncoding=[Console]::OutputEncoding=[Text.UTF8Encoding]::new(); Get-Content -Raw -Encoding UTF8 CLA"
+    },
+    {
+      "kind": "text",
+      "text": "Правила прочитаны. Здесь исходный PPTX — источник содержания, а визуальную систему задаёт сама «Фабрика Tumodo», поэтому я перенесу слайды в её формат, сохранив порядок и факты, но исключу второй исходный слайд. Сейчас проверяю все страницы и доступные фирменные ассеты."
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"rg --files | Select-Object -First 200; Get-ChildItem 'input/requests/2026-08-16-04-49-02/Tumodo_KZ_genera"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$OutputEncoding=[Console]::OutputEncoding=[Text.UTF8Encoding]::new(); Get-ChildItem input -Force; if (Tes"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$OutputEncoding=[Console]::OutputEncoding=[Text.UTF8Encoding]::new(); $slides=Get-ChildItem '\"'tmp/source"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'node scripts/recommend-design.js tumodo-kz-general'"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'node scripts/build.js tumodo-kz-general --strict'"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"rg -n \\\"theme-chapter|themeChapter|\\\\[theme:\\\" scripts/build.js templates/html -S; rg -n \\\"sequence-group"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'rg -n \"const theme|theme =|data-theme|slideTheme|meta.theme|brand-blue|benefits-grid\" scripts/build.js te"
+    },
+    {
+      "kind": "text",
+      "text": "Первая строгая проверка нашла разрыв тёмной главы между отчётностью и доказательствами. Исправляю ритм: объединяю слайды 9–11 в одну непрерывную тёмную главу и фиксирую разные силуэты для процесса, ролей и KPI."
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'node scripts/build.js tumodo-kz-general --strict; node scripts/screenshot.js tumodo-kz-general'"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'magick montage output/tumodo-kz-general/screenshots/slide-*.png -thumbnail 480x270 -tile 3x4 -geometry +1"
+    },
+    {
+      "kind": "text",
+      "text": "Строгая сборка теперь проходит. Перехожу к двум визуальным проходам: сначала проверяю фокус, баланс, пустоту и кроп на каждом слайде, затем — фирменность и ритм всей колоды."
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-ChildItem -Recurse input/overrides/tumodo-kz-general -ErrorAction SilentlyContinue; Get-Content -Raw "
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$html=Get-Content -Raw -Encoding UTF8 output/tumodo-kz-general/index.html; $m=[regex]::Match($html,'\"'<se"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"rg -n \\\"overrides|slide-\\\\\"'$|override\" scripts/build.js'"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Encoding UTF8 templates/html/css/tokens.css | Select-Object -First 80; Get-Content -Encoding"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'node scripts/build.js tumodo-kz-general --strict; node scripts/screenshot.js tumodo-kz-general 10; node s"
+    },
+    {
+      "kind": "text",
+      "text": "Геометрическая проверка нашла четыре штрафа: две растянутые пустые карточки и нестандартный заголовок на слайде 4. Исправляю именно причины — компактную высоту текстовых блоков и системный размер/якорь заголовка — затем повторю проверку."
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$html=Get-Content -Raw -Encoding UTF8 output/tumodo-kz-general/index.html; foreach($n in 2,4,6){$m=[regex"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"rg -n -A35 -B3 'id=\\\"s(2|4|6)\\\"' output/tumodo-kz-general/index.html; Get-Content -Raw -Encoding UTF8 inp"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Select-String -Path output/tumodo-kz-general/index.html -Pattern 'id=\\\"s2\\\"','id=\\\"s4\\\"','id=\\\"s6\\\"' -Con"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"rg -n \\\"\\\\.h1-row\\\" templates/html/css/layout.css templates/html/css/components.css; rg -n \\\"EMPTY_CONTAI"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-Content -Encoding UTF8 templates/html/css/layout.css | Select-Object -Skip 108 -First 35; Get-Content"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'node scripts/build.js tumodo-kz-general --strict; node scripts/screenshot.js tumodo-kz-general 2; node sc"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"rg -n -A35 -B5 \\\"\\\\.cols\\\" templates/html/css/layout.css; rg -n -A15 -B5 \\\"\\\\.card\\\\.hug|media.*hug\\\" tem"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'node scripts/build.js tumodo-kz-general --strict; node scripts/screenshot.js tumodo-kz-general; node scri"
+    },
+    {
+      "kind": "text",
+      "text": "Готово: 12 слайдов, исходный слайд 2 пропущен. Все слайды визуально проверены, строгая проверка пройдена без штрафов и предупреждений.\n\nRESULT: output/tumodo-kz-general"
+    },
+    {
+      "kind": "result",
+      "dir": "output/tumodo-kz-general",
+      "name": "tumodo-kz-general"
+    }
+  ],
+  "created": 1786855742533,
+  "updated": 1786856118996
+}

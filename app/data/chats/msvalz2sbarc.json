@@ -1,0 +1,98 @@
+{
+  "id": "msvalz2sbarc",
+  "title": "сделай 12 слайдов из этой презентации. пропусти 2 слайд",
+  "session": "codex:01a008c9-0ee0-75e1-9908-e9bcb4285a39",
+  "items": [
+    {
+      "kind": "user",
+      "text": "сделай 12 слайдов из этой презентации. пропусти 2 слайд\n📎 Tumodo_KZ_general_(1).pptx"
+    },
+    {
+      "kind": "text",
+      "text": "Соберу 12 слайдов по исходной презентации, пропустив её второй слайд. Сначала прочитаю правила проекта и инструкцию по работе с презентациями, затем сам выберу канон и проверю каждый слайд после рендера."
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw 'CLAUDE.md'; Get-Content -Raw 'rules/agent-workflow.md'; Get-Content -Raw 'rules/designe"
+    },
+    {
+      "kind": "text",
+      "text": "Правила проекта задают более строгий маршрут, чем обычное редактирование PowerPoint: исходник беру как источник содержания, а визуальную систему — из канона Tumodo. Сейчас извлекаю все слайды и ассеты, чтобы сохранить факты и порядок, исключив только №2."
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$OutputEncoding=[Console]::OutputEncoding=[Text.UTF8Encoding]::new(); Get-Content -Raw -Encoding UTF8 '\"'"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$OutputEncoding=[Console]::OutputEncoding=[Text.UTF8Encoding]::new(); rg --files scripts rules design-sys"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Command soffice,libreoffice,node -ErrorAction SilentlyContinue | Format-Table -AutoSize; Get-Content "
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$src=(Resolve-Path '\"'input/requests/2026-08-16-04-16-28/Tumodo_KZ_general_(1).pptx').Path; \"'$tmp='\"'tmp"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command '$src=(Resolve-Path '\"'input/requests/2026-08-16-04-16-28/Tumodo_KZ_general_(1).pptx').Path; \"'$stamp=Get-"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'Get-ChildItem input -File | Select-Object -First 10 Name; Get-ChildItem output -Directory | Select-Object"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Content -Raw -Encoding UTF8 'input/tumodo-kz-general.md'; Get-Content -Raw -Encoding UTF8 'output/tum"
+    },
+    {
+      "kind": "text",
+      "text": "В проекте уже есть черновая 12-слайдовая версия именно для этого исходника. Я не принимаю её вслепую: заново запускаю подбор канонов, пересобираю и проверяю все 12 кадров на соответствие текущим правилам."
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'node scripts/recommend-design.js tumodo-kz-general'"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'node scripts/build.js tumodo-kz-general'"
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command 'node scripts/screenshot.js tumodo-kz-general'"
+    },
+    {
+      "kind": "text",
+      "text": "Первая пересборка прошла без предупреждений движка: 12 слайдов, визуальное покрытие и чередование силуэтов соблюдены. Сейчас завершаю покадровую проверку — особенно кропы людей, процессные схемы и плотные KPI."
+    },
+    {
+      "kind": "tool",
+      "label": "Выполняет",
+      "detail": "\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\" -Command \"Get-Command magick -ErrorAction SilentlyContinue | Select-Object Source; Get-ChildItem 'output/tumodo-kz-"
+    },
+    {
+      "kind": "text",
+      "text": "Готово: собрал и проверил 12 слайдов. Исходный слайд №2 пропущен, ключевое содержание презентации сохранено.\n\nRESULT: output/tumodo-kz-general"
+    },
+    {
+      "kind": "result",
+      "dir": "output/tumodo-kz-general",
+      "name": "tumodo-kz-general"
+    }
+  ],
+  "created": 1786853788372,
+  "updated": 1786853919006
+}

@@ -1,0 +1,5 @@
+#s10 .h1-row { color: var(--white); }
+#s10 .service-grid { top: 342px; }
+#s10 .service-card { box-shadow: none; }
+#s10 .service-card.accent-deep { background: var(--blue-deep); color: var(--white); }
+#s10 .service-card.accent-deep ul.dots li::before { background: var(--white); }

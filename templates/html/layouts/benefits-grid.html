@@ -1,13 +1,17 @@
-<section class="slide theme-light" id="s{{num}}">
+<section class="slide theme-light benefits-slide" id="s{{num}}">
   {{{furniture}}}
-  <h1 class="t-page-title accent" style="position:absolute;left:120px;top:200px;max-width:1200px;">{{title}}</h1>
+  <div class="h1-row">
+    <h1 class="t-page-title accent">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
   <div class="service-grid {{gridFit}}">
     {{#each cards}}
-    <div class="service-card">
+    <div class="service-card{{{threeDClass}}}">
       {{#if icon}}<div class="service-icon"><img src="{{icon}}" alt=""></div>{{/if}}
       <div class="card-title">{{title}}</div>
       {{#if text}}<div class="card-text">{{text}}</div>{{/if}}
       {{#if items}}<ul class="dots">{{#each items}}<li>{{.}}</li>{{/each}}</ul>{{/if}}
+      {{#if threeD}}<img class="card-3d card-3d--{{threeDSide}}" src="{{threeD}}" alt="">{{/if}}
     </div>
     {{/each}}
     {{#if sideTitle}}

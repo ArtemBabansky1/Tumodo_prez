@@ -112,6 +112,7 @@ const NAV = [
     items: [
       { id: 'rule:presentation-rules', label: 'Структура презентации' },
       { id: 'rule:slide-layouts', label: 'Макеты слайдов' },
+      { id: 'rule:designer-reasoning', label: 'Мышление дизайнера' },
       { id: 'rule:style-guide', label: 'Стиль и дизайн' },
       { id: 'rule:content-rules', label: 'Текст' },
     ],
@@ -1228,6 +1229,16 @@ async function viewEngine(requestedName) {
     const slide = currentSlide();
     if (!slide) return;
     const group = layoutGroup(slide.layout);
+    const placement = slide.selectedVisualPlacement;
+    const placementLabel = placement
+      ? (placement.mode === 'card'
+          ? '3D: карточка ' + placement.cardIndex + ' · clip content'
+          : placement.mode === 'slide'
+            ? '3D: ' + (placement.zone === 'side-visual' ? 'отдельная медиазона' : 'по слайду') + ' · ' + (placement.side === 'left' ? 'слева от центра' : 'справа от центра')
+            : placement.rejected
+              ? '3D отклонён: нет безопасной зоны'
+              : '')
+      : '';
 
     const resultFrame = el('div', { class: 'engine-canon-frame engine-result-frame' },
       slide.screenshotUrl
@@ -1248,6 +1259,9 @@ async function viewEngine(requestedName) {
       el('p', null, slide.rationale || slide.purpose || 'Композиция выбрана агентом по смыслу и плотности контента.'),
       el('div', { class: 'engine-content-stats' },
         (slide.reference || slide.variant) ? el('span', null, slide.reference || slide.variant) : null,
+        slide.silhouetteId ? el('span', null, 'Силуэт: ' + slide.silhouetteId) : null,
+        placementLabel ? el('span', null, placementLabel) : null,
+        slide.compositionBrief ? el('span', null, 'Композиция: ' + ({ 'media-led': 'визуал ведёт', balanced: 'баланс', 'content-led': 'контент ведёт' }[slide.compositionBrief.spaceStrategy] || slide.compositionBrief.spaceStrategy)) : null,
         el('span', { class: 'engine-visual-policy' }, slide.visualRequirement === 'intentional-exception' ? 'Без визуала: исключение' : 'Фото / 3D обязательно')
       )
     );
@@ -1403,10 +1417,13 @@ async function viewEngine(requestedName) {
         : el('div', { class: 'engine-no-results' }, 'Ничего не найдено'),
       el('div', { class: 'engine-inspector-note' },
         state.assetGroup === 'threeD'
-          ? 'Выбранный 3D передаётся агенту как предпочтение. Финальную позицию он определит по канону и свободной зоне.'
+          ? 'Движок определит владельца 3D: конкретная карточка получит крупный объект с clip content; общий объект уйдёт за низ слайда и будет смещён от центра.'
           : 'Ассет — пожелание для новой версии, а не механическая вставка в существующий шаблон.'
       )
     );
+    if (state.assetGroup === 'threeD' && slide.assetGap) {
+      nodes.push(el('div', { class: 'engine-inspector-note' }, slide.assetGap));
+    }
     return nodes;
   }
 

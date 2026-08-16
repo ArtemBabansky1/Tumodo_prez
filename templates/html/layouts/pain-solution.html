@@ -11,15 +11,17 @@
   </div>
   {{/if}}
   <div class="cols cols-2" style="position:absolute;left:120px;right:120px;top:430px;bottom:115px;height:auto;">
-    <div class="card" style="position:relative;overflow:hidden;">
+    <div class="card{{#if painThreeD}} has-card-3d has-card-3d--{{painThreeDSide}}{{/if}}" style="position:relative;overflow:hidden;">
       <div class="card-title">{{leadsTitle}}</div>
       <ul class="dots">{{#each leads}}<li>{{.}}</li>{{/each}}</ul>
       <img class="deco-curve" src="assets/patterns/curve-gray.svg" alt="" style="left:0;bottom:-30px;width:110%;">
+      {{#if painThreeD}}<img class="card-3d card-3d--{{painThreeDSide}}" src="{{painThreeD}}" alt="">{{/if}}
     </div>
-    <div class="card card-blue" style="position:relative;overflow:hidden;">
+    <div class="card card-blue{{#if solutionThreeD}} has-card-3d has-card-3d--{{solutionThreeDSide}}{{/if}}" style="position:relative;overflow:hidden;">
       <div class="card-title">{{solvesTitle}}</div>
       <ul class="checks"{{#if accentImage}} style="max-width:470px;"{{/if}}>{{#each solves}}<li>{{.}}</li>{{/each}}</ul>
       {{#if accentImage}}<img src="{{accentImage}}" alt="" style="position:absolute;right:10px;bottom:-60px;height:500px;">{{/if}}
+      {{#if solutionThreeD}}<img class="card-3d card-3d--{{solutionThreeDSide}}" src="{{solutionThreeD}}" alt="">{{/if}}
     </div>
   </div>
 </section>

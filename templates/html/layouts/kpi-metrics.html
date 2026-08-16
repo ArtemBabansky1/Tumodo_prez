@@ -1,0 +1,17 @@
+<section class="slide theme-dark metrics-slide" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle muted">{{lead}}</div>{{/if}}
+  </div>
+  <div class="metrics-grid metrics-count-{{metricsCount}}">
+    {{#each metrics}}
+    <div class="metric-card metric-card-{{metricIndex}}{{{threeDClass}}}">
+      <div class="metric-value">{{value}}</div>
+      <div class="metric-text">{{text}}</div>
+      {{#if threeD}}<img class="card-3d metric-3d card-3d--{{threeDSide}}" src="{{threeD}}" alt="">{{/if}}
+    </div>
+    {{/each}}
+  </div>
+  {{#if conclusion}}<div class="metrics-conclusion">{{conclusion}}</div>{{/if}}
+</section>

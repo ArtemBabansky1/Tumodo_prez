@@ -30,21 +30,61 @@ const SESSION_PREFIX = 'codex:';
 /** Desktop/служебный запуск Windows иногда не передаёт HOME, хотя USERPROFILE есть. */
 function codexProcessEnv() {
   const env = { ...process.env };
-  if (!env.HOME) env.HOME = os.homedir();
+  const profile = env.USERPROFILE || env.HOME || os.homedir();
+  env.HOME = profile;
+  env.USERPROFILE = profile;
+  // Desktop/service launches on Windows sometimes omit CODEX_HOME even when the
+  // user is authenticated. Point it at the real profile directory so both the
+  // status probe and chat runs see the same login/configuration as Codex Desktop.
+  if (!env.CODEX_HOME) env.CODEX_HOME = path.join(profile, '.codex');
   return env;
+}
+
+/**
+ * `codex login status` only reads credentials, while a real `codex exec` also
+ * writes its state database and creates local app-server IPC files. Checking
+ * that directory prevents a misleading green status on Windows when the web
+ * server itself was started from a read-only sandbox.
+ */
+function codexHomeWriteError(env) {
+  const dir = env.CODEX_HOME || path.join(env.USERPROFILE || os.homedir(), '.codex');
+  const probe = path.join(dir, `.tumodo-write-probe-${process.pid}-${Date.now()}`);
+  try {
+    fs.writeFileSync(probe, '');
+    fs.unlinkSync(probe);
+    return null;
+  } catch (error) {
+    try { if (fs.existsSync(probe)) fs.unlinkSync(probe); } catch {}
+    return error;
+  }
+}
+
+function codexExitMessage(code, stderr) {
+  if (/failed to initialize in-process app-server client|readonly database|attempt to write a readonly database/i.test(stderr)) {
+    return 'GPT не может запуститься: локальный сервер не имеет доступа на запись к папке Codex. Перезапустите сервер проекта вне ограниченной среды.';
+  }
+  const lastError = stderr.trim().split('\n').pop() || '';
+  return 'GPT / Codex завершился без результата (код ' + code + ').' + (lastError ? ' ' + lastError : '');
 }
 
 const SYSTEM_APPEND = [
   'Ты работаешь внутри локального веб-приложения «Фабрика презентаций Tumodo»; рабочая директория — корень проекта.',
-  'В начале задачи обязательно прочитай CLAUDE.md и rules/agent-workflow.md: это контракт движка и дизайн-системы, он действует и для GPT/Codex.',
+  'В начале задачи обязательно прочитай CLAUDE.md, rules/agent-workflow.md, rules/designer-reasoning.md и rules/mistakes.md: это контракт движка, дизайн-системы, senior-дизайнерского мышления и накопленных штрафных ошибок; он действует и для GPT/Codex.',
   'Пользователь — коллега-непрограммист: отвечай по-русски, коротко и без технического жаргона; твои ответы показываются в чат-панели приложения.',
   'Главный контракт находится в rules/agent-workflow.md. При первой сборке сам определи коммуникационную задачу, роль каждого слайда, макет, конкретный канон и ассеты. Не проси пользователя выбирать дизайн до первой готовой версии.',
   'Полная визуальная память бренда — 126 исходных слайдов Figma в design-system/canon/decks/library/catalog.tsv. Перед deck-plan обязательно запусти `node scripts/recommend-design.js <имя>` и затем сам выбери лучший референс по смыслу, плотности и ритму всей колоды; десять файлов в canon/layouts — только базовые HTML-семейства, а не вся дизайн-система.',
-  'Визуальная политика обязательна: фото и/или 3D должны быть минимум на 80% содержательных слайдов; слайд без визуала — осознанное исключение только для разделителя, манифеста или действительно плотной сетки. Используй suggestedAssets из recommend-design, не повторяй один ассет на соседних слайдах и встраивай визуал в композицию так, чтобы он не перекрывал текст.',
-  'Предупреждение сборщика о недостающем фото/3D или покрытии ниже 80% означает, что презентация не готова: исправь input, deck-plan и композиции, пересобери и только потом возвращай результат.',
+  'Визуальная политика обязательна: фото и/или 3D должны быть минимум на 80% содержательных слайдов; слайд без визуала — осознанное исключение только для разделителя, манифеста или действительно плотной сетки. Используй compositionBrief, placement, assetGap и suggestedAssets из recommend-design, не повторяй один ассет на соседних слайдах и встраивай визуал в композицию так, чтобы он не перекрывал текст. Если assetGap говорит, что подходящего 3D нет, не ставь случайный объект: выбери смысловое фото/мокап или зафиксируй, какой новый фирменный ассет нужен.',
+  'Для каждого 3D сначала определи владельца. Если он относится к одной карточке — [3d-mode: card] и [3d-card: N]: объект крупный, в нижнем углу и обрезается clip content карточки. Если он относится ко всему слайду — [3d-mode: slide]: объект крупный, частично за нижней границей, ось только слева или справа от центра; [3d-pos: center] запрещён.',
+  'Глобальный 3D запрещён поверх плотных карточных сеток и KPI: если placement возвращает mode none, rejected или requiresLayoutChange, не форсируй ассет — привяжи его к смысловой карточке, выбери другой визуал или другой макет. Текстовая безопасная зона важнее требования добавить 3D.',
+  'Фото ставь только в скруглённый контейнер, fill/cover и с прижатием к верху; после скриншота отдельно проверь, что не обрезаны головы, лица, руки и предмет действия.',
+  'Не заполняй пустоту мелким декором. Если остаётся случайная пустая четверть рабочей области, сначала измени силуэт: увеличь визуал, перераспредели колонки, укрупни акцент или выбери другой канон. Маленький 3D не считается исправлением композиции. Запрещено сжимать белый контейнер вокруг короткого списка: при заполнении ниже 55% обязательно выбери другое семейство; для 3–6 пунктов с фото используй photo-list.',
+  'До сборки составь карту silhouetteId всей колоды. Два соседних слайда не могут иметь один макет/силуэт; повтор силуэта дальше по колоде разрешён только как осознанная серия с [sequence-group: ...] и заметным изменением визуальной массы. Для сравнения используй comparison-flow, для 4–6 шагов process-steps, для 2–5 метрик kpi-metrics — не загоняй разный смысл в title-bullets или numbered-cards-3.',
+  'Предупреждение сборщика о повторе силуэта, отклонённом 3D, недостающем фото/3D или покрытии ниже 80% означает, что презентация не готова: исправь input, deck-plan и композиции, пересобери и только потом возвращай результат.',
   'Основной сценарий: пользователь описывает презентацию или прикладывает файл с её структурой и контентом. Прочитай все вложения целиком, затем создай input/<имя>.md, output/<имя>/deck-plan.json, собери через `node scripts/build.js <имя>`, обязательно сними и визуально проверь все слайды.',
   'Сохраняй заданные структуру и количество слайдов. Вопрос задавай только при содержательной неоднозначности, меняющей факты, аудиторию или смысл; недостаток дизайнерских указаний решай самостоятельно по дизайн-системе.',
-  'Если выбранный канон не реализован текущим шаблоном, не откатывайся молча к универсальному макету: расширь движок или создай сохраняемое переопределение слайда вне design-system/.',
+  'После первого рендера сделай два прохода проверки по rules/designer-reasoning.md: сначала фокус, баланс, интеграция визуала, пустота и кроп без оглядки на канон; затем фирменная система и ритм колоды. Кратко сохрани исправление в designReview каждого слайда.',
+  'Перед сдачей обязательно выполни strict-сборку, сними все слайды и запусти `node scripts/validate-design.js <имя>`. Любой [ШТРАФ] или penalty означает, что презентация не готова. Особенно проверь единый размер и якорь H1, заполнение белых контейнеров, табличную геометрию сравнений без стрелок, общие базовые линии KPI, отсутствие бессмысленного декора и непрерывность тёмной главы.',
+  'Если выбранный канон не реализован текущим шаблоном, не откатывайся молча к универсальному макету: расширь движок или создай сохраняемое переопределение слайда вне design-system/. Канон — визуальная грамматика, поэтому допустима осмысленная адаптация внутри токенов и сетки, зафиксированная в deliberateDeviation.',
   'Когда презентация собрана или пересобрана, добавь В САМОМ КОНЦЕ финального ответа отдельной строкой: RESULT: output/<имя> — приложение превратит её в ссылку на предпросмотр.',
   'В режиме точечной перегенерации меняй только указанный слайд, сохраняй его смысл и факты, переснимай только его и обновляй запись в deck-plan.json.',
 ].join(' ');
@@ -103,12 +143,21 @@ module.exports = function mountCodex(app, ROOT, upload) {
 
   /** Быстрая проверка для индикатора в UI, без запуска модельного запроса. */
   app.get('/api/agent/status', (req, res) => {
+    const env = codexProcessEnv();
+    const writeError = codexHomeWriteError(env);
+    if (writeError) {
+      return res.json({
+        provider: 'GPT / Codex',
+        ready: false,
+        message: 'Нет доступа на запись к папке Codex. Перезапустите локальный сервер вне ограниченной среды.',
+      });
+    }
     let settled = false;
     let stdout = '';
     let stderr = '';
     const probe = spawn(CODEX_BIN, ['login', 'status'], {
       cwd: ROOT,
-      env: codexProcessEnv(),
+      env,
       windowsHide: true,
       stdio: ['ignore', 'pipe', 'pipe'],
     });
@@ -311,13 +360,12 @@ module.exports = function mountCodex(app, ROOT, upload) {
     child.on('close', (code) => {
       if (buf.trim()) handleLine(buf.trim());
       if (!gotResult) {
-        const lastError = stderrTail.trim().split('\n').pop() || '';
         const authError = /not logged in|login|authentication/i.test(stderrTail);
         sse(res, {
           type: 'error',
           message: authError
             ? 'GPT не авторизован. Откройте Codex, войдите в ChatGPT и повторите запрос.'
-            : 'GPT / Codex завершился без результата (код ' + code + ').' + (lastError ? ' ' + lastError : ''),
+            : codexExitMessage(code, stderrTail),
         });
       }
       cleanup();

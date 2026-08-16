@@ -1,0 +1,25 @@
+{
+  "deck": "_canon-test",
+  "checkedAt": "2026-08-16T04:44:07.650Z",
+  "slides": 10,
+  "passed": false,
+  "summary": {
+    "penalties": 1,
+    "warnings": 0
+  },
+  "penalties": [
+    {
+      "slide": 0,
+      "code": "DARK_CHAPTER",
+      "message": "Тёмные слайды должны идти одним непрерывным тематическим блоком",
+      "data": {
+        "slides": [
+          3,
+          7,
+          9
+        ]
+      }
+    }
+  ],
+  "warnings": []
+}

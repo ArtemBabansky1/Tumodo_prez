@@ -203,7 +203,322 @@ ul.rail li::before {
   box-shadow: var(--shadow-light);
   min-height: 0;
 }
-.photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%; /* fill + прижатие к верху: лица не срезаются верхним кропом */
+  display: block;
+}
+
+/* ---------- 3D как часть композиции ---------- */
+
+/* Если объект принадлежит карточке, карточка становится его viewport: объект
+   крупный, немного уходит за нижнюю/боковую грань и обрезается clip content.
+   Текст получает собственную безопасную колонку и всегда лежит выше декора. */
+.has-card-3d {
+  position: relative;
+  overflow: hidden !important;
+  isolation: isolate;
+}
+.has-card-3d > .card-title,
+.has-card-3d > .card-text,
+.has-card-3d > .t-body-small,
+.has-card-3d > .t-body-middle,
+.has-card-3d > ul,
+.has-card-3d > .num-badge {
+  position: relative;
+  z-index: 2;
+  max-width: 48%;
+}
+.has-card-3d--left > .card-title,
+.has-card-3d--left > .card-text,
+.has-card-3d--left > .t-body-small,
+.has-card-3d--left > .t-body-middle,
+.has-card-3d--left > ul,
+.has-card-3d--left > .num-badge { margin-left: auto; }
+.has-card-3d > .service-icon { top: 24px; z-index: 3; }
+.has-card-3d--right > .service-icon { left: 24px; right: auto; }
+.has-card-3d--left > .service-icon { left: auto; right: 24px; }
+.has-card-3d > .num-chip { top: 20px; z-index: 3; }
+.card-3d {
+  position: absolute;
+  bottom: -28%;
+  height: 125%;
+  width: auto;
+  max-width: 66%;
+  object-fit: contain;
+  object-position: center bottom;
+  z-index: 1;
+  pointer-events: none;
+}
+.card-3d--right { right: -16%; }
+.card-3d--left { left: -16%; }
+
+/* Объект, относящийся ко всему слайду: низ обрезается слайдом, центр намеренно
+   смещён на 37%/67%. Это создаёт диагональ и не превращает 3D в иконку по центру. */
+.slide-3d {
+  position: absolute;
+  left: var(--three-d-x, 67%);
+  bottom: 0;
+  height: var(--three-d-height, 700px);
+  width: auto;
+  max-width: 860px;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translate(-50%, var(--three-d-bury, 20%));
+  z-index: 6;
+  pointer-events: none;
+}
+.slide-3d--hero { max-width: 980px; }
+
+/* ---------- смысловое сравнение: фото слева, настоящая таблица справа ---------- */
+
+.comparison-content {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 355px;
+  bottom: 120px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+.comparison-content.has-image { grid-template-columns: 570px minmax(0, 1fr); }
+.comparison-photo { height: 100%; }
+.change-table {
+  min-width: 0;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 72px repeat(5, minmax(0, 1fr));
+  overflow: hidden;
+  background: var(--white);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-light);
+}
+.change-table.change-count-3 { grid-template-rows: 72px repeat(3, minmax(0, 1fr)); }
+.change-table.change-count-4 { grid-template-rows: 72px repeat(4, minmax(0, 1fr)); }
+.change-table.change-count-5 { grid-template-rows: 72px repeat(5, minmax(0, 1fr)); }
+.change-table.change-count-6 { grid-template-rows: 72px repeat(6, minmax(0, 1fr)); }
+.change-head,
+.change-row {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  column-gap: 24px;
+  padding: 0 32px;
+}
+.change-head {
+  color: var(--gray-2);
+  font-size: 20px;
+  font-weight: 700;
+  background: var(--light-gray);
+}
+.change-row {
+  border-top: 1px solid var(--light-gray);
+}
+.change-label { color: var(--blue-base); font-size: 19px; font-weight: 700; }
+.change-before { color: var(--gray-2); font-size: 21px; line-height: 1.2; }
+.change-after { color: var(--dark-gray-text); font-size: 23px; line-height: 1.2; font-weight: 650; }
+
+/* ---------- процесс 4–6 шагов с зарезервированной визуальной зоной ---------- */
+
+.process-content {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 355px;
+  bottom: 120px;
+}
+.process-content.has-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(440px, 0.8fr);
+  gap: 25px;
+}
+.process-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.has-visual .process-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+.has-visual .process-step:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.process-step {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-light);
+  padding: 30px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+.process-step-num { color: var(--blue-base); font-size: 22px; font-weight: 700; }
+.process-step-title { position: relative; z-index: 1; font-size: 25px; line-height: 1.22; font-weight: 700; max-width: 92%; }
+.process-step-text { position: relative; z-index: 1; font-size: 20px; line-height: 1.25; color: var(--gray-2); }
+.process-visual { position: relative; min-width: 0; overflow: visible; }
+.process-photo { width: 100%; height: 100%; }
+.process-3d {
+  position: absolute;
+  right: -105px;
+  bottom: -165px;
+  height: 720px;
+  max-width: 680px;
+  object-fit: contain;
+  object-position: right bottom;
+  pointer-events: none;
+}
+.process-3d--left { right: auto; left: -55px; object-position: left bottom; }
+
+/* Альтернативный процессный силуэт: вертикальный маршрут + крупное фото. */
+.journey-content {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 355px;
+  bottom: 120px;
+}
+.journey-content.has-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(560px, .85fr);
+  gap: 25px;
+}
+.journey-rail {
+  position: relative;
+  height: 100%;
+  background: var(--white);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-light);
+  padding: 32px 44px;
+  display: grid;
+  gap: 0;
+}
+.journey-count-4 { grid-template-rows: repeat(4, minmax(0, 1fr)); }
+.journey-count-5 { grid-template-rows: repeat(5, minmax(0, 1fr)); }
+.journey-count-6 { grid-template-rows: repeat(6, minmax(0, 1fr)); }
+.journey-rail::before {
+  content: '';
+  position: absolute;
+  left: 66px;
+  top: 72px;
+  bottom: 72px;
+  width: 2px;
+  background: linear-gradient(var(--blue-base), var(--blue-light));
+}
+.journey-step {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  align-items: center;
+  gap: 26px;
+  min-height: 0;
+}
+.journey-num {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--blue-base);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.journey-copy { min-width: 0; }
+.journey-title { font-size: 25px; line-height: 1.2; font-weight: 700; }
+.journey-text { margin-top: 8px; color: var(--gray-2); font-size: 19px; line-height: 1.25; }
+.journey-visual { position: relative; min-width: 0; overflow: visible; }
+.journey-photo { width: 100%; height: 100%; }
+.journey-3d {
+  position: absolute;
+  right: -110px;
+  bottom: -170px;
+  height: 730px;
+  max-width: 720px;
+  object-fit: contain;
+  object-position: right bottom;
+}
+.journey-3d--left { right: auto; left: -70px; object-position: left bottom; }
+
+/* ---------- KPI: цифра — главный визуальный объект ---------- */
+
+.metrics-grid {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 375px;
+  bottom: 220px;
+  display: grid;
+  gap: 25px;
+}
+.metrics-count-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.metrics-count-3 { grid-template-columns: 1.15fr 1fr 1fr; }
+.metrics-count-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.metrics-count-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.metric-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radius-l);
+  padding: 46px 42px;
+  background: rgba(255,255,255,.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+}
+.metric-card-2 { background: linear-gradient(145deg, rgba(0,64,179,.48), rgba(47,128,255,.68)); }
+.metric-card-3 { background: var(--blue-base); border-color: transparent; }
+.metric-value {
+  position: relative;
+  z-index: 3;
+  color: var(--white);
+  font-size: 104px;
+  line-height: .95;
+  font-weight: 700;
+  letter-spacing: -3px;
+  white-space: nowrap;
+}
+.metric-text {
+  position: relative;
+  z-index: 3;
+  color: var(--white);
+  font-size: 27px;
+  line-height: 1.22;
+  font-weight: 600;
+}
+.metric-card.has-card-3d { justify-content: space-between; }
+.metric-card.has-card-3d .metric-value { max-width: 100%; }
+.metric-card.has-card-3d .metric-text {
+  max-width: 54%;
+  margin-top: auto;
+}
+.metric-3d {
+  height: auto;
+  width: 75%;
+  max-width: 75%;
+  bottom: -16%;
+  right: -22%;
+  z-index: 1;
+}
+.metrics-conclusion {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  bottom: 118px;
+  color: rgba(255,255,255,.78);
+  font-size: 25px;
+  line-height: 1.25;
+}
 
 /* ---------- декоративные элементы ---------- */
 
@@ -267,16 +582,41 @@ ul.rail li::before {
   left: 120px;
   right: 120px;
   top: 300px;
-  bottom: 115px;
+  bottom: 120px;
   display: grid;
   grid-template-columns: 1fr 1fr 585px;
   grid-template-rows: 1fr 1fr;
-  gap: 42px var(--grid-gutter);
+  /* Зазоры в сетке карточек одинаковые со всех сторон — 20px, и ряд занимает всю
+     доступную область: 100% ширины сетки и 560–580px по высоте
+     (правило пользователя 2026-08-07). Карточки не сжимаются по контенту. */
+  gap: 20px;
+  min-height: 560px;
 }
+.service-grid.grid-2x1 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: 1fr; }
+.service-grid.grid-2x2 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.service-grid.grid-2x3 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.service-grid.grid-3x3 { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.service-grid.grid-4x3 { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
+
+.service-grid.grid-2x3 .service-card,
+.service-grid.grid-3x3 .service-card,
+.service-grid.grid-4x3 .service-card {
+  padding: 28px 42px;
+  gap: 12px;
+}
+.service-grid.grid-2x3 .service-card .card-title,
+.service-grid.grid-3x3 .service-card .card-title,
+.service-grid.grid-4x3 .service-card .card-title { font-size: 25px; }
+.service-grid.grid-2x3 .service-card .card-text,
+.service-grid.grid-3x3 .service-card .card-text,
+.service-grid.grid-4x3 .service-card .card-text { font-size: 25px; line-height: 1.2; }
+/* Базовая карточка сетки — белая. Синий это АКЦЕНТ (правило пользователя
+   2026-08-07): им выделяется одна карточка, а не весь ряд. */
 .service-card {
   position: relative;
-  background: var(--blue-base);
-  color: var(--white);
+  background: var(--white);
+  color: var(--dark-gray-text);
+  box-shadow: var(--shadow-light);
   border-radius: var(--radius-l);
   padding: 45px 55px;
   display: flex;
@@ -284,9 +624,13 @@ ul.rail li::before {
   gap: 22px;
   overflow: visible;
 }
+.service-card.accent { background: var(--blue-base); color: var(--white); box-shadow: none; }
 .service-card .card-title { font-size: 30px; font-weight: 700; }
+/* описание карточки одной строкой — абзац без буллета (§5.1) */
+.service-card .card-text { font-size: 30px; line-height: 1.25; }
 .service-card ul.dots li { font-size: 25px; padding-left: 34px; }
-.service-card ul.dots li::before { background: var(--white); width: 8px; height: 8px; top: 11px; }
+.service-card ul.dots li::before { background: var(--blue-base); width: 8px; height: 8px; top: 11px; }
+.service-card.accent ul.dots li::before { background: var(--white); }
 .service-icon {
   position: absolute;
   top: -32px;
@@ -314,15 +658,22 @@ ul.rail li::before {
 
 /* ---------- тёмные карточки с нарастанием акцента (canon: numbered-cards-3) ---------- */
 
+/* Нарастание акцента на тёмной теме: стекло → стекло с градиентом → сплошной синий.
+   Первая карточка — ПРОЗРАЧНОЕ стекло, не тёмно-серая плашка; во второй градиент
+   лежит внутри той же стеклянной карточки (правило пользователя 2026-08-07). */
 .theme-dark .card.acc-1 {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px);
   box-shadow: none;
   color: var(--white);
 }
 .theme-dark .card.acc-2 {
-  background: linear-gradient(140deg, rgba(18, 24, 40, 0.9) 0%, #0040B3 60%, #2F80FF 105%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(140deg, rgba(0, 64, 179, 0.55) 0%, rgba(47, 128, 255, 0.75) 105%),
+    rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px);
   box-shadow: none;
   color: var(--white);
 }

@@ -1,0 +1,1 @@
+#s6 .cols > .card.hug { min-height: 0; height: 310px; max-height: 310px; align-self: center; }

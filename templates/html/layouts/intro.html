@@ -8,11 +8,12 @@
   </div>
   <div class="split-right">
     {{#each cards}}
-    <div class="card numbered pad-m">
+    <div class="card numbered pad-m{{{threeDClass}}}">
       <div class="num-chip">{{cardNum}}</div>
       <div class="card-title">{{title}}</div>
       {{#if text}}<div class="t-body-small">{{text}}</div>{{/if}}
       {{#if items}}<ul class="dots small">{{#each items}}<li class="t-body-small">{{.}}</li>{{/each}}</ul>{{/if}}
+      {{#if threeD}}<img class="card-3d card-3d--{{threeDSide}}" src="{{threeD}}" alt="">{{/if}}
     </div>
     {{/each}}
     {{#if more}}<div class="more-pill">{{more}}</div>{{/if}}

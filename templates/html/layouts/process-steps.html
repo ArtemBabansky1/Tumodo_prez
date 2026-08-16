@@ -1,0 +1,24 @@
+<section class="slide theme-light process-slide" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="process-content{{#if hasProcessVisual}} has-visual{{/if}}">
+    <div class="process-grid">
+      {{#each steps}}
+      <div class="process-step">
+        <div class="process-step-num">{{stepNum}}</div>
+        <div class="process-step-title">{{title}}</div>
+        {{#if text}}<div class="process-step-text">{{text}}</div>{{/if}}
+      </div>
+      {{/each}}
+    </div>
+    {{#if hasProcessVisual}}
+    <div class="process-visual">
+      {{#if processImage}}<div class="photo-card process-photo"><img src="{{processImage}}" alt=""></div>{{/if}}
+      {{#if processThreeD}}<img class="process-3d process-3d--{{processThreeDSide}}" src="{{processThreeD}}" alt="">{{/if}}
+    </div>
+    {{/if}}
+  </div>
+</section>

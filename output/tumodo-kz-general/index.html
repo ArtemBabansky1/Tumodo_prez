@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tumodo</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<style id="deck-overrides">
+#s2 .s2-title {
+  position: absolute;
+  left: var(--slide-margin);
+  top: 190px;
+  width: 1540px;
+  color: var(--blue-base);
+}
+
+#s2 .s2-lead {
+  position: absolute;
+  left: var(--slide-margin);
+  top: 346px;
+  width: 560px;
+  color: var(--dark-gray-text);
+}
+
+#s2 .s2-mockup {
+  position: absolute;
+  left: 790px;
+  top: 330px;
+  width: 1080px;
+  height: auto;
+  z-index: 1;
+}
+
+#s2 .s2-pills {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+#s2 .s2-pill {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: var(--grid-gutter);
+  min-height: 92px;
+  padding: 0 var(--container-padding-s);
+  border-radius: 46px;
+  background: var(--blue-base);
+  color: var(--white);
+  font-size: 25px;
+  line-height: 1.1;
+  font-weight: 700;
+  box-shadow: var(--shadow-light);
+}
+
+#s2 .s2-pill span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 54px;
+  height: 54px;
+  border: 1px solid var(--blue-light);
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#s2 .s2-pill-1 { left: 120px; top: 500px; width: 610px; }
+#s2 .s2-pill-2 { left: 120px; top: 618px; width: 650px; }
+#s2 .s2-pill-3 { left: 970px; top: 438px; width: 520px; }
+#s2 .s2-pill-4 { left: 1190px; top: 565px; width: 570px; }
+#s2 .s2-pill-5 { left: 880px; top: 778px; width: 720px; }
+
+#s4 .s4-title {
+  position: absolute;
+  left: var(--slide-margin);
+  top: 214px;
+  max-width: 1320px;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+#s4 .s4-photo {
+  position: absolute;
+  left: var(--slide-margin);
+  top: 352px;
+  width: 493px;
+  height: 608px;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+}
+
+#s4 .s4-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% top;
+}
+
+#s4 .s4-panel {
+  position: absolute;
+  left: 645px;
+  right: var(--slide-margin);
+  top: 352px;
+  height: 608px;
+  padding: var(--container-padding-l);
+  box-shadow: none;
+}
+
+#s4 .s4-panel-title { font-weight: 700; }
+
+#s4 .s4-list {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+#s4 .s4-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 20px;
+  align-items: start;
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+#s4 .s4-item strong { font-weight: 700; }
+#s4 .s4-item span:not(.s4-check) { color: var(--gray-3); font-size: 20px; }
+
+#s4 .s4-check {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-s);
+  background: var(--blue-base);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+#s4 .s4-summary {
+  position: absolute;
+  left: var(--container-padding-l);
+  right: var(--container-padding-l);
+  bottom: 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.15;
+}
+
+#s4 .s4-summary div {
+  position: relative;
+  padding-left: 28px;
+}
+
+#s4 .s4-summary div::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue-base);
+}
+
+#s6 .cols > .card.hug { min-height: 0; height: 310px; max-height: 310px; align-self: center; }
+
+#s10 .h1-row { color: var(--white); }
+#s10 .service-grid { top: 342px; }
+#s10 .service-card { box-shadow: none; }
+#s10 .service-card.accent-deep { background: var(--blue-deep); color: var(--white); }
+#s10 .service-card.accent-deep ul.dots li::before { background: var(--white); }
+
+</style>
+</head>
+<body>
+<!-- Лента слайдов (масштаб 0.5 на экране; печать — 1 слайд = 1 страница 1920×1080) -->
+<div class="deck">
+<div class="slide-wrap">
+<section class="slide theme-blue" id="s1">
+  <div class="bg"><div class="bg-pattern"></div></div>
+  <img class="cover-logo" src="assets/logo/logo-white.svg" alt="Tumodo">
+  <div style="position:absolute;left:120px;right:120px;bottom:120px;display:flex;align-items:flex-end;gap:40px;">
+    <div style="display:flex;flex-direction:column;gap:28px;min-width:0;">
+      <div class="t-cover-1" style="max-width:1300px;">Tumodo</div>
+      <div class="t-body-big" style="max-width:1100px;font-weight:400;">Удобный сервис организации командировок</div>
+    </div>
+    <div style="flex:1;"></div>
+    
+  </div>
+</section>
+</div>
+<div class="slide-wrap" data-canon-reference="decks/library/03__855-4086.png" data-semantic-role="problem">
+<section class="slide theme-light" id="s2">
+  <div class="deck-label">Tumodo | Командировки без операционного хаоса</div>
+  <img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo">
+  <div class="slide-num">2</div>
+
+  <h1 class="s2-title t-page-title">Командировки не должны создавать операционный хаос</h1>
+
+  <div class="s2-lead t-body-middle">
+    Когда поездка собирается вручную, компания теряет скорость, документы и контроль.
+  </div>
+
+  <img class="s2-mockup" src="assets/img/macbook-pro-16-3d.png" alt="Интерфейс Tumodo на ноутбуке">
+
+  <div class="s2-pills" aria-label="Пять источников операционного хаоса">
+    <div class="s2-pill s2-pill-1"><span>01</span>Бронирования разбросаны по разным каналам</div>
+    <div class="s2-pill s2-pill-2"><span>02</span>Ручные процессы замедляют согласования</div>
+    <div class="s2-pill s2-pill-3"><span>03</span>Чеки и документы теряются</div>
+    <div class="s2-pill s2-pill-4"><span>04</span>Бюджет выходит из-под контроля</div>
+    <div class="s2-pill s2-pill-5"><span>05</span>Ошибки нарушают тревел-политику компании</div>
+  </div>
+</section></div>
+<div class="slide-wrap">
+<section class="slide theme-light comparison-slide" id="s3">
+  <div class="deck-label">Tumodo</div><img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo"><div class="slide-num">3</div>
+  <div class="h1-row">
+    <h1 class="t-page-title">Онлайн‑сервис меняет саму модель работы</h1>
+    
+  </div>
+  <div class="comparison-content has-image">
+    <div class="photo-card comparison-photo"><img src="assets/img/manager-accountant-laptop-pointing-screen.webp" alt=""></div>
+    <div class="change-table change-count-5">
+      <div class="change-head">
+        <span>Параметр</span><span>Раньше</span><span>С Tumodo</span>
+      </div>
+      
+      <div class="change-row">
+        <div class="change-label">Каналы</div>
+        <div class="change-before">почта и телефон</div>
+        <div class="change-after">единая платформа для поездок и финансов</div>
+      </div>
+      
+      <div class="change-row">
+        <div class="change-label">Процессы</div>
+        <div class="change-before">ручная работа</div>
+        <div class="change-after">автоматизация и цифровые документы</div>
+      </div>
+      
+      <div class="change-row">
+        <div class="change-label">Бюджет</div>
+        <div class="change-before">контроль постфактум</div>
+        <div class="change-after">данные в реальном времени</div>
+      </div>
+      
+      <div class="change-row">
+        <div class="change-label">Правила</div>
+        <div class="change-before">зависимость от менеджера</div>
+        <div class="change-after">роли, доступы и тревел‑политика</div>
+      </div>
+      
+      <div class="change-row">
+        <div class="change-label">Поддержка</div>
+        <div class="change-before">рабочие часы</div>
+        <div class="change-after">помощь 24/7 и сервис‑менеджер</div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+</div>
+<div class="slide-wrap" data-canon-reference="decks/library/918__855-3115.png" data-semantic-role="differentiators">
+<section class="slide theme-light" id="s4">
+  <div class="deck-label">Tumodo | Удобный сервис для организации командировок</div>
+  <img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo">
+  <div class="slide-num">4</div>
+
+  <h1 class="s4-title t-page-title">Почему компании<br>выбирают Tumodo</h1>
+
+  <div class="s4-photo">
+    <img src="assets/img/accountant-desk-writing-laptop.webp" alt="Специалист работает в Tumodo">
+  </div>
+
+  <div class="s4-panel card">
+    <div class="s4-panel-title t-body-big">Преимущества сервиса</div>
+    <div class="s4-list">
+      <div class="s4-item">
+        <span class="s4-check">✓</span>
+        <div><strong>Внедрение за один день</strong><br><span>Быстро встраиваем сервис в процессы компании</span></div>
+      </div>
+      <div class="s4-item">
+        <span class="s4-check">✓</span>
+        <div><strong>Полная интеграция с 1С</strong><br><span>Поддерживаем 1С:Бухгалтерию и 1С:ERP</span></div>
+      </div>
+      <div class="s4-item">
+        <span class="s4-check">✓</span>
+        <div><strong>Услуги в аэропорту онлайн</strong><br><span>Оформляем без офлайн-запросов</span></div>
+      </div>
+    </div>
+    <div class="s4-summary">
+      <div>Полная прозрачность цен и контроль бюджета в реальном времени</div>
+      <div>Более 30 прямых договоров с авиакомпаниями</div>
+    </div>
+  </div>
+</section></div>
+<div class="slide-wrap">
+<section class="slide theme-blue" id="s5">
+  <div class="deck-label">Tumodo</div><img class="slide-logo" src="assets/logo/logo-white.svg" alt="Tumodo"><div class="slide-num">5</div>
+  <div class="stmt">
+    <div class="stmt-big">Tumodo превращает командировки из хаотичной операционки в управляемый бизнес‑процесс.</div>
+    
+  </div>
+</section>
+</div>
+<div class="slide-wrap">
+<section class="slide theme-light title-bullets-slide" id="s6">
+  <div class="deck-label">Tumodo</div><img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo"><div class="slide-num">6</div>
+  
+  
+  
+  <div class="h1-row">
+    <h1 class="t-page-title">Сервис создан для роста компании</h1>
+    
+  </div>
+  <div class="content">
+    
+    <div class="cols cols-3 media-left">
+      <div class="card hug media‑copy‑hug" style="grid-column: span 2;">
+        
+        <ul class="dots"><li>Управление под ключ — от первого бронирования до финального отчёта</li><li>Ясные процессы — тревел‑политика, понятный интерфейс и прозрачные условия</li><li>Технологии с человеческим подходом — заботливая поддержка 24/7</li><li>Надёжный партнёр — с 2021 года нам доверяют более 1 000 клиентов</li></ul>
+        
+      </div>
+      
+      <div class="photo-card"><img src="assets/img/team-five-meeting-laptop-smiling.webp" alt=""></div>
+    </div>
+    
+    
+  </div>
+  
+</section>
+</div>
+<div class="slide-wrap">
+<section class="slide theme-light process-slide" id="s7">
+  <div class="deck-label">Tumodo</div><img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo"><div class="slide-num">7</div>
+  <div class="h1-row">
+    <h1 class="t-page-title">Подключение занимает пять понятных шагов</h1>
+    
+  </div>
+  <div class="process-content has-visual">
+    <div class="process-grid">
+      
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <div class="process-step-title">Подписываем договор</div>
+        
+      </div>
+      
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <div class="process-step-title">Знакомим с аккаунт‑менеджером и уточняем задачи</div>
+        
+      </div>
+      
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <div class="process-step-title">Подключаем службу поддержки</div>
+        
+      </div>
+      
+      <div class="process-step">
+        <div class="process-step-num">04</div>
+        <div class="process-step-title">Настраиваем кабинет и обучаем команды</div>
+        
+      </div>
+      
+      <div class="process-step">
+        <div class="process-step-num">05</div>
+        <div class="process-step-title">Проводим контрольную встречу и собираем обратную связь</div>
+        
+      </div>
+      
+    </div>
+    
+    <div class="process-visual">
+      
+      <img class="process-3d process-3d--right" src="assets/img/3d-badge-lanyard-green.webp" alt="">
+    </div>
+    
+  </div>
+</section>
+</div>
+<div class="slide-wrap">
+<section class="slide theme-light journey-slide" id="s8">
+  <div class="deck-label">Tumodo</div><img class="slide-logo" src="assets/logo/logo-dark.svg" alt="Tumodo"><div class="slide-num">8</div>
+  <div class="h1-row">
+    <h1 class="t-page-title">Поездка проходит в едином цифровом цикле</h1>
+    
+  </div>
+  <div class="journey-content has-visual">
+    <div class="journey-rail journey-count-5">
+      
+      <div class="journey-step">
+        <div class="journey-num">01</div>
+        <div class="journey-copy">
+          <div class="journey-title">Создайте поездку одним кликом</div>
+          
+        </div>
+      </div>
+      
+      <div class="journey-step">
+        <div class="journey-num">02</div>
+        <div class="journey-copy">
+          <div class="journey-title">Выберите услуги на даты и города из приказа</div>
+          
+        </div>
+      </div>
+      
+      <div class="journey-step">
+        <div class="journey-num">03</div>
+        <div class="journey-copy">
+          <div class="journey-title">Отправьте поездку на согласование</div>
+          
+        </div>
+      </div>
+      
+      <div class="journey-step">
+        <div class="journey-num">04</div>
+        <div class="journey-copy">
+          <div class="journey-title">Оформите услуги или включите автовыписку</div>
+          
+        </div>
+      </div>
+      
+      <div class="journey-step">
+        <div class="journey-num">05</div>
+        <div class="journey-copy">
+          <div class="journey-title">Передайте сотруднику документы и Travel Plan</div>
+          
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="journey-visual">
+      <div class="photo-card journey-photo"><img src="assets/img/travel-coordinator-suitcase-window-light.webp" alt=""></div>
+      
+    </div>
+    
+  </div>
+</section>
+</div>
+<div class="slide-wrap">
+<section class="slide theme-dark" id="s9">
+  <div class="deck-label">Tumodo</div><img class="slide-logo" src="assets/logo/logo-white.svg" alt="Tumodo"><div class="slide-num">9</div>
+  <div class="h1-row">
+    <h1 class="t-page-title">Отчётность автоматически приходит в учётную систему</h1>
+    
+  </div>
+  <div class="cols cols-3" style="position:absolute;left:120px;right:120px;top:405px;bottom:120px;height:auto;">
+    
+    <div class="card pad-m acc-1">
+      <div class="num-badge">1</div>
+      <div style="flex:1;"></div>
+      <div class="card-title">Онлайн-услуги</div>
+      <div class="t-body-small">Tumodo формирует авансовый отчёт по оформленным услугам.</div>
+      
+    </div>
+    
+    <div class="card pad-m acc-2 has-card-3d has-card-3d--right">
+      <div class="num-badge">2</div>
+      <div style="flex:1;"></div>
+      <div class="card-title">Дополнительные расходы</div>
+      <div class="t-body-small">Сотрудник добавляет их в разделе «Командировочные документы».</div>
+      <img class="card-3d card-3d--right" src="assets/img/3d-zero-commission-coins.webp" alt="">
+    </div>
+    
+    <div class="card pad-m acc-3">
+      <div class="num-badge">3</div>
+      <div style="flex:1;"></div>
+      <div class="card-title">Согласование</div>
+      <div class="t-body-small">Система рассчитывает суточные и авансы, затем направляет отчёт бухгалтеру.</div>
+      
+    </div>
+    
+  </div>
+</section>
+</div>
+<div class="slide-wrap">
+<section class="slide theme-dark benefits-slide" id="s10">
+  <div class="deck-label">Tumodo</div><img class="slide-logo" src="assets/logo/logo-white.svg" alt="Tumodo"><div class="slide-num">10</div>
+  <div class="h1-row"><h1 class="t-page-title">Гибкий сервис для каждой роли</h1></div>
+  <div class="service-grid grid-2x2">
+    <div class="service-card"><div class="card-title">Тревел-координатор</div><ul class="dots"><li>Бронирует услуги в одном интерфейсе</li><li>Настраивает отделы, согласования и тревел-политику</li></ul></div>
+    <div class="service-card accent"><div class="card-title">Руководитель</div><ul class="dots"><li>Планирует бюджет и анализирует расходы</li><li>Получает отчёты по сотрудникам, услугам и поездкам</li></ul></div>
+    <div class="service-card accent-deep"><div class="card-title">Бухгалтер</div><ul class="dots"><li>Работает с интеграциями 1С и закрывающими документами</li><li>Получает ОДДС, акты сверки и авторасчёт суточных</li></ul></div>
+    <div class="service-card"><div class="card-title">Сотрудник</div><ul class="dots"><li>Самостоятельно оформляет услуги и быстро согласует поездку</li><li>Получает поддержку 24/7 и готовый авансовый отчёт</li></ul></div>
+  </div>
+</section></div>
+<div class="slide-wrap">
+<section class="slide theme-dark metrics-slide" id="s11">
+  <div class="deck-label">Tumodo</div><img class="slide-logo" src="assets/logo/logo-white.svg" alt="Tumodo"><div class="slide-num">11</div>
+  <div class="h1-row">
+    <h1 class="t-page-title">Tumodo в цифрах</h1>
+    
+  </div>
+  <div class="metrics-grid metrics-count-3">
+    
+    <div class="metric-card metric-card-1">
+      <div class="metric-value">1 день</div>
+      <div class="metric-text">На внедрение сервиса в процессы компании.</div>
+      
+    </div>
+    
+    <div class="metric-card metric-card-2">
+      <div class="metric-value">1 000+</div>
+      <div class="metric-text">Клиентов доверяют Tumodo с 2021 года.</div>
+      
+    </div>
+    
+    <div class="metric-card metric-card-3 has-card-3d has-card-3d--right">
+      <div class="metric-value">30+</div>
+      <div class="metric-text">Прямых договоров с авиакомпаниями.</div>
+      <img class="card-3d metric-3d card-3d--right" src="assets/img/3d-ticket-silver.webp" alt="">
+    </div>
+    
+  </div>
+  
+</section>
+</div>
+<div class="slide-wrap">
+<section class="slide theme-blue" id="s12">
+  <div class="bg"><div class="bg-pattern"></div></div>
+  <img class="cover-logo" src="assets/logo/logo-white.svg" alt="Tumodo">
+  <div class="t-cover-1" style="position:absolute;left:120px;right:120px;bottom:120px;">Хотите узнать больше о Tumodo и обсудить сотрудничество? Свяжитесь с нами.</div>
+</section>
+</div>
+</div>
+</body>
+</html>

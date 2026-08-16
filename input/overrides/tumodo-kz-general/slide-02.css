@@ -1,0 +1,63 @@
+#s2 .s2-title {
+  position: absolute;
+  left: var(--slide-margin);
+  top: 190px;
+  width: 1540px;
+  color: var(--blue-base);
+}
+
+#s2 .s2-lead {
+  position: absolute;
+  left: var(--slide-margin);
+  top: 346px;
+  width: 560px;
+  color: var(--dark-gray-text);
+}
+
+#s2 .s2-mockup {
+  position: absolute;
+  left: 790px;
+  top: 330px;
+  width: 1080px;
+  height: auto;
+  z-index: 1;
+}
+
+#s2 .s2-pills {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+#s2 .s2-pill {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: var(--grid-gutter);
+  min-height: 92px;
+  padding: 0 var(--container-padding-s);
+  border-radius: 46px;
+  background: var(--blue-base);
+  color: var(--white);
+  font-size: 25px;
+  line-height: 1.1;
+  font-weight: 700;
+  box-shadow: var(--shadow-light);
+}
+
+#s2 .s2-pill span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 54px;
+  height: 54px;
+  border: 1px solid var(--blue-light);
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#s2 .s2-pill-1 { left: 120px; top: 500px; width: 610px; }
+#s2 .s2-pill-2 { left: 120px; top: 618px; width: 650px; }
+#s2 .s2-pill-3 { left: 970px; top: 438px; width: 520px; }
+#s2 .s2-pill-4 { left: 1190px; top: 565px; width: 570px; }
+#s2 .s2-pill-5 { left: 880px; top: 778px; width: 720px; }

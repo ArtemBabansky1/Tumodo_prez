@@ -1,0 +1,18 @@
+<section class="slide theme-light photo-list-slide" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="photo-list-content{{#if photoLeft}} photo-left{{/if}}">
+    <div class="photo-card photo-list-photo"><img src="{{image}}" alt=""></div>
+    <div class="photo-list-rows photo-list-count-{{itemCount}}">
+      {{#each items}}
+      <div class="photo-list-row">
+        <span class="photo-list-dot"></span>
+        <div class="photo-list-text">{{.}}</div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

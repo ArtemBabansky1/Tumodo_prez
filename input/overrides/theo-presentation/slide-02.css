@@ -1,0 +1,58 @@
+#s2.theo-promise { background: var(--blue-base); color: var(--white); }
+
+#s2 .theo-promise-left {
+  position: absolute;
+  left: var(--slide-margin);
+  top: 225px;
+  bottom: 0;
+  width: 760px;
+  overflow: hidden;
+}
+
+#s2 .theo-promise-left h1 { color: var(--white); }
+
+#s2 .theo-promise-intro {
+  position: absolute;
+  left: 0;
+  top: 420px;
+  width: 560px;
+  color: var(--white);
+}
+
+#s2 .theo-promise-visual {
+  position: absolute;
+  left: 360px;
+  bottom: -250px;
+  width: 470px;
+  height: 650px;
+  object-fit: contain;
+  object-position: 50% 100%;
+}
+
+#s2 .theo-promise-stack {
+  position: absolute;
+  left: 1000px;
+  right: 0;
+  top: 218px;
+  bottom: 0;
+}
+
+#s2 .theo-promise-card {
+  position: absolute;
+  right: 0;
+  height: 355px;
+  padding: var(--card-padding) 70px;
+  border-radius: var(--radius-l) 0 0 0;
+  background: var(--surface-gray);
+  color: var(--dark-gray-text);
+}
+
+#s2 .theo-promise-card h2 {
+  color: var(--blue-base);
+  margin-bottom: var(--paragraph);
+}
+
+#s2 .theo-promise-card p { max-width: 690px; }
+#s2 .card-one { top: 0; width: 823px; }
+#s2 .card-two { top: 263px; width: 871px; }
+#s2 .card-three { top: 508px; width: 920px; }

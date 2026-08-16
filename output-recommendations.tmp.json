@@ -1,0 +1,1132 @@
+﻿{
+  "figma": {
+    "fileKey": "SZpOoVhI07GPa3Vf7BRc10",
+    "sectionNodeId": "855:401",
+    "references": 126
+  },
+  "qualityContract": {
+    "minimumCardContentFill": 0.55,
+    "underfillAction": "change-layout-never-shrink-container",
+    "comparisonMode": "table-with-shared-columns-no-arrows",
+    "titleSystem": "page-title/system-anchor",
+    "rowAlignment": "shared-baselines",
+    "decoration": "functional-only",
+    "darkTheme": "one-contiguous-theme-chapter",
+    "requiredGate": "node scripts/validate-design.js <name>"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Сократите время на подготовку отчётов по командировкам",
+      "semanticRole": "cover",
+      "renderLayout": "cover",
+      "silhouetteId": "cover:hero:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "compositionBrief": {
+        "contentFill": 0.17763157894736842,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/theo-mascot-avatar.png",
+          "kind": "3d",
+          "score": 193,
+          "reason": "Обложка · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 780,
+            "bury": 0.2,
+            "x": 0.67,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-analyst-1.png",
+          "kind": "3d",
+          "score": 159,
+          "reason": "Обложка · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 780,
+            "bury": 0.2,
+            "x": 0.67,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-analyst-2.png",
+          "kind": "3d",
+          "score": 159,
+          "reason": "Обложка · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 780,
+            "bury": 0.2,
+            "x": 0.67,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/3d/3d-folder-documents-blue.webp",
+          "kind": "3d",
+          "score": 130,
+          "reason": "Обложка · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 780,
+            "bury": 0.2,
+            "x": 0.67,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/3d/3d-ticket-silver.webp",
+          "kind": "3d",
+          "score": 100,
+          "reason": "Обложка · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 780,
+            "bury": 0.2,
+            "x": 0.67,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:5632",
+          "source": "decks/library/1-cover__855-5632.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:1440",
+          "source": "decks/library/31__855-1440.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Один вопрос — готовый анализ в диалоге",
+      "semanticRole": "metrics",
+      "renderLayout": "kpi-metrics",
+      "silhouetteId": "kpi-metrics:metric-focus:chart",
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "3d",
+        "mockup"
+      ],
+      "assetGap": "",
+      "compositionBrief": {
+        "contentFill": 0.47710526315789475,
+        "spaceStrategy": "balanced",
+        "recommendedVisualShare": 0.36,
+        "containerPolicy": "alternate-layout-required",
+        "alignmentContract": "values-top/text-bottom",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "empty-container",
+        "metric-baseline",
+        "3d-text-collision",
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/3d-folder-documents-blue.webp",
+          "kind": "3d",
+          "score": 130,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 3,
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        },
+        {
+          "source": "photos/3d/3d-globe-silver.webp",
+          "kind": "3d",
+          "score": 130,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 2,
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-analyst-2.png",
+          "kind": "3d",
+          "score": 193,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "none",
+            "ownership": "none",
+            "rejected": true,
+            "requiresLayoutChange": true,
+            "reason": "глобальный 3D отклонён: в плотной сетке нет безопасной зоны; выберите карточку, другой визуал или другой силуэт"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-avatar.png",
+          "kind": "3d",
+          "score": 193,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "none",
+            "ownership": "none",
+            "rejected": true,
+            "requiresLayoutChange": true,
+            "reason": "глобальный 3D отклонён: в плотной сетке нет безопасной зоны; выберите карточку, другой визуал или другой силуэт"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-analyst-1.png",
+          "kind": "3d",
+          "score": 189,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "none",
+            "ownership": "none",
+            "rejected": true,
+            "requiresLayoutChange": true,
+            "reason": "глобальный 3D отклонён: в плотной сетке нет безопасной зоны; выберите карточку, другой визуал или другой силуэт"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:1975",
+          "source": "decks/library/41__855-1975.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:2860",
+          "source": "decks/library/910__855-2860.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "light",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4703",
+          "source": "decks/library/943__855-4703.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4867",
+          "source": "decks/library/946__855-4867.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "light",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4915",
+          "source": "decks/library/948__855-4915.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 96,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Больше, чем стандартный чат-бот",
+      "semanticRole": "problem-solution",
+      "renderLayout": "benefits-grid",
+      "silhouetteId": "benefits-grid:two-panel:none",
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "compositionBrief": {
+        "contentFill": 0.6997368421052632,
+        "spaceStrategy": "balanced",
+        "recommendedVisualShare": 0.36,
+        "containerPolicy": "standard",
+        "alignmentContract": "shared-row-axes",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/3d-chat-bubbles-blue-silver.webp",
+          "kind": "3d",
+          "score": 130,
+          "reason": "Проблема и решение · 3D-акцент",
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 2,
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        },
+        {
+          "source": "photos/3d/3d-zero-commission-coins.webp",
+          "kind": "3d",
+          "score": 100,
+          "reason": "Проблема и решение · 3D-акцент",
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 2,
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 66,
+          "reason": "Проблема и решение · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.36,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-tablet-documents-studio.webp",
+          "kind": "photo",
+          "score": 66,
+          "reason": "Проблема и решение · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.36,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-documents-sticky-notes-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Проблема и решение · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.36,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:753",
+          "source": "decks/library/13__855-753.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 74,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:804",
+          "source": "decks/library/14__855-804.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 74,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:857",
+          "source": "decks/library/15__855-857.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 74,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:908",
+          "source": "decks/library/16__855-908.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 74,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        },
+        {
+          "nodeId": "855:959",
+          "source": "decks/library/17__855-959.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 74,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "С какими запросами работает Тео",
+      "semanticRole": "metrics",
+      "renderLayout": "photo-list",
+      "silhouetteId": "photo-list:data-table:none",
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "3d",
+        "mockup"
+      ],
+      "assetGap": "",
+      "compositionBrief": {
+        "contentFill": 0.9213157894736842,
+        "spaceStrategy": "content-led",
+        "recommendedVisualShare": 0.26,
+        "containerPolicy": "full-height-rows",
+        "alignmentContract": "values-top/text-bottom",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "metric-baseline",
+        "3d-text-collision",
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/theo-mascot-analyst-1.png",
+          "kind": "3d",
+          "score": 185,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 700,
+            "bury": 0.2,
+            "x": 0.37,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-analyst-2.png",
+          "kind": "3d",
+          "score": 185,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 700,
+            "bury": 0.2,
+            "x": 0.37,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-avatar.png",
+          "kind": "3d",
+          "score": 185,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 700,
+            "bury": 0.2,
+            "x": 0.37,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/3d/3d-globe-silver.webp",
+          "kind": "3d",
+          "score": 134,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 700,
+            "bury": 0.2,
+            "x": 0.37,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/3d/3d-ticket-silver.webp",
+          "kind": "3d",
+          "score": 108,
+          "reason": "Метрики и данные · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 700,
+            "bury": 0.2,
+            "x": 0.37,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:2494",
+          "source": "decks/library/70__855-2494.png",
+          "role": "comparison",
+          "composition": "data-table",
+          "theme": "dark",
+          "score": 36,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · таблица"
+        },
+        {
+          "nodeId": "855:2613",
+          "source": "decks/library/73__855-2613.png",
+          "role": "comparison",
+          "composition": "data-table",
+          "theme": "light",
+          "score": 36,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · таблица"
+        },
+        {
+          "nodeId": "855:2860",
+          "source": "decks/library/910__855-2860.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "light",
+          "score": 36,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4703",
+          "source": "decks/library/943__855-4703.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 36,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4867",
+          "source": "decks/library/946__855-4867.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "light",
+          "score": 36,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Простая аналитика вместо сложных расчётов",
+      "semanticRole": "comparison",
+      "renderLayout": "comparison-flow",
+      "silhouetteId": "comparison-flow:card-grid:photo",
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "compositionBrief": {
+        "contentFill": 0.5005263157894737,
+        "spaceStrategy": "balanced",
+        "recommendedVisualShare": 0.36,
+        "containerPolicy": "table-fill",
+        "alignmentContract": "shared-table-columns/photo-table-edges",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "empty-container",
+        "detached-table-header",
+        "decorative-arrows",
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/manager-accountant-laptop-pointing-screen.webp",
+          "kind": "photo",
+          "score": 117,
+          "reason": "Сравнение · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.36,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinators-sofa-two-laptops.webp",
+          "kind": "photo",
+          "score": 66,
+          "reason": "Сравнение · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.36,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-analyst-2.png",
+          "kind": "3d",
+          "score": 189,
+          "reason": "Сравнение · 3D-акцент",
+          "placement": {
+            "mode": "none",
+            "ownership": "none",
+            "rejected": true,
+            "requiresLayoutChange": true,
+            "reason": "глобальный 3D отклонён: в плотной сетке нет безопасной зоны; выберите карточку, другой визуал или другой силуэт"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-avatar.png",
+          "kind": "3d",
+          "score": 185,
+          "reason": "Сравнение · 3D-акцент",
+          "placement": {
+            "mode": "none",
+            "ownership": "none",
+            "rejected": true,
+            "requiresLayoutChange": true,
+            "reason": "глобальный 3D отклонён: в плотной сетке нет безопасной зоны; выберите карточку, другой визуал или другой силуэт"
+          }
+        },
+        {
+          "source": "photos/3d/3d-zero-commission-coins.webp",
+          "kind": "3d",
+          "score": 100,
+          "reason": "Сравнение · 3D-акцент",
+          "placement": {
+            "mode": "none",
+            "ownership": "none",
+            "rejected": true,
+            "requiresLayoutChange": true,
+            "reason": "глобальный 3D отклонён: в плотной сетке нет безопасной зоны; выберите карточку, другой визуал или другой силуэт"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:2646",
+          "source": "decks/library/74__855-2646.png",
+          "role": "list",
+          "composition": "card-grid",
+          "theme": "light",
+          "score": 30,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · нужный тип визуала · сетка карточек"
+        },
+        {
+          "nodeId": "855:5594",
+          "source": "decks/library/902__855-5594.png",
+          "role": "list",
+          "composition": "split-media",
+          "theme": "dark",
+          "score": 30,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · нужный тип визуала · текст и визуал"
+        },
+        {
+          "nodeId": "855:2973",
+          "source": "decks/library/915__855-2973.png",
+          "role": "list",
+          "composition": "card-grid",
+          "theme": "dark",
+          "score": 30,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · нужный тип визуала · сетка карточек"
+        },
+        {
+          "nodeId": "855:3115",
+          "source": "decks/library/918__855-3115.png",
+          "role": "list",
+          "composition": "card-grid",
+          "theme": "light",
+          "score": 30,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · нужный тип визуала · сетка карточек"
+        },
+        {
+          "nodeId": "855:3160",
+          "source": "decks/library/919__855-3160.png",
+          "role": "list",
+          "composition": "card-grid",
+          "theme": "light",
+          "score": 30,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · нужный тип визуала · сетка карточек"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Как начать работу",
+      "semanticRole": "comparison",
+      "renderLayout": "process-steps",
+      "silhouetteId": "process-steps:metric-focus:photo",
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "compositionBrief": {
+        "contentFill": 0.7434210526315789,
+        "spaceStrategy": "content-led",
+        "recommendedVisualShare": 0.26,
+        "containerPolicy": "table-fill",
+        "alignmentContract": "shared-table-columns/photo-table-edges",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "detached-table-header",
+        "decorative-arrows",
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/theo-mascot-analyst-2.png",
+          "kind": "3d",
+          "score": 189,
+          "reason": "Сравнение · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "side-visual",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 700,
+            "bury": 0.16,
+            "x": 0.76,
+            "reason": "процесс получает отдельную боковую визуальную зону: 3D крупный, асимметричный и не пересекает шаги"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-avatar.png",
+          "kind": "3d",
+          "score": 185,
+          "reason": "Сравнение · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "side-visual",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 700,
+            "bury": 0.16,
+            "x": 0.76,
+            "reason": "процесс получает отдельную боковую визуальную зону: 3D крупный, асимметричный и не пересекает шаги"
+          }
+        },
+        {
+          "source": "photos/3d/3d-abstract-curved-sheets-blue.webp",
+          "kind": "3d",
+          "score": 104,
+          "reason": "Сравнение · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "side-visual",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 700,
+            "bury": 0.16,
+            "x": 0.76,
+            "reason": "процесс получает отдельную боковую визуальную зону: 3D крупный, асимметричный и не пересекает шаги"
+          }
+        },
+        {
+          "source": "photos/3d/3d-badge-lanyard-green.webp",
+          "kind": "3d",
+          "score": 104,
+          "reason": "Сравнение · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "side-visual",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 700,
+            "bury": 0.16,
+            "x": 0.76,
+            "reason": "процесс получает отдельную боковую визуальную зону: 3D крупный, асимметричный и не пересекает шаги"
+          }
+        },
+        {
+          "source": "photos/3d/3d-folder-documents-blue.webp",
+          "kind": "3d",
+          "score": 100,
+          "reason": "Сравнение · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "side-visual",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 700,
+            "bury": 0.16,
+            "x": 0.76,
+            "reason": "процесс получает отдельную боковую визуальную зону: 3D крупный, асимметричный и не пересекает шаги"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:5100",
+          "source": "decks/library/897__855-5100.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 52,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:2860",
+          "source": "decks/library/910__855-2860.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "light",
+          "score": 36,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4703",
+          "source": "decks/library/943__855-4703.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 36,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4867",
+          "source": "decks/library/946__855-4867.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "light",
+          "score": 36,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:4915",
+          "source": "decks/library/948__855-4915.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 36,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · акцент на цифрах"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Задайте свой первый вопрос Тео прямо сейчас",
+      "semanticRole": "closing",
+      "renderLayout": "final",
+      "silhouetteId": "final:hero:photo",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/theo-mascot-avatar.png",
+          "kind": "3d",
+          "score": 185,
+          "reason": "Финал · 3D-акцент",
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 780,
+            "bury": 0.2,
+            "x": 0.67,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/people/employee-suitcase-smartphone-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Финал · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-five-meeting-laptop-smiling.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Финал · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-five-meeting-phone-call.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Финал · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-four-meeting-documents-notebook.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Финал · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:5661",
+          "source": "decks/library/904__855-5661.png",
+          "role": "closing",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 80,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:3405",
+          "source": "decks/library/922__855-3405.png",
+          "role": "closing",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 80,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:4114",
+          "source": "decks/library/05__855-4114.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4217",
+          "source": "decks/library/08__855-4217.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    }
+  ]
+}

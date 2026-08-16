@@ -1,0 +1,22 @@
+<section class="slide theme-light comparison-slide" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="comparison-content{{#if image}} has-image{{/if}}">
+    {{#if image}}<div class="photo-card comparison-photo"><img src="{{image}}" alt=""></div>{{/if}}
+    <div class="change-table change-count-{{changeCount}}">
+      <div class="change-head">
+        <span>{{categoryLabel}}</span><span>{{beforeLabel}}</span><span>{{afterLabel}}</span>
+      </div>
+      {{#each changes}}
+      <div class="change-row">
+        <div class="change-label">{{label}}</div>
+        <div class="change-before">{{before}}</div>
+        <div class="change-after">{{after}}</div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

@@ -6,11 +6,12 @@
   </div>
   <div class="cols cols-3" style="position:absolute;left:120px;right:120px;top:405px;bottom:120px;height:auto;">
     {{#each cards}}
-    <div class="card pad-m acc-{{cardNum}}">
+    <div class="card pad-m acc-{{cardNum}}{{{threeDClass}}}">
       <div class="num-badge">{{cardNum}}</div>
       <div style="flex:1;"></div>
       {{#if isTitle}}<div class="card-title">{{title}}</div>{{/if}}
       {{#if text}}<div class="t-body-small">{{text}}</div>{{/if}}
+      {{#if threeD}}<img class="card-3d card-3d--{{threeDSide}}" src="{{threeD}}" alt="">{{/if}}
     </div>
     {{/each}}
   </div>

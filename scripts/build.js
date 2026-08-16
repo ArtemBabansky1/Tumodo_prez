@@ -9,11 +9,17 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { analyzeSlide } = require('./lib/design-intelligence');
+const {
+  analyzeSlide,
+  parseVisualAssets,
+  recommendVisualPlacement,
+} = require('./lib/design-intelligence');
 
 const ROOT = path.join(__dirname, '..');
 const DS = path.join(ROOT, 'design-system');
 const TPL = path.join(ROOT, 'templates', 'html');
+const VISUAL_ASSETS = parseVisualAssets();
+const VISUAL_ASSET_BY_SOURCE = new Map(VISUAL_ASSETS.map((asset) => [asset.source, asset]));
 
 // ---------------------------------------------------------------- утилиты
 
@@ -142,9 +148,18 @@ function checkLimits(slide, layout, warn) {
   if (slide.lead && slide.lead.length > 220) warn(`лид длиннее 220 знаков (${slide.lead.length})`);
   const allBullets = [...slide.bullets, ...slide.sections.flatMap((x) => x.bullets)];
   for (const b of allBullets) if (b.length > 120) warn(`пункт длиннее 120 знаков (${b.length}): «${b.slice(0, 40)}…»`);
-  // у benefits-grid свой лимит: 6–12 ячеек (slide-layouts.md)
+  // у сеточных макетов собственные лимиты
   if (layout === 'benefits-grid') {
     if (slide.bullets.length > 12) warn(`ячеек ${slide.bullets.length} (лимит 12) — делить слайд`);
+  } else if (layout === 'photo-list') {
+    if (slide.bullets.length < 3 || slide.bullets.length > 6) warn(`photo-list рассчитан на 3–6 коротких пунктов`);
+    if (!slide.meta.image) warn(`photo-list требует смысловое [image: ...]`);
+  } else if (layout === 'process-steps' || layout === 'process-journey') {
+    const count = slide.bullets.length || slide.sections.length;
+    if (count < 4 || count > 6) warn(`шагов ${count}; process-steps рассчитан на 4–6 — сменить макет или структуру`);
+  } else if (layout === 'kpi-metrics') {
+    const count = slide.sections.length || slide.bullets.length;
+    if (count < 2 || count > 5) warn(`метрик ${count}; kpi-metrics рассчитан на 2–5 — сменить макет или структуру`);
   } else if (slide.bullets.length > 6) {
     warn(`пунктов в списке ${slide.bullets.length} (лимит 6) — делить слайд`);
   }
@@ -153,12 +168,17 @@ function checkLimits(slide, layout, warn) {
 // ---------------------------------------------------------------- выбор макета (slide-layouts.md «Правила выбора»)
 
 const LAYOUT_ALIASES = { title: 'cover', 'text-1col': 'title-bullets', 'text-2col': 'title-bullets' };
-const KNOWN = ['cover', 'final', 'statement', 'section-divider', 'title-bullets', 'intro', 'numbered-cards-3', 'pain-solution', 'benefits-grid', 'principle-detail'];
+const KNOWN = ['cover', 'final', 'statement', 'section-divider', 'title-bullets', 'photo-list', 'comparison-flow', 'process-steps', 'process-journey', 'kpi-metrics', 'intro', 'numbered-cards-3', 'pain-solution', 'benefits-grid', 'principle-detail'];
 
 function pickLayout(slide, index, report, total) {
   let l = slide.layout ? (LAYOUT_ALIASES[slide.layout] || slide.layout) : null;
+  const semantic = analyzeSlide(slide, index, total);
+  const safetyLayouts = new Set(['comparison-flow', 'process-steps', 'kpi-metrics', 'photo-list']);
+  if (l && safetyLayouts.has(semantic.renderLayout) && l !== semantic.renderLayout) {
+    report(`слайд ${index + 1}: макет «${l}» противоречит смыслу — safety-layer заменил его на «${semantic.renderLayout}»`);
+    l = semantic.renderLayout;
+  }
   if (l && !KNOWN.includes(l)) {
-    const semantic = analyzeSlide(slide, index, total);
     report(`слайд ${index + 1}: семейство «${l}» пока не имеет общего HTML-шаблона — выбран ближайший рендер «${semantic.renderLayout}»; для точного Figma-канона агент должен создать override`);
     l = semantic.renderLayout;
   }
@@ -167,6 +187,16 @@ function pickLayout(slide, index, report, total) {
   }
   if (l) return l;
   return analyzeSlide(slide, index, total).renderLayout;
+}
+
+function attachCardThreeD(cards, plan, src) {
+  if (!plan || plan.mode !== 'card' || !src) return cards;
+  return cards.map((card, index) => index === plan.cardIndex - 1 ? {
+    ...card,
+    threeD: src,
+    threeDSide: plan.side,
+    threeDClass: ' has-card-3d has-card-3d--' + plan.side,
+  } : card);
 }
 
 // ---------------------------------------------------------------- рендер слайдов
@@ -183,12 +213,37 @@ function furniture(deckLabel, num, theme) {
 }
 
 // темы по умолчанию — из canon/AUDIT.md (эталоны макетов)
-const DEFAULT_THEME = { cover: 'blue', final: 'blue', statement: 'blue', 'numbered-cards-3': 'dark', 'section-divider': 'dark' };
+const DEFAULT_THEME = { cover: 'blue', final: 'blue', statement: 'blue', 'numbered-cards-3': 'dark', 'kpi-metrics': 'dark', 'section-divider': 'dark' };
 
-function buildSlide(slide, layout, num, fm, usedAssets, report) {
+function buildSlide(slide, layout, num, total, fm, usedAssets, report) {
   const lang = fm.lang || 'ru';
   const S = L(lang);
   const theme = slide.meta.theme || DEFAULT_THEME[layout] || 'light';
+  const threeDRel = slide.meta['3d'] || '';
+  const threeDSrc = threeDRel ? useAsset(threeDRel, usedAssets, report) : '';
+  const semantic = analyzeSlide({
+    ...slide,
+    threeD: threeDRel,
+    threeDMode: slide.meta['3d-mode'] || 'auto',
+    threeDCard: slide.meta['3d-card'] || '',
+    threeDPosition: slide.meta['3d-pos'] || '',
+  }, num - 1, total);
+  const threeDPlan = threeDSrc ? recommendVisualPlacement({
+    ...slide,
+    meta: slide.meta,
+  }, num - 1, total, {
+    analysis: { ...semantic, renderLayout: layout },
+    asset: VISUAL_ASSET_BY_SOURCE.get(threeDRel) || { source: threeDRel, kind: '3d', searchText: threeDRel.toLowerCase() },
+  }) : null;
+  if (threeDPlan && slide.meta['3d-pos'] === 'center') {
+    report(`слайд ${num}: позиция 3D center заменена на ${threeDPlan.side} — глобальный объект не ставится строго по центру`);
+  }
+  if (threeDPlan && slide.meta['3d-mode'] === 'card' && threeDPlan.mode !== 'card') {
+    report(`слайд ${num}: 3D не удалось безопасно привязать к карточке — ассет отклонён; смените карточку, визуал или силуэт`);
+  }
+  if (threeDPlan && threeDPlan.rejected) {
+    report(`слайд ${num}: ${threeDPlan.reason}`);
+  }
   const ctx = {
     num,
     title: slide.title || fm.title || '',
@@ -217,11 +272,11 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
   if (layout === 'title-bullets') {
     // canon-режим: 2+ секций → шапка + label-строка + карточки-колонки
     if (slide.sections.length >= 2) {
-      ctx.cards = slide.sections.map((sec) => ({
+      ctx.cards = attachCardThreeD(slide.sections.map((sec) => ({
         title: sec.title,
         text: sec.paragraphs.join(' '),
         items: sec.bullets.length ? sec.bullets : null,
-      }));
+      })), threeDPlan, threeDSrc);
       ctx.colCount = Math.min(ctx.cards.length, 4);
       ctx.label = slide.meta.label || '';
     } else {
@@ -230,20 +285,18 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
       // В контейнер-колонку идёт только фото/скриншот/мокап. 3D в контейнер не
       // ставится никогда — он накладывается поверх карточек (см. блок [3d:] ниже).
       if (slide.meta.image) ctx.image = useAsset(slide.meta.image, usedAssets, report);
+      ctx.mediaLeft = String(slide.meta['media-side'] || '').toLowerCase() === 'left';
       const b = slide.bullets.length ? slide.bullets : slide.sections.flatMap((x) => x.bullets);
 
       // работа с пустотой (presentation-rules.md §5): считаем, сколько места займёт текст
       const sparse = fillRatio([...slide.paragraphs, ...b], 1600) < 0.6;
       if (sparse && !ctx.image) {
-        // нет фото — уводим заголовок с лидом влево, контейнер ставим справа на 50%
-        ctx.aside = true;
-        ctx.bullets1 = b.length ? b : null;
-      } else {
+        report(`[ШТРАФ] слайд ${num}: короткий контент нельзя сжимать в маленькую карточку — выберите другой макет и смысловой визуал`);
+      }
+      {
         ctx.flat = true;
         ctx.noImage = !ctx.image;
-        // контейнер по высоте контента — только когда рядом НЕТ изображения:
-        // в паре «текст + фото» оба блока тянутся почти на всю высоту (≥560px)
-        ctx.cardFit = sparse && !ctx.image ? 'hug' : '';
+        ctx.cardFit = '';
         if (ctx.image) {
           // фото, скриншоты и мокапы — всегда в скруглённый контейнер, fill внутри;
           // без карточки идут только 3D-объекты на прозрачном фоне
@@ -266,20 +319,69 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
   if (layout === 'intro') {
     ctx.conclusion = slide.meta.conclusion || '';
     ctx.more = slide.meta.more || '';
-    ctx.cards = slide.sections.slice(0, 2).map((sec, i) => ({
+    ctx.cards = attachCardThreeD(slide.sections.slice(0, 2).map((sec, i) => ({
       cardNum: i + 1,
       title: sec.title,
       text: sec.paragraphs.join(' '),
       items: sec.bullets.length ? sec.bullets : null,
-    }));
+    })), threeDPlan, threeDSrc);
+  }
+  if (layout === 'comparison-flow') {
+    if (slide.meta.image) ctx.image = useAsset(slide.meta.image, usedAssets, report);
+    const sourceItems = slide.bullets.length ? slide.bullets : slide.sections.flatMap((sec) => sec.bullets);
+    ctx.changes = sourceItems.map((item, index) => {
+      const [rawLabel, ...rawRest] = String(item).split(':');
+      const body = rawRest.length ? rawRest.join(':').trim() : rawLabel.trim();
+      const parts = body.split(/\s*(?:→|⇒|->|—>)\s*/);
+      return {
+        index: index + 1,
+        label: rawRest.length ? rawLabel.trim() : '',
+        before: (parts[0] || '').trim(),
+        after: (parts[1] || '').trim(),
+      };
+    });
+    ctx.changeCount = ctx.changes.length;
+    ctx.beforeLabel = slide.meta['before-label'] || 'Раньше';
+    ctx.afterLabel = slide.meta['after-label'] || 'С Tumodo';
+    ctx.categoryLabel = slide.meta['category-label'] || 'Параметр';
+  }
+  if (layout === 'process-steps' || layout === 'process-journey') {
+    const items = slide.bullets.length
+      ? slide.bullets.map((item) => ({ title: item, text: '' }))
+      : slide.sections.map((sec) => ({ title: sec.title, text: sec.paragraphs.join(' ') }));
+    ctx.steps = items.slice(0, 6).map((step, index) => ({ ...step, stepNum: String(index + 1).padStart(2, '0') }));
+    ctx.stepCount = ctx.steps.length;
+    if (slide.meta.image) {
+      ctx.processImage = useAsset(slide.meta.image, usedAssets, report);
+      ctx.processImageCover = true;
+    } else if (threeDPlan && threeDPlan.mode === 'slide' && threeDSrc) {
+      ctx.processThreeD = threeDSrc;
+      ctx.processThreeDSide = threeDPlan.side;
+    }
+    ctx.hasProcessVisual = Boolean(ctx.processImage || ctx.processThreeD);
+  }
+  if (layout === 'kpi-metrics') {
+    const rawMetrics = slide.sections.length
+      ? slide.sections.map((sec) => ({ value: sec.title, text: sec.paragraphs.join(' ') }))
+      : slide.bullets.map((item) => {
+        const [value, ...rest] = String(item).split(/\s+—\s+/);
+        return { value, text: rest.join(' — ') };
+      });
+    ctx.metrics = attachCardThreeD(rawMetrics.slice(0, 5).map((metric, index) => ({
+      ...metric,
+      metricIndex: index + 1,
+      primary: index === 0,
+    })), threeDPlan, threeDSrc);
+    ctx.metricsCount = ctx.metrics.length;
+    ctx.conclusion = slide.meta.conclusion || '';
   }
   if (layout === 'numbered-cards-3') {
-    ctx.cards = slide.sections.slice(0, 3).map((sec, i) => ({
+    ctx.cards = attachCardThreeD(slide.sections.slice(0, 3).map((sec, i) => ({
       cardNum: i + 1,
       isTitle: !/^\d+$/.test(sec.title),
       title: sec.title,
       text: sec.paragraphs.join(' ').replace(/\*\*/g, ''),
-    }));
+    })), threeDPlan, threeDSrc);
   }
   if (layout === 'pain-solution') {
     ctx.lead = slide.lead || slide.paragraphs.join(' ');
@@ -291,6 +393,24 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
     ctx.solvesTitle = secs[1] ? secs[1].title : '';
     ctx.solves = secs[1] ? secs[1].bullets : [];
     if (slide.meta.image) ctx.accentImage = useAsset(slide.meta.image, usedAssets, report);
+    if (threeDPlan && threeDPlan.mode === 'card') {
+      if (threeDPlan.cardIndex === 1) {
+        ctx.painThreeD = threeDSrc;
+        ctx.painThreeDSide = threeDPlan.side;
+      } else {
+        ctx.solutionThreeD = threeDSrc;
+        ctx.solutionThreeDSide = threeDPlan.side;
+      }
+    }
+  }
+  if (layout === 'photo-list') {
+    ctx.image = slide.meta.image ? useAsset(slide.meta.image, usedAssets, report) : '';
+    ctx.items = slide.bullets.slice(0, 6);
+    ctx.itemCount = ctx.items.length;
+    ctx.photoLeft = String(slide.meta['media-side'] || '').toLowerCase() === 'left';
+    if (!ctx.image || ctx.itemCount < 3 || ctx.itemCount > 6) {
+      report(`[ШТРАФ] слайд ${num}: photo-list требует фото и 3–6 коротких пунктов; выберите другой макет`);
+    }
   }
   if (layout === 'benefits-grid') {
     // canon-режим: секции → синие карточки с иконками (+боковая белая [side: true])
@@ -298,11 +418,12 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
     const secs = slide.sections;
     if (secs.length) {
       const side = secs.find((x) => x.side);
-      ctx.cards = secs.filter((x) => !x.side).map((sec) => ({
+      ctx.cards = attachCardThreeD(secs.filter((x) => !x.side).map((sec) => ({
         title: sec.title,
         icon: sec.icon ? useAsset(sec.icon, usedAssets, report) : null,
+        text: sec.paragraphs.length ? sec.paragraphs.join(' ') : null,
         items: sec.bullets.length ? sec.bullets : null,
-      }));
+      })), threeDPlan, threeDSrc);
       ctx.sideTitle = side ? side.title : '';
       ctx.sideItems = side ? side.bullets.map(boldify) : [];
       ctx.noSide = !side;
@@ -310,10 +431,10 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
       // плоский режим: буллеты «лид — текст» → карточки без иконок
       // описание из одного пункта — это абзац, а не список: точку-буллет
       // перед единственной строкой не ставим (правило пользователя 2026-08-07)
-      ctx.cards = slide.bullets.map((item) => {
+      ctx.cards = attachCardThreeD(slide.bullets.map((item) => {
         const [lead, ...rest] = item.split(' — ');
         return { title: lead, text: rest.length ? rest.join(' — ') : null, items: null };
-      });
+      }), threeDPlan, threeDSrc);
       ctx.noSide = true;
     }
     // Явно задаём и колонки, и строки: неявная третья строка раньше выходила
@@ -329,27 +450,21 @@ function buildSlide(slide, layout, num, fm, usedAssets, report) {
   }
   if (layout === 'principle-detail') {
     ctx.conclusion = slide.meta.conclusion || '';
-    ctx.cards = slide.sections.slice(0, 2).map((sec, i) => ({
+    ctx.cards = attachCardThreeD(slide.sections.slice(0, 2).map((sec, i) => ({
       title: sec.title,
       items: sec.bullets.length ? sec.bullets : null,
       blue: i === 1,
       curve: i === 0,
       spacerTop: i === 0,
-    }));
+    })), threeDPlan, threeDSrc);
   }
 
   let html = render(readTpl(layout), ctx);
-  // [3d: photos/3d/...] — 3D-объект по нижней грани, скрыт за краем на 20% (style-guide §4)
-  if (slide.meta['3d'] && layout !== 'cover' && layout !== 'final') {
-    const src = useAsset(slide.meta['3d'], usedAssets, report);
-    if (src) {
-      const pos = slide.meta['3d-pos'] || 'right';
-      const leftPct = pos === 'left' ? '35%' : (pos === 'center' ? '50%' : '65%');
-      // 3D поверх контейнеров, уходит за нижнюю границу слайда на ~25%,
-      // смещён от центра по x, текст не перекрывает (presentation-rules.md §5.1)
-      const img = '<img src="' + src + '" alt="" style="position:absolute;left:' + leftPct + ';bottom:0;height:560px;transform:translate(-50%,25%);z-index:5;">';
-      html = html.replace(new RegExp('</section>' + String.fromCharCode(92) + 's*$'), img + '</section>');
-    }
+  // Глобальный 3D — крупный нижний акцент. Позиция всегда асимметрична; если
+  // объект принадлежит карточке, он уже встроен в её DOM и обрезается карточкой.
+  if (threeDPlan && threeDPlan.mode === 'slide' && threeDSrc && layout !== 'cover' && layout !== 'final' && layout !== 'process-steps' && layout !== 'process-journey') {
+    const img = '<img class="slide-3d slide-3d--' + threeDPlan.side + ' slide-3d--' + threeDPlan.size + '" src="' + threeDSrc + '" alt="" style="--three-d-x:' + Math.round(threeDPlan.x * 100) + '%;--three-d-height:' + threeDPlan.height + 'px;--three-d-bury:' + Math.round(threeDPlan.bury * 100) + '%;">';
+    html = html.replace(new RegExp('</section>' + String.fromCharCode(92) + 's*$'), img + '</section>');
   }
   return html;
 }
@@ -437,10 +552,82 @@ function main() {
   if (visualEligible.length && withVisual.length / visualEligible.length < 0.8) {
     report(`визуальное покрытие ${withVisual.length}/${visualEligible.length} содержательных слайдов; требуется минимум 80%`);
   }
+  if (visualEligible.length >= 4 && !visualEligible.some((slide) => slide.meta.image)) {
+    report('в колоде нет фото/мокапов: один только 3D не создаёт нужного человеческого и продуктового ритма');
+  }
+  if (visualEligible.length >= 4 && !visualEligible.some((slide) => slide.meta['3d'])) {
+    report('в колоде нет 3D-объектов: требуется сочетать фото людей и фирменные объёмные акценты');
+  }
+  for (let i = 1; i < slides.length; i += 1) {
+    for (const key of ['image', '3d']) {
+      const current = slides[i].meta[key];
+      if (current && current === slides[i - 1].meta[key]) {
+        report(`слайды ${i} и ${i + 1}: соседние слайды повторяют ассет ${current}`);
+      }
+    }
+  }
+  slides.forEach((slide, index) => {
+    const analysis = analyzeSlide(slide, index, slides.length);
+    if (analysis.contentFill < 0.38 && !slide.meta.image && !slide.meta['3d'] && !['cover', 'final', 'statement', 'section-divider'].includes(slide.layout || '')) {
+      report(`слайд ${index + 1} «${slide.title || 'без заголовка'}»: media-led композиция осталась без крупного визуала — вероятна случайная пустота`);
+    }
+    if (analysis.role === 'process') {
+      const namedCounts = { один: 1, два: 2, три: 3, четыре: 4, пять: 5, шесть: 6 };
+      const match = String(slide.title || '').toLowerCase().match(/\b(один|два|три|четыре|пять|шесть)\b/);
+      if (match && namedCounts[match[1]] !== analysis.itemCount) {
+        report(`слайд ${index + 1}: заголовок обещает ${namedCounts[match[1]]} шагов, а в контенте ${analysis.itemCount} — синхронизируйте тезис и структуру`);
+      }
+    }
+  });
+
+  const plannedLayouts = slides.map((slide, index) => pickLayout(slide, index, report, slides.length));
+  for (let i = 1; i < plannedLayouts.length; i += 1) {
+    if (plannedLayouts[i] === 'process-steps' && plannedLayouts[i - 1] === 'process-steps') {
+      plannedLayouts[i] = 'process-journey';
+      report(`слайд ${i + 1}: соседний process-steps уже использован — выбран альтернативный силуэт «process-journey»`);
+    }
+  }
+
+  // Тёмная тема — глава, а не случайный эффект. Все dark-слайды должны идти
+  // непрерывно и иметь одно имя тематической серии. Светлый слайд внутри тёмной
+  // главы разрушает ритм и считается штрафной ошибкой.
+  const darkIndices = slides
+    .map((slide, index) => ({
+      index,
+      theme: slide.meta.theme || DEFAULT_THEME[plannedLayouts[index]] || 'light',
+      chapter: slide.meta['theme-chapter'] || slide.meta['sequence-group'] || '',
+    }))
+    .filter((item) => item.theme === 'dark');
+  if (darkIndices.length > 1) {
+    const contiguous = darkIndices.every((item, index) => index === 0 || item.index === darkIndices[index - 1].index + 1);
+    if (!contiguous) {
+      report('[ШТРАФ] тёмные слайды разорваны светлыми: соберите их в одну непрерывную тематическую главу');
+    }
+    const chapters = new Set(darkIndices.map((item) => item.chapter).filter(Boolean));
+    if (darkIndices.some((item) => !item.chapter) || chapters.size !== 1) {
+      report('[ШТРАФ] тёмная серия должна иметь общий [theme-chapter: ...] или [sequence-group: ...] на каждом слайде');
+    }
+  }
+  const seenSilhouettes = new Map();
+  for (let i = 0; i < slides.length; i += 1) {
+    const slide = slides[i];
+    const layout = plannedLayouts[i];
+    const overridePath = path.join(overridesDir, 'slide-' + String(i + 1).padStart(2, '0') + '.html');
+    const visual = slide.meta.image ? 'photo' : (slide.meta['3d'] ? `3d-${slide.meta['3d-mode'] || 'auto'}` : 'no-visual');
+    const side = slide.meta['media-side'] || slide.meta['3d-pos'] || (slide.meta.image ? 'right' : 'none');
+    const signature = fs.existsSync(overridePath) ? `override-${i + 1}` : `${layout}:${visual}:${side}`;
+    const sequenceGroup = slide.meta['sequence-group'] || '';
+    if (i > 0 && layout === plannedLayouts[i - 1] && !sequenceGroup && !['cover', 'final', 'statement', 'section-divider'].includes(layout)) {
+      report(`слайды ${i} и ${i + 1}: соседние слайды повторяют макет «${layout}» — выберите другой силуэт или явно задайте [sequence-group: ...] для осознанной серии`);
+    }
+    if (seenSilhouettes.has(signature) && !sequenceGroup && !['cover', 'final', 'statement', 'section-divider'].includes(layout)) {
+      report(`слайды ${seenSilhouettes.get(signature)} и ${i + 1}: повторяется силуэт «${signature}» — смените макет, сторону визуала или композиционную семью`);
+    } else seenSilhouettes.set(signature, i + 1);
+  }
 
   const usedAssets = new Map();
   const rendered = slides.map((slide, i) => {
-    const layout = pickLayout(slide, i, report, slides.length);
+    const layout = plannedLayouts[i];
     checkLimits(slide, layout, (msg) => report(`слайд ${i + 1} (${layout}): ${msg}`));
     const overridePath = path.join(overridesDir, 'slide-' + String(i + 1).padStart(2, '0') + '.html');
     let html;
@@ -456,7 +643,7 @@ function main() {
         if (local) html = html.split('design-system/' + rel).join(local);
       }
     } else {
-      html = buildSlide(slide, layout, i + 1, fm, usedAssets, report);
+      html = buildSlide(slide, layout, i + 1, slides.length, fm, usedAssets, report);
     }
     const canonVariant = slide.meta.variant ? ` data-canon-variant="${esc(slide.meta.variant)}"` : '';
     const canonReference = slide.meta.reference ? ` data-canon-reference="${esc(slide.meta.reference)}"` : '';

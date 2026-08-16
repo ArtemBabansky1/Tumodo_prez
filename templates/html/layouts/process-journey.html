@@ -1,0 +1,26 @@
+<section class="slide theme-light journey-slide" id="s{{num}}">
+  {{{furniture}}}
+  <div class="h1-row">
+    <h1 class="t-page-title">{{title}}</h1>
+    {{#if lead}}<div class="lead t-body-middle">{{lead}}</div>{{/if}}
+  </div>
+  <div class="journey-content{{#if hasProcessVisual}} has-visual{{/if}}">
+    <div class="journey-rail journey-count-{{stepCount}}">
+      {{#each steps}}
+      <div class="journey-step">
+        <div class="journey-num">{{stepNum}}</div>
+        <div class="journey-copy">
+          <div class="journey-title">{{title}}</div>
+          {{#if text}}<div class="journey-text">{{text}}</div>{{/if}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    {{#if hasProcessVisual}}
+    <div class="journey-visual">
+      {{#if processImage}}<div class="photo-card journey-photo"><img src="{{processImage}}" alt=""></div>{{/if}}
+      {{#if processThreeD}}<img class="journey-3d journey-3d--{{processThreeDSide}}" src="{{processThreeD}}" alt="">{{/if}}
+    </div>
+    {{/if}}
+  </div>
+</section>

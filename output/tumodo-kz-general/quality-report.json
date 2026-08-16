@@ -1,0 +1,22 @@
+{
+  "deck": "tumodo-kz-general",
+  "checkedAt": "2026-08-16T05:05:41.856Z",
+  "slides": 12,
+  "passed": false,
+  "summary": {
+    "penalties": 1,
+    "warnings": 0
+  },
+  "penalties": [
+    {
+      "slide": 6,
+      "code": "COMPRESSED_CONTAINER",
+      "message": "Текстовый контейнер сжат относительно соседнего фото; требуется другое семейство макета",
+      "data": {
+        "cardHeight": 310,
+        "photoHeight": 618
+      }
+    }
+  ],
+  "warnings": []
+}

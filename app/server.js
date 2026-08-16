@@ -15,6 +15,7 @@ const {
   parseVisualAssets,
   recommendReferences,
   recommendVisualAssets,
+  recommendVisualPlacement,
 } = require('../scripts/lib/design-intelligence');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -277,6 +278,7 @@ const RULE_FILES = {
   'presentation-rules': { path: 'rules/presentation-rules.md', title: 'Структура презентации' },
   'slide-layouts': { path: 'rules/slide-layouts.md', title: 'Библиотека макетов' },
   'style-guide': { path: 'rules/style-guide.md', title: 'Стиль и дизайн' },
+  'designer-reasoning': { path: 'rules/designer-reasoning.md', title: 'Мышление дизайнера' },
   'content-rules': { path: 'rules/content-rules.md', title: 'Правила текста' },
   'logo-rules': { path: 'design-system/logo/LOGO-RULES.md', title: 'Логотип — правила' },
   'icons-rules': { path: 'design-system/icons/ICONS-RULES.md', title: 'Иконки — правила' },
@@ -472,16 +474,26 @@ function parseEngineSlide(block, index) {
     image: '',
     threeD: '',
     threeDPosition: 'right',
+    threeDMode: 'auto',
+    threeDCard: 0,
     bullets: 0,
     sections: 0,
+    bulletItems: [],
+    sectionItems: [],
+    paragraphs: [],
   };
   const lead = [];
   const content = [];
+  let currentSection = null;
   for (const raw of block.split(/\r?\n/)) {
     const line = raw.trim();
     let m;
     if ((m = line.match(/^#\s+(.*)$/))) slide.title = m[1].trim();
-    else if (/^##\s+/.test(line)) slide.sections += 1;
+    else if ((m = line.match(/^##\s+(.*)$/))) {
+      slide.sections += 1;
+      currentSection = { title: m[1].trim(), paragraphs: [], bullets: [] };
+      slide.sectionItems.push(currentSection);
+    }
     else if ((m = line.match(/^\[([\w-]+):\s*([^\]]*)\]$/))) {
       const key = m[1];
       const value = m[2].trim();
@@ -492,11 +504,20 @@ function parseEngineSlide(block, index) {
       else if (key === 'image') slide.image = value;
       else if (key === '3d') slide.threeD = value;
       else if (key === '3d-pos') slide.threeDPosition = value || 'right';
+      else if (key === '3d-mode') slide.threeDMode = value || 'auto';
+      else if (key === '3d-card') slide.threeDCard = Number(value) || 0;
     } else if ((m = line.match(/^>\s?(.*)$/))) lead.push(m[1].trim());
     else if (/^[-*]\s+/.test(line)) {
       slide.bullets += 1;
-      content.push(line.replace(/^[-*]\s+/, ''));
-    } else if (line && !/^---$/.test(line)) content.push(line);
+      const item = line.replace(/^[-*]\s+/, '');
+      if (currentSection) currentSection.bullets.push(item);
+      else slide.bulletItems.push(item);
+      content.push(item);
+    } else if (line && !/^---$/.test(line)) {
+      if (currentSection) currentSection.paragraphs.push(line);
+      else slide.paragraphs.push(line);
+      content.push(line);
+    }
   }
   slide.lead = lead.join(' ');
   slide.summary = slide.lead || content[0] || '';
@@ -534,7 +555,7 @@ function updateSlideMetadata(block, changes) {
     kept.push(lines[i]);
   }
   const values = { ...existing, ...changes };
-  const order = ['layout', 'reference', 'variant', 'semantic-role', 'image', '3d', '3d-pos'];
+  const order = ['layout', 'reference', 'variant', 'semantic-role', 'image', '3d', '3d-mode', '3d-card', '3d-pos'];
   const meta = order
     .filter((key) => Object.prototype.hasOwnProperty.call(values, key) && values[key])
     .map((key) => '[' + key + ': ' + values[key] + ']');
@@ -634,26 +655,56 @@ app.get('/api/review/:name', async (req, res) => {
     const visualAssetLibrary = parseVisualAssets();
     const total = Math.max(sourcePlan.slides.length, plannedSlides.length, ...shots.keys(), 0);
     const slides = [];
-    let previousComposition = '';
+    const recentCompositions = [];
+    const recentLayouts = [];
+    const recentReferences = [];
     for (let i = 0; i < total; i += 1) {
       const sourceSlide = sourcePlan.slides[i] || {};
       const planned = plannedSlides[i] || {};
       const shot = shots.get(i + 1) || null;
       const isSyntheticFinal = i >= sourcePlan.slides.length && i === total - 1;
+      const intelligenceSlide = {
+        ...sourceSlide,
+        bullets: sourceSlide.bulletItems || [],
+        sections: sourceSlide.sectionItems || [],
+        paragraphs: sourceSlide.paragraphs || [],
+      };
       const semantic = recommendReferences(
-        isSyntheticFinal ? { ...sourceSlide, layout: 'final', title: 'Финальный слайд' } : sourceSlide,
+        isSyntheticFinal ? { ...intelligenceSlide, layout: 'final', title: 'Финальный слайд' } : intelligenceSlide,
         i,
         total,
-        { library: referenceLibrary, limit: 12, previousComposition }
+        { library: referenceLibrary, limit: 12, recentCompositions, recentLayouts, recentReferences }
       );
       const plannedReference = planned.canonReference || sourceSlide.reference || '';
       const bestReference = semantic.references[0] || null;
-      const visual = recommendVisualAssets(sourceSlide, i, total, {
+      const visual = recommendVisualAssets(intelligenceSlide, i, total, {
         analysis: semantic.analysis,
         assets: visualAssetLibrary,
         limit: 6,
       });
-      previousComposition = planned.compositionFamily || (bestReference && bestReference.composition) || previousComposition;
+      const visualSuggestions = visual.suggestions.map((asset) => ({
+        ...asset,
+        placement: recommendVisualPlacement(intelligenceSlide, i, total, {
+          analysis: semantic.analysis,
+          asset,
+        }),
+      })).sort((a, b) => Number(Boolean(a.placement.rejected)) - Number(Boolean(b.placement.rejected)) || b.score - a.score);
+      const selectedThreeD = sourceSlide.threeD
+        ? visualAssetLibrary.find((asset) => asset.source === sourceSlide.threeD)
+        : null;
+      const selectedVisualPlacement = selectedThreeD
+        ? recommendVisualPlacement(intelligenceSlide, i, total, { analysis: semantic.analysis, asset: selectedThreeD })
+        : null;
+      const resolvedComposition = planned.compositionFamily || (bestReference && bestReference.composition) || 'editorial';
+      const resolvedLayout = planned.layout || sourceSlide.layout || semantic.analysis.renderLayout || (isSyntheticFinal ? 'final' : 'title-bullets');
+      if (bestReference) {
+        recentCompositions.unshift(bestReference.composition);
+        recentLayouts.unshift(semantic.analysis.renderLayout);
+        recentReferences.unshift(bestReference.source);
+        recentCompositions.splice(4);
+        recentLayouts.splice(4);
+        recentReferences.splice(8);
+      }
       slides.push({
         index: i,
         number: i + 1,
@@ -663,17 +714,27 @@ app.get('/api/review/:name', async (req, res) => {
         rationale: planned.rationale || '',
         semanticRole: planned.semanticRole || sourceSlide.semanticRole || semantic.analysis.role,
         semanticRoleLabel: ENGINE_ROLE_LABELS[planned.semanticRole || sourceSlide.semanticRole || semantic.analysis.role] || semantic.analysis.roleLabel,
-        compositionFamily: planned.compositionFamily || '',
-        layout: planned.layout || sourceSlide.layout || semantic.analysis.renderLayout || (isSyntheticFinal ? 'final' : 'title-bullets'),
+        compositionFamily: resolvedComposition,
+        layout: resolvedLayout,
+        silhouetteId: planned.silhouetteId || [resolvedLayout, resolvedComposition, sourceSlide.image ? 'photo' : (sourceSlide.threeD ? '3d' : semantic.analysis.media)].join(':'),
         variant: planned.canonVariant || sourceSlide.variant || '',
         reference: plannedReference,
         referenceNodeId: planned.figmaNodeId || '',
         recommendations: semantic.references,
+        compositionBrief: {
+          contentFill: semantic.analysis.contentFill,
+          spaceStrategy: semantic.analysis.spaceStrategy,
+          recommendedVisualShare: semantic.analysis.recommendedVisualShare,
+        },
         visualRequirement: visual.required ? 'required' : 'intentional-exception',
-        visualSuggestions: visual.suggestions,
+        assetGap: visual.assetGap,
+        visualSuggestions,
         image: sourceSlide.image || '',
         threeD: sourceSlide.threeD || '',
         threeDPosition: sourceSlide.threeDPosition || 'right',
+        threeDMode: sourceSlide.threeDMode || 'auto',
+        threeDCard: sourceSlide.threeDCard || 0,
+        selectedVisualPlacement,
         assets: Array.isArray(planned.assets) ? planned.assets : [],
         screenshotUrl: shot ? shot.url : '',
         screenshotMtime: shot ? shot.mtime : 0,
@@ -728,6 +789,8 @@ app.patch('/api/engine/plan/:name/slides/:index', async (req, res) => {
     if (Object.prototype.hasOwnProperty.call(req.body, 'asset')) {
       changes.image = '';
       changes['3d'] = '';
+      changes['3d-mode'] = '';
+      changes['3d-card'] = '';
       changes['3d-pos'] = '';
       if (req.body.asset) {
         const { kind, source: assetSource, position } = req.body.asset;
@@ -742,14 +805,30 @@ app.patch('/api/engine/plan/:name/slides/:index', async (req, res) => {
         try { await fsp.access(path.join(DS_DIR, assetSource)); }
         catch { return res.status(404).json({ error: 'Ассет не найден' }); }
         changes[kind] = assetSource;
-        if (kind === '3d') changes['3d-pos'] = ['left', 'center', 'right'].includes(position) ? position : 'right';
+        if (kind === '3d') {
+          changes['3d-mode'] = 'auto';
+          changes['3d-pos'] = ['left', 'right'].includes(position) ? position : 'right';
+        }
       }
     }
     if (typeof req.body.threeDPosition === 'string') {
-      if (!['left', 'center', 'right'].includes(req.body.threeDPosition)) {
+      if (!['left', 'right'].includes(req.body.threeDPosition)) {
         return res.status(400).json({ error: 'Некорректная позиция 3D' });
       }
       changes['3d-pos'] = req.body.threeDPosition;
+    }
+    if (typeof req.body.threeDMode === 'string') {
+      if (!['auto', 'card', 'slide'].includes(req.body.threeDMode)) {
+        return res.status(400).json({ error: 'Некорректный режим 3D' });
+      }
+      changes['3d-mode'] = req.body.threeDMode;
+    }
+    if (req.body.threeDCard !== undefined) {
+      const card = Number(req.body.threeDCard);
+      if (!Number.isInteger(card) || card < 0 || card > 12) {
+        return res.status(400).json({ error: 'Некорректный номер карточки для 3D' });
+      }
+      changes['3d-card'] = card ? String(card) : '';
     }
 
     parsed.blocks[slideIndex] = updateSlideMetadata(parsed.blocks[slideIndex], changes);

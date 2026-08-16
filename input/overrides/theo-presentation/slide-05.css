@@ -1,0 +1,15 @@
+#s5 .theo-comparison-head {
+  position: absolute;
+  left: var(--slide-margin);
+  right: var(--slide-margin);
+  top: calc(var(--slide-margin) + var(--container-padding-l) + var(--card-padding));
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  gap: var(--grid-gutter);
+  align-items: end;
+}
+
+#s5 .theo-comparison-head > div {
+  justify-self: end;
+  max-width: 68%;
+}

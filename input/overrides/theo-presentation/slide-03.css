@@ -1,0 +1,51 @@
+#s3 .theo-benefits-title {
+  position: absolute;
+  left: var(--slide-margin);
+  top: calc(var(--slide-margin) + var(--container-padding-l) + var(--card-padding));
+}
+
+#s3 .theo-benefits-grid {
+  position: absolute;
+  left: var(--slide-margin);
+  right: var(--slide-margin);
+  top: 32%;
+  bottom: var(--slide-margin);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--grid-gutter);
+}
+
+#s3 .theo-benefit-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-light);
+  padding: var(--card-padding);
+  display: grid;
+  align-content: center;
+  gap: var(--paragraph);
+}
+
+#s3 .theo-benefit-card--visual {
+  grid-template-columns: 58% 42%;
+}
+
+#s3 .theo-benefit-safe {
+  display: grid;
+  align-content: center;
+  gap: var(--paragraph);
+  position: relative;
+  z-index: 2;
+}
+
+#s3 .theo-benefit-card--visual img {
+  position: absolute;
+  right: calc(var(--grid-gutter) * -1);
+  bottom: calc(var(--grid-gutter) * -1);
+  height: 92%;
+  width: 46%;
+  object-fit: contain;
+  object-position: 100% 100%;
+}
