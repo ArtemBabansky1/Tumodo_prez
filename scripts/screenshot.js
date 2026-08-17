@@ -53,7 +53,9 @@ for (const n of nums) {
     '<style>',
     'body { margin: 0 !important; background: #fff !important; overflow: hidden !important; }',
     '.deck { display: block !important; padding: 0 !important; gap: 0 !important; }',
-    '.slide-wrap { display: none !important; }',
+    // скруглённые углы — свойство экранного просмотрщика; снимок для сверки с
+    // эталоном должен быть прямоугольным, как сам слайд
+    '.slide-wrap { display: none !important; border-radius: 0 !important; overflow: visible !important; }',
     `.slide-wrap:nth-of-type(${n}) { display: block !important; width: 1920px !important; height: 1080px !important; }`,
     `.slide-wrap:nth-of-type(${n}) .slide { transform: none !important; }`,
     '</style></head>',

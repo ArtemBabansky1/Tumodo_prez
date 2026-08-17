@@ -968,6 +968,105 @@ app.delete('/api/chats/:id', async (req, res) => {
   }
 });
 
+// ---------------------------------------------------------------- экспорт презентации в PDF
+
+const DECK_NAME_RE = /^[a-zA-Z0-9_-]+$/;
+
+app.post('/api/export-pdf/:name', async (req, res) => {
+  const name = req.params.name;
+  if (!DECK_NAME_RE.test(name)) return res.status(400).json({ error: 'Некорректное имя презентации' });
+  try {
+    await fsp.access(path.join(ROOT, 'output', name, 'index.html'));
+  } catch {
+    return res.status(404).json({ error: 'Презентация не собрана' });
+  }
+  try {
+    await new Promise((resolve, reject) => {
+      execFile(
+        process.execPath,
+        [path.join(ROOT, 'scripts', 'export-pdf.js'), name],
+        { cwd: ROOT, timeout: 180000 },
+        (err, stdout, stderr) => (err ? reject(new Error((stderr || err.message).trim().split('\n').pop())) : resolve(stdout))
+      );
+    });
+    res.json({ url: '/files/output/' + name + '/' + name + '.pdf', file: name + '.pdf' });
+  } catch (e) {
+    res.status(500).json({ error: 'Не удалось собрать PDF: ' + e.message });
+  }
+});
+
+// ---------------------------------------------------------------- профиль пользователя
+
+const PROFILE_FILE = path.join(__dirname, 'data', 'profile.json');
+const PROFILE_MEDIA = path.join(__dirname, 'data', 'profile'); // аватар и обои
+app.use('/files/profile', express.static(PROFILE_MEDIA));
+
+// level (уровень доступа) правится только системно — прямо в app/data/profile.json;
+// через API он неизменяем, поэтому в PUT не читается.
+const DEFAULT_PROFILE = { name: '', role: '', level: 'Разработчик', avatar: '', wallpaper: '' };
+
+/** Реальный счётчик: собранные презентации в output/ (папка с index.html). */
+async function countDecks() {
+  let n = 0;
+  try {
+    for (const d of await fsp.readdir(path.join(ROOT, 'output'), { withFileTypes: true })) {
+      if (!d.isDirectory()) continue;
+      try {
+        await fsp.access(path.join(ROOT, 'output', d.name, 'index.html'));
+        n++;
+      } catch {}
+    }
+  } catch {}
+  return n;
+}
+
+app.get('/api/profile', async (req, res) => {
+  const saved = (await readJsonSafe(PROFILE_FILE)) || {};
+  res.json({ ...DEFAULT_PROFILE, ...saved, decks: await countDecks() });
+});
+
+app.put('/api/profile', async (req, res) => {
+  const saved = (await readJsonSafe(PROFILE_FILE)) || {};
+  const next = { ...DEFAULT_PROFILE, ...saved };
+  const b = req.body || {};
+  if (typeof b.name === 'string') next.name = b.name.trim().slice(0, 120);
+  if (typeof b.role === 'string') next.role = b.role.trim().slice(0, 120);
+  try {
+    await writeJson(PROFILE_FILE, next);
+    res.json({ ok: true });
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
+const PROFILE_IMAGE_EXT = { 'image/png': '.png', 'image/jpeg': '.jpg', 'image/webp': '.webp', 'image/gif': '.gif' };
+
+/** Загрузка аватара или обоев: файл кладётся в app/data/profile/<kind>.<ext>. */
+app.post('/api/profile/image/:kind', upload.single('file'), async (req, res) => {
+  const kind = req.params.kind;
+  if (kind !== 'avatar' && kind !== 'wallpaper') return res.status(400).json({ error: 'Неизвестный тип изображения' });
+  const f = req.file;
+  if (!f) return res.status(400).json({ error: 'Файл не приложен' });
+  const ext = PROFILE_IMAGE_EXT[f.mimetype];
+  if (!ext) return res.status(400).json({ error: 'Нужна картинка: PNG, JPG, WEBP или GIF' });
+  try {
+    await fsp.mkdir(PROFILE_MEDIA, { recursive: true });
+    // старый файл другого формата удаляем, иначе на диске останется мусор
+    for (const old of Object.values(PROFILE_IMAGE_EXT)) {
+      if (old !== ext) await fsp.rm(path.join(PROFILE_MEDIA, kind + old), { force: true });
+    }
+    await fsp.writeFile(path.join(PROFILE_MEDIA, kind + ext), f.buffer);
+    const saved = (await readJsonSafe(PROFILE_FILE)) || {};
+    const next = { ...DEFAULT_PROFILE, ...saved };
+    // ?v= — чтобы браузер не показывал старую картинку из кеша
+    next[kind] = '/files/profile/' + kind + ext + '?v=' + Date.now();
+    await writeJson(PROFILE_FILE, next);
+    res.json({ url: next[kind] });
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
 // ---------------------------------------------------------------- GPT / Codex (чат фабрики)
 
 require('./agent')(app, ROOT, upload);

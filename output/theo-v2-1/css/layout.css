@@ -1,0 +1,263 @@
+/* layout.css — слайд 1920×1080, сетка из tokens/grid.md (7×6, gutter 25, поля 120), «мебель», темы.
+   Правила: rules/presentation-rules.md §2–4, rules/style-guide.md §1. */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #3a3d45; /* технический фон просмотрщика, не входит в слайд */
+  font-family: var(--font-family);
+  color: var(--dark-gray-text);
+}
+
+/* ---------- слайд ---------- */
+
+.slide {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background: var(--surface-gray);
+  /* Баланс строк — для ВСЕГО текста слайда (правило пользователя 2026-08-07).
+     text-wrap наследуется, поэтому задаётся один раз здесь: заголовки, лиды,
+     абзацы, пункты списков, подписи в карточках. Исключение — .h1-row .lead. */
+  text-wrap: balance;
+}
+
+/* рабочая область: поля 120px */
+.safe {
+  position: absolute;
+  inset: var(--slide-margin);
+}
+
+/* фоновые слои (заливки, паттерны, фото «на вылет») */
+.bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ---------- темы ---------- */
+
+.slide.theme-light { background: var(--surface-gray); color: var(--dark-gray-text); }
+
+.slide.theme-blue { background: var(--blue-base); color: var(--white); }
+.slide.theme-blue .bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/patterns/main-pattern.svg');
+  background-size: cover;
+  background-position: top center;
+}
+
+.slide.theme-dark { background: var(--black); color: var(--white); }
+.slide.theme-dark .glow {
+  position: absolute;
+  width: 1400px;
+  height: 1400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.slide.theme-dark .glow.glow-blue { background: radial-gradient(circle, var(--blue-base) 0%, transparent 65%); }
+.slide.theme-dark .glow.glow-purple { background: radial-gradient(circle, var(--purple-base) 0%, transparent 65%); }
+.slide.theme-dark .glow.bottom { left: 50%; transform: translateX(-50%); bottom: -900px; }
+.slide.theme-dark .glow.center { left: 260px; top: -100px; }
+
+/* ---------- мебель (presentation-rules.md §3) ---------- */
+
+.deck-label {
+  position: absolute;
+  left: 120px;
+  top: 80px;
+  font-size: 20px;
+  line-height: 1.25;
+  color: var(--gray-2);
+}
+.theme-blue .deck-label, .theme-dark .deck-label { color: var(--white); }
+
+.slide-logo {
+  position: absolute;
+  right: 120px;
+  top: 90px;
+  width: 184px;
+  height: auto;
+}
+
+.slide-num {
+  position: absolute;
+  left: 120px;
+  top: 1013px;
+  font-size: 20px;
+  line-height: 1.25;
+  color: var(--gray-1);
+}
+
+/* крупный логотип обложки/финала; поля слайда одинаковые со всех сторон — 120px */
+.cover-logo {
+  position: absolute;
+  left: var(--slide-margin);
+  top: var(--slide-margin);
+  width: 396px;
+  height: auto;
+}
+
+/* ---------- вертикальные якоря контента ---------- */
+
+/* Баланс строк (presentation-rules.md §4): многострочный текст переносится группой
+   слов, а не по одному — одинокое слово на последней строке запрещено.
+   Действует на заголовки, слоганы и подзаголовки; лид в шапке — исключение
+   (.h1-row .lead, там `pretty`: строки должны доходить до правого поля). */
+.t-cover-1, .t-cover-2, .t-page-title, .card-title, .t-body-big, .stmt-big {
+  text-wrap: balance;
+}
+
+.h1-row h1 { max-width: 760px; text-wrap: balance; }
+
+/* авто-лейаут на 100% ширины сетки: H1 прижат к левой границе, лид — к правой,
+   оба выровнены по нижней оси (правило пользователя 2026-08-05).
+   Шапка привязана НИЗОМ к y=317 (верх контента 342 − gutter 25): отступ до белого
+   блока одинаковый при любом числе строк заголовка/лида, блок растёт вверх. */
+.h1-row {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  bottom: 763px; /* 1080 − 317 */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+/* лид прижат вплотную к правой границе сетки (x=1800): строки заполняют блок целиком.
+   `pretty` вместо `balance` — balance укорачивает все строки, и блок «висит» в воздухе,
+   не доходя до правого поля; `pretty` держит ширину и запрещает одинокое слово в конце. */
+.h1-row .lead {
+  text-wrap: pretty;
+  width: 733px;
+  flex: none;
+}
+
+.content {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 342px;
+  bottom: 120px;
+}
+
+/* ---------- семейство C: левая колонка + зона карточек справа (canon: intro, principle-detail) ---------- */
+
+.split-left {
+  position: absolute;
+  left: 120px;
+  top: 225px;
+  bottom: 120px;
+  width: 645px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.split-left h1 { text-wrap: balance; }
+.split-left .spacer { flex: 1; }
+.split-left .conclusion { font-size: 30px; font-weight: 600; line-height: 1.25; max-width: 560px; }
+
+.split-right {
+  position: absolute;
+  left: 855px;
+  right: 120px;
+  top: 240px;
+  bottom: 115px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr auto;
+  gap: var(--grid-gutter);
+}
+.split-right > .card { grid-row: 1; }
+
+/* ---------- работа с пустотой (presentation-rules.md §5) ---------- */
+
+/* контейнер по высоте контента, а не на всю рабочую область:
+   короткий список не должен «плавать» в пустом белом прямоугольнике */
+.card.hug { align-self: center; height: auto; }
+
+/* Пара «текст + фото» занимает почти всю рабочую область по высоте: не меньше
+   560px (правило пользователя 2026-08-07). Короткий контейнер рядом с фото —
+   ошибка: слайд выглядит провисшим. */
+.content .cols > .card,
+.content .cols > .photo-card,
+.content .cols > .media-col { min-height: 560px; }
+
+/* колонка под фото/мокап рядом с текстом: 30–40% рабочей ширины */
+.media-col { display: flex; align-items: center; justify-content: center; min-height: 0; }
+.media-col img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/* мало текста: H1 + лид уходят в левую колонку, контейнер с контентом — справа, ≤50% слайда */
+.aside-head {
+  position: absolute;
+  left: 120px;
+  top: 220px;
+  bottom: 120px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* заголовок и лид — вверху, а не по центру */
+  gap: 30px;
+}
+.aside-head h1 { text-wrap: balance; }
+
+.aside-body {
+  position: absolute;
+  left: 960px; /* ровно половина слайда */
+  right: 120px;
+  top: 220px;
+  bottom: 120px;
+}
+/* контейнер тянется на всю свободную высоту, а не жмётся по контенту */
+.aside-body > .card { height: 100%; align-self: stretch; }
+
+/* ---------- ряды равных колонок (gutter 25) ---------- */
+
+.cols { display: grid; gap: var(--grid-gutter); height: 100%; }
+.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* сплит 50/50 для фото-макетов */
+.split { position: absolute; inset: 0; display: grid; grid-template-columns: 960px 960px; }
+
+/* ---------- просмотрщик (лента слайдов) ---------- */
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+}
+
+/* Скругление 10px — свойство просмотрщика, а не слайда: задано на обёртке
+   (экранные координаты, без пересчёта на масштаб 0.5). В печати и в снимках для
+   сверки углы прямые — см. @media print и scripts/screenshot.js. */
+.slide-wrap {
+  width: 960px;
+  height: 540px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slide-wrap .slide {
+  transform: scale(0.5);
+  transform-origin: top left;
+}
+
+/* ---------- печать в PDF: 1 слайд = 1 страница 1920×1080 ---------- */
+
+@media print {
+  body { background: none; }
+  .deck { display: block; padding: 0; }
+  .slide-wrap { width: 1920px; height: 1080px; border-radius: 0; overflow: visible; page-break-after: always; break-after: page; }
+  .slide-wrap .slide { transform: none; }
+}
+
+@page { size: 1920px 1080px; margin: 0; }

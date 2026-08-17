@@ -65,6 +65,8 @@ const UI_ICONS = {
   image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>',
   user: '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
   settings: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
+  'log-out': '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>',
 };
 
 function uiIcon(name) {
@@ -271,6 +273,7 @@ function mdLite(src) {
   for (const raw of String(src).split('\n')) {
     const line = raw.trimEnd();
     if (/^RESULT:\s*output\//.test(line.trim())) continue; // служебная строка для панели предпросмотра
+    if (/^TITLE:\s*/.test(line.trim())) continue; // служебная строка — название чата в сайдбаре
     const mUl = line.match(/^\s*[-*]\s+(.*)$/);
     const mOl = line.match(/^\s*\d+[.)]\s+(.*)$/);
     const mH = line.match(/^#{1,4}\s+(.*)$/);
@@ -337,6 +340,13 @@ function handleChatEvent(ev) {
   else if (ev.type === 'thinking') chatState.items.push({ kind: 'thinking', text: ev.text });
   else if (ev.type === 'text') chatState.items.push({ kind: 'text', text: ev.text });
   else if (ev.type === 'tool') chatState.items.push({ kind: 'tool', label: ev.label, detail: ev.detail });
+  else if (ev.type === 'title') {
+    // чат называет сам агент — по сути презентации, а не по формулировке запроса
+    if (ev.title && ev.title !== chatState.title) {
+      chatState.title = ev.title;
+      if (sidebarMode === 'chats') renderNav(currentHash());
+    }
+  }
   else if (ev.type === 'error') chatState.items.push({ kind: 'error', text: ev.message });
   else if (ev.type === 'result') {
     if (ev.session) chatState.session = ev.session;
@@ -363,7 +373,9 @@ async function chatSend(text, files) {
   // первый запрос в новом диалоге — заводим чат в истории
   if (!chatState.id) {
     try {
-      const title = (text || (files && files.length ? files.map((f) => displayFileName(f.name)).join(', ') : 'Без названия')).slice(0, 60);
+      // название придёт от агента событием `title` (строка TITLE: в его ответе);
+      // до этого в списке стоит нейтральная заглушка, а не текст запроса
+      const title = 'Новая презентация…';
       const r = await api('/api/chats', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title }),
@@ -429,8 +441,11 @@ async function chatStop() {
 
 const $preview = document.getElementById('preview-panel');
 
+let previewDeck = null; // имя презентации, открытой в панели предпросмотра
+
 function openPreview(dir) {
   const name = dir.replace(/^output\//, '');
+  previewDeck = name;
   const url = '/files/output/' + name + '/index.html';
   document.getElementById('preview-title').textContent = name;
   document.getElementById('preview-open-tab').href = url;
@@ -448,6 +463,28 @@ function closePreview() {
 
 document.getElementById('preview-close').append(uiIcon('x'));
 document.getElementById('preview-close').addEventListener('click', closePreview);
+
+// «Скачать PDF»: сервер прогоняет scripts/export-pdf.js и отдаёт ссылку на файл
+document.getElementById('preview-download').addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  if (!previewDeck || btn.disabled) return;
+  const label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Готовлю PDF…';
+  try {
+    const r = await api('/api/export-pdf/' + previewDeck, { method: 'POST' });
+    const a = el('a', { href: r.url, download: r.file });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    toast('PDF готов: ' + r.file);
+  } catch (err) {
+    toast(err.message, true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = label;
+  }
+});
 
 // ---------------------------------------------------------------- обзор (главная: чат)
 
@@ -1619,34 +1656,157 @@ route();
 
 // ---------------------------------------------------------------- футер сайдбара: профиль и настройки
 
-function openProfileModal() {
-  let profile = {};
-  try { profile = JSON.parse(localStorage.getItem('factory-profile') || '{}'); } catch {}
-  const data = { name: profile.name || '', role: profile.role || '' };
+/** Карточка профиля: обои, аватар, имя, должность, уровень доступа и счётчик презентаций. */
+async function openProfileModal() {
+  let p;
+  try { p = await api('/api/profile'); } catch (e) { return toast('Не удалось открыть профиль: ' + e.message, true); }
+
+  // раньше профиль лежал в localStorage — переносим на сервер один раз
+  if (!p.name && !p.role) {
+    let old = {};
+    try { old = JSON.parse(localStorage.getItem('factory-profile') || '{}'); } catch {}
+    if (old.name || old.role) {
+      try {
+        await api('/api/profile', {
+          method: 'PUT', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: old.name || '', role: old.role || '' }),
+        });
+        localStorage.removeItem('factory-profile');
+        p = await api('/api/profile');
+      } catch {}
+    }
+  }
 
   const overlay = el('div', {
     class: 'modal-overlay',
     onclick: (e) => { if (e.target === overlay) overlay.remove(); },
   });
+
+  const cover = el('div', { class: 'profile-cover' + (p.wallpaper ? '' : ' empty') });
+  if (p.wallpaper) cover.style.backgroundImage = 'url("' + p.wallpaper + '")';
+
+  const avatar = el('div', { class: 'profile-avatar' });
+  if (p.avatar) avatar.append(el('img', { src: p.avatar, alt: '' }));
+  else avatar.append(uiIcon('user'));
+
+  overlay.append(
+    el('div', { class: 'profile-card' },
+      cover,
+      el('button', { class: 'btn-circle modal-close', title: 'Закрыть', onclick: () => overlay.remove() }, uiIcon('x')),
+      avatar,
+      el('div', { class: 'profile-body' },
+        el('div', { class: 'profile-name' }, p.name || 'Без имени'),
+        el('div', { class: 'profile-role' }, p.role || 'Должность не указана'),
+        el('div', { class: 'profile-meta' },
+          el('span', { class: 'profile-level-label' }, 'Уровень доступа'),
+          el('span', { class: 'profile-level' }, p.level || '—'),
+          el('div', { class: 'profile-actions' },
+            el('button', {
+              class: 'btn-circle', title: 'Настройки профиля',
+              onclick: () => { overlay.remove(); openProfileSettings(); },
+            }, uiIcon('settings')),
+            el('button', {
+              class: 'btn-circle', title: 'Выйти',
+              onclick: () => {
+                // авторизации в приложении пока нет: «выйти» = закрыть текущую
+                // сессию работы (сброс активного чата) и вернуться на главную
+                if (!confirm('Выйти из аккаунта? Текущий диалог закроется, история чатов останется.')) return;
+                overlay.remove();
+                resetChat();
+                location.hash = '#/overview';
+                route();
+              },
+            }, uiIcon('log-out'))
+          )
+        ),
+        el('div', { class: 'profile-stat' },
+          el('span', { class: 'profile-count' }, String(p.decks ?? 0)),
+          el('span', { class: 'profile-count-label' }, 'Презентаций разработано')
+        )
+      )
+    )
+  );
+  document.body.append(overlay);
+}
+
+/** Настройки профиля: ФИО, должность, аватар и обои. Уровень доступа только для чтения. */
+async function openProfileSettings() {
+  let p;
+  try { p = await api('/api/profile'); } catch (e) { return toast('Не удалось открыть настройки: ' + e.message, true); }
+  const data = { name: p.name || '', role: p.role || '' };
+
+  const overlay = el('div', {
+    class: 'modal-overlay',
+    onclick: (e) => { if (e.target === overlay) overlay.remove(); },
+  });
+
+  /** Строка загрузки картинки: превью + кнопка выбора файла. */
+  function imageRow(kind, label, hint) {
+    const preview = el('div', { class: 'profile-upload-preview' + (kind === 'avatar' ? ' round' : '') });
+    const paint = (url) => {
+      preview.innerHTML = '';
+      if (url) preview.append(el('img', { src: url, alt: '' }));
+      else preview.append(uiIcon('image'));
+    };
+    paint(p[kind]);
+    const input = el('input', {
+      type: 'file', accept: 'image/png,image/jpeg,image/webp,image/gif', style: 'display:none',
+      onchange: async (e) => {
+        const file = e.target.files[0];
+        e.target.value = '';
+        if (!file) return;
+        const fd = new FormData();
+        fd.append('file', file);
+        try {
+          const r = await api('/api/profile/image/' + kind, { method: 'POST', body: fd });
+          p[kind] = r.url;
+          paint(r.url);
+          toast(label + ': загружено');
+        } catch (err) { toast(err.message, true); }
+      },
+    });
+    return el('div', { class: 'field-block profile-upload' },
+      el('span', { class: 'field-chip' }, label),
+      el('div', { class: 'row', style: 'align-items:center; gap:12px' },
+        preview,
+        el('button', { class: 'btn', onclick: () => input.click() }, 'Загрузить'),
+        el('span', { class: 'helper' }, hint)
+      ),
+      input
+    );
+  }
+
   overlay.append(
     el('div', { class: 'profile-modal' },
       el('button', { class: 'btn-circle modal-close', title: 'Закрыть', onclick: () => overlay.remove() }, uiIcon('x')),
-      el('div', { class: 'profile-avatar' }, uiIcon('user')),
-      el('h2', { class: 'modal-title' }, 'Профиль'),
+      el('h2', { class: 'modal-title' }, 'Настройки профиля'),
       el('div', { class: 'field-block' },
         el('span', { class: 'field-chip' }, 'ФИО'),
         el('textarea', { rows: 1, placeholder: 'Фамилия Имя Отчество', oninput: (e) => (data.name = e.target.value) }, data.name)
       ),
       el('div', { class: 'field-block' },
         el('span', { class: 'field-chip' }, 'Должность'),
-        el('textarea', { rows: 1, placeholder: 'Например: менеджер по продажам', oninput: (e) => (data.role = e.target.value) }, data.role)
+        el('textarea', { rows: 1, placeholder: 'Например: Web дизайнер', oninput: (e) => (data.role = e.target.value) }, data.role)
+      ),
+      imageRow('avatar', 'Аватарка', 'Квадратная картинка, PNG или JPG'),
+      imageRow('wallpaper', 'Обои', 'Горизонтальная картинка, PNG или JPG'),
+      el('div', { class: 'field-block locked' },
+        el('span', { class: 'field-chip' }, 'Уровень доступа'),
+        el('div', { class: 'profile-level-value' }, p.level || '—'),
+        el('span', { class: 'helper' }, 'Меняется только системно — в файле app/data/profile.json')
       ),
       el('button', {
         class: 'btn primary',
-        onclick: () => {
-          localStorage.setItem('factory-profile', JSON.stringify({ name: data.name.trim(), role: data.role.trim() }));
-          toast('Профиль сохранён');
-          overlay.remove();
+        onclick: async () => {
+          try {
+            await api('/api/profile', {
+              method: 'PUT', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: data.name, role: data.role }),
+            });
+            toast('Профиль сохранён');
+            overlay.remove();
+            openProfileModal();
+          } catch (e) { toast(e.message, true); }
         },
       }, 'Сохранить')
     )

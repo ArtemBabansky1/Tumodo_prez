@@ -212,9 +212,14 @@ body {
   padding: 24px 0;
 }
 
+/* Скругление 10px — свойство просмотрщика, а не слайда: задано на обёртке
+   (экранные координаты, без пересчёта на масштаб 0.5). В печати и в снимках для
+   сверки углы прямые — см. @media print и scripts/screenshot.js. */
 .slide-wrap {
   width: 960px;
   height: 540px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .slide-wrap .slide {
@@ -227,7 +232,7 @@ body {
 @media print {
   body { background: none; }
   .deck { display: block; padding: 0; }
-  .slide-wrap { width: 1920px; height: 1080px; page-break-after: always; break-after: page; }
+  .slide-wrap { width: 1920px; height: 1080px; border-radius: 0; overflow: visible; page-break-after: always; break-after: page; }
   .slide-wrap .slide { transform: none; }
 }
 
