@@ -9,8 +9,9 @@
     <div class="photo-list-rows photo-list-count-{{itemCount}}">
       {{#each items}}
       <div class="photo-list-row">
-        <span class="photo-list-dot"></span>
-        <div class="photo-list-text">{{.}}</div>
+        {{#if icon}}<span class="photo-list-icon"><img src="{{icon}}" alt=""></span>{{/if}}
+        {{#if noIcon}}<span class="photo-list-dot"></span>{{/if}}
+        <div class="photo-list-text">{{text}}</div>
       </div>
       {{/each}}
     </div>

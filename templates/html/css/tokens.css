@@ -45,15 +45,20 @@
   --glass-frost-deep: blur(49px);
   --glass-frost-extra: blur(88px);
 
-  /* скругления (effects.json: наблюдения 8/20/30) */
+  /* shape: радиусы + обязательное continuous corner smoothing 60% (iOS) */
   --radius-s: 8px;
   --radius-m: 20px;
   --radius-l: 30px;
+  --corner-smoothing: 0.6;
+  --corner-smoothing-percent: 60%;
+  --corner-shape: squircle;
 
   /* spacing.json */
   --slide-margin: 120px;
   --card-padding: 40px;
-  --grid-gutter: 25px;
+  --grid-column-gutter: 30px;
+  --grid-row-gutter: 25px;
+  --grid-gutter: var(--grid-column-gutter);
   --paragraph: 20px;
   --container-padding-l: 60px;
   --container-padding-m: 45px;

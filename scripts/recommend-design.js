@@ -8,6 +8,7 @@ const {
   recommendVisualAssets,
   recommendVisualPlacement,
 } = require('./lib/design-intelligence');
+const { selectedCreativeDirection, validateCreativeDirections } = require('./lib/creative-direction');
 
 const ROOT = path.resolve(__dirname, '..');
 
@@ -52,11 +53,27 @@ function main() {
     process.exit(1);
   }
   const slides = splitDeckSource(fs.readFileSync(file, 'utf8')).map(parseSlide);
+  const deckName = path.basename(file, path.extname(file));
+  let creativeDocument = null;
+  let creativeDirection = null;
+  try {
+    creativeDocument = JSON.parse(fs.readFileSync(path.join(ROOT, 'output', deckName, 'creative-directions.json'), 'utf8'));
+    const validation = validateCreativeDirections(creativeDocument);
+    if (validation.passed) creativeDirection = selectedCreativeDirection(creativeDocument);
+  } catch {}
+  let measuredSlides = [];
+  try {
+    const measured = JSON.parse(fs.readFileSync(path.join(ROOT, 'output', deckName, 'content-measurements.json'), 'utf8'));
+    measuredSlides = Array.isArray(measured.slides) ? measured.slides : [];
+  } catch {}
   const library = parseLibraryCatalog();
   const visualAssets = parseVisualAssets();
   const recentlyUsedAssets = [];
+  const visualState = { theoAppearances: [] };
   const recentCompositions = [];
   const recentLayouts = [];
+  const recentMasses = [];
+  const recentSides = [];
   const recentReferences = [];
   const result = slides.map((slide, index) => {
     const recommendation = recommendReferences(slide, index, slides.length, {
@@ -64,21 +81,34 @@ function main() {
       limit: 5,
       recentCompositions,
       recentLayouts,
+      recentMasses,
+      recentSides,
       recentReferences,
+      measurement: measuredSlides[index] || null,
+      creativeDirection,
     });
     const best = recommendation.references[0];
-    if (best) {
-      recentCompositions.unshift(best.composition);
+    const chosenComposition = recommendation.selectedCandidate;
+    if (best || chosenComposition) {
+      recentCompositions.unshift(chosenComposition ? chosenComposition.id : best.composition);
       recentLayouts.unshift(recommendation.analysis.renderLayout);
-      recentReferences.unshift(best.source);
+      if (chosenComposition) {
+        recentMasses.unshift(chosenComposition.massDistribution);
+        recentSides.unshift(chosenComposition.visualSide);
+      }
+      if (best) recentReferences.unshift(best.source);
       recentCompositions.splice(4);
       recentLayouts.splice(4);
+      recentMasses.splice(4);
+      recentSides.splice(4);
       recentReferences.splice(8);
     }
     const visual = recommendVisualAssets(slide, index, slides.length, {
       analysis: recommendation.analysis,
       assets: visualAssets,
       exclude: recentlyUsedAssets.slice(-3),
+      visualState,
+      creativeDirection,
       limit: 5,
     });
     const placedSuggestions = visual.suggestions.map((asset) => ({
@@ -86,26 +116,44 @@ function main() {
       kind: asset.kind,
       score: asset.score,
       reason: asset.reason,
+      policy: asset.policy,
       placement: recommendVisualPlacement(slide, index, slides.length, {
         analysis: recommendation.analysis,
         asset,
       }),
     })).sort((a, b) => Number(Boolean(a.placement.rejected)) - Number(Boolean(b.placement.rejected)) || b.score - a.score);
     const firstUsable = placedSuggestions.find((asset) => !asset.placement.rejected);
-    if (visual.required && firstUsable) recentlyUsedAssets.push(firstUsable.source);
+    const scheduledVisual = firstUsable && (visual.required || (firstUsable.policy && firstUsable.policy.scheduled)) ? firstUsable : null;
+    if (scheduledVisual) {
+      recentlyUsedAssets.push(scheduledVisual.source);
+      if (/theo-mascot/i.test(scheduledVisual.source)) visualState.theoAppearances.push(index);
+    }
     return {
       number: index + 1,
       title: slide.title,
       semanticRole: recommendation.analysis.role,
       renderLayout: recommendation.analysis.renderLayout,
-      silhouetteId: [
-        recommendation.analysis.renderLayout,
-        best ? best.composition : 'editorial',
-        best ? best.media : recommendation.analysis.media,
-      ].join(':'),
+      compositionFamily: chosenComposition ? chosenComposition.id : (best ? best.composition : 'editorial'),
+      silhouetteId: chosenComposition ? chosenComposition.silhouetteId : [
+          recommendation.analysis.renderLayout,
+          best ? best.composition : 'editorial',
+          best ? best.media : recommendation.analysis.media,
+        ].join(':'),
+      compositionDecision: chosenComposition ? {
+        score: chosenComposition.score,
+        scoreBreakdown: chosenComposition.scoreBreakdown,
+        reason: chosenComposition.reason,
+        massDistribution: chosenComposition.massDistribution,
+        visualSide: chosenComposition.visualSide,
+        readingPath: chosenComposition.readingPath,
+      } : null,
+      compositionCandidates: recommendation.candidates,
+      measurementFeedback: measuredSlides[index] || null,
       visualRequirement: visual.required ? 'required' : 'intentional-exception',
       preferredVisualKinds: visual.preferredKinds,
       assetGap: visual.assetGap,
+      characterPolicy: visual.characterPolicy,
+      plannedVisual: scheduledVisual ? scheduledVisual.source : '',
       compositionBrief: {
         contentFill: recommendation.analysis.contentFill,
         spaceStrategy: recommendation.analysis.spaceStrategy,
@@ -130,6 +178,13 @@ function main() {
     };
   });
   process.stdout.write(JSON.stringify({
+    creativeDirection: creativeDirection ? {
+      id: creativeDirection.id,
+      title: creativeDirection.title,
+      idea: creativeDirection.idea,
+      techniques: creativeDirection.techniques,
+      assetPolicy: creativeDirection.assetPolicy,
+    } : null,
     figma: {
       fileKey: 'SZpOoVhI07GPa3Vf7BRc10',
       sectionNodeId: '855:401',

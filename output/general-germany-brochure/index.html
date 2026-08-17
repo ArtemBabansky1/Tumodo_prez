@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>General Germany ENG — portrait brochure</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<style id="deck-overrides">
+:root { --slide-width: 1080px; --slide-height: 1920px; }
+body { background: #dfe1e6; }
+.deck { align-items: center; }
+.slide-wrap { width: 1080px; height: 1920px; border-radius: 0; }
+.portrait-page { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0d0d0f; }
+.portrait-page::before { content: ""; position: absolute; inset: -120px; background-image: var(--page); background-size: cover; background-position: center; filter: blur(42px) saturate(.82) brightness(.48); transform: scale(1.12); }
+.portrait-page::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.02) 28%, rgba(0,0,0,.02) 72%, rgba(0,0,0,.18)); }
+.portrait-page__frame { position: absolute; z-index: 1; left: 0; top: 656px; width: 1080px; height: 608px; object-fit: fill; box-shadow: 0 32px 90px rgba(0,0,0,.32); }
+.portrait-page__mark { position: absolute; z-index: 2; left: 54px; top: 54px; width: 126px; height: 6px; border-radius: 999px; background: #005aff; }
+.portrait-page__num { position: absolute; z-index: 2; right: 54px; bottom: 48px; color: rgba(255,255,255,.82); font: 700 22px/1 Nunito Sans, sans-serif; }
+.slide-wrap:not(:first-child):not(:last-child) .portrait-page::before,
+.slide-wrap:not(:first-child):not(:last-child) .portrait-page::after {
+  content: ""; position: absolute; left: 0; width: 1080px; height: 960px;
+  background-image: var(--page); background-size: 2160px 1215px; background-repeat: no-repeat;
+  filter: none; transform: none;
+}
+.slide-wrap:not(:first-child):not(:last-child) .portrait-page::before { top: 0; background-position: left center; }
+.slide-wrap:not(:first-child):not(:last-child) .portrait-page::after { top: 960px; background-position: right center; box-shadow: inset 0 3px 0 rgba(255,255,255,.16); }
+.slide-wrap:not(:first-child):not(:last-child) .portrait-page__frame { display: none; }
+.slide-wrap:not(:first-child):not(:last-child) .portrait-page__mark { top: 34px; }
+@media print { .slide-wrap { width: 1080px !important; height: 1920px !important; } }
+@page { size: 1080px 1920px; margin: 0; }
+
+</style>
+</head>
+<body>
+<!-- Лента слайдов (масштаб 0.5 на экране; печать — 1 слайд = 1 страница 1920×1080) -->
+<div class="deck">
+<div class="slide-wrap" data-canon-reference="decks/library/1-cover__855-5632.png">
+<section class="slide portrait-page" style="--page:url('assets/source/page-01.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-01.png"><span class="portrait-page__num">01</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-02.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-02.png"><span class="portrait-page__num">02</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-03.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-03.png"><span class="portrait-page__num">03</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-04.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-04.png"><span class="portrait-page__num">04</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-06.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-06.png"><span class="portrait-page__num">05</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-07.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-07.png"><span class="portrait-page__num">06</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-08.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-08.png"><span class="portrait-page__num">07</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-09.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-09.png"><span class="portrait-page__num">08</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-10.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-10.png"><span class="portrait-page__num">09</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-11.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-11.png"><span class="portrait-page__num">10</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-12.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-12.png"><span class="portrait-page__num">11</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-17.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-17.png"><span class="portrait-page__num">12</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-18.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-18.png"><span class="portrait-page__num">13</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-19.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-19.png"><span class="portrait-page__num">14</span></section></div>
+<div class="slide-wrap">
+<section class="slide portrait-page" style="--page:url('assets/source/page-20.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-20.png"><span class="portrait-page__num">15</span></section></div>
+<div class="slide-wrap" data-canon-reference="decks/library/904__855-5661.png">
+<section class="slide portrait-page" style="--page:url('assets/source/page-23.png')"><span class="portrait-page__mark"></span><img class="portrait-page__frame" src="assets/source/page-23.png"><span class="portrait-page__num">16</span></section></div>
+</div>
+</body>
+</html>

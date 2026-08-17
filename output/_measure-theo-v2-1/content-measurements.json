@@ -1,0 +1,348 @@
+{
+  "deck": "_measure-theo-v2-1",
+  "measuredAt": "2026-08-17T11:31:57.848Z",
+  "fontsReady": true,
+  "slides": [
+    {
+      "number": 1,
+      "layout": "cover",
+      "title": "Знакомьтесь, Тео",
+      "titleLines": 1,
+      "measuredTextDensity": 0.09,
+      "textNodes": 2,
+      "hasMedia": false,
+      "overflowNodes": [],
+      "containers": [],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "cover"
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "layout": "photo-list",
+      "title": "Что можно спросить у Тео",
+      "titleLines": 1,
+      "measuredTextDensity": 0.11,
+      "textNodes": 6,
+      "hasMedia": true,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "photo-list-row",
+          "width": 1047.03,
+          "height": 144,
+          "textNodes": 1,
+          "textLines": 1,
+          "verticalFill": 0.29,
+          "areaFill": 0.28,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "photo-list-row",
+          "width": 1047.03,
+          "height": 144,
+          "textNodes": 1,
+          "textLines": 1,
+          "verticalFill": 0.29,
+          "areaFill": 0.28,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "photo-list-row",
+          "width": 1047.03,
+          "height": 144,
+          "textNodes": 1,
+          "textLines": 1,
+          "verticalFill": 0.29,
+          "areaFill": 0.28,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "photo-list-row",
+          "width": 1047.03,
+          "height": 144,
+          "textNodes": 1,
+          "textLines": 1,
+          "verticalFill": 0.29,
+          "areaFill": 0.28,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "photo-list"
+        ]
+      }
+    },
+    {
+      "number": 3,
+      "layout": "title-bullets",
+      "title": "Что умеет Тео",
+      "titleLines": 1,
+      "measuredTextDensity": 0.14,
+      "textNodes": 6,
+      "hasMedia": false,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "card",
+          "width": 1680,
+          "height": 618,
+          "textNodes": 4,
+          "textLines": 8,
+          "verticalFill": 0.57,
+          "areaFill": 0.23,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "title-bullets"
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "layout": "benefits-grid",
+      "title": "Как выглядит ответ Тео",
+      "titleLines": 1,
+      "measuredTextDensity": 0.19,
+      "textNodes": 10,
+      "hasMedia": false,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 320,
+          "textNodes": 2,
+          "textLines": 3,
+          "verticalFill": 0.58,
+          "areaFill": 0.49,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 320,
+          "textNodes": 2,
+          "textLines": 2,
+          "verticalFill": 0.42,
+          "areaFill": 0.33,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 320,
+          "textNodes": 2,
+          "textLines": 3,
+          "verticalFill": 0.58,
+          "areaFill": 0.49,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 320,
+          "textNodes": 2,
+          "textLines": 3,
+          "verticalFill": 0.58,
+          "areaFill": 0.49,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "benefits-grid"
+        ]
+      }
+    },
+    {
+      "number": 5,
+      "layout": "title-bullets",
+      "title": "Кому помогает Тео",
+      "titleLines": 1,
+      "measuredTextDensity": 0.13,
+      "textNodes": 6,
+      "hasMedia": true,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "card ",
+          "width": 1111.66,
+          "height": 618,
+          "textNodes": 4,
+          "textLines": 7,
+          "verticalFill": 0.51,
+          "areaFill": 0.41,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "title-bullets"
+        ]
+      }
+    },
+    {
+      "number": 6,
+      "layout": "statement",
+      "title": "",
+      "titleLines": 0,
+      "measuredTextDensity": 0.16,
+      "textNodes": 1,
+      "hasMedia": false,
+      "overflowNodes": [],
+      "containers": [],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "statement"
+        ]
+      }
+    },
+    {
+      "number": 7,
+      "layout": "benefits-grid",
+      "title": "Ограничения и безопасность данных",
+      "titleLines": 2,
+      "measuredTextDensity": 0.17,
+      "textNodes": 7,
+      "hasMedia": true,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 320,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.33,
+          "areaFill": 0.33,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 320,
+          "textNodes": 1,
+          "textLines": 1,
+          "verticalFill": 0.16,
+          "areaFill": 0.16,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "underfill"
+        },
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 320,
+          "textNodes": 1,
+          "textLines": 3,
+          "verticalFill": 0.49,
+          "areaFill": 0.49,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "service-card has-card-3d has-card-3d--left",
+          "width": 830,
+          "height": 320,
+          "textNodes": 2,
+          "textLines": 5,
+          "verticalFill": 0.91,
+          "areaFill": 0.37,
+          "hasMedia": true,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "needs-review",
+      "recommendation": {
+        "action": "rebalance-media-and-content",
+        "severity": "warning",
+        "reason": "контейнеры заполнены менее чем наполовину по фактической геометрии",
+        "tryLayouts": [
+          "photo-list",
+          "intro"
+        ]
+      }
+    },
+    {
+      "number": 8,
+      "layout": "final",
+      "title": "Tumodo. Simplifying business travel",
+      "titleLines": 1,
+      "measuredTextDensity": 0.07,
+      "textNodes": 1,
+      "hasMedia": false,
+      "overflowNodes": [],
+      "containers": [],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "final"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "healthy": 7,
+    "needsReview": 1,
+    "overflow": 0
+  },
+  "passed": false
+}

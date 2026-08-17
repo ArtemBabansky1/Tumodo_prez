@@ -1,0 +1,45 @@
+{
+  "$description": "Разрешённое поле креативности Tumodo. Креативный директор может комбинировать только перечисленные приёмы, существующие композиционные семьи, токены, каноны и ассеты платформы.",
+  "version": 1,
+  "mode": "brand-bounded",
+  "assetPolicy": "platform-only",
+  "styleframePolicy": "reference-only-not-final-slide",
+  "allowedThemes": ["light", "brand-blue", "dark"],
+  "allowedVisualKinds": ["mockup", "photo", "3d"],
+  "allowedCompositionFamilies": [
+    "hero",
+    "sparse-divider",
+    "manifesto",
+    "two-panel",
+    "data-table",
+    "metric-focus",
+    "process-flow",
+    "layered-cards",
+    "card-grid",
+    "product-showcase",
+    "split-media",
+    "editorial",
+    "columns"
+  ],
+  "allowedTechniques": {
+    "scale-shift": "Менять визуальный вес через системные размеры заголовка, продукта, фото или числа; не вводить произвольные кегли.",
+    "asymmetric-balance": "Смещать визуальную массу влево или вправо внутри сетки и safe area.",
+    "detail-crop": "Использовать крупный фрагмент продукта или фото с fill/cover и безопасным кропом.",
+    "layered-depth": "Создавать глубину существующими карточками, тенями и glass-токенами без перекрытия текста.",
+    "directed-empty-space": "Оставлять воздух только как направленную паузу, ведущую к фокусу.",
+    "rhythm-contrast": "Чередовать quiet, editorial, hero и dense слайды без механического повтора силуэта.",
+    "serial-repetition": "Повторять мотив только как осознанную серию с sequence-group и изменением визуальной массы."
+  },
+  "nonNegotiables": {
+    "tokensOnly": true,
+    "canonInterpolationOnly": true,
+    "systemH1": true,
+    "safeArea": true,
+    "noTextOverlap": true,
+    "noDecorWithoutFunction": true,
+    "noExternalAssets": true,
+    "noGeneratedAssetUntilPlatformUpload": true,
+    "theoAppearances": "2-3",
+    "theoHeroOnlyOnCover": true
+  }
+}

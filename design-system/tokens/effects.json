@@ -1,6 +1,11 @@
 {
-  "$description": "Эффекты Tumodo. Источник: Figma «Библиотека» (SZpOoVhI07GPa3Vf7BRc10), страница «Цвета / Эффекты» (0:1): именованные стили эффектов Shaddow-Light, Shaddow-Dark и именованные градиенты Gradient-Peach, Gradient-Green, Gradient-Dark-Blue. Импорт 2026-08-04. Скругления как отдельные стили в Figma не заданы; наблюдения: карточки-свотчи 8px и 20px, карточки с тенями 30px (см. отчёт импорта).",
+  "$description": "Эффекты Tumodo. Источник: Figma «Библиотека» (SZpOoVhI07GPa3Vf7BRc10), страница «Цвета / Эффекты» (0:1): именованные стили эффектов Shaddow-Light, Shaddow-Dark и именованные градиенты Gradient-Peach, Gradient-Green, Gradient-Dark-Blue. Импорт 2026-08-04. Радиусы карточек: 8px, 20px и 30px. Обязательное сглаживание всех скруглённых контейнеров — Figma Corner smoothing 60% (iOS), правило пользователя 2026-08-17.",
   "effects": {
+    "corner-smoothing-ios": {
+      "$value": "60%",
+      "$type": "effect",
+      "$description": "Обязательный shape-token для любого контейнера, плашки, таблицы или фото-контейнера с радиусом больше 0. В Figma: cornerSmoothing = 0.6 (режим iOS). В HTML/CSS: corner-shape: squircle как браузерное представление непрерывного скругления. Геометрические круги остаются кругами."
+    },
     "shadow-light": {
       "$value": "46px 64px 31px 0px rgba(80, 94, 134, 0.01), 26px 36px 27px 0px rgba(80, 94, 134, 0.02), 11px 16px 20px 0px rgba(80, 94, 134, 0.03), 3px 4px 11px 0px rgba(80, 94, 134, 0.04)",
       "$type": "effect",

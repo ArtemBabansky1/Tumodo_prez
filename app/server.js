@@ -12,21 +12,73 @@ const { execFile } = require('child_process');
 const {
   ROLE_LABELS: ENGINE_ROLE_LABELS,
   parseLibraryCatalog,
+  dedupeReferenceVariants,
   parseVisualAssets,
+  characterPolicyScore,
   recommendReferences,
   recommendVisualAssets,
   recommendVisualPlacement,
 } = require('../scripts/lib/design-intelligence');
+const {
+  createCreativeDirections,
+  validateCreativeDirections,
+  selectedCreativeDirection,
+} = require('../scripts/lib/creative-direction');
 
 const ROOT = path.resolve(__dirname, '..');
 const DS_DIR = path.join(ROOT, 'design-system');
 const PORT = 3000;
 
 const app = express();
+app.post('/figma-submit/:captureId', express.raw({ type: () => true, limit: '55mb' }), async (req, res) => {
+  const captureId = String(req.params.captureId || '');
+  if (!/^[0-9a-f-]{36}$/i.test(captureId)) return res.status(400).send('Некорректный Figma captureId');
+  try {
+    const upstream = await fetch(
+      'https://mcp.figma.com/mcp/capture/' + captureId + '/submit?bindVariables=true',
+      {
+        method: 'POST',
+        signal: AbortSignal.timeout(120000),
+        headers: {
+          'Content-Type': req.get('content-type') || 'application/octet-stream',
+          Accept: req.get('accept') || '*/*',
+        },
+        body: req.body,
+      }
+    );
+    const contentType = upstream.headers.get('content-type');
+    if (contentType) res.type(contentType);
+    res.status(upstream.status).send(Buffer.from(await upstream.arrayBuffer()));
+  } catch (error) {
+    res.status(502).type('text/plain').send('Не удалось отправить слайд в Figma: ' + error.message);
+  }
+});
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/files/design-system', express.static(DS_DIR));
 app.use('/files/output', express.static(path.join(ROOT, 'output')));
+
+let figmaCaptureScriptCache = '';
+let figmaCaptureScriptCachedAt = 0;
+app.get('/figma-capture.js', async (req, res) => {
+  const maxAge = 15 * 60 * 1000;
+  try {
+    if (!figmaCaptureScriptCache || Date.now() - figmaCaptureScriptCachedAt > maxAge) {
+      const response = await fetch('https://mcp.figma.com/mcp/html-to-design/capture.js', {
+        signal: AbortSignal.timeout(15000),
+        headers: { Accept: 'application/javascript, text/javascript, */*' },
+      });
+      if (!response.ok) throw new Error('Figma вернула HTTP ' + response.status);
+      const script = await response.text();
+      if (!script.includes('captureForDesign')) throw new Error('Figma вернула некорректный capture-скрипт');
+      figmaCaptureScriptCache = script;
+      figmaCaptureScriptCachedAt = Date.now();
+    }
+    res.type('application/javascript').set('Cache-Control', 'no-store').send(figmaCaptureScriptCache);
+  } catch (error) {
+    res.status(502).type('text/plain').send('Не удалось загрузить Figma capture script: ' + error.message);
+  }
+});
 
 // ---------------------------------------------------------------- helpers
 
@@ -55,13 +107,14 @@ function safeName(name) {
     .toLowerCase();
 }
 
-/** Относительный путь внутри категории: только "sub/file", без выхода наверх. */
+/** Относительный POSIX-путь внутри категории, включая вложенные папки. */
 function isSafeRelPath(rel) {
+  if (typeof rel !== 'string' || !rel || rel.includes('\\') || path.posix.isAbsolute(rel)) return false;
+  const parts = rel.split('/');
   return (
-    typeof rel === 'string' &&
-    !rel.includes('..') &&
-    !rel.includes('\\') &&
-    /^[^/]+\/[^/]+$/.test(rel)
+    parts.length >= 2 &&
+    parts.every((part) => part && part !== '.' && part !== '..') &&
+    path.posix.normalize(rel) === rel
   );
 }
 
@@ -119,7 +172,8 @@ const ASSET_CATEGORIES = {
   },
   mockups: {
     dir: 'mockups',
-    subByExt: { '.png': 'files', '.jpg': 'files', '.jpeg': 'files', '.webp': 'files', '.svg': 'files', '.psd': 'files' },
+    subdirs: ['files', 'screens', 'devices'],
+    allowedExt: ['.png', '.jpg', '.jpeg', '.webp', '.svg', '.psd'],
   },
 };
 
@@ -138,6 +192,16 @@ function catDir(conf) {
 }
 function catSubdirs(conf) {
   return conf.subdirs || [...new Set(Object.values(conf.subByExt))];
+}
+
+/** Проверяет подпапку категории и возвращает путь, гарантированно лежащий внутри неё. */
+function resolveAssetPath(conf, rel) {
+  if (!isSafeRelPath(rel)) return null;
+  const parts = rel.split('/');
+  if (!catSubdirs(conf).includes(parts[0])) return null;
+  const base = path.resolve(catDir(conf));
+  const target = path.resolve(base, ...parts);
+  return target.startsWith(base + path.sep) ? target : null;
 }
 async function readCatalog(conf) {
   return (await readJsonSafe(path.join(catDir(conf), 'catalog.json'))) || {};
@@ -159,15 +223,27 @@ async function listAssetItems(conf) {
   const base = catDir(conf);
   const catalog = await readCatalog(conf);
   const items = [];
-  for (const sub of catSubdirs(conf)) {
-    let files = [];
+
+  async function walkFiles(dir, prefix = '') {
+    let entries = [];
     try {
-      files = await fsp.readdir(path.join(base, sub));
+      entries = await fsp.readdir(dir, { withFileTypes: true });
     } catch {
-      continue;
+      return [];
     }
+    const files = [];
+    for (const entry of entries) {
+      if (entry.name === '.gitkeep' || entry.name === 'catalog.json') continue;
+      const rel = prefix ? prefix + '/' + entry.name : entry.name;
+      if (entry.isDirectory()) files.push(...await walkFiles(path.join(dir, entry.name), rel));
+      else if (entry.isFile()) files.push(rel);
+    }
+    return files;
+  }
+
+  for (const sub of catSubdirs(conf)) {
+    const files = await walkFiles(path.join(base, sub));
     for (const f of files) {
-      if (f === '.gitkeep' || f === 'catalog.json') continue;
       let st;
       try {
         st = await fsp.stat(path.join(base, sub, f));
@@ -180,7 +256,8 @@ async function listAssetItems(conf) {
       items.push({
         file: rel,
         sub,
-        name: f,
+        folder: path.posix.dirname(rel),
+        name: path.posix.basename(f),
         size: st.size,
         mtime: st.mtimeMs,
         url: '/files/design-system/' + conf.dir + '/' + rel,
@@ -248,9 +325,16 @@ app.patch('/api/assets/:cat/meta', async (req, res) => {
   const conf = catConf(req, res);
   if (!conf) return;
   const { file, description, usage } = req.body || {};
-  if (!isSafeRelPath(file)) return res.status(400).json({ error: 'Некорректный путь файла' });
+  const target = resolveAssetPath(conf, file);
+  if (!target) return res.status(400).json({ error: 'Некорректный путь файла' });
+  try {
+    const stat = await fsp.stat(target);
+    if (!stat.isFile()) throw new Error('not a file');
+  } catch {
+    return res.status(404).json({ error: 'Файл не найден' });
+  }
   const catalog = await readCatalog(conf);
-  catalog[file] = { description: description || '', usage: usage || '' };
+  catalog[file] = { ...(catalog[file] || {}), description: description || '', usage: usage || '' };
   await writeCatalog(conf, catalog);
   res.json({ ok: true });
 });
@@ -259,9 +343,10 @@ app.delete('/api/assets/:cat', async (req, res) => {
   const conf = catConf(req, res);
   if (!conf) return;
   const file = req.query.file;
-  if (!isSafeRelPath(file)) return res.status(400).json({ error: 'Некорректный путь файла' });
+  const target = resolveAssetPath(conf, file);
+  if (!target) return res.status(400).json({ error: 'Некорректный путь файла' });
   try {
-    await fsp.unlink(path.join(catDir(conf), file));
+    await fsp.unlink(target);
   } catch (e) {
     return res.status(404).json({ error: 'Файл не найден' });
   }
@@ -279,7 +364,9 @@ const RULE_FILES = {
   'slide-layouts': { path: 'rules/slide-layouts.md', title: 'Библиотека макетов' },
   'style-guide': { path: 'rules/style-guide.md', title: 'Стиль и дизайн' },
   'designer-reasoning': { path: 'rules/designer-reasoning.md', title: 'Мышление дизайнера' },
+  'creative-direction': { path: 'rules/creative-direction.md', title: 'Креативное направление' },
   'content-rules': { path: 'rules/content-rules.md', title: 'Правила текста' },
+  'figma-export-rules': { path: 'rules/figma-export-rules.md', title: 'Перенос в Figma' },
   'logo-rules': { path: 'design-system/logo/LOGO-RULES.md', title: 'Логотип — правила' },
   'icons-rules': { path: 'design-system/icons/ICONS-RULES.md', title: 'Иконки — правила' },
   'fonts-rules': { path: 'design-system/fonts/FONTS-RULES.md', title: 'Шрифты — правила' },
@@ -418,7 +505,7 @@ async function engineLayoutCatalog() {
 }
 
 function engineReferenceCatalog() {
-  return parseLibraryCatalog();
+  return dedupeReferenceVariants(parseLibraryCatalog());
 }
 
 function normalizeCanonReference(value) {
@@ -624,6 +711,55 @@ app.get('/api/engine/plan/:name', async (req, res) => {
   }
 });
 
+function creativeDirectionsFile(name) {
+  return path.join(ROOT, 'output', name, 'creative-directions.json');
+}
+
+async function creativeDirectionsForDeck(name, { create = false } = {}) {
+  let document = await readJsonSafe(creativeDirectionsFile(name));
+  if (!document && create) {
+    const source = await fsp.readFile(path.join(ROOT, 'input', name + '.md'), 'utf8');
+    const sourcePlan = enginePlan(name, source);
+    document = createCreativeDirections({ deckName: name, slides: sourcePlan.slides });
+    if (!document.validation.passed) throw new Error(document.validation.errors.join('; '));
+    await writeJson(creativeDirectionsFile(name), document);
+  }
+  return document;
+}
+
+app.get('/api/creative-directions/:name', async (req, res) => {
+  const name = req.params.name;
+  if (!NAME_RE.test(name)) return res.status(400).json({ error: 'Некорректное имя' });
+  try {
+    const document = await creativeDirectionsForDeck(name, { create: true });
+    res.json(document);
+  } catch (e) {
+    res.status(404).json({ error: 'Не удалось подготовить креативные направления: ' + String(e.message || e) });
+  }
+});
+
+app.patch('/api/creative-directions/:name', async (req, res) => {
+  const name = req.params.name;
+  if (!NAME_RE.test(name)) return res.status(400).json({ error: 'Некорректное имя' });
+  try {
+    const document = await creativeDirectionsForDeck(name, { create: true });
+    const selected = String(req.body && req.body.selected || '');
+    if (!document.directions.some((item) => item.id === selected)) {
+      return res.status(400).json({ error: 'Неизвестное креативное направление' });
+    }
+    document.selected = selected;
+    document.selectionSource = 'user';
+    document.validation = validateCreativeDirections(document);
+    if (!document.validation.passed) {
+      return res.status(400).json({ error: document.validation.errors.join('; ') });
+    }
+    await writeJson(creativeDirectionsFile(name), document);
+    res.json(document);
+  } catch (e) {
+    res.status(500).json({ error: String(e.message || e) });
+  }
+});
+
 app.get('/api/review/:name', async (req, res) => {
   const name = req.params.name;
   if (!NAME_RE.test(name)) return res.status(400).json({ error: 'Некорректное имя' });
@@ -633,6 +769,13 @@ app.get('/api/review/:name', async (req, res) => {
     const outputDir = path.join(ROOT, 'output', name);
     let deckPlan = null;
     try { deckPlan = await readJsonSafe(path.join(outputDir, 'deck-plan.json')); } catch {}
+    let contentMeasurements = null;
+    try { contentMeasurements = await readJsonSafe(path.join(outputDir, 'content-measurements.json')); } catch {}
+    const creativeDocument = await creativeDirectionsForDeck(name, { create: false });
+    const creativeValidation = creativeDocument ? validateCreativeDirections(creativeDocument) : null;
+    const creativeDirection = creativeValidation && creativeValidation.passed
+      ? selectedCreativeDirection(creativeDocument)
+      : null;
 
     const shots = new Map();
     try {
@@ -651,13 +794,18 @@ app.get('/api/review/:name', async (req, res) => {
     let hasOutput = false;
     try { await fsp.access(path.join(outputDir, 'index.html')); hasOutput = true; } catch {}
     const plannedSlides = deckPlan && Array.isArray(deckPlan.slides) ? deckPlan.slides : [];
+    const measuredSlides = contentMeasurements && Array.isArray(contentMeasurements.slides) ? contentMeasurements.slides : [];
     const referenceLibrary = engineReferenceCatalog();
     const visualAssetLibrary = parseVisualAssets();
     const total = Math.max(sourcePlan.slides.length, plannedSlides.length, ...shots.keys(), 0);
     const slides = [];
     const recentCompositions = [];
     const recentLayouts = [];
+    const recentMasses = [];
+    const recentSides = [];
     const recentReferences = [];
+    const visualState = { theoAppearances: [] };
+    const recentVisualAssets = [];
     for (let i = 0; i < total; i += 1) {
       const sourceSlide = sourcePlan.slides[i] || {};
       const planned = plannedSlides[i] || {};
@@ -673,13 +821,16 @@ app.get('/api/review/:name', async (req, res) => {
         isSyntheticFinal ? { ...intelligenceSlide, layout: 'final', title: 'Финальный слайд' } : intelligenceSlide,
         i,
         total,
-        { library: referenceLibrary, limit: 12, recentCompositions, recentLayouts, recentReferences }
+        { library: referenceLibrary, limit: 12, recentCompositions, recentLayouts, recentMasses, recentSides, recentReferences, measurement: measuredSlides[i] || null, creativeDirection }
       );
       const plannedReference = planned.canonReference || sourceSlide.reference || '';
       const bestReference = semantic.references[0] || null;
       const visual = recommendVisualAssets(intelligenceSlide, i, total, {
         analysis: semantic.analysis,
         assets: visualAssetLibrary,
+        visualState,
+        creativeDirection,
+        exclude: recentVisualAssets.slice(-3),
         limit: 6,
       });
       const visualSuggestions = visual.suggestions.map((asset) => ({
@@ -695,14 +846,47 @@ app.get('/api/review/:name', async (req, res) => {
       const selectedVisualPlacement = selectedThreeD
         ? recommendVisualPlacement(intelligenceSlide, i, total, { analysis: semantic.analysis, asset: selectedThreeD })
         : null;
-      const resolvedComposition = planned.compositionFamily || (bestReference && bestReference.composition) || 'editorial';
-      const resolvedLayout = planned.layout || sourceSlide.layout || semantic.analysis.renderLayout || (isSyntheticFinal ? 'final' : 'title-bullets');
-      if (bestReference) {
-        recentCompositions.unshift(bestReference.composition);
+      const firstUsableVisual = visualSuggestions.find((asset) => !asset.placement.rejected) || null;
+      const scheduledCharacter = visualSuggestions.find((asset) => asset.policy && asset.policy.scheduled && !asset.placement.rejected) || null;
+      const explicitVisual = sourceSlide.threeD || sourceSlide.image || '';
+      const explicitAsset = explicitVisual ? visualAssetLibrary.find((asset) => asset.source === explicitVisual) : null;
+      const explicitPolicy = explicitAsset ? characterPolicyScore(explicitAsset, i, total, { visualState }) : null;
+      const visualPolicyViolation = explicitPolicy && explicitPolicy.score <= -200
+        ? explicitPolicy.reason
+        : '';
+      const allowedExplicitVisual = visualPolicyViolation ? '' : explicitVisual;
+      const plannedVisual = scheduledCharacter && (!allowedExplicitVisual || /(?:^|\/)3d\//i.test(allowedExplicitVisual))
+        ? scheduledCharacter.source
+        : allowedExplicitVisual || (
+        firstUsableVisual && (visual.required || (firstUsableVisual.policy && firstUsableVisual.policy.scheduled))
+          ? firstUsableVisual.source
+          : ''
+      );
+      if (/theo-mascot/i.test(plannedVisual) && !visualState.theoAppearances.includes(i)) visualState.theoAppearances.push(i);
+      if (plannedVisual) recentVisualAssets.push(plannedVisual);
+      const chosenComposition = semantic.selectedCandidate;
+      const resolvedComposition = planned.compositionFamily || (chosenComposition && chosenComposition.id) || (bestReference && bestReference.composition) || 'editorial';
+      const resolvedLayout = planned.layout || sourceSlide.layout || (chosenComposition && chosenComposition.renderLayout) || semantic.analysis.renderLayout || (isSyntheticFinal ? 'final' : 'title-bullets');
+      let styleframeUrl = '';
+      if (creativeDirection) {
+        const styleframeFile = `slide-${String(i + 1).padStart(2, '0')}-${creativeDirection.id}.png`;
+        try {
+          const styleframeStat = await fsp.stat(path.join(outputDir, 'styleframes', styleframeFile));
+          styleframeUrl = '/files/output/' + name + '/styleframes/' + styleframeFile + '?v=' + Math.round(styleframeStat.mtimeMs);
+        } catch {}
+      }
+      if (bestReference || chosenComposition) {
+        recentCompositions.unshift(chosenComposition ? chosenComposition.id : bestReference.composition);
         recentLayouts.unshift(semantic.analysis.renderLayout);
-        recentReferences.unshift(bestReference.source);
+        if (chosenComposition) {
+          recentMasses.unshift(chosenComposition.massDistribution);
+          recentSides.unshift(chosenComposition.visualSide);
+        }
+        if (bestReference) recentReferences.unshift(bestReference.source);
         recentCompositions.splice(4);
         recentLayouts.splice(4);
+        recentMasses.splice(4);
+        recentSides.splice(4);
         recentReferences.splice(8);
       }
       slides.push({
@@ -721,13 +905,19 @@ app.get('/api/review/:name', async (req, res) => {
         reference: plannedReference,
         referenceNodeId: planned.figmaNodeId || '',
         recommendations: semantic.references,
+        compositionCandidates: semantic.candidates,
+        compositionDecision: chosenComposition,
         compositionBrief: {
           contentFill: semantic.analysis.contentFill,
           spaceStrategy: semantic.analysis.spaceStrategy,
           recommendedVisualShare: semantic.analysis.recommendedVisualShare,
         },
+        contentMeasurement: measuredSlides[i] || null,
         visualRequirement: visual.required ? 'required' : 'intentional-exception',
         assetGap: visual.assetGap,
+        characterPolicy: visual.characterPolicy,
+        plannedVisual,
+        visualPolicyViolation,
         visualSuggestions,
         image: sourceSlide.image || '',
         threeD: sourceSlide.threeD || '',
@@ -738,6 +928,7 @@ app.get('/api/review/:name', async (req, res) => {
         assets: Array.isArray(planned.assets) ? planned.assets : [],
         screenshotUrl: shot ? shot.url : '',
         screenshotMtime: shot ? shot.mtime : 0,
+        styleframeUrl,
       });
     }
     res.json({
@@ -747,6 +938,16 @@ app.get('/api/review/:name', async (req, res) => {
       audience: deckPlan && deckPlan.audience ? deckPlan.audience : '',
       communicationJob: deckPlan && deckPlan.communicationJob ? deckPlan.communicationJob : '',
       narrativeArc: deckPlan && deckPlan.narrativeArc ? deckPlan.narrativeArc : '',
+      creativeDirection: creativeDirection ? {
+        id: creativeDirection.id,
+        title: creativeDirection.title,
+        idea: creativeDirection.idea,
+        tension: creativeDirection.tension,
+        techniques: creativeDirection.techniques,
+        assetPolicy: creativeDirection.assetPolicy,
+      } : null,
+      creativeDirections: creativeDocument,
+      measurementSummary: contentMeasurements ? contentMeasurements.summary : null,
       hasOutput,
       outputUrl: hasOutput ? '/files/output/' + name + '/index.html' : '',
       slides,
@@ -909,13 +1110,41 @@ app.get('/api/prompt/requests', async (req, res) => {
 const CHATS_DIR = path.join(__dirname, 'data', 'chats');
 const CHAT_ID_RE = /^[a-z0-9]+$/;
 
+function isGenericChatTitle(title) {
+  const value = String(title || '').trim();
+  return /^(?:новая презентация|вариант\s)/i.test(value)
+    || (/(?:сделай|собери|создай|подготовь)/i.test(value) && /(?:презентац|слайд)/i.test(value));
+}
+
+async function presentationTitleForChat(data) {
+  if (!data || !isGenericChatTitle(data.title) || !Array.isArray(data.items)) return data && data.title;
+  const result = [...data.items].reverse().find((item) => item && item.kind === 'result' && (item.name || item.dir));
+  const deck = String(result && (result.name || result.dir) || '').replace(/^output\//, '');
+  if (!/^[a-zA-Z0-9_-]+$/.test(deck)) return data.title;
+  try {
+    const source = await fsp.readFile(path.join(ROOT, 'input', deck + '.md'), 'utf8');
+    const clean = (value) => String(value || '').replace(/[`*_"«»]/g, '').replace(/\s+/g, ' ').trim();
+    const titleMatch = source.match(/^title:\s*(.+)$/mi);
+    const subtitleMatch = source.match(/^subtitle:\s*(.+)$/mi);
+    const title = clean(titleMatch && titleMatch[1]);
+    const subtitle = clean(subtitleMatch && subtitleMatch[1]);
+    const semanticTitle = title && title.split(/\s+/).length === 1 && subtitle ? title + ' — ' + subtitle : title;
+    return semanticTitle.slice(0, 80) || data.title;
+  } catch {
+    return data.title;
+  }
+}
+
 app.get('/api/chats', async (req, res) => {
   const out = [];
   try {
     for (const f of await fsp.readdir(CHATS_DIR)) {
       if (!f.endsWith('.json')) continue;
       const data = await readJsonSafe(path.join(CHATS_DIR, f));
-      if (data && data.id) out.push({ id: data.id, title: data.title || 'Без названия', updated: data.updated || 0 });
+      if (data && data.id) {
+        const title = await presentationTitleForChat(data);
+        out.push({ id: data.id, title: title || 'Без названия', updated: data.updated || 0 });
+      }
     }
   } catch {}
   out.sort((a, b) => b.updated - a.updated);
@@ -938,6 +1167,7 @@ app.get('/api/chats/:id', async (req, res) => {
   if (!CHAT_ID_RE.test(req.params.id)) return res.status(400).json({ error: 'Некорректный id' });
   const data = await readJsonSafe(path.join(CHATS_DIR, req.params.id + '.json'));
   if (!data) return res.status(404).json({ error: 'Чат не найден' });
+  data.title = await presentationTitleForChat(data);
   res.json(data);
 });
 

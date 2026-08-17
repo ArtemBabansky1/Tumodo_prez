@@ -1,0 +1,29 @@
+{
+  "deck": "theo-v2-1",
+  "direction": "human-momentum",
+  "directionTitle": "Люди в движении",
+  "mode": "built-in-imagegen",
+  "status": "concept-reference-only",
+  "items": [
+    {
+      "slide": 1,
+      "file": "slide-01-human-momentum.png",
+      "purpose": "Обложка: крупный Тео как редкий акцент"
+    },
+    {
+      "slide": 2,
+      "file": "slide-02-human-momentum.png",
+      "purpose": "Живой контекст поездки и набор естественных вопросов"
+    },
+    {
+      "slide": 5,
+      "file": "slide-05-human-momentum.png",
+      "purpose": "Люди и роли как основа продуктовой истории"
+    }
+  ],
+  "constraints": [
+    "Только палитра, типографика, логотипы и визуальные приемы Tumodo",
+    "Только предоставленные продуктовые и фото-ассеты",
+    "Styleframe задает композицию; финальный слайд остается редактируемым HTML"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "theo": {
+    "label": "Тео",
+    "assetPattern": "theo-mascot",
+    "minAppearances": 2,
+    "maxAppearances": 3,
+    "shortDeckTarget": 2,
+    "longDeckTarget": 3,
+    "longDeckFromSlides": 12,
+    "minGap": 2,
+    "heroOnlyOnCover": true,
+    "supportingSize": "medium",
+    "primaryEvidence": ["product", "people", "data"],
+    "notes": "Крупный Тео используется только на обложке. Внутри колоды он является редким поддерживающим акцентом; основное доказательство несут продукт, люди и данные."
+  }
+}

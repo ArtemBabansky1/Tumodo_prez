@@ -1,4 +1,4 @@
-/* layout.css — слайд 1920×1080, сетка из Figma/tokens/grid.md (6×6, gutter 25, поля 120), «мебель», темы.
+/* layout.css — слайд 1920×1080, сетка из Figma/tokens/grid.md (7×7, поля 120, gutters 30/25), «мебель», темы.
    Правила: rules/presentation-rules.md §2–4, rules/style-guide.md §1. */
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -100,6 +100,7 @@ body {
   top: var(--slide-margin);
   width: 396px;
   height: auto;
+  z-index: 5;
 }
 
 /* ---------- вертикальные якоря контента ---------- */
@@ -136,6 +137,7 @@ body {
   text-wrap: pretty;
   width: 733px;
   flex: none;
+  text-align: right;
 }
 
 .content {
@@ -188,7 +190,7 @@ body {
 .media-col { display: flex; align-items: center; justify-content: center; min-height: 0; }
 .media-col img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-/* ---------- ряды равных колонок (gutter 25) ---------- */
+/* ---------- ряды равных колонок (column gutter 30) ---------- */
 
 .cols { display: grid; gap: var(--grid-gutter); height: 100%; }
 .cols-2 { grid-template-columns: repeat(2, 1fr); }

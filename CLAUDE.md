@@ -10,7 +10,10 @@
 первой сборки, когда редактирует конкретный слайд на экране предпросмотра.
 
 Главный сценарий и контракт с платформой описаны в `rules/agent-workflow.md`,
-композиционное принятие решений — в `rules/designer-reasoning.md`.
+композиционное принятие решений — в `rules/designer-reasoning.md`, а управляемая
+креативность внутри дизайн-системы — в `rules/creative-direction.md`. Перенос
+готового результата с платформы в Figma регулируется отдельным обязательным
+контрактом `rules/figma-export-rules.md`.
 
 ## Карта проекта
 
@@ -21,7 +24,7 @@
 | `design-system/MANIFEST.md` | Индекс дизайн-системы, статус заполнения категорий |
 | `design-system/tokens/` | Токены: `colors.json`, `typography.json`, `grid.md`, `spacing.json`, `effects.json` |
 | `design-system/logo/`, `icons/`, `fonts/`, `photos/`, `patterns/`, `mockups/` | Ассеты + `*-RULES.md` с правилами использования каждой категории |
-| `rules/` | Правила презентаций: `presentation-rules.md`, `slide-layouts.md`, `style-guide.md`, `content-rules.md`, `mistakes.md` (журнал антипаттернов) |
+| `rules/` | Правила презентаций: `presentation-rules.md`, `slide-layouts.md`, `style-guide.md`, `content-rules.md`, `figma-export-rules.md`, `mistakes.md` (журнал антипаттернов) |
 | `design-system/canon/` | Эталонные PNG: `decks/library/` (126 слайдов из Figma, главный источник композиции), `layouts/` (10 базовых HTML-семейств), `bad/` (антипримеры) |
 | `templates/html/` | Каркас `base.html`, CSS (`tokens.css`, `layout.css`, `components.css`), шаблоны макетов в `layouts/` |
 | `templates/figma/FIGMA-TEMPLATES.md` | Как те же макеты строятся в Figma |
@@ -33,9 +36,9 @@
 
 ## Порядок работы над презентацией
 
-1. Прочитать `rules/agent-workflow.md`, `rules/designer-reasoning.md`, остальные `rules/*` (включая `rules/mistakes.md`) и `design-system/MANIFEST.md`.
+1. Прочитать `rules/agent-workflow.md`, `rules/designer-reasoning.md`, остальные `rules/*` (включая `rules/figma-export-rules.md` и `rules/mistakes.md`) и `design-system/MANIFEST.md`.
 2. Прочитать все входные файлы и определить коммуникационную задачу, аудиторию и роль каждого слайда.
-3. Запустить `node scripts/recommend-design.js <имя>`, визуально проверить shortlist и самостоятельно выбрать Figma-референс, макет и ассеты для каждого слайда. Не перекладывать этот выбор на пользователя до первой сборки.
+3. Запустить `node scripts/creative-director.js <имя>`, затем `node scripts/recommend-design.js <имя>`, визуально проверить выбранное креативное направление и shortlist, самостоятельно выбрать Figma-референс, макет и ассеты для каждого слайда. Не перекладывать этот выбор на пользователя до первой сборки.
 4. Создать `input/<имя>.md` и служебный `output/<имя>/deck-plan.json` по схеме из `rules/agent-workflow.md`.
 5. Собрать HTML в `output/<имя>/` через `scripts/build.js`.
 6. **Визуальный цикл (обязателен, сборка вслепую запрещена):**

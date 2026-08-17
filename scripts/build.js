@@ -11,22 +11,23 @@ const fs = require('fs');
 const path = require('path');
 const {
   analyzeSlide,
+  parseCharacterPolicies,
   parseVisualAssets,
   recommendVisualPlacement,
 } = require('./lib/design-intelligence');
+const { typographHtml } = require('./lib/typograph');
+const { selectPhotoListIcon } = require('./lib/semantic-icons');
 
 const ROOT = path.join(__dirname, '..');
 const DS = path.join(ROOT, 'design-system');
 const TPL = path.join(ROOT, 'templates', 'html');
 const VISUAL_ASSETS = parseVisualAssets();
 const VISUAL_ASSET_BY_SOURCE = new Map(VISUAL_ASSETS.map((asset) => [asset.source, asset]));
+const CHARACTER_POLICIES = parseCharacterPolicies();
 
 // ---------------------------------------------------------------- утилиты
 
-const PREP_RE = /(^|[\s(«„'"])(в|во|и|на|с|со|к|ко|по|за|о|об|от|до|из|у|не|ни|а|но|да|для|при|над|под|про|без|же|ли|бы|то|что|как)(\s+)/gi;
-const nbsp = (s) => String(s).replace(PREP_RE, '$1$2 ').replace(PREP_RE, '$1$2 ');
-const nbhyph = (s) => { s = String(s); return s.includes(' ') ? s.replace(/([а-яёa-z])-([а-яёa-z])/gi, '$1‑$2') : s; };
-const esc = (s) => nbhyph(nbsp(String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')));
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 function readTpl(name) {
   return fs.readFileSync(path.join(TPL, 'layouts', name + '.html'), 'utf8');
@@ -256,6 +257,11 @@ function buildSlide(slide, layout, num, total, fm, usedAssets, report) {
     ctx.titleClass = ctx.title.length > 50 ? 't-cover-2' : 't-cover-1';
     ctx.subtitle = slide.meta.subtitle || slide.lead || fm.subtitle || '';
     ctx.cta = slide.meta.cta || '';
+    ctx.standardCover = !(threeDPlan && threeDPlan.mode === 'slide' && threeDSrc);
+    if (threeDPlan && threeDPlan.mode === 'slide' && threeDSrc) {
+      ctx.coverThreeD = threeDSrc;
+      ctx.coverThreeDSide = threeDPlan.side;
+    }
   }
   if (layout === 'final') {
     ctx.tagline = slide.meta.tagline || slide.title || S.tagline;
@@ -405,7 +411,14 @@ function buildSlide(slide, layout, num, total, fm, usedAssets, report) {
   }
   if (layout === 'photo-list') {
     ctx.image = slide.meta.image ? useAsset(slide.meta.image, usedAssets, report) : '';
-    ctx.items = slide.bullets.slice(0, 6);
+    const explicitIcons = String(slide.meta['item-icons'] || '')
+      .split('|')
+      .map((item) => item.trim());
+    ctx.items = slide.bullets.slice(0, 6).map((text, index) => {
+      const iconRel = explicitIcons[index] || selectPhotoListIcon(text);
+      const icon = iconRel ? useAsset(iconRel, usedAssets, report) : '';
+      return { text, icon, noIcon: !icon };
+    });
     ctx.itemCount = ctx.items.length;
     ctx.photoLeft = String(slide.meta['media-side'] || '').toLowerCase() === 'left';
     if (!ctx.image || ctx.itemCount < 3 || ctx.itemCount > 6) {
@@ -566,6 +579,29 @@ function main() {
       }
     }
   }
+  const deckText = slides.map((slide) => [slide.title, slide.lead, ...slide.paragraphs, ...slide.bullets].filter(Boolean).join(' ')).join(' ').toLowerCase();
+  const theoPolicy = CHARACTER_POLICIES.theo || {};
+  const theoPattern = new RegExp(theoPolicy.assetPattern || 'theo-mascot', 'i');
+  const theoDeck = /(?:^|\s)(?:тео|theo)(?:$|\s|[,.!?—-])/.test(deckText);
+  const theoSlides = slides
+    .map((slide, index) => ({ index, asset: slide.meta['3d'] || slide.meta.image || '' }))
+    .filter((item) => theoPattern.test(item.asset));
+  if (theoDeck) {
+    const min = Number(theoPolicy.minAppearances || 2);
+    const max = Number(theoPolicy.maxAppearances || 3);
+    if (theoSlides.length < min || theoSlides.length > max) {
+      report(`Тео используется на ${theoSlides.length} слайдах; политика персонажа требует ${min}–${max} появления на колоду`);
+    }
+    if (!theoSlides.some((item) => item.index === 0)) {
+      report('главное полнофигурное появление Тео должно быть на обложке; внутри колоды он только поддерживающий акцент');
+    }
+    const minGap = Number(theoPolicy.minGap || 2);
+    for (let i = 1; i < theoSlides.length; i += 1) {
+      if (theoSlides[i].index - theoSlides[i - 1].index < minGap) {
+        report(`слайды ${theoSlides[i - 1].index + 1} и ${theoSlides[i].index + 1}: Тео не должен появляться на соседних слайдах`);
+      }
+    }
+  }
   slides.forEach((slide, index) => {
     const analysis = analyzeSlide(slide, index, slides.length);
     if (analysis.contentFill < 0.38 && !slide.meta.image && !slide.meta['3d'] && !['cover', 'final', 'statement', 'section-divider'].includes(slide.layout || '')) {
@@ -645,6 +681,7 @@ function main() {
     } else {
       html = buildSlide(slide, layout, i + 1, slides.length, fm, usedAssets, report);
     }
+    html = typographHtml(html);
     const canonVariant = slide.meta.variant ? ` data-canon-variant="${esc(slide.meta.variant)}"` : '';
     const canonReference = slide.meta.reference ? ` data-canon-reference="${esc(slide.meta.reference)}"` : '';
     const semanticRole = slide.meta['semantic-role'] ? ` data-semantic-role="${esc(slide.meta['semantic-role'])}"` : '';

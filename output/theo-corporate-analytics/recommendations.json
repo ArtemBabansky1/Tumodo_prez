@@ -1,0 +1,2689 @@
+{
+  "creativeDirection": {
+    "id": "human-momentum",
+    "title": "Люди в движении",
+    "idea": "Историю ведут реальные рабочие ситуации и эмоции, а продукт появляется как естественный инструмент.",
+    "techniques": [
+      "detail-crop",
+      "layered-depth",
+      "asymmetric-balance",
+      "rhythm-contrast"
+    ],
+    "assetPolicy": "platform-only"
+  },
+  "figma": {
+    "fileKey": "SZpOoVhI07GPa3Vf7BRc10",
+    "sectionNodeId": "855:401",
+    "references": 126
+  },
+  "qualityContract": {
+    "minimumCardContentFill": 0.55,
+    "underfillAction": "change-layout-never-shrink-container",
+    "comparisonMode": "table-with-shared-columns-no-arrows",
+    "titleSystem": "page-title/system-anchor",
+    "rowAlignment": "shared-baselines",
+    "decoration": "functional-only",
+    "darkTheme": "one-contiguous-theme-chapter",
+    "requiredGate": "node scripts/validate-design.js <name>"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Сократите время на подготовку отчётов по командировкам",
+      "semanticRole": "cover",
+      "renderLayout": "cover",
+      "compositionFamily": "hero",
+      "silhouetteId": "cover:center-hero:center:title-subtitle-hero-visual",
+      "compositionDecision": {
+        "score": 294,
+        "scoreBreakdown": {
+          "semantic": 80,
+          "content": 24,
+          "structure": 50,
+          "visual": 14,
+          "rhythm": 18,
+          "creative": 24,
+          "explicit": 72,
+          "referenceSupport": 12,
+          "measurement": 0,
+          "risk": 0
+        },
+        "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление",
+        "massDistribution": "center-hero",
+        "visualSide": "center",
+        "readingPath": [
+          "title",
+          "subtitle",
+          "hero-visual"
+        ]
+      },
+      "compositionCandidates": [
+        {
+          "id": "hero",
+          "label": "Крупный hero",
+          "renderLayout": "cover",
+          "massDistribution": "center-hero",
+          "visualSide": "center",
+          "readingPath": [
+            "title",
+            "subtitle",
+            "hero-visual"
+          ],
+          "silhouetteId": "cover:center-hero:center:title-subtitle-hero-visual",
+          "score": 294,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": 24,
+            "structure": 50,
+            "visual": 14,
+            "rhythm": 18,
+            "creative": 24,
+            "explicit": 72,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 13,
+          "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "manifesto",
+          "label": "Манифест",
+          "renderLayout": "statement",
+          "massDistribution": "single-focus",
+          "visualSide": "center",
+          "readingPath": [
+            "claim",
+            "supporting-proof"
+          ],
+          "silhouetteId": "statement:single-focus:center:claim-supporting-proof",
+          "score": -112,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 24,
+            "structure": 24,
+            "visual": 14,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 10,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 5,
+          "reason": "контент соответствует ёмкости композиции · структура данных поддерживает формат · есть риск геометрии или визуала"
+        },
+        {
+          "id": "editorial",
+          "label": "Редакционная композиция",
+          "renderLayout": "intro",
+          "massDistribution": "asymmetric-editorial",
+          "visualSide": "right",
+          "readingPath": [
+            "title",
+            "lead",
+            "supporting-blocks"
+          ],
+          "silhouetteId": "intro:asymmetric-editorial:right:title-lead-supporting-blocks",
+          "score": -135,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 1,
+            "structure": 8,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 28,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 27,
+          "reason": "поддерживает выбранное креативное направление · есть риск геометрии или визуала"
+        },
+        {
+          "id": "product-showcase",
+          "label": "Продуктовый showcase",
+          "renderLayout": "intro",
+          "massDistribution": "visual-dominant-split",
+          "visualSide": "right",
+          "readingPath": [
+            "title",
+            "product-visual",
+            "supporting-points"
+          ],
+          "silhouetteId": "intro:visual-dominant-split:right:title-product-visual-supporting-points",
+          "score": -140,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": -4,
+            "structure": 8,
+            "visual": 14,
+            "rhythm": 18,
+            "creative": 14,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 30,
+          "reason": "поддерживает выбранное креативное направление · есть риск геометрии или визуала"
+        },
+        {
+          "id": "metric-focus",
+          "label": "Акцент на цифрах",
+          "renderLayout": "kpi-metrics",
+          "massDistribution": "metric-cluster",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "hero-metric",
+            "supporting-metrics"
+          ],
+          "silhouetteId": "kpi-metrics:metric-cluster:none:title-hero-metric-supporting-metrics",
+          "score": -190,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 24,
+            "structure": -56,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 14,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 7,
+          "reason": "контент соответствует ёмкости композиции · поддерживает выбранное креативное направление · есть риск геометрии или визуала"
+        }
+      ],
+      "measurementFeedback": null,
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "characterPolicy": {
+        "label": "Тео",
+        "assetPattern": "theo-mascot",
+        "minAppearances": 2,
+        "maxAppearances": 3,
+        "shortDeckTarget": 2,
+        "longDeckTarget": 3,
+        "longDeckFromSlides": 12,
+        "minGap": 2,
+        "heroOnlyOnCover": true,
+        "supportingSize": "medium",
+        "primaryEvidence": [
+          "product",
+          "people",
+          "data"
+        ],
+        "notes": "Крупный Тео используется только на обложке. Внутри колоды он является редким поддерживающим акцентом; основное доказательство несут продукт, люди и данные.",
+        "targetAppearances": 2,
+        "preferredIndices": [
+          0,
+          3
+        ]
+      },
+      "plannedVisual": "photos/3d/theo-mascot-analyst-1.png",
+      "compositionBrief": {
+        "contentFill": 0.17763157894736842,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/theo-mascot-analyst-1.png",
+          "kind": "3d",
+          "score": 391,
+          "reason": "Обложка · 3D-акцент · главное hero-появление персонажа запланировано на обложке; предпочтительна полнофигурная версия",
+          "policy": {
+            "score": 226,
+            "scheduled": true,
+            "reason": "главное hero-появление персонажа запланировано на обложке; предпочтительна полнофигурная версия"
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "hero",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 860,
+            "bury": 0.16,
+            "x": 0.7,
+            "reason": "единственное крупное появление Тео: hero на обложке"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-analyst-2.png",
+          "kind": "3d",
+          "score": 345,
+          "reason": "Обложка · 3D-акцент · главное hero-появление персонажа запланировано на обложке; предпочтительна полнофигурная версия",
+          "policy": {
+            "score": 180,
+            "scheduled": true,
+            "reason": "главное hero-появление персонажа запланировано на обложке; предпочтительна полнофигурная версия"
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "hero",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 860,
+            "bury": 0.16,
+            "x": 0.7,
+            "reason": "единственное крупное появление Тео: hero на обложке"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-avatar.png",
+          "kind": "3d",
+          "score": 259,
+          "reason": "Обложка · 3D-акцент · главное hero-появление персонажа запланировано на обложке; предпочтительна полнофигурная версия",
+          "policy": {
+            "score": 60,
+            "scheduled": true,
+            "reason": "главное hero-появление персонажа запланировано на обложке; предпочтительна полнофигурная версия"
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "hero",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 860,
+            "bury": 0.16,
+            "x": 0.7,
+            "reason": "единственное крупное появление Тео: hero на обложке"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-glass-product-cards-blue.png",
+          "kind": "3d",
+          "score": 195,
+          "reason": "Обложка · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 780,
+            "bury": 0.2,
+            "x": 0.67,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "photos/people/figma/traveler-suitcase-airport-window.png",
+          "kind": "photo",
+          "score": 157,
+          "reason": "Обложка · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:5632",
+          "source": "decks/library/1-cover__855-5632.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:1440",
+          "source": "decks/library/31__855-1440.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Один вопрос о командировках — готовый анализ в диалоге",
+      "semanticRole": "people",
+      "renderLayout": "intro",
+      "compositionFamily": "product-showcase",
+      "silhouetteId": "intro:visual-dominant-split:left:title-product-visual-supporting-points",
+      "compositionDecision": {
+        "score": 202,
+        "scoreBreakdown": {
+          "semantic": 22,
+          "content": 24,
+          "structure": 22,
+          "visual": 18,
+          "rhythm": 18,
+          "creative": 14,
+          "explicit": 72,
+          "referenceSupport": 12,
+          "measurement": 0,
+          "risk": 0
+        },
+        "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции · поддерживает выбранное креативное направление",
+        "massDistribution": "visual-dominant-split",
+        "visualSide": "left",
+        "readingPath": [
+          "title",
+          "product-visual",
+          "supporting-points"
+        ]
+      },
+      "compositionCandidates": [
+        {
+          "id": "product-showcase",
+          "label": "Продуктовый showcase",
+          "renderLayout": "intro",
+          "massDistribution": "visual-dominant-split",
+          "visualSide": "left",
+          "readingPath": [
+            "title",
+            "product-visual",
+            "supporting-points"
+          ],
+          "silhouetteId": "intro:visual-dominant-split:left:title-product-visual-supporting-points",
+          "score": 202,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": 22,
+            "visual": 18,
+            "rhythm": 18,
+            "creative": 14,
+            "explicit": 72,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 30,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "editorial",
+          "label": "Редакционная композиция",
+          "renderLayout": "intro",
+          "massDistribution": "asymmetric-editorial",
+          "visualSide": "left",
+          "readingPath": [
+            "title",
+            "lead",
+            "supporting-blocks"
+          ],
+          "silhouetteId": "intro:asymmetric-editorial:left:title-lead-supporting-blocks",
+          "score": 198,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": 22,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 28,
+            "explicit": 72,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 27,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "card-grid",
+          "label": "Сетка карточек",
+          "renderLayout": "benefits-grid",
+          "massDistribution": "modular-grid",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "grid-scan",
+            "conclusion"
+          ],
+          "silhouetteId": "benefits-grid:modular-grid:none:title-grid-scan-conclusion",
+          "score": 112,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": 24,
+            "structure": -38,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 16,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 34,
+          "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "columns",
+          "label": "Колонки",
+          "renderLayout": "title-bullets",
+          "massDistribution": "text-columns",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "lead",
+            "items"
+          ],
+          "silhouetteId": "title-bullets:text-columns:none:title-lead-items",
+          "score": 86,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": 10,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 27,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции"
+        },
+        {
+          "id": "data-table",
+          "label": "Таблица",
+          "renderLayout": "comparison-flow",
+          "massDistribution": "wide-structured",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "column-headers",
+            "rows"
+          ],
+          "silhouetteId": "comparison-flow:wide-structured:none:title-column-headers-rows",
+          "score": -150,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 24,
+            "structure": 4,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 6,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 3,
+          "reason": "контент соответствует ёмкости композиции · есть риск геометрии или визуала"
+        }
+      ],
+      "measurementFeedback": null,
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "photo"
+      ],
+      "assetGap": "",
+      "characterPolicy": {
+        "label": "Тео",
+        "assetPattern": "theo-mascot",
+        "minAppearances": 2,
+        "maxAppearances": 3,
+        "shortDeckTarget": 2,
+        "longDeckTarget": 3,
+        "longDeckFromSlides": 12,
+        "minGap": 2,
+        "heroOnlyOnCover": true,
+        "supportingSize": "medium",
+        "primaryEvidence": [
+          "product",
+          "people",
+          "data"
+        ],
+        "notes": "Крупный Тео используется только на обложке. Внутри колоды он является редким поддерживающим акцентом; основное доказательство несут продукт, люди и данные.",
+        "targetAppearances": 2,
+        "preferredIndices": [
+          0,
+          3
+        ]
+      },
+      "plannedVisual": "photos/people/figma/team-collaboration-laptop-office.png",
+      "compositionBrief": {
+        "contentFill": 0.5794736842105264,
+        "spaceStrategy": "balanced",
+        "recommendedVisualShare": 0.36,
+        "containerPolicy": "standard",
+        "alignmentContract": "shared-row-axes",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/figma/team-collaboration-laptop-office.png",
+          "kind": "photo",
+          "score": 177,
+          "reason": "Люди и роли · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.36,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/people/figma/traveler-suitcase-airport-window.png",
+          "kind": "photo",
+          "score": 177,
+          "reason": "Люди и роли · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.36,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/people/manager-accountant-laptop-pointing-screen.webp",
+          "kind": "photo",
+          "score": 159,
+          "reason": "Люди и роли · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.36,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-glass-product-cards-blue.png",
+          "kind": "3d",
+          "score": 137,
+          "reason": "Люди и роли · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 1,
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-metal-access-cards.png",
+          "kind": "3d",
+          "score": 126,
+          "reason": "Люди и роли · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 1,
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:3473",
+          "source": "decks/library/925__855-3473.png",
+          "role": "people",
+          "composition": "product-showcase",
+          "theme": "light",
+          "score": 148,
+          "reason": "совпадает смысловая роль · совпадает плотность · продуктовый showcase"
+        },
+        {
+          "nodeId": "855:2768",
+          "source": "decks/library/2__855-2768.png",
+          "role": "people",
+          "composition": "profile-grid",
+          "theme": "dark",
+          "score": 130,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · карточки людей"
+        },
+        {
+          "nodeId": "855:5190",
+          "source": "decks/library/898__855-5190.png",
+          "role": "people",
+          "composition": "profile-grid",
+          "theme": "dark",
+          "score": 130,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · карточки людей"
+        },
+        {
+          "nodeId": "855:4052",
+          "source": "decks/library/938__855-4052.png",
+          "role": "people",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 130,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · две смысловые панели"
+        },
+        {
+          "nodeId": "855:4761",
+          "source": "decks/library/944__855-4761.png",
+          "role": "people",
+          "composition": "profile-grid",
+          "theme": "dark",
+          "score": 130,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · карточки людей"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Больше, чем стандартный чат-бот",
+      "semanticRole": "benefits",
+      "renderLayout": "benefits-grid",
+      "compositionFamily": "card-grid",
+      "silhouetteId": "benefits-grid:modular-grid:none:title-grid-scan-conclusion",
+      "compositionDecision": {
+        "score": 248,
+        "scoreBreakdown": {
+          "semantic": 80,
+          "content": 24,
+          "structure": 26,
+          "visual": 0,
+          "rhythm": 18,
+          "creative": 16,
+          "explicit": 72,
+          "referenceSupport": 12,
+          "measurement": 0,
+          "risk": 0
+        },
+        "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление",
+        "massDistribution": "modular-grid",
+        "visualSide": "none",
+        "readingPath": [
+          "title",
+          "grid-scan",
+          "conclusion"
+        ]
+      },
+      "compositionCandidates": [
+        {
+          "id": "card-grid",
+          "label": "Сетка карточек",
+          "renderLayout": "benefits-grid",
+          "massDistribution": "modular-grid",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "grid-scan",
+            "conclusion"
+          ],
+          "silhouetteId": "benefits-grid:modular-grid:none:title-grid-scan-conclusion",
+          "score": 248,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": 24,
+            "structure": 26,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 16,
+            "explicit": 72,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 34,
+          "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "columns",
+          "label": "Колонки",
+          "renderLayout": "title-bullets",
+          "massDistribution": "text-columns",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "lead",
+            "items"
+          ],
+          "silhouetteId": "title-bullets:text-columns:none:title-lead-items",
+          "score": 144,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": 24,
+            "structure": 10,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 27,
+          "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции"
+        },
+        {
+          "id": "data-table",
+          "label": "Таблица",
+          "renderLayout": "comparison-flow",
+          "massDistribution": "wide-structured",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "column-headers",
+            "rows"
+          ],
+          "silhouetteId": "comparison-flow:wide-structured:none:title-column-headers-rows",
+          "score": 74,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": 4,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 6,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 3,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции"
+        },
+        {
+          "id": "metric-focus",
+          "label": "Акцент на цифрах",
+          "renderLayout": "kpi-metrics",
+          "massDistribution": "metric-cluster",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "hero-metric",
+            "supporting-metrics"
+          ],
+          "silhouetteId": "kpi-metrics:metric-cluster:none:title-hero-metric-supporting-metrics",
+          "score": 34,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": -56,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 14,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 7,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "process-flow",
+          "label": "Сценарий или таймлайн",
+          "renderLayout": "process-steps",
+          "massDistribution": "horizontal-sequence",
+          "visualSide": "right",
+          "readingPath": [
+            "title",
+            "steps-left-to-right",
+            "outcome"
+          ],
+          "silhouetteId": "process-steps:horizontal-sequence:right:title-steps-left-to-right-outcome",
+          "score": 34,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": -42,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 7,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции"
+        }
+      ],
+      "measurementFeedback": null,
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "characterPolicy": {
+        "label": "Тео",
+        "assetPattern": "theo-mascot",
+        "minAppearances": 2,
+        "maxAppearances": 3,
+        "shortDeckTarget": 2,
+        "longDeckTarget": 3,
+        "longDeckFromSlides": 12,
+        "minGap": 2,
+        "heroOnlyOnCover": true,
+        "supportingSize": "medium",
+        "primaryEvidence": [
+          "product",
+          "people",
+          "data"
+        ],
+        "notes": "Крупный Тео используется только на обложке. Внутри колоды он является редким поддерживающим акцентом; основное доказательство несут продукт, люди и данные.",
+        "targetAppearances": 2,
+        "preferredIndices": [
+          0,
+          3
+        ]
+      },
+      "plannedVisual": "photos/3d/3d-folder-documents-blue.webp",
+      "compositionBrief": {
+        "contentFill": 0.6997368421052632,
+        "spaceStrategy": "balanced",
+        "recommendedVisualShare": 0.36,
+        "containerPolicy": "standard",
+        "alignmentContract": "shared-row-axes",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/3d-folder-documents-blue.webp",
+          "kind": "3d",
+          "score": 140,
+          "reason": "Выгоды и возможности · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 4,
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        },
+        {
+          "source": "photos/3d/3d-chat-bubbles-blue-silver.webp",
+          "kind": "3d",
+          "score": 136,
+          "reason": "Выгоды и возможности · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 4,
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-glass-product-cards-blue.png",
+          "kind": "3d",
+          "score": 136,
+          "reason": "Выгоды и возможности · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 4,
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-heart-silver.png",
+          "kind": "3d",
+          "score": 136,
+          "reason": "Выгоды и возможности · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 4,
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-metal-access-cards.png",
+          "kind": "3d",
+          "score": 136,
+          "reason": "Выгоды и возможности · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "card",
+            "ownership": "card",
+            "cardIndex": 4,
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "large",
+            "height": 0.9,
+            "bury": 0.12,
+            "textShare": 0.58,
+            "reason": "объект относится к одной карточке: крупно, в её нижнем углу, с обрезкой карточкой"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:1362",
+          "source": "decks/library/29__855-1362.png",
+          "role": "benefits",
+          "composition": "card-grid",
+          "theme": "light",
+          "score": 192,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · сетка карточек"
+        },
+        {
+          "nodeId": "855:5066",
+          "source": "decks/library/896__855-5066.png",
+          "role": "benefits",
+          "composition": "card-grid",
+          "theme": "light",
+          "score": 180,
+          "reason": "совпадает смысловая роль · нужный тип визуала · сетка карточек"
+        },
+        {
+          "nodeId": "855:1939",
+          "source": "decks/library/38__855-1939.png",
+          "role": "benefits",
+          "composition": "card-grid",
+          "theme": "light",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · сетка карточек"
+        },
+        {
+          "nodeId": "855:1300",
+          "source": "decks/library/43__855-1300.png",
+          "role": "benefits",
+          "composition": "card-grid",
+          "theme": "dark",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · сетка карточек"
+        },
+        {
+          "nodeId": "855:2814",
+          "source": "decks/library/5__855-2814.png",
+          "role": "benefits",
+          "composition": "card-grid",
+          "theme": "light",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · сетка карточек"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "С какими запросами работает Тео",
+      "semanticRole": "people",
+      "renderLayout": "photo-list",
+      "compositionFamily": "split-media",
+      "silhouetteId": "photo-list:media-text-split:right:title-media-structured-list",
+      "compositionDecision": {
+        "score": 226,
+        "scoreBreakdown": {
+          "semantic": 80,
+          "content": -18,
+          "structure": 38,
+          "visual": 18,
+          "rhythm": 18,
+          "creative": 48,
+          "explicit": 72,
+          "referenceSupport": 2,
+          "measurement": 0,
+          "risk": -32
+        },
+        "reason": "прямое соответствие смысловой роли · структура данных поддерживает формат · поддерживает выбранное креативное направление · есть риск геометрии или визуала",
+        "massDistribution": "media-text-split",
+        "visualSide": "right",
+        "readingPath": [
+          "title",
+          "media",
+          "structured-list"
+        ]
+      },
+      "compositionCandidates": [
+        {
+          "id": "split-media",
+          "label": "Текст и визуал",
+          "renderLayout": "photo-list",
+          "massDistribution": "media-text-split",
+          "visualSide": "right",
+          "readingPath": [
+            "title",
+            "media",
+            "structured-list"
+          ],
+          "silhouetteId": "photo-list:media-text-split:right:title-media-structured-list",
+          "score": 226,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": -18,
+            "structure": 38,
+            "visual": 18,
+            "rhythm": 18,
+            "creative": 48,
+            "explicit": 72,
+            "referenceSupport": 2,
+            "measurement": 0,
+            "risk": -32
+          },
+          "referenceCount": 1,
+          "reason": "прямое соответствие смысловой роли · структура данных поддерживает формат · поддерживает выбранное креативное направление · есть риск геометрии или визуала"
+        },
+        {
+          "id": "columns",
+          "label": "Колонки",
+          "renderLayout": "title-bullets",
+          "massDistribution": "text-columns",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "lead",
+            "items"
+          ],
+          "silhouetteId": "title-bullets:text-columns:none:title-lead-items",
+          "score": 78,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 4,
+            "structure": 10,
+            "visual": 12,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 27,
+          "reason": "допустимая соседняя смысловая модель"
+        },
+        {
+          "id": "card-grid",
+          "label": "Сетка карточек",
+          "renderLayout": "benefits-grid",
+          "massDistribution": "modular-grid",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "grid-scan",
+            "conclusion"
+          ],
+          "silhouetteId": "benefits-grid:modular-grid:none:title-grid-scan-conclusion",
+          "score": 34,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": 24,
+            "structure": 26,
+            "visual": 12,
+            "rhythm": -136,
+            "creative": 16,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 34,
+          "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · есть штраф за повтор ритма · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "data-table",
+          "label": "Таблица",
+          "renderLayout": "comparison-flow",
+          "massDistribution": "wide-structured",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "column-headers",
+            "rows"
+          ],
+          "silhouetteId": "comparison-flow:wide-structured:none:title-column-headers-rows",
+          "score": -138,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 24,
+            "structure": 4,
+            "visual": 12,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 6,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 3,
+          "reason": "контент соответствует ёмкости композиции · есть риск геометрии или визуала"
+        },
+        {
+          "id": "process-flow",
+          "label": "Сценарий или таймлайн",
+          "renderLayout": "process-steps",
+          "massDistribution": "horizontal-sequence",
+          "visualSide": "left",
+          "readingPath": [
+            "title",
+            "steps-left-to-right",
+            "outcome"
+          ],
+          "silhouetteId": "process-steps:horizontal-sequence:left:title-steps-left-to-right-outcome",
+          "score": -178,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 24,
+            "structure": -42,
+            "visual": 12,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 7,
+          "reason": "контент соответствует ёмкости композиции · есть риск геометрии или визуала"
+        }
+      ],
+      "measurementFeedback": null,
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "photo"
+      ],
+      "assetGap": "",
+      "characterPolicy": {
+        "label": "Тео",
+        "assetPattern": "theo-mascot",
+        "minAppearances": 2,
+        "maxAppearances": 3,
+        "shortDeckTarget": 2,
+        "longDeckTarget": 3,
+        "longDeckFromSlides": 12,
+        "minGap": 2,
+        "heroOnlyOnCover": true,
+        "supportingSize": "medium",
+        "primaryEvidence": [
+          "product",
+          "people",
+          "data"
+        ],
+        "notes": "Крупный Тео используется только на обложке. Внутри колоды он является редким поддерживающим акцентом; основное доказательство несут продукт, люди и данные.",
+        "targetAppearances": 2,
+        "preferredIndices": [
+          0,
+          3
+        ]
+      },
+      "plannedVisual": "photos/3d/theo-mascot-analyst-2.png",
+      "compositionBrief": {
+        "contentFill": 0.9368421052631579,
+        "spaceStrategy": "content-led",
+        "recommendedVisualShare": 0.26,
+        "containerPolicy": "full-height-rows",
+        "alignmentContract": "shared-row-axes",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/theo-mascot-analyst-2.png",
+          "kind": "3d",
+          "score": 219,
+          "reason": "Люди и роли · 3D-акцент · редкое поддерживающее появление в запланированной точке истории",
+          "policy": {
+            "score": 86,
+            "scheduled": true,
+            "reason": "редкое поддерживающее появление в запланированной точке истории"
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "supporting-corner",
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "medium",
+            "height": 420,
+            "bury": 0.12,
+            "x": 0.24,
+            "supportingOnly": true,
+            "reason": "Тео вне обложки уменьшен до поддерживающего акцента; основную массу несут продукт, люди или данные"
+          }
+        },
+        {
+          "source": "photos/3d/theo-mascot-avatar.png",
+          "kind": "3d",
+          "score": 219,
+          "reason": "Люди и роли · 3D-акцент · редкое поддерживающее появление в запланированной точке истории",
+          "policy": {
+            "score": 86,
+            "scheduled": true,
+            "reason": "редкое поддерживающее появление в запланированной точке истории"
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "supporting-corner",
+            "side": "left",
+            "fit": "contain",
+            "clip": true,
+            "size": "medium",
+            "height": 420,
+            "bury": 0.12,
+            "x": 0.24,
+            "supportingOnly": true,
+            "reason": "Тео вне обложки уменьшен до поддерживающего акцента; основную массу несут продукт, люди или данные"
+          }
+        },
+        {
+          "source": "photos/people/figma/traveler-suitcase-airport-window.png",
+          "kind": "photo",
+          "score": 159,
+          "reason": "Люди и роли · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.26,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/people/manager-accountant-laptop-pointing-screen.webp",
+          "kind": "photo",
+          "score": 155,
+          "reason": "Люди и роли · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.26,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "mockups/screens/reports-travel-analytics.png",
+          "kind": "mockup",
+          "score": 145,
+          "reason": "Люди и роли · продуктовый мокап",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.26,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:2768",
+          "source": "decks/library/2__855-2768.png",
+          "role": "people",
+          "composition": "profile-grid",
+          "theme": "dark",
+          "score": 66,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · карточки людей"
+        },
+        {
+          "nodeId": "855:5190",
+          "source": "decks/library/898__855-5190.png",
+          "role": "people",
+          "composition": "profile-grid",
+          "theme": "dark",
+          "score": 66,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · карточки людей"
+        },
+        {
+          "nodeId": "855:4052",
+          "source": "decks/library/938__855-4052.png",
+          "role": "people",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 66,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · две смысловые панели"
+        },
+        {
+          "nodeId": "855:4761",
+          "source": "decks/library/944__855-4761.png",
+          "role": "people",
+          "composition": "profile-grid",
+          "theme": "dark",
+          "score": 66,
+          "reason": "совпадает смысловая роль · совпадает плотность · нужный тип визуала · карточки людей"
+        },
+        {
+          "nodeId": "855:3426",
+          "source": "decks/library/923__855-3426.png",
+          "role": "people",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 50,
+          "reason": "совпадает смысловая роль · совпадает плотность · две смысловые панели"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Простая аналитика вместо сложных расчётов",
+      "semanticRole": "comparison",
+      "renderLayout": "comparison-flow",
+      "compositionFamily": "data-table",
+      "silhouetteId": "comparison-flow:wide-structured:none:title-column-headers-rows",
+      "compositionDecision": {
+        "score": 264,
+        "scoreBreakdown": {
+          "semantic": 80,
+          "content": 24,
+          "structure": 40,
+          "visual": 12,
+          "rhythm": 18,
+          "creative": 12,
+          "explicit": 72,
+          "referenceSupport": 6,
+          "measurement": 0,
+          "risk": 0
+        },
+        "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление",
+        "massDistribution": "wide-structured",
+        "visualSide": "none",
+        "readingPath": [
+          "title",
+          "column-headers",
+          "rows"
+        ]
+      },
+      "compositionCandidates": [
+        {
+          "id": "data-table",
+          "label": "Таблица",
+          "renderLayout": "comparison-flow",
+          "massDistribution": "wide-structured",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "column-headers",
+            "rows"
+          ],
+          "silhouetteId": "comparison-flow:wide-structured:none:title-column-headers-rows",
+          "score": 264,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": 24,
+            "structure": 40,
+            "visual": 12,
+            "rhythm": 18,
+            "creative": 12,
+            "explicit": 72,
+            "referenceSupport": 6,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 3,
+          "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "two-panel",
+          "label": "Две смысловые панели",
+          "renderLayout": "pain-solution",
+          "massDistribution": "balanced-halves",
+          "visualSide": "both",
+          "readingPath": [
+            "title",
+            "left-panel",
+            "right-panel"
+          ],
+          "silhouetteId": "pain-solution:balanced-halves:both:title-left-panel-right-panel",
+          "score": 180,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": 24,
+            "structure": 24,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 22,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 35,
+          "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "metric-focus",
+          "label": "Акцент на цифрах",
+          "renderLayout": "kpi-metrics",
+          "massDistribution": "metric-cluster",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "hero-metric",
+            "supporting-metrics"
+          ],
+          "silhouetteId": "kpi-metrics:metric-cluster:none:title-hero-metric-supporting-metrics",
+          "score": 32,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": -56,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 12,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 7,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "manifesto",
+          "label": "Манифест",
+          "renderLayout": "statement",
+          "massDistribution": "single-focus",
+          "visualSide": "center",
+          "readingPath": [
+            "claim",
+            "supporting-proof"
+          ],
+          "silhouetteId": "statement:single-focus:center:claim-supporting-proof",
+          "score": -15,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": -17,
+            "structure": -48,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 10,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 5,
+          "reason": "допустимая соседняя смысловая модель"
+        },
+        {
+          "id": "columns",
+          "label": "Колонки",
+          "renderLayout": "title-bullets",
+          "massDistribution": "text-columns",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "lead",
+            "items"
+          ],
+          "silhouetteId": "title-bullets:text-columns:none:title-lead-items",
+          "score": -126,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 24,
+            "structure": 10,
+            "visual": 12,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 27,
+          "reason": "контент соответствует ёмкости композиции · есть риск геометрии или визуала"
+        }
+      ],
+      "measurementFeedback": null,
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "characterPolicy": {
+        "label": "Тео",
+        "assetPattern": "theo-mascot",
+        "minAppearances": 2,
+        "maxAppearances": 3,
+        "shortDeckTarget": 2,
+        "longDeckTarget": 3,
+        "longDeckFromSlides": 12,
+        "minGap": 2,
+        "heroOnlyOnCover": true,
+        "supportingSize": "medium",
+        "primaryEvidence": [
+          "product",
+          "people",
+          "data"
+        ],
+        "notes": "Крупный Тео используется только на обложке. Внутри колоды он является редким поддерживающим акцентом; основное доказательство несут продукт, люди и данные.",
+        "targetAppearances": 2,
+        "preferredIndices": [
+          0,
+          3
+        ]
+      },
+      "plannedVisual": "photos/people/manager-accountant-laptop-pointing-screen.webp",
+      "compositionBrief": {
+        "contentFill": 0.7307894736842105,
+        "spaceStrategy": "content-led",
+        "recommendedVisualShare": 0.26,
+        "containerPolicy": "table-fill",
+        "alignmentContract": "shared-table-columns/photo-table-edges",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "detached-table-header",
+        "decorative-arrows",
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/manager-accountant-laptop-pointing-screen.webp",
+          "kind": "photo",
+          "score": 135,
+          "reason": "Сравнение · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.26,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/people/figma/traveler-suitcase-airport-window.png",
+          "kind": "photo",
+          "score": 131,
+          "reason": "Сравнение · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.26,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "mockups/screens/desktop-dashboard-browser.png",
+          "kind": "mockup",
+          "score": 123,
+          "reason": "Сравнение · продуктовый мокап",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.26,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-glass-product-cards-blue.png",
+          "kind": "3d",
+          "score": 217,
+          "reason": "Сравнение · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "none",
+            "ownership": "none",
+            "rejected": true,
+            "requiresLayoutChange": true,
+            "reason": "глобальный 3D отклонён: в плотной сетке нет безопасной зоны; выберите карточку, другой визуал или другой силуэт"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-calculator-silver.png",
+          "kind": "3d",
+          "score": 124,
+          "reason": "Сравнение · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "none",
+            "ownership": "none",
+            "rejected": true,
+            "requiresLayoutChange": true,
+            "reason": "глобальный 3D отклонён: в плотной сетке нет безопасной зоны; выберите карточку, другой визуал или другой силуэт"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:2494",
+          "source": "decks/library/70__855-2494.png",
+          "role": "comparison",
+          "composition": "data-table",
+          "theme": "dark",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · таблица"
+        },
+        {
+          "nodeId": "855:2613",
+          "source": "decks/library/73__855-2613.png",
+          "role": "comparison",
+          "composition": "data-table",
+          "theme": "light",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · таблица"
+        },
+        {
+          "nodeId": "855:3781",
+          "source": "decks/library/933__855-3781.png",
+          "role": "comparison",
+          "composition": "data-table",
+          "theme": "light",
+          "score": 164,
+          "reason": "совпадает смысловая роль · таблица"
+        },
+        {
+          "nodeId": "855:5100",
+          "source": "decks/library/897__855-5100.png",
+          "role": "metrics",
+          "composition": "metric-focus",
+          "theme": "dark",
+          "score": 52,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · нужный тип визуала · акцент на цифрах"
+        },
+        {
+          "nodeId": "855:753",
+          "source": "decks/library/13__855-753.png",
+          "role": "problem-solution",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 36,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · две смысловые панели"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Как начать работу",
+      "semanticRole": "process",
+      "renderLayout": "process-steps",
+      "compositionFamily": "process-flow",
+      "silhouetteId": "process-steps:horizontal-sequence:right:title-steps-left-to-right-outcome",
+      "compositionDecision": {
+        "score": 264,
+        "scoreBreakdown": {
+          "semantic": 80,
+          "content": 24,
+          "structure": 34,
+          "visual": 12,
+          "rhythm": 18,
+          "creative": 12,
+          "explicit": 72,
+          "referenceSupport": 12,
+          "measurement": 0,
+          "risk": 0
+        },
+        "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление",
+        "massDistribution": "horizontal-sequence",
+        "visualSide": "right",
+        "readingPath": [
+          "title",
+          "steps-left-to-right",
+          "outcome"
+        ]
+      },
+      "compositionCandidates": [
+        {
+          "id": "process-flow",
+          "label": "Сценарий или таймлайн",
+          "renderLayout": "process-steps",
+          "massDistribution": "horizontal-sequence",
+          "visualSide": "right",
+          "readingPath": [
+            "title",
+            "steps-left-to-right",
+            "outcome"
+          ],
+          "silhouetteId": "process-steps:horizontal-sequence:right:title-steps-left-to-right-outcome",
+          "score": 264,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": 24,
+            "structure": 34,
+            "visual": 12,
+            "rhythm": 18,
+            "creative": 12,
+            "explicit": 72,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 7,
+          "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "card-grid",
+          "label": "Сетка карточек",
+          "renderLayout": "benefits-grid",
+          "massDistribution": "modular-grid",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "grid-scan",
+            "conclusion"
+          ],
+          "silhouetteId": "benefits-grid:modular-grid:none:title-grid-scan-conclusion",
+          "score": 98,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": 26,
+            "visual": 12,
+            "rhythm": -26,
+            "creative": 28,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 34,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции · структура данных поддерживает формат · есть штраф за повтор ритма · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "columns",
+          "label": "Колонки",
+          "renderLayout": "title-bullets",
+          "massDistribution": "text-columns",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "lead",
+            "items"
+          ],
+          "silhouetteId": "title-bullets:text-columns:none:title-lead-items",
+          "score": 98,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": 10,
+            "visual": 12,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 27,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции"
+        },
+        {
+          "id": "data-table",
+          "label": "Таблица",
+          "renderLayout": "comparison-flow",
+          "massDistribution": "wide-structured",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "column-headers",
+            "rows"
+          ],
+          "silhouetteId": "comparison-flow:wide-structured:none:title-column-headers-rows",
+          "score": -56,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 22,
+            "content": 24,
+            "structure": 4,
+            "visual": 12,
+            "rhythm": -136,
+            "creative": 12,
+            "explicit": 0,
+            "referenceSupport": 6,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 3,
+          "reason": "допустимая соседняя смысловая модель · контент соответствует ёмкости композиции · есть штраф за повтор ритма · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "metric-focus",
+          "label": "Акцент на цифрах",
+          "renderLayout": "kpi-metrics",
+          "massDistribution": "metric-cluster",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "hero-metric",
+            "supporting-metrics"
+          ],
+          "silhouetteId": "kpi-metrics:metric-cluster:none:title-hero-metric-supporting-metrics",
+          "score": -192,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 24,
+            "structure": -56,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 12,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 7,
+          "reason": "контент соответствует ёмкости композиции · поддерживает выбранное креативное направление · есть риск геометрии или визуала"
+        }
+      ],
+      "measurementFeedback": null,
+      "visualRequirement": "required",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "characterPolicy": {
+        "label": "Тео",
+        "assetPattern": "theo-mascot",
+        "minAppearances": 2,
+        "maxAppearances": 3,
+        "shortDeckTarget": 2,
+        "longDeckTarget": 3,
+        "longDeckFromSlides": 12,
+        "minGap": 2,
+        "heroOnlyOnCover": true,
+        "supportingSize": "medium",
+        "primaryEvidence": [
+          "product",
+          "people",
+          "data"
+        ],
+        "notes": "Крупный Тео используется только на обложке. Внутри колоды он является редким поддерживающим акцентом; основное доказательство несут продукт, люди и данные.",
+        "targetAppearances": 2,
+        "preferredIndices": [
+          0,
+          3
+        ]
+      },
+      "plannedVisual": "photos/3d/figma/3d-glass-product-cards-blue.png",
+      "compositionBrief": {
+        "contentFill": 0.8184210526315789,
+        "spaceStrategy": "content-led",
+        "recommendedVisualShare": 0.26,
+        "containerPolicy": "standard",
+        "alignmentContract": "shared-card-edges/step-grid",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [
+        "visual-crop-or-collision"
+      ],
+      "suggestedAssets": [
+        {
+          "source": "photos/3d/figma/3d-glass-product-cards-blue.png",
+          "kind": "3d",
+          "score": 195,
+          "reason": "Процесс и этапы · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "side-visual",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 700,
+            "bury": 0.16,
+            "x": 0.76,
+            "reason": "процесс получает отдельную боковую визуальную зону: 3D крупный, асимметричный и не пересекает шаги"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-metal-access-cards.png",
+          "kind": "3d",
+          "score": 176,
+          "reason": "Процесс и этапы · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "side-visual",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 700,
+            "bury": 0.16,
+            "x": 0.76,
+            "reason": "процесс получает отдельную боковую визуальную зону: 3D крупный, асимметричный и не пересекает шаги"
+          }
+        },
+        {
+          "source": "photos/people/figma/team-collaboration-laptop-office.png",
+          "kind": "photo",
+          "score": 153,
+          "reason": "Процесс и этапы · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.26,
+            "size": "third",
+            "reason": "фото — самостоятельная колонка, а не декоративная вставка"
+          }
+        },
+        {
+          "source": "photos/3d/3d-chat-bubbles-blue-silver.webp",
+          "kind": "3d",
+          "score": 140,
+          "reason": "Процесс и этапы · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "side-visual",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 700,
+            "bury": 0.16,
+            "x": 0.76,
+            "reason": "процесс получает отдельную боковую визуальную зону: 3D крупный, асимметричный и не пересекает шаги"
+          }
+        },
+        {
+          "source": "photos/3d/figma/3d-heart-silver.png",
+          "kind": "3d",
+          "score": 140,
+          "reason": "Процесс и этапы · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "zone": "side-visual",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 700,
+            "bury": 0.16,
+            "x": 0.76,
+            "reason": "процесс получает отдельную боковую визуальную зону: 3D крупный, асимметричный и не пересекает шаги"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:402",
+          "source": "decks/library/46__855-402.png",
+          "role": "process",
+          "composition": "process-flow",
+          "theme": "dark",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · сценарий или таймлайн"
+        },
+        {
+          "nodeId": "855:2934",
+          "source": "decks/library/7__855-2934.png",
+          "role": "process",
+          "composition": "process-flow",
+          "theme": "dark",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · сценарий или таймлайн"
+        },
+        {
+          "nodeId": "855:5209",
+          "source": "decks/library/899__855-5209.png",
+          "role": "process",
+          "composition": "process-flow",
+          "theme": "dark",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · сценарий или таймлайн"
+        },
+        {
+          "nodeId": "855:641",
+          "source": "decks/library/51__855-641.png",
+          "role": "list",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 52,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · нужный тип визуала · две смысловые панели"
+        },
+        {
+          "nodeId": "855:3254",
+          "source": "decks/library/921__855-3254.png",
+          "role": "list",
+          "composition": "two-panel",
+          "theme": "light",
+          "score": 52,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · нужный тип визуала · две смысловые панели"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Задайте свой первый вопрос Тео прямо сейчас",
+      "semanticRole": "closing",
+      "renderLayout": "final",
+      "compositionFamily": "hero",
+      "silhouetteId": "final:center-hero:center:tagline-call-to-action-brand",
+      "compositionDecision": {
+        "score": 280,
+        "scoreBreakdown": {
+          "semantic": 80,
+          "content": 24,
+          "structure": 50,
+          "visual": 14,
+          "rhythm": 18,
+          "creative": 10,
+          "explicit": 72,
+          "referenceSupport": 12,
+          "measurement": 0,
+          "risk": 0
+        },
+        "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление",
+        "massDistribution": "center-hero",
+        "visualSide": "center",
+        "readingPath": [
+          "tagline",
+          "call-to-action",
+          "brand"
+        ]
+      },
+      "compositionCandidates": [
+        {
+          "id": "hero",
+          "label": "Крупный hero",
+          "renderLayout": "final",
+          "massDistribution": "center-hero",
+          "visualSide": "center",
+          "readingPath": [
+            "tagline",
+            "call-to-action",
+            "brand"
+          ],
+          "silhouetteId": "final:center-hero:center:tagline-call-to-action-brand",
+          "score": 280,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": 80,
+            "content": 24,
+            "structure": 50,
+            "visual": 14,
+            "rhythm": 18,
+            "creative": 10,
+            "explicit": 72,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": 0
+          },
+          "referenceCount": 13,
+          "reason": "прямое соответствие смысловой роли · контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление"
+        },
+        {
+          "id": "manifesto",
+          "label": "Манифест",
+          "renderLayout": "statement",
+          "massDistribution": "single-focus",
+          "visualSide": "center",
+          "readingPath": [
+            "claim",
+            "supporting-proof"
+          ],
+          "silhouetteId": "statement:single-focus:center:claim-supporting-proof",
+          "score": -100,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 24,
+            "structure": 24,
+            "visual": 14,
+            "rhythm": 18,
+            "creative": 12,
+            "explicit": 0,
+            "referenceSupport": 10,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 5,
+          "reason": "контент соответствует ёмкости композиции · структура данных поддерживает формат · поддерживает выбранное креативное направление · есть риск геометрии или визуала"
+        },
+        {
+          "id": "editorial",
+          "label": "Редакционная композиция",
+          "renderLayout": "intro",
+          "massDistribution": "asymmetric-editorial",
+          "visualSide": "right",
+          "readingPath": [
+            "title",
+            "lead",
+            "supporting-blocks"
+          ],
+          "silhouetteId": "intro:asymmetric-editorial:right:title-lead-supporting-blocks",
+          "score": -114,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 24,
+            "structure": 8,
+            "visual": 0,
+            "rhythm": 4,
+            "creative": 40,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 27,
+          "reason": "контент соответствует ёмкости композиции · поддерживает выбранное креативное направление · есть риск геометрии или визуала"
+        },
+        {
+          "id": "product-showcase",
+          "label": "Продуктовый showcase",
+          "renderLayout": "intro",
+          "massDistribution": "visual-dominant-split",
+          "visualSide": "right",
+          "readingPath": [
+            "title",
+            "product-visual",
+            "supporting-points"
+          ],
+          "silhouetteId": "intro:visual-dominant-split:right:title-product-visual-supporting-points",
+          "score": -158,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": 6,
+            "structure": 8,
+            "visual": 14,
+            "rhythm": 4,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": -160
+          },
+          "referenceCount": 30,
+          "reason": "есть риск геометрии или визуала"
+        },
+        {
+          "id": "columns",
+          "label": "Колонки",
+          "renderLayout": "title-bullets",
+          "massDistribution": "text-columns",
+          "visualSide": "none",
+          "readingPath": [
+            "title",
+            "lead",
+            "items"
+          ],
+          "silhouetteId": "title-bullets:text-columns:none:title-lead-items",
+          "score": -199,
+          "renderable": true,
+          "scoreBreakdown": {
+            "semantic": -42,
+            "content": -11,
+            "structure": 10,
+            "visual": 0,
+            "rhythm": 18,
+            "creative": 0,
+            "explicit": 0,
+            "referenceSupport": 12,
+            "measurement": 0,
+            "risk": -186
+          },
+          "referenceCount": 27,
+          "reason": "есть риск геометрии или визуала"
+        }
+      ],
+      "measurementFeedback": null,
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "",
+      "characterPolicy": {
+        "label": "Тео",
+        "assetPattern": "theo-mascot",
+        "minAppearances": 2,
+        "maxAppearances": 3,
+        "shortDeckTarget": 2,
+        "longDeckTarget": 3,
+        "longDeckFromSlides": 12,
+        "minGap": 2,
+        "heroOnlyOnCover": true,
+        "supportingSize": "medium",
+        "primaryEvidence": [
+          "product",
+          "people",
+          "data"
+        ],
+        "notes": "Крупный Тео используется только на обложке. Внутри колоды он является редким поддерживающим акцентом; основное доказательство несут продукт, люди и данные.",
+        "targetAppearances": 2,
+        "preferredIndices": [
+          0,
+          3
+        ]
+      },
+      "plannedVisual": "",
+      "compositionBrief": {
+        "contentFill": 0.26052631578947366,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/figma/team-collaboration-laptop-office.png",
+          "kind": "photo",
+          "score": 153,
+          "reason": "Финал · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/figma/traveler-suitcase-airport-window.png",
+          "kind": "photo",
+          "score": 131,
+          "reason": "Финал · смысловое фото",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "mockups/screens/reports-travel-analytics.png",
+          "kind": "mockup",
+          "score": 119,
+          "reason": "Финал · продуктовый мокап",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/3d/3d-ticket-silver.webp",
+          "kind": "3d",
+          "score": 106,
+          "reason": "Финал · 3D-акцент",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "slide",
+            "ownership": "slide",
+            "side": "right",
+            "fit": "contain",
+            "clip": true,
+            "size": "hero",
+            "height": 780,
+            "bury": 0.2,
+            "x": 0.67,
+            "reason": "объект относится ко всему слайду: крупный нижний акцент, смещённый от центра"
+          }
+        },
+        {
+          "source": "mockups/screens/desktop-dashboard-browser.png",
+          "kind": "mockup",
+          "score": 89,
+          "reason": "Финал · продуктовый мокап",
+          "policy": {
+            "score": 0,
+            "scheduled": false,
+            "reason": ""
+          },
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:5661",
+          "source": "decks/library/904__855-5661.png",
+          "role": "closing",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:3405",
+          "source": "decks/library/922__855-3405.png",
+          "role": "closing",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 176,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 53,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 53,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:5632",
+          "source": "decks/library/1-cover__855-5632.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 53,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    }
+  ]
+}

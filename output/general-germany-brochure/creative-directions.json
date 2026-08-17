@@ -1,0 +1,523 @@
+{
+  "version": 1,
+  "deck": "general-germany-brochure",
+  "mode": "brand-bounded",
+  "selected": "data-with-drama",
+  "selectionSource": "recommended",
+  "systemContract": {
+    "file": "design-system/creative-system.json",
+    "version": 1,
+    "assetPolicy": "platform-only",
+    "styleframePolicy": "reference-only-not-final-slide"
+  },
+  "directions": [
+    {
+      "id": "data-with-drama",
+      "title": "Данные с драматургией",
+      "idea": "Цифры, сравнения и процессы получают выразительный масштаб, но сохраняют общие оси и читаемость.",
+      "tension": "Одна крупная истина против плотной системы подтверждений.",
+      "roles": [
+        "metrics",
+        "comparison",
+        "process",
+        "evidence"
+      ],
+      "preferredFamilies": [
+        "metric-focus",
+        "data-table",
+        "process-flow",
+        "manifesto",
+        "product-showcase"
+      ],
+      "visualPriority": [
+        "mockup",
+        "photo",
+        "3d"
+      ],
+      "techniques": [
+        "scale-shift",
+        "directed-empty-space",
+        "serial-repetition",
+        "rhythm-contrast"
+      ],
+      "score": 18,
+      "beats": [
+        {
+          "slide": 1,
+          "role": "cover",
+          "energy": "hero"
+        },
+        {
+          "slide": 2,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 3,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 4,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 5,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 6,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 7,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 8,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 9,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 10,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 11,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 12,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 13,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 14,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 15,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 16,
+          "role": "closing",
+          "energy": "quiet"
+        }
+      ],
+      "styleframes": [
+        {
+          "slide": 1,
+          "title": "Travel enables growth",
+          "purpose": "Обложка",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/01__855-4071.png",
+            "decks/library/1-cover__855-2529.png",
+            "decks/library/1-cover__855-2756.png"
+          ],
+          "assetSources": [
+            "photos/3d/theo-mascot-analyst-1.png",
+            "photos/people/figma/traveler-suitcase-airport-window.png",
+            "photos/people/travel-coordinator-employee-sofa-notebook.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 1 в направлении «Данные с драматургией». Идея: Цифры, сравнения и процессы получают выразительный масштаб, но сохраняют общие оси и читаемость. Роль: Обложка. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 2,
+          "title": "Business growth and travel process",
+          "purpose": "Ключевой тезис",
+          "beat": "quiet",
+          "referenceSources": [
+            "decks/library/18__855-1223.png",
+            "decks/library/903__855-5649.png",
+            "decks/library/929__855-3673.png"
+          ],
+          "assetSources": [
+            "photos/people/travel-coordinator-color-folders-studio.webp",
+            "photos/people/travel-coordinator-smartphone-studio.webp",
+            "photos/people/travel-coordinator-tablet-documents-studio.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 2 в направлении «Данные с драматургией». Идея: Цифры, сравнения и процессы получают выразительный масштаб, но сохраняют общие оси и читаемость. Роль: Ключевой тезис. Ритмический акцент: quiet. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 3,
+          "title": "Who we are",
+          "purpose": "Ключевой тезис",
+          "beat": "quiet",
+          "referenceSources": [
+            "decks/library/18__855-1223.png",
+            "decks/library/903__855-5649.png",
+            "decks/library/929__855-3673.png"
+          ],
+          "assetSources": [
+            "photos/people/accountant-glasses-portrait-studio.webp",
+            "photos/people/accountant-window-desk-writing-vertical.webp",
+            "photos/people/manager-phone-call-studio.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 3 в направлении «Данные с драматургией». Идея: Цифры, сравнения и процессы получают выразительный масштаб, но сохраняют общие оси и читаемость. Роль: Ключевой тезис. Ритмический акцент: quiet. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        }
+      ],
+      "assetPolicy": "platform-only",
+      "systemVersion": 1
+    },
+    {
+      "id": "human-momentum",
+      "title": "Люди в движении",
+      "idea": "Историю ведут реальные рабочие ситуации и эмоции, а продукт появляется как естественный инструмент.",
+      "tension": "Живой человеческий момент против строгой продуктовой структуры.",
+      "roles": [
+        "people",
+        "evidence",
+        "benefits",
+        "problem-solution"
+      ],
+      "preferredFamilies": [
+        "split-media",
+        "editorial",
+        "two-panel",
+        "card-grid",
+        "hero"
+      ],
+      "visualPriority": [
+        "photo",
+        "mockup",
+        "3d"
+      ],
+      "techniques": [
+        "detail-crop",
+        "layered-depth",
+        "asymmetric-balance",
+        "rhythm-contrast"
+      ],
+      "score": 18,
+      "beats": [
+        {
+          "slide": 1,
+          "role": "cover",
+          "energy": "hero"
+        },
+        {
+          "slide": 2,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 3,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 4,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 5,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 6,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 7,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 8,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 9,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 10,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 11,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 12,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 13,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 14,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 15,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 16,
+          "role": "closing",
+          "energy": "quiet"
+        }
+      ],
+      "styleframes": [
+        {
+          "slide": 1,
+          "title": "Travel enables growth",
+          "purpose": "Обложка",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/01__855-4071.png",
+            "decks/library/1-cover__855-2529.png",
+            "decks/library/1-cover__855-2756.png"
+          ],
+          "assetSources": [
+            "photos/3d/theo-mascot-analyst-1.png",
+            "photos/people/figma/traveler-suitcase-airport-window.png",
+            "photos/people/travel-coordinator-employee-sofa-notebook.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 1 в направлении «Люди в движении». Идея: Историю ведут реальные рабочие ситуации и эмоции, а продукт появляется как естественный инструмент. Роль: Обложка. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 2,
+          "title": "Business growth and travel process",
+          "purpose": "Ключевой тезис",
+          "beat": "quiet",
+          "referenceSources": [
+            "decks/library/18__855-1223.png",
+            "decks/library/903__855-5649.png",
+            "decks/library/929__855-3673.png"
+          ],
+          "assetSources": [
+            "photos/people/travel-coordinator-color-folders-studio.webp",
+            "photos/people/travel-coordinator-smartphone-studio.webp",
+            "photos/people/travel-coordinator-tablet-documents-studio.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 2 в направлении «Люди в движении». Идея: Историю ведут реальные рабочие ситуации и эмоции, а продукт появляется как естественный инструмент. Роль: Ключевой тезис. Ритмический акцент: quiet. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 3,
+          "title": "Who we are",
+          "purpose": "Ключевой тезис",
+          "beat": "quiet",
+          "referenceSources": [
+            "decks/library/18__855-1223.png",
+            "decks/library/903__855-5649.png",
+            "decks/library/929__855-3673.png"
+          ],
+          "assetSources": [
+            "photos/people/accountant-glasses-portrait-studio.webp",
+            "photos/people/accountant-window-desk-writing-vertical.webp",
+            "photos/people/manager-phone-call-studio.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 3 в направлении «Люди в движении». Идея: Историю ведут реальные рабочие ситуации и эмоции, а продукт появляется как естественный инструмент. Роль: Ключевой тезис. Ритмический акцент: quiet. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        }
+      ],
+      "assetPolicy": "platform-only",
+      "systemVersion": 1
+    },
+    {
+      "id": "product-as-proof",
+      "title": "Продукт как доказательство",
+      "idea": "Крупные фрагменты интерфейса становятся главным аргументом, а текст объясняет увиденное.",
+      "tension": "Точный продуктовый кадр против большого спокойного поля.",
+      "roles": [
+        "product",
+        "introduction",
+        "process",
+        "metrics"
+      ],
+      "preferredFamilies": [
+        "product-showcase",
+        "split-media",
+        "data-table",
+        "metric-focus",
+        "hero"
+      ],
+      "visualPriority": [
+        "mockup",
+        "photo",
+        "3d"
+      ],
+      "techniques": [
+        "detail-crop",
+        "asymmetric-balance",
+        "directed-empty-space",
+        "rhythm-contrast"
+      ],
+      "score": 18,
+      "beats": [
+        {
+          "slide": 1,
+          "role": "cover",
+          "energy": "hero"
+        },
+        {
+          "slide": 2,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 3,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 4,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 5,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 6,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 7,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 8,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 9,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 10,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 11,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 12,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 13,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 14,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 15,
+          "role": "statement",
+          "energy": "quiet"
+        },
+        {
+          "slide": 16,
+          "role": "closing",
+          "energy": "quiet"
+        }
+      ],
+      "styleframes": [
+        {
+          "slide": 1,
+          "title": "Travel enables growth",
+          "purpose": "Обложка",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/01__855-4071.png",
+            "decks/library/1-cover__855-2529.png",
+            "decks/library/1-cover__855-2756.png"
+          ],
+          "assetSources": [
+            "photos/3d/theo-mascot-analyst-1.png",
+            "photos/people/figma/traveler-suitcase-airport-window.png",
+            "photos/people/travel-coordinator-employee-sofa-notebook.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 1 в направлении «Продукт как доказательство». Идея: Крупные фрагменты интерфейса становятся главным аргументом, а текст объясняет увиденное. Роль: Обложка. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 2,
+          "title": "Business growth and travel process",
+          "purpose": "Ключевой тезис",
+          "beat": "quiet",
+          "referenceSources": [
+            "decks/library/18__855-1223.png",
+            "decks/library/903__855-5649.png",
+            "decks/library/929__855-3673.png"
+          ],
+          "assetSources": [
+            "photos/people/travel-coordinator-color-folders-studio.webp",
+            "photos/people/travel-coordinator-smartphone-studio.webp",
+            "photos/people/travel-coordinator-tablet-documents-studio.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 2 в направлении «Продукт как доказательство». Идея: Крупные фрагменты интерфейса становятся главным аргументом, а текст объясняет увиденное. Роль: Ключевой тезис. Ритмический акцент: quiet. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 3,
+          "title": "Who we are",
+          "purpose": "Ключевой тезис",
+          "beat": "quiet",
+          "referenceSources": [
+            "decks/library/18__855-1223.png",
+            "decks/library/903__855-5649.png",
+            "decks/library/929__855-3673.png"
+          ],
+          "assetSources": [
+            "photos/people/accountant-glasses-portrait-studio.webp",
+            "photos/people/accountant-window-desk-writing-vertical.webp",
+            "photos/people/manager-phone-call-studio.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 3 в направлении «Продукт как доказательство». Идея: Крупные фрагменты интерфейса становятся главным аргументом, а текст объясняет увиденное. Роль: Ключевой тезис. Ритмический акцент: quiet. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        }
+      ],
+      "assetPolicy": "platform-only",
+      "systemVersion": 1
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "errors": []
+  }
+}

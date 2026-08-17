@@ -20,6 +20,8 @@ const indexPath = path.join(deckDir, 'index.html');
 if (!fs.existsSync(indexPath)) { console.error('Сначала соберите: node scripts/build.js ' + name); process.exit(1); }
 
 const html = fs.readFileSync(indexPath, 'utf8');
+const customWidth = Number((html.match(/--slide-width:\s*(\d+)px/) || [])[1]) || 1920;
+const customHeight = Number((html.match(/--slide-height:\s*(\d+)px/) || [])[1]) || 1080;
 const total = (html.match(/class="slide-wrap"/g) || []).length;
 if (!total) { console.error('В output/' + name + '/index.html не найдено слайдов (.slide-wrap)'); process.exit(1); }
 if (only && (only < 1 || only > total)) { console.error('Слайд ' + only + ' вне диапазона 1..' + total); process.exit(1); }
@@ -55,13 +57,13 @@ for (const n of nums) {
     '.deck { display: block !important; padding: 0 !important; gap: 0 !important; }',
     // скруглённые углы — свойство экранного просмотрщика; снимок для сверки с
     // эталоном должен быть прямоугольным, как сам слайд
-    '.slide-wrap { display: none !important; border-radius: 0 !important; overflow: visible !important; }',
-    `.slide-wrap:nth-of-type(${n}) { display: block !important; width: 1920px !important; height: 1080px !important; }`,
-    `.slide-wrap:nth-of-type(${n}) .slide { transform: none !important; }`,
+    `.slide-wrap { display: block !important; width: ${customWidth}px !important; height: ${customHeight}px !important; border-radius: 0 !important; overflow: visible !important; }`,
+    '.slide-wrap .slide { transform: none !important; }',
     '</style></head>',
   ].join('\n');
   const tmpPath = path.join(deckDir, '_shot-' + n + '.html');
-  fs.writeFileSync(tmpPath, html.replace('</head>', style));
+  const isolate = `<script>(function(){var w=document.querySelectorAll('.slide-wrap');for(var i=w.length-1;i>=0;i--){if(i!==${n - 1})w[i].remove();}})();</script></body>`;
+  fs.writeFileSync(tmpPath, html.replace('</head>', style).replace('</body>', isolate));
   tmpPaths.push(tmpPath);
 }
 
@@ -72,8 +74,9 @@ try {
     const png = path.join(shotsDir, 'slide-' + String(n).padStart(2, '0') + '.png');
     execFileSync(browser, [
       '--headless=new', '--no-sandbox', '--disable-gpu', '--disable-software-rasterizer', '--hide-scrollbars', '--no-first-run',
+      '--run-all-compositor-stages-before-draw', '--virtual-time-budget=2500', '--disable-renderer-backgrounding',
       '--user-data-dir=' + path.join(tmpDir, 'profile-' + n),
-      '--force-device-scale-factor=1', '--window-size=1920,1080',
+      '--force-device-scale-factor=1', `--window-size=${customWidth},${customHeight}`,
       '--screenshot=' + png,
       'file:///' + tmpPaths[i].split(path.sep).join('/'),
     ], { stdio: 'pipe', timeout: 60000 });

@@ -66,7 +66,9 @@ const UI_ICONS = {
   user: '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
   settings: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
   'log-out': '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',
-  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>',
+  terminal: '<path d="m4 17 6-6-6-6"/><path d="M12 19h8"/>',
+  'file-pen': '<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2Z"/><path d="M14 2v6h6"/><path d="m9 16 4.5-4.5 2 2L11 18H9v-2Z"/>',
+  'chevron-down': '<path d="m6 9 6 6 6-6"/>',
 };
 
 function uiIcon(name) {
@@ -115,6 +117,7 @@ const NAV = [
       { id: 'rule:presentation-rules', label: 'Структура презентации' },
       { id: 'rule:slide-layouts', label: 'Макеты слайдов' },
       { id: 'rule:designer-reasoning', label: 'Мышление дизайнера' },
+      { id: 'rule:creative-direction', label: 'Креативное направление' },
       { id: 'rule:style-guide', label: 'Стиль и дизайн' },
       { id: 'rule:content-rules', label: 'Текст' },
     ],
@@ -138,8 +141,12 @@ function renderNav(activeId) {
     $nav.append(
       el('button', {
         class: 'nav-item',
-        onclick: () => { sidebarMode = 'chats'; renderNav(currentHash()); },
-      }, uiIcon('arrow-left'), 'К чатам')
+        onclick: () => {
+          sidebarMode = 'chats';
+          if (chatState.streaming) goChat();
+          else renderNav(currentHash());
+        },
+      }, uiIcon('arrow-left'), chatState.streaming ? 'К активному чату' : 'К чатам')
     );
     for (const group of NAV) {
       if (group.title) $nav.append(el('div', { class: 'nav-group-title' }, group.title));
@@ -205,6 +212,13 @@ function displayChatText(text) {
   return String(text).replace(/(?:%[0-9a-f]{2}){2,}/gi, (encoded) => displayFileName(encoded));
 }
 
+function displayToolDetail(detail) {
+  let value = displayChatText(detail || '').trim();
+  const command = value.match(/\s+-Command\s+([\s\S]+)$/i);
+  if (command) value = command[1].trim();
+  return value.replace(/^['"]|['"]$/g, '');
+}
+
 /** Состояние диалога живёт вне вида: при уходе со страницы стрим продолжается. */
 const chatState = { id: null, title: '', items: [], session: null, run: null, streaming: false, pending: null };
 let chatDom = null; // активная разметка чата на главной
@@ -230,6 +244,13 @@ function newChat() {
 }
 
 async function loadChat(id) {
+  // Активный диалог уже живёт в памяти и продолжает получать события агента,
+  // даже когда пользователь находится в другом разделе приложения.
+  if (chatState.id === id) {
+    sidebarMode = 'chats';
+    goChat();
+    return;
+  }
   if (chatState.streaming) return toast('Агент ещё работает — дождитесь окончания', true);
   try {
     const c = await api('/api/chats/' + id);
@@ -300,9 +321,11 @@ function chatItemNode(item) {
       el('div', { class: 'chat-think-body' }, item.text));
   }
   if (item.kind === 'tool') {
+    const icon = /пиш|прав|редакт/i.test(item.label || '') ? 'file-pen' : 'terminal';
     return el('div', { class: 'chat-tool' },
+      uiIcon(icon),
       el('span', { class: 'chat-tool-label' }, item.label),
-      item.detail ? ' ' + item.detail : '');
+      item.detail ? el('span', { class: 'chat-tool-detail' }, displayToolDetail(item.detail)) : null);
   }
   if (item.kind === 'error') return el('div', { class: 'chat-msg error' }, item.text);
   if (item.kind === 'result') {
@@ -463,6 +486,190 @@ function closePreview() {
 
 document.getElementById('preview-close').append(uiIcon('x'));
 document.getElementById('preview-close').addEventListener('click', closePreview);
+
+function normalizeFigmaTarget(value) {
+  const raw = String(value || '').trim();
+  const markdown = raw.match(/\]\((https?:\/\/(?:www\.)?figma\.com\/(?:design|file)\/[^\s<>"')]+)\)/i);
+  const direct = raw.match(/https?:\/\/(?:www\.)?figma\.com\/(?:design|file)\/[^\s<>"')]+/i);
+  return String((markdown && markdown[1]) || (direct && direct[0]) || raw.replace(/^@+/, ''))
+    .replace(/[\],.;]+$/, '')
+    .trim();
+}
+
+function validFigmaTarget(value) {
+  try {
+    const url = new URL(normalizeFigmaTarget(value));
+    return /^(?:www\.)?figma\.com$/i.test(url.hostname)
+      && /^\/(?:design|file)\/[a-zA-Z0-9_-]+(?:\/|$)/.test(url.pathname);
+  } catch {
+    return false;
+  }
+}
+
+async function streamFigmaExport(deck, figmaUrl, onEvent) {
+  const fd = new FormData();
+  fd.append('mode', 'figma-export');
+  fd.append('deck', deck);
+  fd.append('figmaUrl', figmaUrl);
+  const response = await fetch('/api/chat', { method: 'POST', body: fd });
+  if (!response.ok) {
+    let message = response.status + ' ' + response.statusText;
+    try { message = (await response.json()).error || message; } catch {}
+    throw new Error(message);
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let complete = false;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    let cut;
+    while ((cut = buffer.indexOf('\n\n')) >= 0) {
+      const chunk = buffer.slice(0, cut);
+      buffer = buffer.slice(cut + 2);
+      for (const line of chunk.split('\n')) {
+        if (!line.startsWith('data: ')) continue;
+        let event;
+        try { event = JSON.parse(line.slice(6)); } catch { continue; }
+        onEvent(event);
+        if (event.type === 'error') throw new Error(event.message || 'Ошибка переноса в Figma');
+        if (event.type === 'result') {
+          if (!event.ok) throw new Error(event.error || 'Перенос в Figma завершился с ошибкой');
+          complete = true;
+        }
+      }
+    }
+  }
+  if (!complete) throw new Error('Агент завершился без подтверждения переноса');
+}
+
+function openFigmaExportDialog(deck) {
+  if (!/^[a-zA-Z0-9_-]+$/.test(deck)) return toast('Не выбрана готовая презентация', true);
+
+  let busy = false;
+  const savedTarget = localStorage.getItem('tumodo-figma-target') || '';
+  const targetInput = el('input', {
+    type: 'text',
+    value: savedTarget,
+    placeholder: 'https://www.figma.com/design/…',
+    autocomplete: 'off',
+    spellcheck: 'false',
+  });
+  const status = el('div', { class: 'figma-export-status', hidden: true });
+  const statusIcon = el('span', { class: 'figma-export-status-icon' }, uiIcon('sparkles'));
+  const statusText = el('span', null, 'Подключаемся к Figma…');
+  status.append(statusIcon, statusText);
+  const close = () => {
+    if (busy) return;
+    overlay.remove();
+    document.removeEventListener('keydown', onKeydown);
+  };
+  const cancel = el('button', { class: 'btn', type: 'button', onclick: close }, 'Отмена');
+  const submit = el('button', { class: 'btn primary', type: 'button' }, 'Перенести презентацию');
+  const openTarget = el('a', {
+    class: 'btn primary',
+    href: '#',
+    target: '_blank',
+    rel: 'noopener',
+    hidden: true,
+  }, 'Открыть в Figma');
+  const closeButton = el('button', {
+    class: 'btn-circle modal-close',
+    type: 'button',
+    title: 'Закрыть',
+    onclick: close,
+  }, uiIcon('x'));
+  const actions = el('div', { class: 'figma-export-actions' }, cancel, submit, openTarget);
+  const modal = el('section', {
+    class: 'figma-export-modal',
+    role: 'dialog',
+    'aria-modal': 'true',
+    'aria-labelledby': 'figma-export-title',
+  },
+  closeButton,
+  el('div', { class: 'figma-export-mark' }, uiIcon('sparkles')),
+  el('div', { class: 'figma-export-copy' },
+    el('h2', { id: 'figma-export-title' }, 'Перенести презентацию в Figma'),
+    el('p', null, 'Вставьте ссылку на дизайн-файл или секцию. Агент добавит туда готовые слайды по порядку — каждый как редактируемый фрейм 1920×1080.'),
+    el('label', { class: 'figma-export-field' },
+      el('span', null, 'Ссылка на Figma'),
+      targetInput
+    ),
+    el('div', { class: 'figma-export-note' }, 'Исходная презентация на платформе не изменится. Повторный экспорт создаст новую секцию.'),
+    status,
+    actions
+  ));
+  const overlay = el('div', {
+    class: 'modal-overlay figma-export-overlay',
+    onclick: (event) => { if (event.target === overlay) close(); },
+  }, modal);
+
+  function onKeydown(event) {
+    if (event.key === 'Escape') close();
+  }
+
+  submit.addEventListener('click', async () => {
+    const figmaUrl = normalizeFigmaTarget(targetInput.value);
+    if (!validFigmaTarget(figmaUrl)) {
+      targetInput.focus();
+      return toast('Вставьте ссылку на Figma design-файл или секцию', true);
+    }
+    targetInput.value = figmaUrl;
+    busy = true;
+    localStorage.setItem('tumodo-figma-target', figmaUrl);
+    targetInput.disabled = true;
+    submit.disabled = true;
+    cancel.disabled = true;
+    closeButton.disabled = true;
+    submit.textContent = 'Переносим…';
+    status.hidden = false;
+    status.classList.remove('done', 'error');
+    statusText.textContent = 'Подключаемся к Figma…';
+    try {
+      await streamFigmaExport(deck, figmaUrl, (event) => {
+        if (event.type === 'tool') {
+          statusText.textContent = event.detail || event.label || 'Собираем фреймы…';
+        } else if (event.type === 'thinking') {
+          statusText.textContent = 'Проверяем структуру и порядок слайдов…';
+        } else if (event.type === 'text') {
+          statusText.textContent = 'Завершаем перенос и проверяем Figma…';
+        }
+      });
+      status.classList.add('done');
+      statusIcon.replaceChildren(uiIcon('check'));
+      statusText.textContent = 'Готово. Презентация добавлена в Figma.';
+      submit.hidden = true;
+      cancel.textContent = 'Закрыть';
+      cancel.disabled = false;
+      openTarget.href = figmaUrl;
+      openTarget.hidden = false;
+      closeButton.disabled = false;
+      busy = false;
+      toast('Презентация перенесена в Figma');
+    } catch (error) {
+      status.classList.add('error');
+      statusIcon.replaceChildren(uiIcon('x'));
+      statusText.textContent = error.message;
+      submit.disabled = false;
+      submit.textContent = 'Попробовать снова';
+      cancel.disabled = false;
+      closeButton.disabled = false;
+      targetInput.disabled = false;
+      busy = false;
+    }
+  });
+
+  document.body.append(overlay);
+  document.addEventListener('keydown', onKeydown);
+  queueMicrotask(() => targetInput.focus());
+}
+
+document.getElementById('preview-figma').addEventListener('click', () => {
+  if (previewDeck) openFigmaExportDialog(previewDeck);
+});
 
 // «Скачать PDF»: сервер прогоняет scripts/export-pdf.js и отдаёт ссылку на файл
 document.getElementById('preview-download').addEventListener('click', async (e) => {
@@ -806,7 +1013,19 @@ async function viewSimpleTokens(kind) {
 
 // ---------------------------------------------------------------- ассеты
 
-const SUB_LABELS = { people: 'люди', '3d': '3D', svg: 'SVG', png: 'PNG', files: 'файлы' };
+const SUB_LABELS = {
+  people: 'люди', '3d': '3D', figma: 'Figma',
+  screens: 'экраны продукта', devices: 'устройства',
+  svg: 'SVG', png: 'PNG', files: 'файлы',
+};
+
+function assetFolderLabel(item) {
+  return String(item.folder || item.sub || '')
+    .split('/')
+    .filter(Boolean)
+    .map((part) => SUB_LABELS[part] || part)
+    .join(' / ');
+}
 
 const CAT_HINTS = {
   logo: 'Все варианты логотипа: основной, монохром, инверсия, знак. SVG кладётся в svg/, растровые — в png/.',
@@ -814,7 +1033,7 @@ const CAT_HINTS = {
   fonts: 'Файлы шрифтов woff2/ttf/otf. Имена должны совпадать с семействами в «Типографике».',
   photos: 'Фото людей и 3D-рендеры. «Все» показывает обе подпапки; перед загрузкой выбери конкретную.',
   patterns: 'Фирменные паттерны и текстуры (SVG/PNG).',
-  mockups: 'Мокапы устройств и носителей.',
+  mockups: 'Мокапы, реальные экраны продукта и устройства. «Все» показывает три подпапки; перед загрузкой можно выбрать нужную.',
 };
 
 const CAT_RULES = { logo: 'logo-rules', icons: 'icons-rules', fonts: 'fonts-rules', photos: 'photos-rules', patterns: 'patterns-rules', mockups: 'mockups-rules' };
@@ -825,11 +1044,67 @@ async function viewAssets(cat) {
   const label = ASSET_LABELS[cat];
   const data = await api('/api/assets/' + cat);
 
-  let currentSub = cat === 'photos' ? '' : data.subdirs[0]; // '' — «все» (без фильтра)
-  const subSelect = cat === 'photos'
-    ? el('select', { style: 'width:auto', onchange: (e) => { currentSub = e.target.value; renderAssets(); } },
-        [el('option', { value: '' }, 'все'), ...data.subdirs.map((s) => el('option', { value: s }, SUB_LABELS[s] || s))])
-    : null;
+  let currentSub = ''; // '' — «все» (без фильтра)
+  let subDropdown = null;
+  if (data.subdirs.length > 1) {
+    const options = [{ value: '', label: 'Все' }, ...data.subdirs.map((value) => ({ value, label: SUB_LABELS[value] || value }))];
+    const menu = el('div', { class: 'asset-subfolder-menu', role: 'listbox', hidden: true });
+    const valueLabel = el('span', { class: 'asset-subfolder-value' }, options[0].label);
+    let outsideClickHandler = null;
+    const trigger = el('button', {
+      type: 'button',
+      class: 'btn asset-subfolder-trigger',
+      'aria-haspopup': 'listbox',
+      'aria-expanded': 'false',
+      onclick: (event) => {
+        event.stopPropagation();
+        const willOpen = menu.hidden;
+        menu.hidden = !willOpen;
+        trigger.setAttribute('aria-expanded', String(willOpen));
+        subDropdown.classList.toggle('open', willOpen);
+        if (willOpen) {
+          queueMicrotask(() => {
+            outsideClickHandler = (outsideEvent) => {
+              if (!subDropdown.contains(outsideEvent.target)) closeMenu();
+            };
+            document.addEventListener('click', outsideClickHandler);
+          });
+        }
+      },
+      onkeydown: (event) => {
+        if (event.key === 'Escape') closeMenu();
+      },
+    }, valueLabel, uiIcon('chevron-down'));
+
+    function closeMenu() {
+      menu.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+      subDropdown.classList.remove('open');
+      if (outsideClickHandler) document.removeEventListener('click', outsideClickHandler);
+      outsideClickHandler = null;
+    }
+
+    function renderOptions() {
+      menu.replaceChildren(...options.map((option) => el('button', {
+        type: 'button',
+        class: 'asset-subfolder-option' + (option.value === currentSub ? ' selected' : ''),
+        role: 'option',
+        'aria-selected': String(option.value === currentSub),
+        onclick: (event) => {
+          event.stopPropagation();
+          currentSub = option.value;
+          valueLabel.textContent = option.label;
+          renderOptions();
+          renderAssets();
+          closeMenu();
+          trigger.focus();
+        },
+      }, option.label)));
+    }
+
+    subDropdown = el('div', { class: 'asset-subfolder' }, trigger, menu);
+    renderOptions();
+  }
 
   const fileInput = el('input', { type: 'file', multiple: true, style: 'display:none', onchange: (e) => uploadFiles(e.target.files) });
 
@@ -837,7 +1112,7 @@ async function viewAssets(cat) {
     if (!files || !files.length) return;
     const fd = new FormData();
     for (const f of files) fd.append('files', f);
-    if (subSelect && currentSub) fd.append('sub', currentSub);
+    if (subDropdown && currentSub) fd.append('sub', currentSub);
     try {
       const r = await api('/api/assets/' + cat + '/upload', { method: 'POST', body: fd });
       if (r.errors && r.errors.length) toast(r.errors.map((e2) => e2.file + ': ' + e2.error).join('; '), true);
@@ -907,7 +1182,7 @@ async function viewAssets(cat) {
           el('h2', { class: 'modal-title' }, item.name),
           el('div', { class: 'row wrap' },
             el('span', { class: 'pill-badge' }, fmtSize(item.size)),
-            el('span', { class: 'pill-badge' }, SUB_LABELS[item.sub] || item.sub)
+            el('span', { class: 'pill-badge' }, assetFolderLabel(item))
           ),
           el('div', { class: 'field-block' },
             el('span', { class: 'field-chip' }, 'Описание'),
@@ -938,7 +1213,7 @@ async function viewAssets(cat) {
         el('div', { class: 'row' },
           el('div', { class: 'asset-name', title: item.name }, item.name),
           el('span', { class: 'pill-badge' }, fmtSize(item.size)),
-          el('span', { class: 'pill-badge' }, SUB_LABELS[item.sub] || item.sub)
+          el('span', { class: 'pill-badge' }, assetFolderLabel(item))
         ),
         el('div', { class: 'asset-desc' + (item.description ? '' : ' none') }, item.description || 'Описания пока нет'),
         el('div', { class: 'row', style: 'margin-top:auto' },
@@ -1063,13 +1338,13 @@ async function viewAssets(cat) {
   }
   renderAssets();
 
-  $main.append(
-    header,
-    subSelect ? el('div', { class: 'row', style: 'margin-bottom:12px' }, el('label', { class: 'field', style: 'margin:0' }, 'Подпапка:'), subSelect) : null,
-    dropzone,
-    fileInput,
-    gridHost
-  );
+  const pageNodes = [header];
+  if (subDropdown) {
+    pageNodes.push(el('div', { class: 'asset-subfolder-row' },
+      el('span', { class: 'asset-subfolder-label' }, 'Подпапка:'), subDropdown));
+  }
+  pageNodes.push(dropzone, fileInput, gridHost);
+  $main.append(...pageNodes);
 }
 
 // ---------------------------------------------------------------- правила (md)
@@ -1105,13 +1380,6 @@ const ENGINE_ASSET_GROUPS = {
   mockups: 'Мокапы',
 };
 
-function engineFileLabel(name) {
-  return String(name || '')
-    .replace(/\.[^.]+$/, '')
-    .replace(/[-_]+/g, ' ')
-    .replace(/\b\w/g, (letter) => letter.toUpperCase());
-}
-
 async function viewEngine(requestedName) {
   const decks = await api('/api/presentations');
   const readyDecks = decks.outputs.filter((item) => item.hasIndex);
@@ -1131,6 +1399,7 @@ async function viewEngine(requestedName) {
   const name = knownNames.has(requestedName) ? requestedName : readyDecks[0].name;
   if (requestedName !== name) history.replaceState(null, '', '#/engine:' + name);
 
+  await api('/api/creative-directions/' + name);
   const [catalog, initialReview] = await Promise.all([
     api('/api/engine/catalog'),
     api('/api/review/' + name),
@@ -1147,6 +1416,7 @@ async function viewEngine(requestedName) {
     instruction: '',
     status: '',
     busy: false,
+    showStyleframe: Boolean(initialReview.slides[0] && initialReview.slides[0].styleframeUrl),
   };
 
   const shell = el('div', { class: 'engine-shell' });
@@ -1234,21 +1504,103 @@ async function viewEngine(requestedName) {
     }
   }
 
+  async function selectCreativeDirection(id) {
+    if (state.busy || !id) return;
+    if (id === (state.review.creativeDirections && state.review.creativeDirections.selected)) {
+      const slide = currentSlide();
+      if (slide && slide.styleframeUrl) {
+        state.showStyleframe = true;
+        renderStage();
+        toast('Направление уже выбрано — показываю его styleframe');
+      } else {
+        toast('Направление уже выбрано. Оно применится при следующей пересборке');
+      }
+      return;
+    }
+    state.busy = true;
+    shell.classList.add('is-busy');
+    try {
+      await api('/api/creative-directions/' + name, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ selected: id }),
+      });
+      state.review = await api('/api/review/' + name + '?v=' + Date.now());
+      state.selectedVariant = null;
+      state.selectedAsset = null;
+      state.showStyleframe = Boolean(currentSlide() && currentSlide().styleframeUrl);
+      renderHeader();
+      renderStage();
+      renderInspector();
+      toast('Креативное направление выбрано — рекомендации обновлены');
+    } catch (e) {
+      toast(e.message, true);
+    } finally {
+      state.busy = false;
+      shell.classList.remove('is-busy');
+      renderHeader();
+      renderInspector();
+    }
+  }
+
   function renderHeader() {
     headerHost.innerHTML = '';
-    const select = el('select', {
-      class: 'engine-deck-select',
-      'aria-label': 'Презентация',
-      onchange: (e) => (location.hash = '#/engine:' + e.target.value),
-    }, readyDecks.map((item) => el('option', { value: item.name }, item.name)));
-    select.value = name;
+    const deckMenu = el('div', { class: 'engine-deck-menu', role: 'listbox', hidden: true });
+    const deckValue = el('span', { class: 'engine-deck-value' }, name);
+    let deckOutsideClickHandler = null;
+    const deckTrigger = el('button', {
+      type: 'button',
+      class: 'btn engine-deck-trigger',
+      'aria-label': 'Презентация: ' + name,
+      'aria-haspopup': 'listbox',
+      'aria-expanded': 'false',
+      onclick: (event) => {
+        event.stopPropagation();
+        const willOpen = deckMenu.hidden;
+        deckMenu.hidden = !willOpen;
+        deckTrigger.setAttribute('aria-expanded', String(willOpen));
+        deckDropdown.classList.toggle('open', willOpen);
+        if (willOpen) {
+          queueMicrotask(() => {
+            deckOutsideClickHandler = (outsideEvent) => {
+              if (!deckDropdown.contains(outsideEvent.target)) closeDeckMenu();
+            };
+            document.addEventListener('click', deckOutsideClickHandler);
+          });
+        }
+      },
+      onkeydown: (event) => {
+        if (event.key === 'Escape') closeDeckMenu();
+      },
+    }, deckValue, uiIcon('chevron-down'));
+
+    function closeDeckMenu() {
+      deckMenu.hidden = true;
+      deckTrigger.setAttribute('aria-expanded', 'false');
+      deckDropdown.classList.remove('open');
+      if (deckOutsideClickHandler) document.removeEventListener('click', deckOutsideClickHandler);
+      deckOutsideClickHandler = null;
+    }
+
+    deckMenu.replaceChildren(...readyDecks.map((item) => el('button', {
+      type: 'button',
+      class: 'engine-deck-option' + (item.name === name ? ' selected' : ''),
+      role: 'option',
+      'aria-selected': String(item.name === name),
+      onclick: (event) => {
+        event.stopPropagation();
+        closeDeckMenu();
+        if (item.name !== name) location.hash = '#/engine:' + item.name;
+      },
+    }, item.name)));
+    const deckDropdown = el('div', { class: 'engine-deck-dropdown' }, deckTrigger, deckMenu);
+    const creativeDocument = state.review.creativeDirections;
+    const directions = creativeDocument && Array.isArray(creativeDocument.directions) ? creativeDocument.directions : [];
     headerHost.append(
       el('header', { class: 'engine-header' },
         el('div', { class: 'engine-title-block' },
-          el('div', { class: 'engine-eyebrow' }, uiIcon('sparkles'), 'Результат агента'),
           el('div', { class: 'engine-title-row' },
-            select,
-            el('span', { class: 'engine-save-state' }, uiIcon('check'), state.review.slides.length + ' слайдов проверено')
+            deckDropdown
           )
         ),
         el('div', { class: 'spacer' }),
@@ -1256,8 +1608,30 @@ async function viewEngine(requestedName) {
           class: 'btn ghost',
           onclick: () => { sidebarMode = 'settings'; location.hash = '#/presentations:' + name; },
         }, 'Исходник'),
+        el('button', { class: 'btn', onclick: () => openFigmaExportDialog(name) }, 'Перенести в Figma'),
         el('button', { class: 'btn primary engine-build', onclick: () => openPreview('output/' + name) }, uiIcon('play'), 'Открыть презентацию')
-      )
+      ),
+      directions.length ? el('div', { class: 'engine-direction-strip' },
+        el('div', { class: 'engine-direction-intro' },
+          el('strong', null, 'Креативное направление'),
+          el('span', null, 'Все варианты внутри дизайн-системы')
+        ),
+        el('div', { class: 'engine-direction-options' }, directions.map((direction) => {
+          const selected = creativeDocument.selected === direction.id;
+          return el('button', {
+            class: 'engine-direction-card' + (selected ? ' selected' : ''),
+            'aria-pressed': String(selected),
+            title: direction.idea,
+            onclick: () => selectCreativeDirection(direction.id),
+          },
+          el('span', { class: 'engine-direction-title-row' },
+            el('span', { class: 'engine-direction-title' }, direction.title),
+            selected ? el('span', { class: 'engine-direction-selected' }, uiIcon('check'), 'Выбрано') : null
+          ),
+          el('span', { class: 'engine-direction-idea' }, direction.tension));
+        })),
+        el('span', { class: 'engine-direction-safe' }, uiIcon('check'), 'Brand-safe')
+      ) : null
     );
   }
 
@@ -1266,41 +1640,14 @@ async function viewEngine(requestedName) {
     const slide = currentSlide();
     if (!slide) return;
     const group = layoutGroup(slide.layout);
-    const placement = slide.selectedVisualPlacement;
-    const placementLabel = placement
-      ? (placement.mode === 'card'
-          ? '3D: карточка ' + placement.cardIndex + ' · clip content'
-          : placement.mode === 'slide'
-            ? '3D: ' + (placement.zone === 'side-visual' ? 'отдельная медиазона' : 'по слайду') + ' · ' + (placement.side === 'left' ? 'слева от центра' : 'справа от центра')
-            : placement.rejected
-              ? '3D отклонён: нет безопасной зоны'
-              : '')
-      : '';
+    const showingStyleframe = Boolean(state.showStyleframe && slide.styleframeUrl);
 
     const resultFrame = el('div', { class: 'engine-canon-frame engine-result-frame' },
-      slide.screenshotUrl
+      showingStyleframe
+        ? el('img', { src: slide.styleframeUrl, alt: 'Styleframe направления для слайда ' + slide.number })
+        : slide.screenshotUrl
         ? el('img', { src: slide.screenshotUrl, alt: 'Готовый слайд ' + slide.number })
-        : el('div', { class: 'engine-canon-missing' }, 'Скриншот ещё не создан'),
-      el('div', { class: 'engine-frame-label' }, 'Готовый слайд · версия агента')
-    );
-
-    const contentCard = el('div', { class: 'engine-content-card' },
-      el('span', { class: 'engine-info-label' }, 'Главная мысль'),
-      el('h2', null, slide.title || 'Без заголовка'),
-      slide.claim ? el('p', null, slide.claim) : null
-    );
-
-    const decisionCard = el('div', { class: 'engine-content-card engine-decision-card' },
-      el('span', { class: 'engine-info-label' }, 'Решение агента'),
-      el('h2', null, slide.semanticRoleLabel || (group ? group.label : slide.layout)),
-      el('p', null, slide.rationale || slide.purpose || 'Композиция выбрана агентом по смыслу и плотности контента.'),
-      el('div', { class: 'engine-content-stats' },
-        (slide.reference || slide.variant) ? el('span', null, slide.reference || slide.variant) : null,
-        slide.silhouetteId ? el('span', null, 'Силуэт: ' + slide.silhouetteId) : null,
-        placementLabel ? el('span', null, placementLabel) : null,
-        slide.compositionBrief ? el('span', null, 'Композиция: ' + ({ 'media-led': 'визуал ведёт', balanced: 'баланс', 'content-led': 'контент ведёт' }[slide.compositionBrief.spaceStrategy] || slide.compositionBrief.spaceStrategy)) : null,
-        el('span', { class: 'engine-visual-policy' }, slide.visualRequirement === 'intentional-exception' ? 'Без визуала: исключение' : 'Фото / 3D обязательно')
-      )
+        : el('div', { class: 'engine-canon-missing' }, 'Скриншот ещё не создан')
     );
 
     const filmstrip = el('div', { class: 'engine-filmstrip' }, state.review.slides.map((item, index) => {
@@ -1314,6 +1661,7 @@ async function viewEngine(requestedName) {
           state.selectedAsset = null;
           state.instruction = '';
           state.query = '';
+          state.showStyleframe = Boolean(item.styleframeUrl);
           if (state.tab === 'assets') {
             state.assetGroup = item.threeD ? 'threeD' : (item.image && item.image.startsWith('mockups/') ? 'mockups' : 'photos');
           }
@@ -1333,10 +1681,23 @@ async function viewEngine(requestedName) {
             el('span', { class: 'engine-slide-kicker' }, 'Слайд ' + (state.slideIndex + 1) + ' из ' + state.review.slides.length),
             el('strong', null, group ? group.label : slide.layout)
           ),
-          el('span', { class: 'pill-badge' }, 'Собран агентом')
+          el('div', { class: 'engine-stage-actions' },
+            slide.styleframeUrl ? el('div', { class: 'engine-view-switch', role: 'group', 'aria-label': 'Режим просмотра' },
+              el('button', {
+                class: showingStyleframe ? '' : 'selected',
+                'aria-pressed': String(!showingStyleframe),
+                onclick: () => { state.showStyleframe = false; renderStage(); },
+              }, 'Текущий слайд'),
+              el('button', {
+                class: showingStyleframe ? 'selected' : '',
+                'aria-pressed': String(showingStyleframe),
+                onclick: () => { state.showStyleframe = true; renderStage(); },
+              }, 'Styleframe')
+            ) : null,
+            el('span', { class: 'pill-badge' }, showingStyleframe ? 'Концепт · GPT Image' : 'Собран агентом')
+          )
         ),
-        resultFrame,
-        el('div', { class: 'engine-stage-details' }, contentCard, decisionCard)
+        resultFrame
       ),
       filmstrip
     );
@@ -1344,62 +1705,80 @@ async function viewEngine(requestedName) {
 
   function layoutInspector(slide) {
     const roleId = state.referenceRole || 'recommended';
-    const query = state.query.trim().toLowerCase();
+    const familyItems = [
+      { id: 'recommended', label: 'Подходит слайду', count: (slide.recommendations || []).length },
+      ...(catalog.referenceRoles || []),
+    ];
+    const currentFamily = familyItems.find((item) => item.id === roleId) || familyItems[0];
     const sourceItems = roleId === 'recommended'
       ? (slide.recommendations || [])
       : (catalog.references || []).filter((item) => item.role === roleId);
-    const items = sourceItems
-      .filter((item) => !query || (item.searchText || [item.comment, item.roleLabel, item.compositionLabel].join(' ').toLowerCase()).includes(query))
-      .slice(0, query ? 60 : 30);
-    const search = el('input', {
-      type: 'text',
-      class: 'engine-search engine-reference-search',
-      placeholder: 'Найти по смыслу: метрики, команда, продукт…',
-      value: state.query,
-      oninput: (e) => {
-        state.query = e.target.value;
-        renderInspector();
-        const next = inspectorHost.querySelector('.engine-reference-search');
-        if (next) {
-          next.focus();
-          next.setSelectionRange(state.query.length, state.query.length);
+    const items = sourceItems.slice(0, 30);
+    const familyMenu = el('div', { class: 'engine-family-menu', role: 'listbox', hidden: true });
+    const familyValue = el('span', { class: 'engine-family-value' },
+      el('span', null, currentFamily.label),
+      el('small', null, currentFamily.count));
+    let familyOutsideClickHandler = null;
+    const familyTrigger = el('button', {
+      type: 'button',
+      class: 'btn engine-family-trigger',
+      'aria-haspopup': 'listbox',
+      'aria-expanded': 'false',
+      onclick: (event) => {
+        event.stopPropagation();
+        const willOpen = familyMenu.hidden;
+        familyMenu.hidden = !willOpen;
+        familyTrigger.setAttribute('aria-expanded', String(willOpen));
+        familyDropdown.classList.toggle('open', willOpen);
+        if (willOpen) {
+          queueMicrotask(() => {
+            familyOutsideClickHandler = (outsideEvent) => {
+              if (!familyDropdown.contains(outsideEvent.target)) closeFamilyMenu();
+            };
+            document.addEventListener('click', familyOutsideClickHandler);
+          });
         }
       },
-    });
+      onkeydown: (event) => {
+        if (event.key === 'Escape') closeFamilyMenu();
+      },
+    }, familyValue, uiIcon('chevron-down'));
+
+    function closeFamilyMenu() {
+      familyMenu.hidden = true;
+      familyTrigger.setAttribute('aria-expanded', 'false');
+      familyDropdown.classList.remove('open');
+      if (familyOutsideClickHandler) document.removeEventListener('click', familyOutsideClickHandler);
+      familyOutsideClickHandler = null;
+    }
+
+    familyMenu.replaceChildren(...familyItems.map((item) => el('button', {
+      type: 'button',
+      class: 'engine-family-option' + (item.id === roleId ? ' selected' : ''),
+      role: 'option',
+      'aria-selected': String(item.id === roleId),
+      onclick: (event) => {
+        event.stopPropagation();
+        closeFamilyMenu();
+        state.referenceRole = item.id;
+        state.query = '';
+        renderInspector({ preserveScroll: true });
+      },
+    }, el('span', null, item.label), el('small', null, item.count))));
+    const familyDropdown = el('div', { class: 'engine-family-dropdown' }, familyTrigger, familyMenu);
+
     return [
-      el('div', { class: 'engine-inspector-intro' },
-        el('strong', null, 'Figma знает смысл этого слайда'),
-        el('p', null, 'Агент уже отобрал подходящие композиции из 126 фирменных слайдов. Можно принять рекомендацию или выбрать другое смысловое семейство.')
-      ),
-      el('div', { class: 'engine-reference-summary' },
-        el('span', null, slide.semanticRoleLabel || 'Смысловой макет'),
-        el('span', null, (slide.recommendations || []).length + ' рекомендаций')
-      ),
-      el('div', { class: 'engine-family-list' }, [
-        { id: 'recommended', label: 'Подходит слайду', count: (slide.recommendations || []).length },
-        ...(catalog.referenceRoles || []),
-      ].map((item) =>
-        el('button', {
-          class: 'engine-family-chip' + (item.id === roleId ? ' selected' : ''),
-          onclick: () => { state.referenceRole = item.id; state.query = ''; renderInspector(); },
-        }, item.label, el('span', null, item.count))
-      )),
-      search,
+      familyDropdown,
       el('div', { class: 'engine-section-label' }, (roleId === 'recommended' ? 'Лучшие совпадения' : 'Семейство') + ' · ' + items.length),
       items.length ? el('div', { class: 'engine-choice-grid engine-reference-grid' }, items.map((reference) => {
         const selected = state.selectedVariant ? state.selectedVariant.id === reference.id : slide.reference === reference.source;
         return el('button', {
-          class: 'engine-choice-card' + (selected ? ' selected' : ''),
-          'aria-pressed': String(selected),
-          title: reference.comment,
-          onclick: () => { state.selectedVariant = reference; renderInspector(); },
+           class: 'engine-choice-card' + (selected ? ' selected' : ''),
+           'aria-pressed': String(selected),
+           'aria-label': reference.comment || 'Канон слайда',
+           onclick: () => { state.selectedVariant = reference; renderInspector({ preserveScroll: true }); },
         },
-        el('span', { class: 'engine-choice-preview' }, el('img', { src: reference.url, alt: reference.comment, loading: 'lazy' })),
-        el('span', { class: 'engine-choice-caption engine-reference-caption' },
-          el('strong', null, reference.comment),
-          el('small', null, reference.compositionLabel + ' · ' + reference.theme),
-          selected ? uiIcon('check') : null
-        ));
+        el('span', { class: 'engine-choice-preview' }, el('img', { src: reference.url, alt: '', loading: 'lazy' })));
       })) : el('div', { class: 'engine-no-results' }, 'В этом семействе ничего не найдено'),
       el('div', { class: 'engine-inspector-note' }, 'Референс задаёт геометрию и характер пустоты. Агент адаптирует его к вашему тексту, а не копирует содержимое исходного слайда.'),
     ];
@@ -1436,20 +1815,19 @@ async function viewEngine(requestedName) {
         search
       ),
     ];
-    if (selectedPath) nodes.push(el('button', { class: 'engine-remove-asset', onclick: () => { state.selectedAsset = null; renderInspector(); } }, 'Не использовать новый ассет'));
+    if (selectedPath) nodes.push(el('button', { class: 'engine-remove-asset', onclick: () => { state.selectedAsset = null; renderInspector({ preserveScroll: true }); } }, 'Не использовать новый ассет'));
     nodes.push(
       el('div', { class: 'engine-section-label' }, ENGINE_ASSET_GROUPS[state.assetGroup] + ' · ' + items.length),
       items.length
         ? el('div', { class: 'engine-choice-grid asset-choices' }, items.map((item) => {
             const selected = selectedPath === item.source;
             return el('button', {
-              class: 'engine-choice-card asset-choice' + (selected ? ' selected' : ''),
-              title: item.description || item.usage || item.name,
-              'aria-pressed': String(selected),
-              onclick: () => { state.selectedAsset = selected ? null : item; renderInspector(); },
+               class: 'engine-choice-card asset-choice' + (selected ? ' selected' : ''),
+               'aria-label': item.name,
+               'aria-pressed': String(selected),
+               onclick: () => { state.selectedAsset = selected ? null : item; renderInspector({ preserveScroll: true }); },
             },
-            el('span', { class: 'engine-choice-preview' }, el('img', { src: item.url, alt: item.name, loading: 'lazy' })),
-            el('span', { class: 'engine-choice-caption' }, engineFileLabel(item.name), selected ? uiIcon('check') : null));
+            el('span', { class: 'engine-choice-preview' }, el('img', { src: item.url, alt: '', loading: 'lazy' })));
           }))
         : el('div', { class: 'engine-no-results' }, 'Ничего не найдено'),
       el('div', { class: 'engine-inspector-note' },
@@ -1464,7 +1842,9 @@ async function viewEngine(requestedName) {
     return nodes;
   }
 
-  function renderInspector() {
+  function renderInspector({ preserveScroll = false } = {}) {
+    const previousBody = inspectorHost.querySelector('.engine-inspector-body');
+    const previousScrollTop = preserveScroll && previousBody ? previousBody.scrollTop : 0;
     inspectorHost.innerHTML = '';
     const slide = currentSlide();
     const tabs = el('div', { class: 'engine-tabs' },
@@ -1506,8 +1886,9 @@ async function viewEngine(requestedName) {
         state.status ? el('div', { class: 'engine-refine-status' }, state.status) : null,
         instruction,
         applyButton
-      )
-    );
+       )
+     );
+    if (preserveScroll) body.scrollTop = previousScrollTop;
   }
 
   renderHeader();

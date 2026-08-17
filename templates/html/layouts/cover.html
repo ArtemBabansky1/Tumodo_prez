@@ -1,6 +1,17 @@
 <section class="slide theme-blue" id="s{{num}}">
   <div class="bg"><div class="bg-pattern"></div></div>
   <img class="cover-logo" src="assets/logo/logo-white.svg" alt="Tumodo">
+  {{#if coverThreeD}}<img class="cover-hero-3d cover-hero-3d--{{coverThreeDSide}}" src="{{coverThreeD}}" alt="">{{/if}}
+  {{#if coverThreeD}}
+  <div class="cover-wrap cover-wrap--visual">
+    <div class="cover-copy">
+      <div class="{{titleClass}}">{{title}}</div>
+      {{#if subtitle}}<div class="t-body-big cover-subtitle">{{subtitle}}</div>{{/if}}
+      {{#if cta}}<div class="btn-pill cover-cta">{{cta}}</div>{{/if}}
+    </div>
+  </div>
+  {{/if}}
+  {{#if standardCover}}
   <div style="position:absolute;left:120px;right:120px;bottom:120px;display:flex;align-items:flex-end;gap:40px;">
     <div style="display:flex;flex-direction:column;gap:28px;min-width:0;">
       <div class="{{titleClass}}" style="max-width:1300px;">{{title}}</div>
@@ -9,4 +20,5 @@
     <div style="flex:1;"></div>
     {{#if cta}}<div class="btn-pill" style="margin-bottom:8px;">{{cta}}</div>{{/if}}
   </div>
+  {{/if}}
 </section>

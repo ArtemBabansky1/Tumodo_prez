@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1920, initial-scale=1">
+  <title>Экспорт слайда в Figma</title>
+  <script src="/figma-capture.js" async></script>
+  <style>
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      margin: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    body.figma-source-loading,
+    body.figma-source-error {
+      display: grid;
+      place-items: center;
+      background: #f3f4f7;
+      color: #24262b;
+      font: 28px/1.4 system-ui, sans-serif;
+    }
+
+    body > .slide {
+      width: 1920px !important;
+      height: 1080px !important;
+      transform: none !important;
+      transform-origin: top left !important;
+    }
+  </style>
+</head>
+<body class="figma-source-loading">
+  <div id="figma-source-status">Готовим слайд…</div>
+  <script src="figma-export.js"></script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+{
+  "version": 1,
+  "deck": "theo-corporate-analytics",
+  "mode": "brand-bounded",
+  "selected": "human-momentum",
+  "selectionSource": "recommended",
+  "systemContract": {
+    "file": "design-system/creative-system.json",
+    "version": 1,
+    "assetPolicy": "platform-only",
+    "styleframePolicy": "reference-only-not-final-slide"
+  },
+  "directions": [
+    {
+      "id": "human-momentum",
+      "title": "Люди в движении",
+      "idea": "Историю ведут реальные рабочие ситуации и эмоции, а продукт появляется как естественный инструмент.",
+      "tension": "Живой человеческий момент против строгой продуктовой структуры.",
+      "roles": [
+        "people",
+        "evidence",
+        "benefits",
+        "problem-solution"
+      ],
+      "preferredFamilies": [
+        "split-media",
+        "editorial",
+        "two-panel",
+        "card-grid",
+        "hero"
+      ],
+      "visualPriority": [
+        "photo",
+        "mockup",
+        "3d"
+      ],
+      "techniques": [
+        "detail-crop",
+        "layered-depth",
+        "asymmetric-balance",
+        "rhythm-contrast"
+      ],
+      "score": 72,
+      "beats": [
+        {
+          "slide": 1,
+          "role": "cover",
+          "energy": "hero"
+        },
+        {
+          "slide": 2,
+          "role": "people",
+          "energy": "hero"
+        },
+        {
+          "slide": 3,
+          "role": "benefits",
+          "energy": "hero"
+        },
+        {
+          "slide": 4,
+          "role": "people",
+          "energy": "hero"
+        },
+        {
+          "slide": 5,
+          "role": "comparison",
+          "energy": "dense"
+        },
+        {
+          "slide": 6,
+          "role": "process",
+          "energy": "dense"
+        },
+        {
+          "slide": 7,
+          "role": "closing",
+          "energy": "quiet"
+        }
+      ],
+      "styleframes": [
+        {
+          "slide": 1,
+          "title": "Сократите время на подготовку отчётов по командировкам",
+          "purpose": "Обложка",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/01__855-4071.png",
+            "decks/library/1-cover__855-2529.png",
+            "decks/library/1-cover__855-2756.png"
+          ],
+          "assetSources": [
+            "photos/3d/theo-mascot-analyst-1.png",
+            "photos/3d/theo-mascot-analyst-2.png",
+            "photos/3d/theo-mascot-avatar.png"
+          ],
+          "prompt": "Создай черновой styleframe слайда 1 в направлении «Люди в движении». Идея: Историю ведут реальные рабочие ситуации и эмоции, а продукт появляется как естественный инструмент. Роль: Обложка. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 2,
+          "title": "Один вопрос о командировках — готовый анализ в диалоге",
+          "purpose": "Люди и роли",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/2__855-2768.png",
+            "decks/library/898__855-5190.png",
+            "decks/library/938__855-4052.png"
+          ],
+          "assetSources": [
+            "photos/people/figma/team-collaboration-laptop-office.png",
+            "photos/people/figma/traveler-suitcase-airport-window.png",
+            "photos/people/manager-accountant-laptop-pointing-screen.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 2 в направлении «Люди в движении». Идея: Историю ведут реальные рабочие ситуации и эмоции, а продукт появляется как естественный инструмент. Роль: Люди и роли. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 3,
+          "title": "Больше, чем стандартный чат-бот",
+          "purpose": "Выгоды и возможности",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/29__855-1362.png",
+            "decks/library/896__855-5066.png",
+            "decks/library/38__855-1939.png"
+          ],
+          "assetSources": [
+            "photos/3d/3d-folder-documents-blue.webp",
+            "photos/3d/3d-chat-bubbles-blue-silver.webp",
+            "photos/3d/figma/3d-glass-product-cards-blue.png"
+          ],
+          "prompt": "Создай черновой styleframe слайда 3 в направлении «Люди в движении». Идея: Историю ведут реальные рабочие ситуации и эмоции, а продукт появляется как естественный инструмент. Роль: Выгоды и возможности. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        }
+      ],
+      "assetPolicy": "platform-only",
+      "systemVersion": 1
+    },
+    {
+      "id": "data-with-drama",
+      "title": "Данные с драматургией",
+      "idea": "Цифры, сравнения и процессы получают выразительный масштаб, но сохраняют общие оси и читаемость.",
+      "tension": "Одна крупная истина против плотной системы подтверждений.",
+      "roles": [
+        "metrics",
+        "comparison",
+        "process",
+        "evidence"
+      ],
+      "preferredFamilies": [
+        "metric-focus",
+        "data-table",
+        "process-flow",
+        "manifesto",
+        "product-showcase"
+      ],
+      "visualPriority": [
+        "mockup",
+        "photo",
+        "3d"
+      ],
+      "techniques": [
+        "scale-shift",
+        "directed-empty-space",
+        "serial-repetition",
+        "rhythm-contrast"
+      ],
+      "score": 54,
+      "beats": [
+        {
+          "slide": 1,
+          "role": "cover",
+          "energy": "hero"
+        },
+        {
+          "slide": 2,
+          "role": "people",
+          "energy": "editorial"
+        },
+        {
+          "slide": 3,
+          "role": "benefits",
+          "energy": "editorial"
+        },
+        {
+          "slide": 4,
+          "role": "people",
+          "energy": "editorial"
+        },
+        {
+          "slide": 5,
+          "role": "comparison",
+          "energy": "dense"
+        },
+        {
+          "slide": 6,
+          "role": "process",
+          "energy": "hero"
+        },
+        {
+          "slide": 7,
+          "role": "closing",
+          "energy": "quiet"
+        }
+      ],
+      "styleframes": [
+        {
+          "slide": 1,
+          "title": "Сократите время на подготовку отчётов по командировкам",
+          "purpose": "Обложка",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/01__855-4071.png",
+            "decks/library/1-cover__855-2529.png",
+            "decks/library/1-cover__855-2756.png"
+          ],
+          "assetSources": [
+            "photos/3d/theo-mascot-analyst-1.png",
+            "photos/3d/theo-mascot-analyst-2.png",
+            "photos/3d/theo-mascot-avatar.png"
+          ],
+          "prompt": "Создай черновой styleframe слайда 1 в направлении «Данные с драматургией». Идея: Цифры, сравнения и процессы получают выразительный масштаб, но сохраняют общие оси и читаемость. Роль: Обложка. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 5,
+          "title": "Простая аналитика вместо сложных расчётов",
+          "purpose": "Сравнение",
+          "beat": "dense",
+          "referenceSources": [
+            "decks/library/70__855-2494.png",
+            "decks/library/73__855-2613.png",
+            "decks/library/933__855-3781.png"
+          ],
+          "assetSources": [
+            "photos/3d/figma/3d-glass-product-cards-blue.png",
+            "photos/3d/theo-mascot-analyst-2.png",
+            "photos/3d/theo-mascot-analyst-1.png"
+          ],
+          "prompt": "Создай черновой styleframe слайда 5 в направлении «Данные с драматургией». Идея: Цифры, сравнения и процессы получают выразительный масштаб, но сохраняют общие оси и читаемость. Роль: Сравнение. Ритмический акцент: dense. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 6,
+          "title": "Как начать работу",
+          "purpose": "Процесс и этапы",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/46__855-402.png",
+            "decks/library/7__855-2934.png",
+            "decks/library/899__855-5209.png"
+          ],
+          "assetSources": [
+            "photos/3d/figma/3d-glass-product-cards-blue.png",
+            "photos/3d/figma/3d-metal-access-cards.png",
+            "photos/people/figma/team-collaboration-laptop-office.png"
+          ],
+          "prompt": "Создай черновой styleframe слайда 6 в направлении «Данные с драматургией». Идея: Цифры, сравнения и процессы получают выразительный масштаб, но сохраняют общие оси и читаемость. Роль: Процесс и этапы. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        }
+      ],
+      "assetPolicy": "platform-only",
+      "systemVersion": 1
+    },
+    {
+      "id": "product-as-proof",
+      "title": "Продукт как доказательство",
+      "idea": "Крупные фрагменты интерфейса становятся главным аргументом, а текст объясняет увиденное.",
+      "tension": "Точный продуктовый кадр против большого спокойного поля.",
+      "roles": [
+        "product",
+        "introduction",
+        "process",
+        "metrics"
+      ],
+      "preferredFamilies": [
+        "product-showcase",
+        "split-media",
+        "data-table",
+        "metric-focus",
+        "hero"
+      ],
+      "visualPriority": [
+        "mockup",
+        "photo",
+        "3d"
+      ],
+      "techniques": [
+        "detail-crop",
+        "asymmetric-balance",
+        "directed-empty-space",
+        "rhythm-contrast"
+      ],
+      "score": 36,
+      "beats": [
+        {
+          "slide": 1,
+          "role": "cover",
+          "energy": "hero"
+        },
+        {
+          "slide": 2,
+          "role": "people",
+          "energy": "editorial"
+        },
+        {
+          "slide": 3,
+          "role": "benefits",
+          "energy": "editorial"
+        },
+        {
+          "slide": 4,
+          "role": "people",
+          "energy": "editorial"
+        },
+        {
+          "slide": 5,
+          "role": "comparison",
+          "energy": "dense"
+        },
+        {
+          "slide": 6,
+          "role": "process",
+          "energy": "hero"
+        },
+        {
+          "slide": 7,
+          "role": "closing",
+          "energy": "quiet"
+        }
+      ],
+      "styleframes": [
+        {
+          "slide": 1,
+          "title": "Сократите время на подготовку отчётов по командировкам",
+          "purpose": "Обложка",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/01__855-4071.png",
+            "decks/library/1-cover__855-2529.png",
+            "decks/library/1-cover__855-2756.png"
+          ],
+          "assetSources": [
+            "photos/3d/theo-mascot-analyst-1.png",
+            "photos/3d/theo-mascot-analyst-2.png",
+            "photos/3d/theo-mascot-avatar.png"
+          ],
+          "prompt": "Создай черновой styleframe слайда 1 в направлении «Продукт как доказательство». Идея: Крупные фрагменты интерфейса становятся главным аргументом, а текст объясняет увиденное. Роль: Обложка. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 6,
+          "title": "Как начать работу",
+          "purpose": "Процесс и этапы",
+          "beat": "hero",
+          "referenceSources": [
+            "decks/library/46__855-402.png",
+            "decks/library/7__855-2934.png",
+            "decks/library/899__855-5209.png"
+          ],
+          "assetSources": [
+            "photos/3d/figma/3d-glass-product-cards-blue.png",
+            "photos/3d/figma/3d-metal-access-cards.png",
+            "photos/people/figma/team-collaboration-laptop-office.png"
+          ],
+          "prompt": "Создай черновой styleframe слайда 6 в направлении «Продукт как доказательство». Идея: Крупные фрагменты интерфейса становятся главным аргументом, а текст объясняет увиденное. Роль: Процесс и этапы. Ритмический акцент: hero. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        },
+        {
+          "slide": 2,
+          "title": "Один вопрос о командировках — готовый анализ в диалоге",
+          "purpose": "Люди и роли",
+          "beat": "editorial",
+          "referenceSources": [
+            "decks/library/925__855-3473.png",
+            "decks/library/2__855-2768.png",
+            "decks/library/898__855-5190.png"
+          ],
+          "assetSources": [
+            "photos/people/figma/team-collaboration-laptop-office.png",
+            "photos/people/figma/traveler-suitcase-airport-window.png",
+            "photos/people/manager-accountant-laptop-pointing-screen.webp"
+          ],
+          "prompt": "Создай черновой styleframe слайда 2 в направлении «Продукт как доказательство». Идея: Крупные фрагменты интерфейса становятся главным аргументом, а текст объясняет увиденное. Роль: Люди и роли. Ритмический акцент: editorial. Используй только приложенные каноны Tumodo и ассеты платформы. Не придумывай цвета, шрифты, логотипы, паттерны или новые изображения. Текст показывай только как условную иерархию: финальная типографика и данные собираются движком."
+        }
+      ],
+      "assetPolicy": "platform-only",
+      "systemVersion": 1
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "errors": []
+  }
+}

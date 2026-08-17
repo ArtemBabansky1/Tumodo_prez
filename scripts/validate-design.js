@@ -9,6 +9,9 @@
  *   - общие оси KPI;
  *   - фото cover/top;
  *   - пересечения 3D и текста;
+ *   - висячие короткие предлоги, союзы и частицы;
+ *   - выход карточек process-steps за нижнюю safe area;
+ *   - наличие shape-контракта continuous corners 60% (iOS);
  *   - непрерывность dark-главы;
  *   - бессмысленный автоматический декор шагов.
  *
@@ -33,6 +36,14 @@ if (!fs.existsSync(indexPath)) {
   console.error('Сначала соберите презентацию: node scripts/build.js ' + name);
   process.exit(1);
 }
+
+const tokensCssPath = path.join(deckDir, 'css', 'tokens.css');
+const componentsCssPath = path.join(deckDir, 'css', 'components.css');
+const tokensCss = fs.existsSync(tokensCssPath) ? fs.readFileSync(tokensCssPath, 'utf8') : '';
+const componentsCss = fs.existsSync(componentsCssPath) ? fs.readFileSync(componentsCssPath, 'utf8') : '';
+const cornerSmoothingContract = /--corner-smoothing:\s*0\.6\s*;/.test(tokensCss)
+  && /--corner-shape:\s*squircle\s*;/.test(tokensCss)
+  && /corner-shape:\s*var\(--corner-shape\)\s*;/.test(componentsCss);
 
 const candidates = [
   [process.env.ProgramFiles, 'Google', 'Chrome', 'Application', 'chrome.exe'],
@@ -83,14 +94,38 @@ const PROBE_SCRIPT = String.raw`<script>
     list.push({ slide:slide, code:code, message:message, data:data || null });
   }
 
+  var SHORT_WORDS = [
+    'в','во','и','а','но','да','или','либо','на','с','со','к','ко','по','за',
+    'о','об','обо','от','до','из','изо','у','для','при','над','надо','под',
+    'подо','про','без','через','между','не','ни','же','ли','бы','то','что','как'
+  ];
+  var HANGING_SHORT_WORD_RE = new RegExp(
+    "(^|[\\s(«„“\\u0027\\u0022])(?:" + SHORT_WORDS.join('|') + ")([ \\t]+)",
+    'giu'
+  );
+
   function run() {
     var penalties = [];
     var warnings = [];
     var slides = Array.from(document.querySelectorAll('.slide-wrap > .slide'));
 
+    if (!${cornerSmoothingContract ? 'true' : 'false'}) {
+      add(penalties, 0, 'CORNER_SMOOTHING_CONTRACT', 'Скруглённые контейнеры должны использовать continuous corner smoothing 60% (iOS)', {
+        cornerSmoothing:0.6,
+        cornerShape:'squircle'
+      });
+    }
+
     slides.forEach(function (slide, index) {
       var number = slideNumber(slide, index);
       var slideRect = rect(slide);
+      var hangingBindings = String(slide.textContent || '').match(HANGING_SHORT_WORD_RE) || [];
+      if (hangingBindings.length) {
+        add(penalties, number, 'HANGING_SHORT_WORDS', 'Короткие предлоги, союзы и частицы должны быть связаны со следующим словом неразрывным пробелом', {
+          count:hangingBindings.length,
+          examples:hangingBindings.slice(0, 5)
+        });
+      }
       var title = slide.querySelector('.h1-row .t-page-title, .split-left .t-page-title, :scope > .t-page-title');
       if (title && visible(title)) {
         var titleStyle = getComputedStyle(title);
@@ -202,6 +237,27 @@ const PROBE_SCRIPT = String.raw`<script>
       if (hasFunctionlessStepDecor) {
         add(penalties, number, 'FUNCTIONLESS_DECOR', 'Автоматический декор в углу карточки шага запрещён');
       }
+
+      Array.from(slide.querySelectorAll('.process-step')).filter(visible).forEach(function (step) {
+        var style = getComputedStyle(step);
+        var stepRect = rect(step);
+        var paddings = {
+          top:parseFloat(style.paddingTop),
+          right:parseFloat(style.paddingRight),
+          bottom:parseFloat(style.paddingBottom),
+          left:parseFloat(style.paddingLeft)
+        };
+        if (Object.values(paddings).some(function (value) { return Math.abs(value - 30) > 0.1; })) {
+          add(penalties, number, 'PROCESS_STEP_PADDING', 'Карточки process-steps должны иметь padding 30px со всех сторон', paddings);
+        }
+        var relativeBottom = stepRect.bottom - slideRect.top;
+        if (relativeBottom > 960.5) {
+          add(penalties, number, 'PROCESS_STEP_SAFE_BOTTOM', 'Карточка process-steps выходит ниже нижней safe area 960px', {
+            bottom:round(relativeBottom),
+            overflow:round(relativeBottom - 960)
+          });
+        }
+      });
     });
 
     var dark = slides.map(function (slide, index) { return { slide:slide, index:index }; })

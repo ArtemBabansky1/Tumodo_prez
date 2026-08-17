@@ -1,0 +1,375 @@
+{
+  "deck": "theo-corporate-analytics",
+  "measuredAt": "2026-08-17T13:18:18.403Z",
+  "fontsReady": true,
+  "slides": [
+    {
+      "number": 1,
+      "layout": "cover",
+      "title": "",
+      "titleLines": 0,
+      "measuredTextDensity": 0.1,
+      "textNodes": 2,
+      "hasMedia": true,
+      "overflowNodes": [],
+      "containers": [],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "cover"
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "layout": "photo-list",
+      "title": "Один вопрос — готовый анализ",
+      "titleLines": 2,
+      "measuredTextDensity": 0.12,
+      "textNodes": 5,
+      "hasMedia": true,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "photo-list-row",
+          "width": 1047.05,
+          "height": 196.66,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.39,
+          "areaFill": 0.37,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "photo-list-row",
+          "width": 1047.05,
+          "height": 196.67,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.39,
+          "areaFill": 0.37,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "photo-list-row",
+          "width": 1047.05,
+          "height": 196.67,
+          "textNodes": 1,
+          "textLines": 1,
+          "verticalFill": 0.19,
+          "areaFill": 0.19,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "photo-list"
+        ]
+      }
+    },
+    {
+      "number": 3,
+      "layout": "benefits-grid",
+      "title": "Тео — больше, чем чат‑бот",
+      "titleLines": 1,
+      "measuredTextDensity": 0.17,
+      "textNodes": 9,
+      "hasMedia": true,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 299,
+          "textNodes": 2,
+          "textLines": 3,
+          "verticalFill": 0.64,
+          "areaFill": 0.54,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 299,
+          "textNodes": 2,
+          "textLines": 3,
+          "verticalFill": 0.64,
+          "areaFill": 0.54,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "service-card",
+          "width": 830,
+          "height": 299,
+          "textNodes": 2,
+          "textLines": 3,
+          "verticalFill": 0.64,
+          "areaFill": 0.54,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "service-card has-card-3d has-card-3d--left",
+          "width": 830,
+          "height": 299,
+          "textNodes": 2,
+          "textLines": 5,
+          "verticalFill": 1,
+          "areaFill": 0.43,
+          "hasMedia": true,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "benefits-grid"
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "layout": "photo-list",
+      "title": "С какими запросами работает Тео",
+      "titleLines": 2,
+      "measuredTextDensity": 0.2,
+      "textNodes": 7,
+      "hasMedia": true,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "photo-list-row",
+          "width": 1047.03,
+          "height": 112.39,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.82,
+          "areaFill": 0.79,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "photo-list-row",
+          "width": 1047.03,
+          "height": 112.41,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.82,
+          "areaFill": 0.79,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "photo-list-row",
+          "width": 1047.03,
+          "height": 112.39,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.82,
+          "areaFill": 0.79,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "photo-list-row",
+          "width": 1047.03,
+          "height": 112.41,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.82,
+          "areaFill": 0.79,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "photo-list-row",
+          "width": 1047.03,
+          "height": 112.41,
+          "textNodes": 1,
+          "textLines": 1,
+          "verticalFill": 0.41,
+          "areaFill": 0.39,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "photo-list"
+        ]
+      }
+    },
+    {
+      "number": 5,
+      "layout": "comparison-flow",
+      "title": "Аналитика без сложных расчётов",
+      "titleLines": 2,
+      "measuredTextDensity": 0.06,
+      "textNodes": 2,
+      "hasMedia": true,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "change-table change-count-3",
+          "width": 1085,
+          "height": 605,
+          "textNodes": 0,
+          "textLines": 0,
+          "verticalFill": 0,
+          "areaFill": 0,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "comparison-flow"
+        ]
+      }
+    },
+    {
+      "number": 6,
+      "layout": "process-steps",
+      "title": "Как начать работу",
+      "titleLines": 1,
+      "measuredTextDensity": 0.12,
+      "textNodes": 7,
+      "hasMedia": true,
+      "overflowNodes": [],
+      "containers": [
+        {
+          "selector": "process-step",
+          "width": 562.88,
+          "height": 195.5,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.45,
+          "areaFill": 0.41,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "process-step",
+          "width": 562.89,
+          "height": 195.5,
+          "textNodes": 1,
+          "textLines": 3,
+          "verticalFill": 0.68,
+          "areaFill": 0.62,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "process-step",
+          "width": 562.88,
+          "height": 195.5,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.45,
+          "areaFill": 0.41,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "process-step",
+          "width": 562.89,
+          "height": 195.5,
+          "textNodes": 1,
+          "textLines": 2,
+          "verticalFill": 0.45,
+          "areaFill": 0.41,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        },
+        {
+          "selector": "process-step",
+          "width": 1145.77,
+          "height": 195.5,
+          "textNodes": 1,
+          "textLines": 1,
+          "verticalFill": 0.23,
+          "areaFill": 0.21,
+          "hasMedia": false,
+          "overflow": false,
+          "status": "healthy"
+        }
+      ],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "process-steps"
+        ]
+      }
+    },
+    {
+      "number": 7,
+      "layout": "final",
+      "title": "Задайте свой первый вопрос Тео прямо сейчас",
+      "titleLines": 2,
+      "measuredTextDensity": 0.14,
+      "textNodes": 1,
+      "hasMedia": false,
+      "overflowNodes": [],
+      "containers": [],
+      "status": "healthy",
+      "recommendation": {
+        "action": "keep-layout",
+        "severity": "ok",
+        "reason": "геометрия соответствует объёму контента",
+        "tryLayouts": [
+          "final"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "healthy": 7,
+    "needsReview": 0,
+    "overflow": 0
+  },
+  "passed": true
+}

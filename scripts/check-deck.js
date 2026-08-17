@@ -11,7 +11,9 @@ if (!name) {
 }
 
 const steps = [
-  ['build.js', [name, '--strict'], 'Strict-сборка'],
+  ['build.js', [name], 'Черновая сборка'],
+  ['measure-content.js', [name, '--strict'], 'Реальное измерение текста и контейнеров'],
+  ['build.js', [name, '--strict'], 'Strict-сборка правил'],
   ['screenshot.js', [name], 'Скриншоты'],
   ['validate-design.js', [name], 'Геометрический quality gate'],
 ];

@@ -1,0 +1,2387 @@
+{
+  "figma": {
+    "fileKey": "SZpOoVhI07GPa3Vf7BRc10",
+    "sectionNodeId": "855:401",
+    "references": 126
+  },
+  "qualityContract": {
+    "minimumCardContentFill": 0.55,
+    "underfillAction": "change-layout-never-shrink-container",
+    "comparisonMode": "table-with-shared-columns-no-arrows",
+    "titleSystem": "page-title/system-anchor",
+    "rowAlignment": "shared-baselines",
+    "decoration": "functional-only",
+    "darkTheme": "one-contiguous-theme-chapter",
+    "requiredGate": "node scripts/validate-design.js <name>"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Travel enables growth",
+      "semanticRole": "cover",
+      "renderLayout": "cover",
+      "silhouetteId": "cover:hero:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/travel-coordinator-employee-sofa-notebook.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Обложка · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-suitcase-window-light.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Обложка · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-tablet-documents-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Обложка · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinators-sofa-laptop-papers.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Обложка · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/employee-suitcase-smartphone-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Обложка · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:5632",
+          "source": "decks/library/1-cover__855-5632.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:1440",
+          "source": "decks/library/31__855-1440.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Business growth and travel process",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:manifesto:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-smartphone-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-tablet-documents-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinators-sofa-two-laptops.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:1223",
+          "source": "decks/library/18__855-1223.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:2454",
+          "source": "decks/library/68__855-2454.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:5649",
+          "source": "decks/library/903__855-5649.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "dark",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:3673",
+          "source": "decks/library/929__855-3673.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:3770",
+          "source": "decks/library/932__855-3770.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 85,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Who we are",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:sparse-divider:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4114",
+          "source": "decks/library/05__855-4114.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4217",
+          "source": "decks/library/08__855-4217.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4495",
+          "source": "decks/library/10__855-4495.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4686",
+          "source": "decks/library/942__855-4686.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4850",
+          "source": "decks/library/945__855-4850.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "All travel services in one platform",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:two-panel:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-smartphone-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-tablet-documents-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinators-sofa-two-laptops.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4131",
+          "source": "decks/library/06__855-4131.png",
+          "role": "principle",
+          "composition": "two-panel",
+          "theme": "dark",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · две смысловые панели"
+        },
+        {
+          "nodeId": "855:1243",
+          "source": "decks/library/19__855-1243.png",
+          "role": "principle",
+          "composition": "two-panel",
+          "theme": "blue",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · две смысловые панели"
+        },
+        {
+          "nodeId": "855:1263",
+          "source": "decks/library/26__855-1263.png",
+          "role": "principle",
+          "composition": "two-panel",
+          "theme": "dark",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · две смысловые панели"
+        },
+        {
+          "nodeId": "855:2474",
+          "source": "decks/library/69__855-2474.png",
+          "role": "principle",
+          "composition": "card-grid",
+          "theme": "blue",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · сетка карточек"
+        },
+        {
+          "nodeId": "855:4150",
+          "source": "decks/library/07__855-4150.png",
+          "role": "principle",
+          "composition": "card-grid",
+          "theme": "dark",
+          "score": 24,
+          "reason": "подходит соседняя смысловая модель · сетка карточек"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Creating and managing a trip in Tumodo",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:card-grid:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:2474",
+          "source": "decks/library/69__855-2474.png",
+          "role": "principle",
+          "composition": "card-grid",
+          "theme": "blue",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · сетка карточек"
+        },
+        {
+          "nodeId": "855:4150",
+          "source": "decks/library/07__855-4150.png",
+          "role": "principle",
+          "composition": "card-grid",
+          "theme": "dark",
+          "score": 24,
+          "reason": "подходит соседняя смысловая модель · сетка карточек"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:5632",
+          "source": "decks/library/1-cover__855-5632.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Manage business travel the way that works for you",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:manifesto:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-smartphone-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-tablet-documents-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinators-sofa-two-laptops.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:2454",
+          "source": "decks/library/68__855-2454.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:5649",
+          "source": "decks/library/903__855-5649.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "dark",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:3673",
+          "source": "decks/library/929__855-3673.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:3770",
+          "source": "decks/library/932__855-3770.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "All trips in one dashboard",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:sparse-divider:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4217",
+          "source": "decks/library/08__855-4217.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4495",
+          "source": "decks/library/10__855-4495.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4686",
+          "source": "decks/library/942__855-4686.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4850",
+          "source": "decks/library/945__855-4850.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4898",
+          "source": "decks/library/947__855-4898.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Expense report submission process",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:two-panel:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:1243",
+          "source": "decks/library/19__855-1243.png",
+          "role": "principle",
+          "composition": "two-panel",
+          "theme": "blue",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · две смысловые панели"
+        },
+        {
+          "nodeId": "855:1263",
+          "source": "decks/library/26__855-1263.png",
+          "role": "principle",
+          "composition": "two-panel",
+          "theme": "dark",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · две смысловые панели"
+        },
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Gain full visibility with smart reporting and analytics",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:card-grid:icons",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/travel-coordinator-smartphone-studio.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4150",
+          "source": "decks/library/07__855-4150.png",
+          "role": "principle",
+          "composition": "card-grid",
+          "theme": "dark",
+          "score": 24,
+          "reason": "подходит соседняя смысловая модель · сетка карточек"
+        },
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:5632",
+          "source": "decks/library/1-cover__855-5632.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Track and reduce your team’s carbon footprint",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:manifesto:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:1223",
+          "source": "decks/library/18__855-1223.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:5649",
+          "source": "decks/library/903__855-5649.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "dark",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:3673",
+          "source": "decks/library/929__855-3673.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:3770",
+          "source": "decks/library/932__855-3770.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Meeting your duty of care",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:sparse-divider:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 62,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4114",
+          "source": "decks/library/05__855-4114.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4495",
+          "source": "decks/library/10__855-4495.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4686",
+          "source": "decks/library/942__855-4686.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4850",
+          "source": "decks/library/945__855-4850.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4898",
+          "source": "decks/library/947__855-4898.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "About Tumodo",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:two-panel:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4131",
+          "source": "decks/library/06__855-4131.png",
+          "role": "principle",
+          "composition": "two-panel",
+          "theme": "dark",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · две смысловые панели"
+        },
+        {
+          "nodeId": "855:1263",
+          "source": "decks/library/26__855-1263.png",
+          "role": "principle",
+          "composition": "two-panel",
+          "theme": "dark",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · две смысловые панели"
+        },
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Why switch to Tumodo?",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:card-grid:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:2474",
+          "source": "decks/library/69__855-2474.png",
+          "role": "principle",
+          "composition": "card-grid",
+          "theme": "blue",
+          "score": 29,
+          "reason": "подходит соседняя смысловая модель · сетка карточек"
+        },
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:5632",
+          "source": "decks/library/1-cover__855-5632.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Our clients",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:manifesto:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:2454",
+          "source": "decks/library/68__855-2454.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:5649",
+          "source": "decks/library/903__855-5649.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "dark",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:3673",
+          "source": "decks/library/929__855-3673.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:3770",
+          "source": "decks/library/932__855-3770.png",
+          "role": "statement",
+          "composition": "manifesto",
+          "theme": "blue",
+          "score": 21,
+          "reason": "совпадает смысловая роль · совпадает плотность · манифест"
+        },
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "What our clients think of Tumodo",
+      "semanticRole": "statement",
+      "renderLayout": "statement",
+      "silhouetteId": "statement:sparse-divider:none",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/accountant-glasses-portrait-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/accountant-window-desk-writing-vertical.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/manager-phone-call-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-meeting-over-shoulder-discussion.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-color-folders-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Ключевой тезис · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:4217",
+          "source": "decks/library/08__855-4217.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4495",
+          "source": "decks/library/10__855-4495.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4686",
+          "source": "decks/library/942__855-4686.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4850",
+          "source": "decks/library/945__855-4850.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        },
+        {
+          "nodeId": "855:4898",
+          "source": "decks/library/947__855-4898.png",
+          "role": "section",
+          "composition": "sparse-divider",
+          "theme": "blue",
+          "score": 41,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · воздушный разделитель"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Get in touch with us",
+      "semanticRole": "closing",
+      "renderLayout": "final",
+      "silhouetteId": "final:hero:photo",
+      "visualRequirement": "intentional-exception",
+      "preferredVisualKinds": [
+        "3d",
+        "photo"
+      ],
+      "assetGap": "В библиотеке нет 3D, который прямо соответствует смыслу; используйте фото/мокап или добавьте новый фирменный объект, но не случайный 3D.",
+      "compositionBrief": {
+        "contentFill": 0.12,
+        "spaceStrategy": "media-led",
+        "recommendedVisualShare": 0.5,
+        "containerPolicy": "hero-or-structural",
+        "alignmentContract": "system-title-anchor",
+        "titleSystem": "page-title/system-anchor",
+        "decorationPolicy": "functional-only"
+      },
+      "themeChapter": "opening",
+      "penaltyRisks": [],
+      "suggestedAssets": [
+        {
+          "source": "photos/people/employee-suitcase-smartphone-studio.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Финал · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-five-meeting-laptop-smiling.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Финал · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-five-meeting-phone-call.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Финал · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/team-four-meeting-documents-notebook.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Финал · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        },
+        {
+          "source": "photos/people/travel-coordinator-employee-sofa-notebook.webp",
+          "kind": "photo",
+          "score": 58,
+          "reason": "Финал · смысловое фото",
+          "placement": {
+            "mode": "container",
+            "ownership": "slide",
+            "fit": "cover",
+            "objectPosition": "50% 0%",
+            "visualShare": 0.5,
+            "size": "half",
+            "reason": "мало текста: визуал принимает на себя около половины композиции"
+          }
+        }
+      ],
+      "recommended": [
+        {
+          "nodeId": "855:5661",
+          "source": "decks/library/904__855-5661.png",
+          "role": "closing",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 80,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:3405",
+          "source": "decks/library/922__855-3405.png",
+          "role": "closing",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 80,
+          "reason": "совпадает смысловая роль · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:4071",
+          "source": "decks/library/01__855-4071.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2529",
+          "source": "decks/library/1-cover__855-2529.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "blue",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        },
+        {
+          "nodeId": "855:2756",
+          "source": "decks/library/1-cover__855-2756.png",
+          "role": "cover",
+          "composition": "hero",
+          "theme": "dark",
+          "score": 19,
+          "reason": "подходит соседняя смысловая модель · совпадает плотность · крупный hero"
+        }
+      ]
+    }
+  ]
+}
